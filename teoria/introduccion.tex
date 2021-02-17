@@ -37,7 +37,7 @@ implícita.
 
 \section{Ejemplos de modelado}
 
-\subsection{Desintegración de sustancias radioactivas}
+\subsection{Desintegración de sustancias radiactivas}
 
 En este caso tenemos que \(x(t)\) es
 la masa en un tiempo \(t\) de un elemento radiactivo. La clave que nos permite
@@ -122,8 +122,12 @@ material orgánico (madera, hueso, etc.) y comparándolo con uno vivo es posible
 determinar la edad del resto orgánico analizado. Vemos algunos ejemplos
 concretos.
 
-Si la cantidad de carbono 14 en un microorganismo es \(10^{-6}\) gramos que
-cantidad habrá 3000 años después? Se entiende que el ciclo de vida del organismo
+\begin{example}
+	Si la cantidad de carbono 14 en un microorganismo es de \(10^{-6}\) gramos 
+	¿Qué cantidad habrá 3000 años después? 
+\end{example}
+
+Se entiende que el ciclo de vida del organismo
 es despreciable respecto a la edad que debemos datar. Tenemos que 
 \(x' = -\lambda x\), a tiempo \(0\), cuando el organismo muere, tenemos que
 \(x(0) = 10^{-6}\). Se trata de un problema de valor inicial, ahora solo tenemos
@@ -134,16 +138,20 @@ por lo que hemos visto antes \(k = x(0) = 10^{-6}\) con lo que
 podemos obtener ahora el resultado \(x(3000) = 6,95 \cdot 10^{-7}\) gramos.
 
 Normalmente no sabemos la cantidad de carbono presente en un organismo antes de
-su muerte, vemos ahora un ejemplo más cercano a la realidad. En una excavación
-en Nippur, Babilonia, en 1950 el carbón vegetal de la viga de un techo dio 
-\(4,09\) desintegraciones por minuto y gramo, mientras que la madera viva da 
-\(6,68\) desintegraciones, también por minuto y gramo.  Nos preguntamos en que 
-año se construyó en edificio.  Llamaremos \(R(t)\) a la tasa de desintegración
-total
+su muerte, vemos ahora un ejemplo más cercano a la realidad. 
+
+\begin{example}
+	En una excavación en Nippur, Babilonia, en 1950 el carbón vegetal de la viga
+	de un techo dio \(4,09\) desintegraciones por minuto y gramo, mientras que 
+	la madera viva da \(6,68\) desintegraciones, también por minuto y gramo. 
+	Nos preguntamos en qué año se construyó en edificio.
+\end{example}
+
+Llamaremos \(R(t)\) a la tasa de desintegración total
 \(R(t) = \lambda x(t) = \lambda x(0) e^{-\lambda t}\), donde \(x(0)\) es la
-cantidad de carbono 14 cuando se cortó el árbol y \(t\) el tiempo transcurrido
-desde que se corta el árbol hasta 1950. Entonces buscamos el año de construcción
-\(R(0) = \lambda x(0)\), tenemos que
+cantidad de carbono 14 en el trozo de madera cuando fue cortada y \(t\) el 
+tiempo transcurrido desde que se corta el árbol hasta 1950. Buscamos entonces
+el año de construcción \(R(0) = \lambda x(0)\), tenemos que
 \[\frac{R(t)}{R(0)} = 10^{-6} e^{-\frac{\log 2}{5730} t}\]
 sustituimos \(R(t) = 4,09\) y \(R(0) = 6,68\) con lo que \(t = 4055\) años. Así
 concluimos que el edificio se construyó en el \(2105\) a.C.
