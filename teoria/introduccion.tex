@@ -6,21 +6,21 @@
 
 \begin{definition}
 	Una ecuación diferencial es una ecuación de la forma 
-	\[F(t, x, x', x'', \dots, x^{n)}) = 0\]
+	\[F(t, x, x', x'', \dots, x^{(n)}) = 0\]
 	donde \(F : \Omega \to \R\) con \(\Omega \subset \R^{n + 2}\) abierto.
 \end{definition}
 
 Se dice que \(x(t)\) es solución de una ecuación diferencial en el intervalo 
 \(I \subset \R\) si \(x : I \to \R\) y
-\[F(t, x(t), x'(t), x''(t), \dots, x^{n)}(t)) = 0, \quad \forall t \in I\]
+\[F(t, x(t), x'(t), x''(t), \dots, x^{(n)}(t)) = 0, \quad \forall t \in I\]
 y se cumple además que
 \begin{enumerate}[i)]
 	\item \(x\) tiene todas las derivadas hasta orden \(n\) y son continuas.
-	\item \((t, x(t), x'(t), \dots, x^{n)}(t)) \in \Omega, \quad \forall t \in I\).
+	\item \((t, x(t), x'(t), \dots, x^{(n)}(t)) \in \Omega, \quad \forall t \in I\).
 \end{enumerate}
 
 Supondremos que la ecuación diferencial está dada en forma normal,
-\[x^{n)} = f(t, x', x'', \dots, x^{n - 1)})\]
+\[x^{(n)} = f(t, x', x'', \dots, x^{(n - 1)})\]
 llamamos \(\Omega \subset \R^{n + 1}\) al dominio de \(f\), esto se puede hacer
 localmente sin pérdida de generalidad gracias al teorema de la función
 implícita.
@@ -31,7 +31,7 @@ implícita.
 
 \begin{definition}
 	La ecuación es lineal si \(f\) es de la forma
-	\[f(t) = a_{n - 1}(t)x^{n - 1)} + a_{n - 2}(t)x^{n - 2)} + 
+	\[f(t) = a_{n - 1}(t)x^{(n - 1)} + a_{n - 2}(t)x^{(n - 2)} + 
 		\dots + a_1(t)x' + a_0(t)x + b(t)\]
 \end{definition}
 
@@ -54,8 +54,8 @@ nos queda \(x'(t)/x(t) = -\lambda\) para todo \(t\). Esto nos da una ecuación
 diferencial lineal de primer orden (de coeficientes constantes).
 
 En este caso, \(x\) es una masa, por lo que no puede ser negativa, por tanto
-\[f(t, x) = -\lambda x\] con \(f : \Omega \to \R\) y \(\Omega = \R \times
-(0, +\infty)\).
+\[f(t, x) = -\lambda x\]
+con \(f : \Omega \to \R\) y \(\Omega = \R \times (0, +\infty)\).
 
 Esta ecuación diferencial es resoluble, para ello tomamos primitivas en
 \[\frac{x'(t)}{x(t)} = -\lambda \implies \log(x) = -\lambda t + c
@@ -99,9 +99,10 @@ vectorial, o afín si existe un término independiente, de orden \(n\).
 \subsection{Problema del valor inicial (PVI)}
 
 Dada una ecuación diferencial en forma normal
-\[x^{n)} = f(t, x, x', \dots, x^{n - 1)})\]
+\[x^{(n)} = f(t, x, x', \dots, x^{(n - 1)})\]
 nos dan los valores de la función y sus derivadas en un tiempo determinado
-\(t_0\), \(x(t_0) = x_0, x'(t_0) = x_1, \dots, x^{n - 1)}(t_0) = x_{n - 1}\).
+\(t_0\),
+\[x(t_0) = x_0, x'(t_0) = x_1, \dots, x^{(n - 1)}(t_0) = x_{n - 1}.\]
 Estas condiciones determinan una única solución para la ecuación diferencial
 original.
 
@@ -127,15 +128,17 @@ concretos.
 	¿Qué cantidad habrá 3000 años después? 
 \end{example}
 
-Se entiende que el ciclo de vida del organismo
-es despreciable respecto a la edad que debemos datar. Tenemos que 
-\(x' = -\lambda x\), a tiempo \(0\), cuando el organismo muere, tenemos que
-\(x(0) = 10^{-6}\). Se trata de un problema de valor inicial, ahora solo tenemos
-que encontrar \(x(3000)\). Empezamos resolviendo la ecuación diferencial
-\[x(t) = k e^{-\lambda t} = k e^{-\frac{\log 2}{5730} t}\]
-por lo que hemos visto antes \(k = x(0) = 10^{-6}\) con lo que
-\[x(t) = 10^{-6} e^{-\frac{\log 2}{5730} t}\]
-podemos obtener ahora el resultado \(x(3000) = 6,95 \cdot 10^{-7}\) gramos.
+\begin{solution}
+	Se entiende que el ciclo de vida del organismo
+	es despreciable respecto a la edad que debemos datar. Tenemos que 
+	\(x' = -\lambda x\), a tiempo \(0\), cuando el organismo muere, tenemos que
+	\(x(0) = 10^{-6}\). Se trata de un problema de valor inicial, ahora solo tenemos
+	que encontrar \(x(3000)\). Empezamos resolviendo la ecuación diferencial
+	\[x(t) = k e^{-\lambda t} = k e^{-\frac{\log 2}{5730} t}\]
+	por lo que hemos visto antes \(k = x(0) = 10^{-6}\) con lo que
+	\[x(t) = 10^{-6} e^{-\frac{\log 2}{5730} t}\]
+	podemos obtener ahora el resultado \(x(3000) = 6,95 \cdot 10^{-7}\) gramos.
+\end{solution}
 
 Normalmente no sabemos la cantidad de carbono presente en un organismo antes de
 su muerte, vemos ahora un ejemplo más cercano a la realidad. 
@@ -147,13 +150,15 @@ su muerte, vemos ahora un ejemplo más cercano a la realidad.
 	Nos preguntamos en qué año se construyó en edificio.
 \end{example}
 
-Llamaremos \(R(t)\) a la tasa de desintegración total
-\(R(t) = \lambda x(t) = \lambda x(0) e^{-\lambda t}\), donde \(x(0)\) es la
-cantidad de carbono 14 en el trozo de madera cuando fue cortada y \(t\) el 
-tiempo transcurrido desde que se corta el árbol hasta 1950. Buscamos entonces
-el año de construcción \(R(0) = \lambda x(0)\), tenemos que
-\[\frac{R(t)}{R(0)} = 10^{-6} e^{-\frac{\log 2}{5730} t}\]
-sustituimos \(R(t) = 4,09\) y \(R(0) = 6,68\) con lo que \(t = 4055\) años. Así
-concluimos que el edificio se construyó en el \(2105\) a.C.
+\begin{solution}
+	Llamaremos \(R(t)\) a la tasa de desintegración total
+	\(R(t) = \lambda x(t) = \lambda x(0) e^{-\lambda t}\), donde \(x(0)\) es la
+	cantidad de carbono 14 en el trozo de madera cuando fue cortada y \(t\) el 
+	tiempo transcurrido desde que se corta el árbol hasta 1950. Buscamos entonces
+	el año de construcción \(R(0) = \lambda x(0)\), tenemos que
+	\[\frac{R(t)}{R(0)} = 10^{-6} e^{-\frac{\log 2}{5730} t}\]
+	sustituimos \(R(t) = 4,09\) y \(R(0) = 6,68\) con lo que \(t = 4055\) años. Así
+	concluimos que el edificio se construyó en el \(2105\) a.C.
+\end{solution}
 
 \end{document}
