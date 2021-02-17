@@ -37,7 +37,9 @@ implícita.
 
 \section{Ejemplos de modelado}
 
-Desintegración de sustancias radioactivas. En este caso tenemos que \(x(t)\) es
+\subsection{Desintegración de sustancias radioactivas}
+
+En este caso tenemos que \(x(t)\) es
 la masa en un tiempo \(t\) de un elemento radioactivo. La clave que nos permite
 modelar este fenómeno es que la probabilidad de desintegración de un átomo es la
 misma para todos los átomos de la muestra, independientemente de la masa del
@@ -67,6 +69,8 @@ esto se debe a que la ecuación es lineal y de dimensión 1. Esto intuitivamente
 se debe a que hemos acotado el espacio vectorial de dimensión infinita de todas
 las derivadas de la función a uno de dimensión finita.
 
+\subsection{Movimiento armónico simple}
+
 Vemos ahora otro ejemplo de modelado más complicado, el movimiento del péndulo.
 El punto de masa \(m\) es el peso del péndulo y llamaremos \(\theta\) al ángulo
 formado entre la recta perpendicular al plano sobre el que esta apoyado el
@@ -83,5 +87,65 @@ orden 2, puesto que aparece la derivada segunda de \(\theta\). En este caso
 podemos aproximar \(\sin\theta\) a \(\theta\) con lo que tenemos la ecuación
 lineal de segundo orden
 \[\theta'' = -\frac{g}{l}\theta.\]
+
+Esta es la ecuación del movimiento armónico simple. Su solución general, que, 
+recordamos, es el conjunto de todas las soluciones es
+\[\Theta(t) = C_1 \sin \omega t + C_2 \cos \omega t\]
+donde \(\omega^2 = g/l\), demostraremos esto más adelante. Este conjunto de
+soluciones forma un espacio vectorial de dimensión 2. Demostraremos también que
+el conjunto de soluciones de una ecuación lineal de orden \(n\) es un espacio
+vectorial, o afín si existe un término independiente, de orden \(n\).
+
+\subsection{Problema del valor inicial (PVI)}
+
+Dada una ecuación diferencial en forma normal
+\[x^{n)} = f(t, x, x', \dots, x^{n - 1)})\]
+nos dan los valores de la función y sus derivadas en un tiempo determinado
+\(t_0\), \(x(t_0) = x_0, x'(t_0) = x_1, \dots, x^{n - 1)}(t_0) = x_{n - 1}\).
+Estas condiciones determinan una única solución para la ecuación diferencial
+original.
+
+\subsection{Datación por carbono 14 (Premio Nobel de Química 1960)}
+
+Existen diversos isótopos del carbono, entre ellos el carbono 12 el cual es
+estable y el carbono 14, que es el isótopo radioactivo más común. Podemos
+entonces usar el primer ejemplo con \(\lambda \sim \log 2 / 5730\) medido en
+años. La proporción de carbono 12 y carbono 14 es constante en la atmósfera. El
+carbono 14 al ser radioactivo debería desintegrarse y disminuir su concentración
+en la atmósfera pero este equilibrio se mantiene gracias a los rayos cósmicos
+que alcanzan la tierra. Debido a la fotosíntesis y a la cadena alimenticia esta
+proporción se mantiene constante en los seres vivos, énfasis en vivos. Al morir
+un ser vivo el carbono 12 se mantiene mientras que el carbono 14 disminuye en
+concentración, debido a su naturaleza radioactiva, aun ritmo que depende de
+\(\lambda\). Debido a esto analizando la proporción entre carbono 12 y 14 en
+material orgánico (madera, hueso, etc.) y comparándolo con uno vivo es posible
+determinar la edad del resto orgánico analizado. Vemos algunos ejemplos
+concretos.
+
+Si la cantidad de carbono 14 en un microorganismo es \(10^{-6}\) gramos que
+cantidad habrá 3000 años después? Se entiende que el ciclo de vida del organismo
+es despreciable respecto a la edad que debemos datar. Tenemos que 
+\(x' = -\lambda x\), a tiempo \(0\), cuando el organismo muere, tenemos que
+\(x(0) = 10^{-6}\). Se trata de un problema de valor inicial, ahora solo tenemos
+que encontrar \(x(3000)\). Empezamos resolviendo la ecuación diferencial
+\[x(t) = k e^{-\lambda t} = k e^{-\frac{\log 2}{5730} t}\]
+por lo que hemos visto antes \(k = x(0) = 10^{-6}\) con lo que
+\[x(t) = 10^{-6} e^{-\frac{\log 2}{5730} t}\]
+podemos obtener ahora el resultado \(x(3000) = 6,95 \cdot 10^{-7}\) gramos.
+
+Normalmente no sabemos la cantidad de carbono presente en un organismo antes de
+su muerte, vemos ahora un ejemplo más cercano a la realidad. En una excavación
+en Nippur, Babilonia, en 1950 el carbón vegetal de la viga de un techo dio 
+\(4,09\) desintegraciones por minuto y gramo, mientras que la madera viva da 
+\(6,68\) desintegraciones, también por minuto y gramo.  Nos preguntamos en que 
+año se construyó en edificio.  Llamaremos \(R(t)\) a la tasa de desintegración
+total
+\(R(t) = \lambda x(t) = \lambda x(0) e^{-\lambda t}\), donde \(x(0)\) es la
+cantidad de carbono 14 cuando se cortó el árbol y \(t\) el tiempo transcurrido
+desde que se corta el árbol hasta 1950. Entonces buscamos el año de construcción
+\(R(0) = \lambda x(0)\), tenemos que
+\[\frac{R(t)}{R(0)} = 10^{-6} e^{-\frac{\log 2}{5730} t}\]
+sustituimos \(R(t) = 4,09\) y \(R(0) = 6,68\) con lo que \(t = 4055\) años. Así
+concluimos que el edificio se construyó en el \(2105\) a.C.
 
 \end{document}
