@@ -1,0 +1,99 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{definition}
+Las ecuaciones diferenciales lineales de primer orden son aquellas de la forma
+\[x' = a(t)x + b(t)\]
+donde \(a(t)\) y \(b(t)\) son continuas en \((\alpha, \omega) \subset \R\).
+\end{definition}
+
+\section{Ecuación diferencial lineal homogénea de primer orden}
+
+Para resolver este tipo de ecuaciones primero consideraremos su ecuación
+homogénea asociada, esto es
+\[x' = a(t)x.\]
+
+Buscamos ahora las soluciones de la ecuación homogénea. Supongamos que la
+solución no se anula en ningún punto, entonces por el teorema de Bolzano
+\(x > 0\) o \(x < 0\) en \((\alpha, \omega)\). En este caso recurrimos a un
+método que llamaremos separación de variables, por el teorema fundamental del
+cálculo podemos escribir
+\[\frac{x'}{x} = a(t) \iff \log\abs{x(t)} = \int_{\beta}^t a(s) \dif s + c,
+	\quad \beta \in (\alpha, \omega).\]
+Para aligerar la notación escribiremos
+\[\int^t a(s) \dif s + c,\]
+así obtenemos
+\[x(t) = k e^{\int^t a(s) \dif s}.\]
+
+Vamos a demostrar ahora que la solución así obtenida es la solución general de 
+la ecuación homogénea. Primero probamos que \(k e^{\int^t a(s) \dif s}\) es
+solución de la ecuación homogénea, para ello basta derivar en
+\[x'(t) = k a(t) e^{\int^t a(s) \dif s} = a(t) x(t).\]
+
+Probamos ahora que no existen más soluciones, para ello consideramos 
+\[\Phi(t) = u(t) e^{-\int^t a(s) \dif s}\]
+entonces
+\begin{align*}
+	\Phi'(t) &= u'(t) e^{-\int^t a(s) \dif s} 
+		- u(t) a(t) e^{-\int^t a(s) \dif s} \\
+		&= a(t) u(t) e^{-\int^t a(s) \dif s} - u(t) a(t) e^{-\int^t a(s) \dif s}
+		= 0
+\end{align*}
+
+Luego es constante, por lo que \(u(t) = k e^{\int^t a(s) \dif s}\).
+
+\begin{example}
+	Obtener la solución general de
+	\[y' + 2ty = 0\]
+\end{example}
+
+\begin{solution}
+	Tenemos entonces que
+	\[\frac{y'}{y} = -2t \iff \log\abs{y} = -t^2 + c \iff y = k e^{-t^2}\]
+\end{solution}
+
+\subsection{Problema del valor inicial}
+
+Tenemos una ecuación lineal homogénea de primer orden, esto es
+\[x' = a(t)x\]
+y además sabemos que \(x(t_0) = x_0\) para \(t_0\) en \((\alpha, \beta)\) y
+\(x_0\) en \(\R\).
+
+Sabemos que la solución general de la ecuación es
+\[x(t) = k e^{\int_{t_0}^t a(s) \dif s},\]
+ahora queremos que \(x(t_0) = x_0\) para ello notamos que
+\[x(t_0) = k e^{\int_{t_0}^{t_0} a(s) \dif s} = k = x_0,\]
+hemos probado así que el PVI tiene solución única, dada por
+\[x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s}\]
+y además la solución está definida en \((\alpha, \omega)\).
+
+\subsection{Estructura del espacio de soluciones}
+
+Observamos que el conjunto de soluciones de una ecuación lineal homogénea de
+primer orden es un espacio vectorial de dimensión 1, o más bien un subespacio
+vectorial de dimensión 1 de \(C^1(\alpha, \omega)\) el espacio vectorial de
+funciones de clase \(C^1\) en \(\alpha, \omega\).
+
+Vamos a ver cómo esto se deduce de la linealidad de la ecuación. Para ello
+definimos el siguiente operador diferencial.
+
+\begin{definition}
+	Un operador diferencial \(L : C^1(\alpha, \omega) \to C(\alpha, \omega)\)
+	es una función de que lleva funciones de clase 1 en funciones continuas, y
+	se define como
+	\[L(x) = \frac{\dif x}{\dif t} - a(t)x\]
+\end{definition}
+
+Recordamos que decimos que una función es lineal cuando cumple
+\[f(ax + by) = af(x) + bf(y), \quad a, b \in \mathbb{K},\]
+entonces la linealidad de \(L\) se deduce de la linealidad de todas las
+operaciones dentro de su definición.
+
+Notamos que la linealidad de la ecuación diferencial equivale a la linealidad de
+\(L\) y, además, \(x\) es solución de \(x' = a(t)x\) si y solo si 
+\(x \in \text{ker}(L)\). Por álgebra lineal sabemos que el núcleo de un espacio
+vectorial es siempre un subespacio vectorial suyo, por tanto, el conjunto de
+soluciones de la ecuación homogénea es un espacio vectorial.
+
+\end{document}
