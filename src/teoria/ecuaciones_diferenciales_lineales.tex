@@ -78,9 +78,10 @@ y podemos usar la libertad que tenemos para elegir la primitiva para ponerla com
 \[x(t) = k e^{\int_{t_0}^t a(s) \dif s},\]
 ahora queremos que \(x(t_0) = x_0\), para ello notamos que
 \[x_0 = x(t_0) = k e^{\int_{t_0}^{t_0} a(s) \dif s} = k,\]
-hemos probado así que el PVI tiene solución única, dada por
+hemos probado así que el problema del valor inicial tiene solución única, 
+dada por
 \[x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s}\]
-y además la solución está definida en \((\alpha, \omega)\).
+y además la solución está bien definida en el intervalo \((\alpha, \omega)\).
 
 \subsection{Estructura del espacio de soluciones}
 
@@ -103,11 +104,13 @@ Recordamos que decimos que una función es lineal cuando cumple
 entonces la linealidad de \(L\) se deduce de la linealidad de todas las
 operaciones dentro de su definición.
 
-Notamos que la linealidad de la ecuación diferencial equivale a la linealidad de
+\begin{remark}
+La linealidad de la ecuación diferencial equivale a la linealidad de
 \(L\) y, además, \(x\) es solución de \(x' = a(t)x\) si y solo si
 \(x \in \text{ker}(L)\). Sabemos del álgebra lineal que el núcleo de un
 homomorfismo vectorial es siempre un subespacio vectorial del espacio de dominio
 y, por tanto, el conjunto de soluciones de la ecuación homogénea es un espacio
 vectorial.
+\end{remark}
 
 \end{document}
