@@ -5,12 +5,12 @@
 \section{Primeras definiciones}
 
 \begin{definition}
-	Una ecuación diferencial es una ecuación de la forma 
+	Una ecuación diferencial es una ecuación de la forma
 	\[F(t, x, x', x'', \dots, x^{(n)}) = 0\]
 	donde \(F : \Omega \to \R\) con \(\Omega \subset \R^{n + 2}\) abierto.
 \end{definition}
 
-Se dice que \(x(t)\) es solución de una ecuación diferencial en el intervalo 
+Se dice que \(x(t)\) es solución de una ecuación diferencial en el intervalo
 \(I \subset \R\) si \(x : I \to \R\) y
 \[F(t, x(t), x'(t), x''(t), \dots, x^{(n)}(t)) = 0, \quad \forall t \in I\]
 y se cumple además que
@@ -31,7 +31,7 @@ implícita.
 
 \begin{definition}
 	La ecuación es lineal si \(f\) es de la forma
-	\[f(t) = a_{n - 1}(t)x^{(n - 1)} + a_{n - 2}(t)x^{(n - 2)} + 
+	\[f(t) = a_{n - 1}(t)x^{(n - 1)} + a_{n - 2}(t)x^{(n - 2)} +
 		\dots + a_1(t)x' + a_0(t)x + b(t)\]
 \end{definition}
 
@@ -48,7 +48,7 @@ material.
 Nos interesa la masa en función del tiempo relativa, esto es
 \[\frac{\Delta x}{x \Delta t} = \frac{x(t + \Delta t) - x(t)}{x(t) \Delta t}
 	= -\lambda, \quad \lambda > 0\]
-la última igualdad se deduce de lo dicho anteriormente. Llamaremos a 
+la última igualdad se deduce de lo dicho anteriormente. Llamaremos a
 \(\Delta t\) la tasa de crecimiento media. Tomando el límite \(\Delta t \to 0\)
 nos queda \(x'(t)/x(t) = -\lambda\) para todo \(t\). Esto nos da una ecuación
 diferencial lineal de primer orden (de coeficientes constantes).
@@ -60,14 +60,10 @@ con \(f : \Omega \to \R\) y \(\Omega = \R \times (0, +\infty)\).
 Esta ecuación diferencial es resoluble, para ello tomamos primitivas en
 \[\frac{x'(t)}{x(t)} = -\lambda \implies \log(x) = -\lambda t + c
 	\implies x = e^c e^{-\lambda t} = k e^{-\lambda t}\]
-con lo que nos queda \(x = k e^{-\lambda t}\), llamamos a esta fórmula solución
-general de la ecuación, ya que nos da todo el conjunto de soluciones variando
-\(k\).
-
-Observamos que el conjunto de soluciones en un espacio vectorial de dimensión 1,
-esto se debe a que la ecuación es lineal y de dimensión 1. Esto intuitivamente
-se debe a que hemos acotado el espacio vectorial de dimensión infinita de todas
-las derivadas de la función a uno de dimensión finita.
+con lo que nos queda \(x = k e^{-\lambda t}\). Llamamos a esta fórmula solución
+general de la ecuación, y nos da todo el conjunto de soluciones variando
+\(k\). En particular, el conjunto de soluciones es un subespacio vectorial de
+dimensión uno del espacio vectorial \(C^1(\R)\), que tiene dimensión infinita.
 
 \subsection{Movimiento armónico simple}
 
@@ -75,20 +71,20 @@ Vemos ahora otro ejemplo de modelado más complicado, el movimiento del péndulo
 El punto de masa \(m\) es el peso del péndulo y llamaremos \(\theta\) al ángulo
 formado entre la recta perpendicular al plano sobre el que esta apoyado el
 péndulo y que parte de su punto de apoyo y la cuerda. Denotaremos la longitud
-de la cuerda por \(l\) Recordamos que \(F = ma\) donde \(a\) es la aceleración. 
+de la cuerda por \(l\) Recordamos que \(F = ma\) donde \(a\) es la aceleración.
 Tenemos entonces que
 \[-m g \sin\theta = m l \theta''\]
 por tanto
 \[\theta'' = -\frac{g}{l} \sin\theta\]
 puesto que \(\theta\) aparece dentro del seno, esta ecuación es no lineal y de
-orden 2, puesto que aparece la derivada segunda de \(\theta\). En este caso 
+orden 2, puesto que aparece la derivada segunda de \(\theta\). En este caso
 \(f(t, \theta, \theta') = -\frac{g}{l} \sin\theta\) y \(\Omega = \R \times
 (-\pi, \pi) \times \R\). Si \(\theta\) es suficientemente próximo a \(0\)
 podemos aproximar \(\sin\theta\) a \(\theta\) con lo que tenemos la ecuación
 lineal de segundo orden
 \[\theta'' = -\frac{g}{l}\theta.\]
 
-Esta es la ecuación del movimiento armónico simple. Su solución general, que, 
+Esta es la ecuación del movimiento armónico simple. Su solución general, que,
 recordamos, es el conjunto de todas las soluciones es
 \[\Theta(t) = C_1 \sin \omega t + C_2 \cos \omega t\]
 donde \(\omega^2 = g/l\), demostraremos esto más adelante. Este conjunto de
@@ -106,31 +102,31 @@ nos dan los valores de la función y sus derivadas en un tiempo determinado
 Estas condiciones determinan una única solución para la ecuación diferencial
 original.
 
-\subsection{Datación por carbono 14 (Premio Nobel de Química 1960)}
+\subsection{Datación por carbono-14 (Premio Nobel de Química 1960)}
 
-Existen diversos isótopos del carbono, entre ellos el carbono 12 el cual es
-estable y el carbono 14, que es el isótopo radiactivo más común. Podemos
+Existen diversos isótopos del carbono, entre ellos el carbono-12 el cual es
+estable y el carbono-14, que es el isótopo radiactivo más común. Podemos
 entonces usar el primer ejemplo con \(\lambda \sim \log 2 / 5730\) medido en
-años. La proporción de carbono 12 y carbono 14 es constante en la atmósfera. El
-carbono 14 al ser radiactivo debería desintegrarse y disminuir su concentración
+años. La proporción de carbono-12 y carbono-14 es constante en la atmósfera. El
+carbono-14 al ser radiactivo debería desintegrarse y disminuir su concentración
 en la atmósfera pero este equilibrio se mantiene gracias a los rayos cósmicos
 que alcanzan la tierra. Debido a la fotosíntesis y a la cadena alimenticia esta
 proporción se mantiene constante en los seres vivos, énfasis en vivos. Al morir
-un ser vivo el carbono 12 se mantiene mientras que el carbono 14 disminuye en
+un ser vivo el carbono-12 se mantiene mientras que el carbono-14 disminuye en
 concentración, debido a su naturaleza radioactiva, aun ritmo que depende de
-\(\lambda\). Debido a esto analizando la proporción entre carbono 12 y 14 en
+\(\lambda\). Debido a esto analizando la proporción entre carbono-12 y 14 en
 material orgánico (madera, hueso, etc.) y comparándolo con uno vivo es posible
 determinar la edad del resto orgánico analizado. Vemos algunos ejemplos
 concretos.
 
 \begin{example}
-	Si la cantidad de carbono 14 en un microorganismo es de \(10^{-6}\) gramos 
-	¿Qué cantidad habrá 3000 años después? 
+	Si la cantidad de carbono-14 en un microorganismo es de \(10^{-6}\) gramos
+	¿Qué cantidad habrá 3000 años después?
 \end{example}
 
 \begin{solution}
 	Se entiende que el ciclo de vida del organismo
-	es despreciable respecto a la edad que debemos datar. Tenemos que 
+	es despreciable respecto a la edad que debemos datar. Tenemos que
 	\(x' = -\lambda x\), a tiempo \(0\), cuando el organismo muere, tenemos que
 	\(x(0) = 10^{-6}\). Se trata de un problema de valor inicial, ahora solo tenemos
 	que encontrar \(x(3000)\). Empezamos resolviendo la ecuación diferencial
@@ -141,19 +137,19 @@ concretos.
 \end{solution}
 
 Normalmente no sabemos la cantidad de carbono presente en un organismo antes de
-su muerte, vemos ahora un ejemplo más cercano a la realidad. 
+su muerte, vemos ahora un ejemplo más cercano a la realidad.
 
 \begin{example}
 	En una excavación en Nippur, Babilonia, en 1950 el carbón vegetal de la viga
-	de un techo dio \(4,09\) desintegraciones por minuto y gramo, mientras que 
-	la madera viva da \(6,68\) desintegraciones, también por minuto y gramo. 
+	de un techo dio \(4,09\) desintegraciones por minuto y gramo, mientras que
+	la madera viva da \(6,68\) desintegraciones, también por minuto y gramo.
 	Nos preguntamos en qué año se construyó en edificio.
 \end{example}
 
 \begin{solution}
 	Llamaremos \(R(t)\) a la tasa de desintegración total
 	\(R(t) = \lambda x(t) = \lambda x(0) e^{-\lambda t}\), donde \(x(0)\) es la
-	cantidad de carbono 14 en el trozo de madera cuando fue cortada y \(t\) el 
+	cantidad de carbono-14 en el trozo de madera cuando fue cortada y \(t\) el
 	tiempo transcurrido desde que se corta el árbol hasta 1950. Buscamos entonces
 	el año de construcción \(R(0) = \lambda x(0)\), tenemos que
 	\[\frac{R(t)}{R(0)} = 10^{-6} e^{-\frac{\log 2}{5730} t}\]
