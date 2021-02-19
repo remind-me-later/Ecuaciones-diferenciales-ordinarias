@@ -35,28 +35,40 @@ cálculo podemos escribir
 	\quad \beta \in (\alpha, \omega).\]
 Para aligerar la notación escribiremos \(\int^t a(s) \dif s\), para referirnos 
 a cualquier primitiva de \(a\). Por lo anterior
-\begin{equation}
-	x(t) = k e^{\int^t a(s) \dif s}. \label{eq:sol_gen}
-\end{equation}
+\[x(t) = k e^{\int^t a(s) \dif s}.\]
 
-Vamos a demostrar ahora que la solución~\eqref{eq:sol_gen}
-así obtenida es la solución general de la ecuación homogénea.
-Primero probamos que \(k e^{\int^t a(s) \dif s}\) es
-solución de la ecuación homogénea, para ello basta derivar en
-\[x'(t) = k a(t) e^{\int^t a(s) \dif s} = a(t) x(t).\]
+Vamos a demostrar ahora que la solución obtenida es la solución general de la 
+ecuación homogénea.
 
-Probamos ahora que no existen más soluciones, para ello consideramos la función
-\[\Phi(t) = u(t) e^{-\int^t a(s) \dif s}\]
-y calculamos su derivada obteniendo
-\begin{align*}
-	\Phi'(t) &= u'(t) e^{-\int^t a(s) \dif s}
-		- u(t) a(t) e^{-\int^t a(s) \dif s} \\
-		&= a(t) u(t) e^{-\int^t a(s) \dif s} - u(t) a(t) e^{-\int^t a(s) \dif s}
-		= 0
-\end{align*}
+\begin{theorem}
+	Todas las soluciones de una ecuación diferencial lineal homogénea,
+	\(x' = a(t)x\), son de la forma
+	\begin{equation}
+		x(t) = k e^{\int^t a(s) \dif s}. \label{eq:sol_gen}
+	\end{equation}
+\end{theorem}
 
-Luego la función \(\Phi\) es constante, por lo que 
-\(u(t) = k e^{\int^t a(s) \dif s}\).
+\begin{proof}
+	Primero probamos que \(k e^{\int^t a(s) \dif s}\) es
+	solución de la ecuación homogénea, para ello basta derivar 
+	en~\eqref{eq:sol_gen}
+	\[x'(t) = k a(t) e^{\int^t a(s) \dif s} = a(t) x(t).\]
+
+	Probamos ahora que no existen más soluciones, para ello, sea \(u(t)\) una
+	solución arbitraria de la ecuación, consideramos la función
+	\[\Phi(t) = u(t) e^{-\int^t a(s) \dif s}\]
+	y calculamos su derivada obteniendo
+	\begin{align*}
+		\Phi'(t) &= u'(t) e^{-\int^t a(s) \dif s}
+			- u(t) a(t) e^{-\int^t a(s) \dif s} \\
+			&= a(t) u(t) e^{-\int^t a(s) \dif s} 
+			- u(t) a(t) e^{-\int^t a(s) \dif s}
+			= 0.
+	\end{align*}
+
+	Luego la función \(\Phi\) es constante, por lo que 
+	\(u(t) = k e^{\int^t a(s) \dif s}\).
+\end{proof}
 
 \begin{example}
 	Obtener la solución general de la ecuación \(y' + 2ty = 0\).
@@ -93,7 +105,6 @@ espacio vectorial de funciones de clase \(C^1\) en el intervalo
 
 Vamos a ver cómo esto se deduce de la linealidad de la ecuación. Para ello
 definimos el operador diferencial:
-
 \begin{align*}
   L : C^1(\alpha, \omega) &\to C(\alpha, \omega) \\
   x &\mapsto \frac{\dif x}{\dif t} - a(t)x
