@@ -1,10 +1,10 @@
 .POSIX:
 
-all: edo.pdf
+all: src/edo.pdf
 
-edo.pdf: edo.tex teoria/*.tex | build 
-	#xelatex -output-directory=build edo.tex
-	latexmk -pdf -xelatex -output-directory=build edo.tex
+src/edo.pdf: src/edo.tex src/teoria/*.tex | build 
+	cd src
+	latexmk -pdf -xelatex -output-directory=../build -cd src/edo.tex
 	mv build/edo.pdf .
 
 build:
