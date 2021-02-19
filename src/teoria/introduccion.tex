@@ -10,14 +10,18 @@
 	donde \(F : \Omega \to \R\) con \(\Omega \subset \R^{n + 2}\) abierto.
 \end{definition}
 
-Se dice que \(x(t)\) es solución de una ecuación diferencial en el intervalo
-\(I \subset \R\) si \(x : I \to \R\) y
-\[F(t, x(t), x'(t), x''(t), \dots, x^{(n)}(t)) = 0, \quad \forall t \in I\]
-y se cumple además que
-\begin{enumerate}[i)]
-	\item \(x\) tiene todas las derivadas hasta orden \(n\) y son continuas.
-	\item \((t, x(t), x'(t), \dots, x^{(n)}(t)) \in \Omega, \quad \forall t \in I\).
-\end{enumerate}
+\begin{definition}
+	Se dice que \(x(t)\) es solución de una ecuación diferencial en el intervalo
+	\(I \subset \R\) si \(x : I \to \R\) y
+	\[F(t, x(t), x'(t), x''(t), \dots, x^{(n)}(t)) = 0, \quad \forall t \in I.\]
+	Se cumple además que:
+	\begin{enumerate}[i)]
+		\item La función \(x\) tiene todas las derivadas hasta orden \(n\) y son
+			continuas.
+		\item El punto \((t, x(t), x'(t), \dots, x^{(n)}(t)) \in \Omega\) para
+			todo \(t\) en \(I\).
+	\end{enumerate}
+\end{definition}
 
 Supondremos que la ecuación diferencial está dada en forma normal,
 \[x^{(n)} = f(t, x', x'', \dots, x^{(n - 1)})\]
@@ -25,12 +29,12 @@ llamamos \(\Omega \subset \R^{n + 1}\) al dominio de \(f\), esto se puede hacer
 localmente sin pérdida de generalidad gracias al teorema de la función
 implícita.
 
-\begin{definition}
-	Llamaremos a \(n\) el orden de la ecuación diferencial.
-\end{definition}
+\begin{remark}
+	Llamaremos \(n\) al orden de la ecuación diferencial.
+\end{remark}
 
 \begin{definition}
-	La ecuación es lineal si \(f\) es de la forma
+	Una ecuación diferencial es lineal si \(f\) es de la forma
 	\[f(t) = a_{n - 1}(t)x^{(n - 1)} + a_{n - 2}(t)x^{(n - 2)} +
 		\dots + a_1(t)x' + a_0(t)x + b(t)\]
 \end{definition}
@@ -116,7 +120,7 @@ un ser vivo el carbono-12 se mantiene mientras que el carbono-14 disminuye en
 concentración, debido a su naturaleza radioactiva, aun ritmo que depende de
 \(\lambda\). Debido a esto analizando la proporción entre carbono-12 y 14 en
 material orgánico (madera, hueso, etc.) y comparándolo con uno vivo es posible
-determinar la edad del resto orgánico analizado. Vemos algunos ejemplos
+determinar la edad del resto orgánico analizado. Veamos algunos ejemplos
 concretos.
 
 \begin{example}
@@ -137,7 +141,7 @@ concretos.
 \end{solution}
 
 Normalmente no sabemos la cantidad de carbono presente en un organismo antes de
-su muerte, vemos ahora un ejemplo más cercano a la realidad.
+su muerte, veamos ahora un ejemplo más cercano a la realidad.
 
 \begin{example}
 	En una excavación en Nippur, Babilonia, en 1950 el carbón vegetal de la viga
