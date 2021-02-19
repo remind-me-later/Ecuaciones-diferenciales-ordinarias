@@ -2,8 +2,9 @@
 
 all: edo.pdf
 
-edo.pdf: edo.tex | build
-	xelatex --output-directory=build edo.tex
+edo.pdf: edo.tex teoria/*.tex | build 
+	#xelatex -output-directory=build edo.tex
+	latexmk -pdf -xelatex -output-directory=build edo.tex
 	mv build/edo.pdf .
 
 build:

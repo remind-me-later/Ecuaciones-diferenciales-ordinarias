@@ -1,11 +1,11 @@
-\documentclass[a4paper, twoside, 11pt]{report}
-\usepackage[left=2cm, right=4cm, top=3.5cm, bottom=4cm]{geometry}
+\documentclass{report}
+\usepackage[a4paper]{geometry}
 \setlength\parindent{0pt}
 
-\usepackage{polyglossia}
-\setmainlanguage{spanish}
+\usepackage[spanish]{babel}
 
-\usepackage{subfiles}
+\usepackage{subfiles} 
+\usepackage{hyperref}
 
 \usepackage{general}
 \usepackage{conjuntos}
@@ -17,6 +17,7 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
 
 \chapter{Introducción}
 \subfile{teoria/introduccion}

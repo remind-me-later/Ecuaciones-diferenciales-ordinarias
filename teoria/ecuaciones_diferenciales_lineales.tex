@@ -2,17 +2,29 @@
 
 \begin{document}
 
+Comenzamos estudiando las ecuaciones diferenciales mas sencillas, las ecuaciones
+lineales de primer orden, como veremos, son siempre resolubles, esto es existe
+una fórmula dependiente de un solo parámetro que proporciona todo el conjunto de
+soluciones.
+
 \begin{definition}
 Las ecuaciones diferenciales lineales de primer orden son aquellas de la forma
 \[x' = a(t)x + b(t)\]
-donde \(a(t)\) y \(b(t)\) son continuas en \((\alpha, \omega) \subset \R\).
+donde \(a\) y \(b\) son continuas en \((\alpha, \omega) \subset \R\).
 \end{definition}
+
+Antes de resolver estas ecuaciones, centraremos nuestra atención en un problema
+más simple, la obtención de soluciones de una ecuación lineal homogénea de 
+primer orden asociada a la ecuación original.
 
 \section{Ecuación diferencial lineal homogénea de primer orden}
 
-Para resolver este tipo de ecuaciones primero consideraremos su ecuación
-homogénea asociada, esto es
+\begin{definition}
+Una ecuación diferencial lineal homogénea de primer orden es una ecuación de la
+forma
 \[x' = a(t)x.\]
+con \(a\) continua en \((\alpha, \omega) \subset \R\).
+\end{definition}
 
 Buscamos ahora las soluciones de la ecuación homogénea. Supongamos que la
 solución no se anula en ningún punto, entonces por el teorema de Bolzano
@@ -21,13 +33,15 @@ método que llamaremos separación de variables, por el teorema fundamental del
 cálculo podemos escribir
 \[\frac{x'}{x} = a(t) \iff \log\abs{x(t)} = \int_{\beta}^t a(s) \dif s + c,
 	\quad \beta \in (\alpha, \omega).\]
-Para aligerar la notación escribiremos
-\[\int^t a(s) \dif s,\]
-para referirnos a cualquier primitiva de \(a\), y así obtenemos
-\[x(t) = k e^{\int^t a(s) \dif s}.\]
+Para aligerar la notación escribiremos \(\int^t a(s) \dif s\), para referirnos 
+a cualquier primitiva de \(a\). Por lo anterior
+\begin{equation}
+	x(t) = k e^{\int^t a(s) \dif s}. \label{eq:sol_gen}
+\end{equation}
 
-Vamos a demostrar ahora que la solución así obtenida es la solución general de
-la ecuación homogénea. Primero probamos que \(k e^{\int^t a(s) \dif s}\) es
+Vamos a demostrar ahora que la solución~\ref{eq:sol_gen}
+así obtenida es la solución general de la ecuación homogénea.
+Primero probamos que \(k e^{\int^t a(s) \dif s}\) es
 solución de la ecuación homogénea, para ello basta derivar en
 \[x'(t) = k a(t) e^{\int^t a(s) \dif s} = a(t) x(t).\]
 
