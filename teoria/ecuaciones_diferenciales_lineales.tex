@@ -39,15 +39,15 @@ a cualquier primitiva de \(a\). Por lo anterior
 	x(t) = k e^{\int^t a(s) \dif s}. \label{eq:sol_gen}
 \end{equation}
 
-Vamos a demostrar ahora que la solución~\ref{eq:sol_gen}
+Vamos a demostrar ahora que la solución~\eqref{eq:sol_gen}
 así obtenida es la solución general de la ecuación homogénea.
 Primero probamos que \(k e^{\int^t a(s) \dif s}\) es
 solución de la ecuación homogénea, para ello basta derivar en
 \[x'(t) = k a(t) e^{\int^t a(s) \dif s} = a(t) x(t).\]
 
-Probamos ahora que no existen más soluciones, para ello consideramos
+Probamos ahora que no existen más soluciones, para ello consideramos la función
 \[\Phi(t) = u(t) e^{-\int^t a(s) \dif s}\]
-entonces
+y calculamos su derivada obteniendo
 \begin{align*}
 	\Phi'(t) &= u'(t) e^{-\int^t a(s) \dif s}
 		- u(t) a(t) e^{-\int^t a(s) \dif s} \\
@@ -55,31 +55,29 @@ entonces
 		= 0
 \end{align*}
 
-Luego es constante, por lo que \(u(t) = k e^{\int^t a(s) \dif s}\).
+Luego la función \(\Phi\) es constante, por lo que 
+\(u(t) = k e^{\int^t a(s) \dif s}\).
 
 \begin{example}
-	Obtener la solución general de
-	\[y' + 2ty = 0\]
+	Obtener la solución general de la ecuación \(y' + 2ty = 0\).
 \end{example}
 
 \begin{solution}
-	Tenemos entonces que
+	Utilizando la técnica de separación de variables vista anteriormente
 	\[\frac{y'}{y} = -2t \iff \log\abs{y} = -t^2 + c \iff y = k e^{-t^2}\]
 \end{solution}
 
 \subsection{Problema del valor inicial}
 
-Tenemos una ecuación lineal homogénea de primer orden, esto es
-\[x' = a(t)x\]
-y además queremos que \(x(t_0) = x_0\) para algún \(t_0 \in (\alpha, \omega)\) y
-\(x_0 \in \R\).
-
-Sabemos que la solución general de la ecuación es de la forma
-\[x(t) = k e^{\int^t a(s) \dif s},\]
+Vemos cómo se plantea el problema del valor inicial en el caso de ecuaciones
+homogéneas. Tenemos una ecuación lineal homogénea de primer orden, esto es
+\(x' = a(t)x\) y además queremos que \(x(t_0) = x_0\) para algún 
+\(t_0 \in (\alpha, \omega)\) y \(x_0 \in \R\). 
+Sabemos que la solución general de la ecuación es de la forma~\eqref{eq:sol_gen}
 y podemos usar la libertad que tenemos para elegir la primitiva para ponerla como
 \[x(t) = k e^{\int_{t_0}^t a(s) \dif s},\]
-ahora queremos que \(x(t_0) = x_0\) para ello notamos que
-\[x(t_0) = k e^{\int_{t_0}^{t_0} a(s) \dif s} = k = x_0,\]
+ahora queremos que \(x(t_0) = x_0\), para ello notamos que
+\[x_0 = x(t_0) = k e^{\int_{t_0}^{t_0} a(s) \dif s} = k,\]
 hemos probado así que el PVI tiene solución única, dada por
 \[x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s}\]
 y además la solución está definida en \((\alpha, \omega)\).
