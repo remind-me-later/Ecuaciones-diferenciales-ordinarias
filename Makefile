@@ -1,10 +1,12 @@
 .POSIX:
 
 name=ecuaciones_diferenciales
+srcdir:=src
+sources:=$(shell find $(srcdir) -name '*.tex')
 
-all: src/$(name).pdf
+all: $(name).pdf
 
-src/$(name).pdf: src/$(name).tex src/teoria/*.tex | build 
+$(name).pdf: $(sources) | build 
 	latexmk -pdf -xelatex -output-directory=../build -cd src/$(name).tex
 	mv build/$(name).pdf .
 
