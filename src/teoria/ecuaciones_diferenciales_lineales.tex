@@ -92,7 +92,9 @@ ahora queremos que \(x(t_0) = x_0\), para ello notamos que
 \[x_0 = x(t_0) = k e^{\int_{t_0}^{t_0} a(s) \dif s} = k,\]
 hemos probado así que el problema del valor inicial tiene solución única, 
 dada por
-\[x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s}\]
+\begin{equation}
+	x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s} \label{eq:sol_pvi}
+\end{equation}
 y además la solución está bien definida en el intervalo \((\alpha, \omega)\).
 
 \subsection{Estructura del espacio de soluciones}
@@ -123,5 +125,83 @@ homomorfismo vectorial es siempre un subespacio vectorial del espacio de dominio
 y, por tanto, el conjunto de soluciones de la ecuación homogénea es un espacio
 vectorial.
 \end{remark}
+
+\section{El operador diferencial}
+
+Partimos de una ecuación diferencial lineal homogénea:
+\[x^{(n)}(t) = a_{n-1}x^{(n - 1)}(t) + \dots + a_0(t)x(t).\]
+
+Podemos asociar a esta ecuación un operador diferencial
+\[L = \frac{\dif^n}{\dif t^n} - a_{n-1}(t)\frac{\dif^{n-1}}{\dif t^{n-1}}
+	- \dots - a_1(t)\frac{\dif}{\dif t} - a_0(t)\]
+donde el último término \(a_k(t) \dif^k/\dif t^k\) actúa sobre una 
+función \(u(t)\) como
+\[L(u(t)) = a_k(t) \frac{\dif^k}{\dif t^k} u(t) = a_k(t) u^{(k)}(t).\]
+
+Como derivar es lineal:
+\[\frac{\dif}{\dif t} (\alpha u(t) + \beta v(t)) 
+	= \alpha \frac{\dif}{\dif t} u(t) + \beta \frac{\dif}{\dif t} v(t)\]
+y multiplicar por una función fija también es lineal
+\[a(t)(\alpha u(t) + \beta v(t)) = \alpha a(t) u(t) + \beta a(t) u(t),\]
+el operador composición de las anteriores \(a_k(t) \dif^k/\dif t^k\) es
+lineal. Tenemos así que \(L\) es lineal como operador de tipo
+\(L : C^n(\alpha, \omega) \to C(\alpha, \omega)\), asumiendo que
+\(a_k(t) \in C(\alpha, \omega)\) para todo \(k\) natural.
+
+Evidentemente tenemos que las soluciones de ecuación diferencial 
+corresponden a las funciones tal que \(L(x(t)) = 0\). Por lo que
+el conjunto de soluciones es el núcleo del operador \(L\) así definido.
+
+En general tenemos que \(x(t)\) es solución de una ecuación diferencial
+general si y solo si \(L(x(t)) = b(t)\), donde hemos definido \(L\)
+mediante la ecuación homogénea asociada. Por lo que el espacio de 
+soluciones de una ecuación general lineal es un espacio afín de dimensión \(n\).
+
+\section{Ecuación diferencial lineal de primer orden}
+
+Ahora que ya hemos obtenido la solución general~\eqref{eq:sol_gen} para 
+ecuaciones lineales homogéneas y también su solución única en el caso del 
+problema del valor inicial~\eqref{eq:sol_pvi}, podemos afrontar el problema de
+obtener las soluciones de una ecuación diferencial lineal:
+\[x' = a(t)x + b(t),\]
+
+Consideramos el operador diferencial asociado a su ecuación homogénea 
+\(L = \frac{\dif}{\dif t} - a(t)\). Observamos que si \(x_0(t)\) es solución 
+de la ecuación homogénea y \(x_p(t)\) es solución de la ecuación lineal entonces
+\(x_0(t) + x_p(t)\) es solución de la ecuación lineal. Esto se debe a que
+\[L(x_0(t) + x_p(t)) = L(x_0(t)) + L(x_p(t)) = b(t).\]
+
+Además, si \(x_1\) y \(x_2\) son soluciones de la ecuación entonces 
+\(x_1 - x_2\) es también solución. Lo demostramos:
+\[L(x_1 - x_2) = L(x_1) - L(x_2) = b(t) - b(t) = 0.\]
+
+\begin{theorem}
+	La solución general de una ecuación diferencial lineal de primer orden es 
+	\[x_p(t) + x_n(t)\]
+	donde \(x_p(t)\) es una solución arbitraria de la ecuación y \(x_n(t)\) es
+	la solución general de la ecuación homogénea asociada.
+\end{theorem}
+
+Nos proponemos ahora obtener una solución de forma explícita, haremos esto
+mediante el método de variación de constantes.
+
+\subsection{Método de variación de constantes}
+
+Conocemos una forma explícita de calcular una solución de la ecuación homogénea
+asociada a una ecuación lineal
+\[x(t) = k e^{\int^t a(s) \dif s}.\]
+
+Conjeturamos que hay una solución de la ecuación lineal de la forma
+\[x_p(t) = k(t) e^{\int^t a(s) \dif s}\]
+e intentamos obtener \(k(t)\). Buscamos entonces que se cumpla la igualdad
+\[x'_p(t) = a(t)x_p(t) + b(t) = a(t)k(t) e^{\int^t a(s) \dif s} + b(t),\]
+podemos entonces derivar en la primera fórmula obteniendo
+\[k'(t) e^{\int^t a(s) \dif s} + k(t)a(t) e^{\int^t a(s) \dif s}\]
+simplemente sustituyendo y reordenando obtenemos ahora 
+\[k'(t) = b(t)e^{-\int^t a(s) \dif s}.\]
+
+Tenemos así que la solución general de la ecuación diferencial es 
+\[x(t) = \parens{k + \int^t b(s) e^{-\int^s a(u) \dif u} \dif s} 
+	e^{\int^t a(s) \dif s}.\]
 
 \end{document}
