@@ -245,18 +245,21 @@ tiene solución única.
 	El problema del valor inicial
 	\[
 	\begin{cases}
-		x = a(t)x + b(t), quad a, b \in C(\alpha, \omega) \\
+		x = a(t)x + b(t), \quad a, b \in C(\alpha, \omega) \\
 		x(t_0) = x_0, \quad t_0 \in (\alpha, \omega), \quad x_0 \in \R
 	\end{cases}
 	\]
 	tiene solución única dada por:
-	\[x(t) = 
+	\[x(t) =
 		\parens{x_0 + \int_{t_0}^t b(s) e^{-\int_{t_0}^s a(u) \dif u} \dif s}
 		e^{\int_{t_0}^t a(s) \dif s}\]
 \end{theorem}
 
-Las gráficas de las soluciones ``rellenan" la franja 
-\((\alpha, \omega) \times \R\) sin cortarse. TODO: falta texto.
+Las gráficas de las soluciones ``rellenan'' la franja
+\((\alpha, \omega) \times \R\) sin cortarse. La rellenan porque para cualquier
+punto \((t_0, x_0) \in (\alpha, \omega) \times \R\) hay una solución que pasa
+por él, y no se cortan entre sí porque sólo hay una solución que pase por cada
+punto, como consecuencia del teorema anterior.
 
 \begin{example}
 	Resuélvase el problema del valor inicial:
@@ -269,11 +272,11 @@ Las gráficas de las soluciones ``rellenan" la franja
 \end{example}
 
 \begin{solution}
-	Observamos que el intervalo donde vamos a resolver el problema es 
-	\((0, +\infty)\). Puesto que \(\pi\) ha de pertenecer al intervalo 
+	Observamos que el intervalo donde vamos a resolver el problema es
+	\((0, +\infty)\). Puesto que \(\pi\) ha de pertenecer al intervalo
 	\(t \neq 0\). La ecuación homogénea asociada es \(x' + x/t = 0\),
 	separando variables y calculando primitivas a ambos lados obtenemos
-	\[\frac{x'}{x} = -\frac{1}{t} \iff \log\abs{x} 
+	\[\frac{x'}{x} = -\frac{1}{t} \iff \log\abs{x}
 		= -\log\abs{t} + c \iff x = \frac{k}{t}.\]
 	Utilizamos ahora la técnica de variación de constantes, consideramos
 	\(x_p(t) = k(t)/t\) e imponemos que es solución de la ecuación diferencial,
@@ -282,8 +285,8 @@ Las gráficas de las soluciones ``rellenan" la franja
 	asimismo
 	\[\cos t - \frac{x_p(t)}{t} = \cos t - \frac{k(t)}{t^2}\]
 	por lo que \(k'(t)/t = \cos t\). Basta elegir entonces \(k(t)\) igual a una
-	primitiva de \(t \cos t\), integrando por partes 
-	\(k(t) = t \sin t + \cos t\). Recordamos que la solución general de la 
+	primitiva de \(t \cos t\), integrando por partes
+	\(k(t) = t \sin t + \cos t\). Recordamos que la solución general de la
 	ecuación diferencial es la suma de la solución general de la homogénea más
 	la solución particular obtenida
 	\[x(t) = \frac{1}{t}(k + t \sin t + \cos t).\]
