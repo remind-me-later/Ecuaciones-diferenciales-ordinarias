@@ -224,4 +224,76 @@ Tenemos así que la solución general de la ecuación diferencial es
 \[x(t) = \parens{k + \int^t b(s) e^{-\int^s a(u) \dif u} \dif s}
 	e^{\int^t a(s) \dif s}.\]
 
+\begin{remark}
+	No es necesario aprender esta ecuación de memoria, se utiliza el método de
+	variación de constantes para obtener formas explícitas para cada problema en
+	particular.
+\end{remark}
+
+\subsection{Problema del valor inicial}
+
+Como de costumbre consideramos la ecuación diferencial lineal junto a una
+condición \(x(t_0) = x_0\), con \(t_0 \in (\alpha, \omega)\) y \(x_0 \in \R\).
+Consideramos la solución general fijando el límite inferior a \(t_0\),
+\[x(t) = \parens{k + \int_{t_0}^t b(s) e^{-\int_{t_0}^s a(u) \dif u} \dif s}
+	e^{\int_{t_0}^t a(s) \dif s}\]
+
+Sin más que sustituir obtenemos que \(k = x_0\), por lo que nuestra ecuación
+tiene solución única.
+
+\begin{theorem}
+	El problema del valor inicial
+	\[
+	\begin{cases}
+		x = a(t)x + b(t), quad a, b \in C(\alpha, \omega) \\
+		x(t_0) = x_0, \quad t_0 \in (\alpha, \omega), \quad x_0 \in \R
+	\end{cases}
+	\]
+	tiene solución única dada por:
+	\[x(t) = 
+		\parens{x_0 + \int_{t_0}^t b(s) e^{-\int_{t_0}^s a(u) \dif u} \dif s}
+		e^{\int_{t_0}^t a(s) \dif s}\]
+\end{theorem}
+
+Las gráficas de las soluciones ``rellenan" la franja 
+\((\alpha, \omega) \times \R\) sin cortarse. TODO: falta texto.
+
+\begin{example}
+	Resuélvase el problema del valor inicial:
+	\[
+	\begin{cases}
+		x' + \frac{x}{t} = \cos t \\
+		x(\pi) = 1
+	\end{cases}
+	\]
+\end{example}
+
+\begin{solution}
+	Observamos que el intervalo donde vamos a resolver el problema es 
+	\((0, +\infty)\). Puesto que \(\pi\) ha de pertenecer al intervalo 
+	\(t \neq 0\). La ecuación homogénea asociada es \(x' + x/t = 0\),
+	separando variables y calculando primitivas a ambos lados obtenemos
+	\[\frac{x'}{x} = -\frac{1}{t} \iff \log\abs{x} 
+		= -\log\abs{t} + c \iff x = \frac{k}{t}.\]
+	Utilizamos ahora la técnica de variación de constantes, consideramos
+	\(x_p(t) = k(t)/t\) e imponemos que es solución de la ecuación diferencial,
+	por tanto
+	\[x'_p(t) = \frac{k'(t)}{t} - \frac{k(t)}{t^2}\]
+	asimismo
+	\[\cos t - \frac{x_p(t)}{t} = \cos t - \frac{k(t)}{t^2}\]
+	por lo que \(k'(t)/t = \cos t\). Basta elegir entonces \(k(t)\) igual a una
+	primitiva de \(t \cos t\), integrando por partes 
+	\(k(t) = t \sin t + \cos t\). Recordamos que la solución general de la 
+	ecuación diferencial es la suma de la solución general de la homogénea más
+	la solución particular obtenida
+	\[x(t) = \frac{1}{t}(k + t \sin t + \cos t).\]
+
+	Calculamos \(k\) usando la condición inicial \(x(\pi) = 1\),
+	\[(k - 1)\frac{1}{\pi} = 1 \iff k = \pi + 1.\]
+
+	Sustituimos en la solución general obteniendo así la solución única a
+	nuestro problema
+	\[x(t) = \frac{1}{t}(\pi + 1 + t \sin t + \cos t).\]
+\end{solution}
+
 \end{document}
