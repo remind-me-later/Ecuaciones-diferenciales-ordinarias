@@ -302,34 +302,34 @@ punto, como consecuencia del teorema anterior.
 \section{Propagación de enfermedades}
 
 El pionero en la modelización de la propagación de enfermedades mediante
-ecuaciones diferenciales fue Ronald Ross (Premio Nobel de Medicina 1915). Los 
-grandes avances en esta disciplina comienzan cuando Kermack y McKendick
+ecuaciones diferenciales fue Ronald Ross (Premio Nobel de Medicina 1915). Los
+grandes avances en esta disciplina comienzan cuando Kermack y McKendrick
 proponen el modelo SIR, lo que se conoce como el inicio de la epidemiología
 moderna.
 
 \subsection{Modelos simples para propagación de enfermedades}
 
 Una enfermedad contagiosa se propaga a través de la interacción entre personas
-enfermas y sanas. Denotaremos \(x(t)\) al número de persona enfermas a tiempo 
+enfermas y sanas. Denotaremos \(x(t)\) al número de persona enfermas a tiempo
 \(t\), asumimos \(x(t) \in \R\), y denotaremos \(y(t)\) al número de personas
 sanas. Asumiremos que solo existen personas sanas o enfermas, el SIR también
 incluye personas inmunizadas y muertos, que hacen variar el total de personas en
 nuestro modelo. Haremos un par de hipótesis para simplificar el modelo:
 \begin{enumerate}[i)]
-	\item \(x'\) depende del número de interacciones entre personas sanas y 
+	\item \(x'\) depende del número de interacciones entre personas sanas y
 		enfermas.
 
 	\item El susodicho número de interacciones es proporcional a \(xy\).
 \end{enumerate}
 
 La última hipótesis es debida a Hamer, quién la usó con éxito para modelar
-la propagación del Saranpión en Inglaterra en 1905. Tenemos así un primer
+la propagación del sarampión en Inglaterra en 1905. Tenemos así un primer
 modelo sencillo, en una población de \(n\) individuos:
 \[x' = k x(n - x).\]
 
-Veremos que dependiendo de \(k\) la enfermedad desaparecerá o se hará endémica. 
+Veremos que dependiendo de \(k\) la enfermedad desaparecerá o se hará endémica.
 Otra observación es que la ecuación es no lineal, por lo que se escapa de
-nuestra ``zona de comfort", pero podremos resolverla fácilmente separando
+nuestra ``zona de comfort'', pero podremos resolverla fácilmente separando
 variables.
 
 \begin{remark}
@@ -344,7 +344,7 @@ sano. Se puede incluir en el modelo una tasa de recuperación, quedaría entonce
 donde \(\beta\) es la probabilidad de recuperación, independiente de factores
 poblacionales. Este es el modelo más simple con nombre, el modelo SIS, el cual
 modela enfermedades que no generan inmunidad. Este modelo posee una cualidad
-importante del modelo SIS, el teorema del umbral, que enuncia que en función de 
+importante del modelo SIS, el teorema del umbral, que enuncia que en función de
 los parámetros la enfermedad desaparece o se hace endémica.
 
 \subsection{El modelo más simple}
@@ -358,20 +358,21 @@ Separando las variables nos queda
 \[\frac{x'}{x(n - x)} = k.\]
 Para poder continuar debemos obtener una primitiva del término a la izquierda,
 separamos en fracciones parciales
-\[\frac{1}{y(n - y)} = \frac{A}{y} + \frac{B}{n - y} 
+\[\frac{1}{y(n - y)} = \frac{A}{y} + \frac{B}{n - y}
 	= \frac{y(B - A) + nA}{y(n - y)} \implies A = B = \frac{1}{n}.\]
 
 La primitiva que buscamos es pues:
 \[\frac{1}{n} (\log(y) - \log(n - y)) = \frac{1}{n} \log \frac{y}{n - y}.\]
 
 Sustituyendo y tomando primitivas a ambos lados de la ecuación original
-\[\frac{1}{n} \log\frac{x}{n - x} = kt + c 
+\[\frac{1}{n} \log\frac{x}{n - x} = kt + c
 	\implies x = \frac{n e^{nc} e^{nkt}}{1 + e^{nc} e^{nkt}}
 	\implies x = \frac{n}{1 + c' e^{-nkt}},\]
-donde \(c'\) es una constante positiva. El conjunto de soluciones no es un
-espacio vectorial. Según este modelo la pandemia infecta a toda la población,
-\(\lim_{t \to \infty} x(t) = n\). En la práctica, la evolución de una pandemia 
-depende de las medidas que se tomen para evitar la infección, por lo que modelos
-más refinados modelan la probabilidad de contagio en función del tiempo.
+donde \(c'\) es una constante positiva. Observamos que en este caso el
+conjunto de soluciones no es un espacio vectorial. Según este modelo la
+pandemia infecta a toda la población, \(\lim_{t \to \infty} x(t) = n\). En la
+práctica, la evolución de una pandemia depende de las medidas que se tomen
+para evitar la infección, por lo que modelos más refinados modelan la
+probabilidad de contagio en función del tiempo.
 
 \end{document}
