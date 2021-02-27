@@ -6,12 +6,15 @@
 \usepackage[spanish]{babel}
 
 \usepackage{subfiles} 
+\usepackage{multicol}
 \usepackage{hyperref}
 
 \usepackage{general}
 \usepackage{conjuntos}
 \usepackage{teoremas}
 \usepackage{calculo}
+
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
 \def\Snospace~{\S{}}
 \AtBeginDocument{\renewcommand*\sectionautorefname{\Snospace}}
@@ -25,10 +28,15 @@
 \maketitle
 \tableofcontents
 
+\setcounter{chapter}{-1}
 \chapter{Introducción}
 \subfile{teoria/introduccion}
 
 \chapter{Ecuaciones diferenciales lineales de primer orden}
-\subfile{teoria/ecuaciones_diferenciales_lineales.tex}
+\label{chap:capitulo1}
+\subfile{teoria/ecuaciones_diferenciales_lineales}
+
+\section{Problemas del capítulo~\ref{chap:capitulo1}}
+\subfile{problemas/ecuaciones_diferenciales_lineales}
 
 \end{document}

@@ -1,0 +1,79 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Hoja 1}
+
+\begin{problem}
+	Encontrar la solución general de las siguientes ecuaciones diferenciales,
+	indicando su intervalo de definición.
+
+	\begin{multicols}{2}
+	\begin{enumerate}[a)]
+		\item \(\displaystyle x' + x \cos t = 0\)
+		\item \(\displaystyle x' + x\sqrt{t} \sin t = 0\)
+		\item \(\displaystyle x' + \frac{2t}{1 + t^2}x = \frac{1}{1 + t^2}\)
+		\item \(\displaystyle x' + x = t e^t\)
+	\end{enumerate}
+	\end{multicols}
+\end{problem}
+
+\begin{solution}
+	\begin{enumerate}[a), wide, labelwidth=0pt, labelindent=0pt]
+		\item Se trata de una ecuación homogénea, puesto que 
+			\(\cos t \in C(\R)\), el intervalo de definición de la ecuación es
+			\(\R\). Separando variables:
+			\begin{align*}
+				\frac{x'}{x} = -\cos t &\iff 
+				\log\abs{x(t)} = \int_0^t -\cos s \dif s + c 
+				= -(\sin t - \sin 0) + c \\
+				&\iff x(t) = k e^{-\sin t}.
+			\end{align*}
+
+		\item El intervalo de definición es \(\R^+ \cup \set{0}\), utilizando la
+			fórmula obtenida en~\ref{sec:hom}:
+			\[x(t) = k e^{\int^t \sqrt{s} \sin s \dif s},\]
+			la integral no posee una primitiva elemental, por lo que no podemos
+			simplificar más la solución.
+
+		\item Tanto \(a(t)\) como \(b(t)\) son continuas en \(\R\). Utilizamos
+			el método de variación de constantes, resolvemos primero la ecuación
+			homogénea asociada:
+			\[x_n(t) = k e^{\int_0^t \frac{-2s}{1 + s^2} \dif s},\]
+			notamos que la derivada de \(-\log(1 + s^2)\) coincide con el
+			interior de nuestra integral, por tanto:
+			\[x_n(t) = k e^{-\log(1 + t^2)} = \frac{k}{1 + t^2}.\]
+
+			Ahora, sea \(x_p = \frac{k(t)}{1 + t^2}\) solución de la ecuación
+			diferencial, entonces
+			\[x_p'(t) = k'(t)\frac{1}{1 + t^2} + k(t)\frac{-2t}{(1 + t^2)^2}\]
+			sustituyendo en la ecuación obtenemos que
+			\[x_p'(t) = \frac{-2t}{1 + t^2} x_p(t) + \frac{1}{1 + t^2}
+				= k(t)\frac{-2t}{(1 + t^2)^2}  + \frac{1}{1 + t^2}.\]
+
+			Igualando hallamos que \(k'(t) = 1\) y, por ende, \(k(t) = t\).
+			La solución general es
+			\[x(t) = x_n(t) + x_p(t) = \frac{k + t}{1 + t^2}.\]
+
+		\item Tanto \(a = 1\) como \(b\) son continuas en todo \(\R\) por lo que
+			este es nuestro intervalo de definición. Resolvemos la ecuación
+			homogénea asociada, obteniendo \(x_n(t) = k e^{-t}\). Sea 
+			\(x_p(t) = k(t) e^{-t}\) solución de la ecuación, entonces:
+			\[\begin{cases}
+				x_p'(t) = k'(t) e^{-t} - k(t) e^{-t} \\
+				x_p'(t) = t e^t - x_p(t) = t e^t - k(t) e^{-t}
+			  \end{cases}
+			  \leadsto
+			  k'(t) = t e^{2t}.
+			\]
+			Integrando por partes:
+			\[k(t) = \int t e^{2t} \dif t 
+				= \frac{t e^{2t}}{2} - \int \frac{e^{2t}}{2} \dif t
+				= \frac{t e^{2t}}{2} - \frac{e^{2t}}{4}.\]
+			La solución general de la ecuación es pues
+			\[x(t) = x_n(t) + x_p(t) = (k + k(t))e^{-t}
+				= k e^{-t} + \frac{t e^{t}}{2} - \frac{e^{t}}{4}.\]
+	\end{enumerate}
+\end{solution}
+
+\end{document}
