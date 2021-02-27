@@ -76,4 +76,63 @@
 	\end{enumerate}
 \end{solution}
 
+\begin{problem}
+	Hallar las soluciones de los siguientes problemas de valor inicial, 
+	indicando su intervalo de definición.
+	\begin{multicols}{2}
+	\begin{enumerate}[a)]
+		\item \(\displaystyle 
+				\begin{cases}
+					x' + 5x = t^2 \\
+					x(0) = 3
+				\end{cases}\)
+
+		\item \(\displaystyle 
+				\begin{cases}
+					x' = (\tan t)x + \cos t \\
+					x(0) = 1
+				\end{cases}\)
+
+		\item \(\displaystyle 
+				\begin{cases}
+					x' + 2tx = t^3 \\
+					x(0) = 1
+				\end{cases}\)
+
+		\item \(\displaystyle 
+				\begin{cases}
+					tx' + \frac{t}{\sqrt{1 + t^3}}x = 1 \\
+					x(1) = 2
+				\end{cases}\)
+	\end{enumerate}
+	\end{multicols}
+\end{problem}
+
+\begin{solution}
+	\begin{enumerate}[a), wide, labelwidth=0pt, labelindent=0pt]
+		\item Resolvemos la ecuación homogénea asociada, \(x_n(t) = k e^{-5t}\),
+			y, mediante variación de constantes, obtenemos, integrando por
+			partes dos veces, 
+			\[k(t) = \parens{\frac{t^2}{5} - \frac{2t}{25} 
+				+ \frac{2}{125}} e^{-5t},\]
+			así una solución general es
+			\[x(t) = (k + k(t)) e^{-5t}
+				= k e^{-5t} + \frac{t^2}{5} - \frac{2t}{25} + \frac{2}{125}.\]
+
+			Evaluamos en la condición inicial
+			\[3 = x(0) = k + \frac{2}{125} \leadsto k = \frac{373}{125},\]
+			obtenemos así la solución del problema del valor inicial
+			\[x(t) =  \frac{373}{125} e^{-5t} + \frac{t^2}{5} - \frac{2t}{25} 
+				+ \frac{2}{125}.\]
+	\end{enumerate}
+\end{solution}
+
+
+\begin{problem}
+	El nivel de carbón vegetal encontrado en las grutas de Lascaux, en Francia, 
+	dio una medida de 0,91 desintegraciones por minuto y gramo (la madera viva 
+	da 6,68 desintegraciones). Estimad la edad probable de las pinturas que se 
+	hallan en dichas cuevas.
+\end{problem}
+
 \end{document}
