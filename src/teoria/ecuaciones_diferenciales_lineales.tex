@@ -245,7 +245,7 @@ tiene solución única.
 	El problema del valor inicial
 	\[
 	\begin{cases}
-		x = a(t)x + b(t), & a, b \in C(\alpha, \omega) \\
+		x' = a(t)x + b(t), & a, b \in C(\alpha, \omega) \\
 		x(t_0) = x_0, 	  & t_0 \in (\alpha, \omega), \quad x_0 \in \R
 	\end{cases}
 	\]
@@ -387,7 +387,7 @@ obtenemos la ecuación
 \[x' = a(t)x + b(t)x^2.\]
 
 Este es un caso particular de la ecuación de Bernoulli, planteada en 1695 y
-resuelta por Leibniz en 1896
+resuelta por Leibniz en 1696
 \[x' = a(t)x + b(t)x^n,\]
 está ecuación es de primer grado pero, evidentemente, no es lineal. Para poder
 resolverla necesitaremos una nueva técnica, el cambio de variable.
@@ -395,8 +395,8 @@ resolverla necesitaremos una nueva técnica, el cambio de variable.
 \section{Método de cambio de variable}
 
 Primero asumimos que \(x \neq 0\) y consideramos el cambio de variable
-\(y = x^{1 - n}\), por lo que \(y' = (1 - n) x^{-n}\) y \(x' = x'/x^n(1 - n)\).
-Dividiendo ahora por \(x^n\) y multiplicando por en la ecuación de Bernoulli 
+\(y = x^{1 - n}\), por lo que \(y' = (1 - n) x^{-n}\) y \(x' = (1 - n)x'/x^n\).
+Dividiendo ahora por \(x^n\) y multiplicando por en la ecuación de Bernoulli
 \(1 - n\) obtenemos la ecuación lineal
 \[\frac{x'}{x^n}(1 - n) = a(t)(1 - n)y + b(t)(1 - n).\]
 

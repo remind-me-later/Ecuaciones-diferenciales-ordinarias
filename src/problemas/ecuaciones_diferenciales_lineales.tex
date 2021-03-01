@@ -20,12 +20,12 @@
 
 \begin{solution}
 	\begin{enumerate}[a), wide, labelwidth=0pt, labelindent=0pt]
-		\item Se trata de una ecuación homogénea, puesto que 
+		\item Se trata de una ecuación homogénea, puesto que
 			\(\cos t \in C(\R)\), el intervalo de definición de la ecuación es
 			\(\R\). Separando variables:
 			\begin{align*}
-				\frac{x'}{x} = -\cos t &\iff 
-				\log\abs{x(t)} = \int_0^t -\cos s \dif s + c 
+				\frac{x'}{x} = -\cos t &\iff
+				\log\abs{x(t)} = \int_0^t -\cos s \dif s + c
 				= -(\sin t - \sin 0) + c \\
 				&\iff x(t) = k e^{-\sin t}.
 			\end{align*}
@@ -57,7 +57,7 @@
 
 		\item Tanto \(a = 1\) como \(b\) son continuas en todo \(\R\) por lo que
 			este es nuestro intervalo de definición. Resolvemos la ecuación
-			homogénea asociada, obteniendo \(x_n(t) = k e^{-t}\). Sea 
+			homogénea asociada, obteniendo \(x_n(t) = k e^{-t}\). Sea
 			\(x_p(t) = k(t) e^{-t}\) solución de la ecuación, entonces:
 			\[\begin{cases}
 				x_p'(t) = k'(t) e^{-t} - k(t) e^{-t} \\
@@ -67,7 +67,7 @@
 			  k'(t) = t e^{2t}.
 			\]
 			Integrando por partes:
-			\[k(t) = \int t e^{2t} \dif t 
+			\[k(t) = \int t e^{2t} \dif t
 				= \frac{t e^{2t}}{2} - \int \frac{e^{2t}}{2} \dif t
 				= \frac{t e^{2t}}{2} - \frac{e^{2t}}{4}.\]
 			La solución general de la ecuación es pues
@@ -77,29 +77,29 @@
 \end{solution}
 
 \begin{problem}
-	Hallar las soluciones de los siguientes problemas de valor inicial, 
+	Hallar las soluciones de los siguientes problemas de valor inicial,
 	indicando su intervalo de definición.
 	\begin{multicols}{2}
 	\begin{enumerate}[a)]
-		\item \(\displaystyle 
+		\item \(\displaystyle
 				\begin{cases}
 					x' + 5x = t^2 \\
 					x(0) = 3
 				\end{cases}\)
 
-		\item \(\displaystyle 
+		\item \(\displaystyle
 				\begin{cases}
 					x' = (\tan t)x + \cos t \\
 					x(0) = 1
 				\end{cases}\)
 
-		\item \(\displaystyle 
+		\item \(\displaystyle
 				\begin{cases}
 					x' + 2tx = t^3 \\
 					x(0) = 1
 				\end{cases}\)
 
-		\item \(\displaystyle 
+		\item \(\displaystyle
 				\begin{cases}
 					tx' + \frac{t}{\sqrt{1 + t^3}}x = 1 \\
 					x(1) = 2
@@ -112,8 +112,8 @@
 	\begin{enumerate}[a), wide, labelwidth=0pt, labelindent=0pt]
 		\item Resolvemos la ecuación homogénea asociada, \(x_n(t) = k e^{-5t}\),
 			y, mediante variación de constantes, obtenemos, integrando por
-			partes dos veces, 
-			\[k(t) = \parens{\frac{t^2}{5} - \frac{2t}{25} 
+			partes dos veces,
+			\[k(t) = \parens{\frac{t^2}{5} - \frac{2t}{25}
 				+ \frac{2}{125}} e^{-5t},\]
 			así una solución general es
 			\[x(t) = (k + k(t)) e^{-5t}
@@ -122,14 +122,14 @@
 			Evaluamos en la condición inicial
 			\[3 = x(0) = k + \frac{2}{125} \leadsto k = \frac{373}{125},\]
 			obtenemos así la solución del problema del valor inicial
-			\[x(t) =  \frac{373}{125} e^{-5t} + \frac{t^2}{5} - \frac{2t}{25} 
+			\[x(t) =  \frac{373}{125} e^{-5t} + \frac{t^2}{5} - \frac{2t}{25}
 				+ \frac{2}{125}.\]
 
 		\item TODO.
 
 		\item Resolvemos la ecuación homogénea asociada separando variables,
-			\(x = k e^{-t^2}\), por variación de constantes, 
-			\(k'(t) = t^3 e^{t^2}\) y, por partes, 
+			\(x = k e^{-t^2}\), por variación de constantes,
+			\(k'(t) = t^3 e^{t^2}\) y, por partes,
 			\(k(t) = 1/2 (e^{t^2}t^2 - e^{t^2})\). La solución general es pues
 			\[x(t) = k e^{-t^2} + \frac{1}{2}(t^2 - 1).\]
 
@@ -138,12 +138,12 @@
 
 		\item El intervalo de definición es \((0, \infty)\), ya que es el
 			intervalo más grande en el cual las funciones \(a\) y \(b\) son
-			continuas. Separando y puesto que el integrando no posee 
+			continuas. Separando y puesto que el integrando no posee
 			primitiva elemental:
 			\[x = k e^{-\int^t \frac{1}{\sqrt{1 + s^3}} \dif s}.\]
 
-			Por variación de constantes, 
-			\[k(t) = \int^t \frac{1}{s} 
+			Por variación de constantes,
+			\[k(t) = \int^t \frac{1}{s}
 				e^{\int^s \frac{1}{\sqrt{1 + u^3}} \dif u} \dif s,\]
 			con lo cual
 			\[x(t) = (k + k(t))  e^{-\int^t \frac{1}{\sqrt{1 + s^3}} \dif s}.\]
@@ -155,25 +155,28 @@
 
 
 \begin{problem}
-	El nivel de carbón vegetal encontrado en las grutas de Lascaux, en Francia, 
-	dio una medida de 0,91 desintegraciones por minuto y gramo (la madera viva 
-	da 6,68 desintegraciones). Estimad la edad probable de las pinturas que se 
+	El nivel de carbón vegetal encontrado en las grutas de Lascaux, en Francia,
+	dio una medida de 0,91 desintegraciones por minuto y gramo (la madera viva
+	da 6,68 desintegraciones). Estimad la edad probable de las pinturas que se
 	hallan en dichas cuevas.
 \end{problem}
 
 \begin{solution}
-	Elegimos \(t = 0\) el momento en el que se corta el árbol, y \(x(t)\)
-	la cantidad de carbono 14 a tiempo \(t\), por lo que \(x(0) = -6,68 q\),
-	donde \(q\) es la cantidad de carbono 14 en 1 gramo de madera.
-	Utilizando la fórmula vista en clase 
-	\[x(t) = x(0) e^{-\lambda t},\]
-	por tanto
-	\[x'(t) = -\lambda x(0) e^{-\lambda t},\]
-	despejamos ahora \(\lambda\), \(-6,68 q = x(0) = -\lambda x(0)\). Sea 
-	\(t_\alpha\) el momento en el que estamos, sustituyendo
-	\[\frac{0,91}{6,68} = \frac{x'(t_\alpha)}{x'(0)} = e^{-\lambda t_\alpha}\],
-	por lo que \(t_\alpha = 16014\), las pinturas tienen una antigüedad de 16014
-	años.
+    Elegimos \(t = 0\) el momento en el que se corta el árbol, y denotamos por
+    \(x(t)\) la cantidad de carbono-14 a tiempo \(t\), por lo que
+    \(x'(0) = -6,68 q\), donde \(q\) es la cantidad de carbono-14 en 1 gramo de
+    madera.  Utilizando la fórmula vista en clase,
+    \[x(t) = x(0) e^{-\lambda t},\]
+    donde \(\lambda = \frac{\log 2}{5730}\), deducimos que
+    \[x'(t) = -\lambda x(0) e^{-\lambda t}.\]
+
+    Según los datos del enunciado, \(-6,68 q = x'(0) = -\lambda x(0)\). Si
+    llamamos \(t_\alpha\) al momento en el que estamos, tenemos
+    \(-0,91 q = x'(t_\alpha) = - \lambda x(0) e^{-\lambda t_\alpha}\), y
+    dividiendo queda
+    \[\frac{0,91}{6,68} = \frac{x'(t_\alpha)}{x'(0)} = e^{-\lambda t_\alpha},\]
+    de donde se deduce que \(t_\alpha = 16479\), es decir, las pinturas tienen una
+    antigüedad de 16479 años.
 \end{solution}
 
 \end{document}
