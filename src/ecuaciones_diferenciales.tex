@@ -8,11 +8,13 @@
 \usepackage{subfiles} 
 \usepackage{multicol}
 \usepackage{hyperref}
+\usepackage[toc]{appendix}
 
 \usepackage{general}
 \usepackage{conjuntos}
 \usepackage{teoremas}
 \usepackage{calculo}
+\usepackage{algebra}
 
 \renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
@@ -30,16 +32,22 @@
 
 \setcounter{chapter}{-1}
 \chapter{Introducción}
-\subfile{teoria/introduccion}
+\subfile{teoria/intro}
 
 \chapter{Ecuaciones diferenciales lineales de primer orden}
 \label{chap:capitulo1}
-\subfile{teoria/ecuaciones_diferenciales_lineales}
-
-\section{Problemas del capítulo~\ref{chap:capitulo1}}
-\subfile{problemas/ecuaciones_diferenciales_lineales}
+\subfile{teoria/eqlin}
 
 \chapter{Sistemas de ecuaciones diferenciales lineales de primer orden}
-\subfile{teoria/siseq1ord.tex}
+\subfile{teoria/siseq1ord}
+
+\begin{appendices}
+
+\chapter{Problemas resueltos}
+
+\section{Problemas del capítulo~\ref{chap:capitulo1}}
+\subfile{problemas/eqlin}
+
+\end{appendices}
 
 \end{document}

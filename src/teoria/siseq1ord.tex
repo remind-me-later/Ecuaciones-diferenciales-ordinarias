@@ -3,28 +3,99 @@
 \begin{document}
 
 Sean \(x_1, x_2, \dots, x_n \in C^1(\alpha, \omega)\) variables, las cuales son
-funciones de clase \(C^1\) sobre un intervalo de \(\R\).
+funciones de clase \(C^1\) sobre un intervalo de \(\R\) y \(a_{ij}\), \(b_i\)
+funciones continuas en \((\alpha, \omega)\) para todo \(i, j \in \N\).
 
 \begin{definition}
 	Un sistema de ecuaciones diferenciales de primer orden es un sistema de la
 	forma:
-	\[\begin{cases}
+	\[\eqsys{
 			x'_1 &= f_1(t, x_1, x_2, \dots, x_n) \\
 			x'_2 &= f_2(t, x_1, x_2, \dots, x_n) \\
 				 &\vdots \\
-			x'_n &= f_n(t, x_1, x_2, \dots, x_n)
-	  \end{cases}\]
+			x'_n &= f_n(t, x_1, x_2, \dots, x_n)}\]
 \end{definition}
 
 \begin{definition}
+\label{def:siseq1ord}
 	Un sistema de ecuaciones diferenciales de primer orden lineal es de la
 	forma:
-	\[\begin{cases}
+	\[\eqsys{
 		x'_1 &= a_{11}(t)x_1 + a_{12}(t)x_2 + \dots + a_{1n}(t)x_n + b_1(t) \\
 		x'_2 &= a_{21}(t)x_1 + a_{22}(t)x_2 + \dots + a_{2n}(t)x_n + b_2(t) \\
 			 &\vdots \\
-		x'_n &= a_{n1}(t)x_1 + a_{n2}(t)x_2 + \dots + a_{nn}(t)x_n + b_n(t)
-	  \end{cases}\]
+		x'_n &= a_{n1}(t)x_1 + a_{n2}(t)x_2 + \dots + a_{nn}(t)x_n + b_n(t)}\]
 \end{definition}
+
+Podemos expresar un sistema de este tipo en forma matricial como
+\[x' = Ax + b\]
+donde
+\[x = x(t) = \mat{x_1(t) \\ x_2(t) \\ \vdots \\ x_n(t)}, \quad
+  A = A(t) = \mat{a_{ij}(t)}^n_{i,j = 1},\quad 
+  b = b(t) = \mat{b_1(t) \\ b_2(t) \\ \vdots \\ b_n(t)} \]
+y las derivadas e integrales se aplican ``coordenada a coordenada", v.g.
+\[x' = \mat{x'_1(t) \\ x'_2(t) \\ \vdots \\ x'_n(t)}
+	 = \mat{x'_1 \\ x'_2 \\ \vdots \\ x'_n}, \quad
+  A' = \mat{a'_{ij}(t)}^n_{i,j = 1}, \quad
+  \int A(s) \dif s = \mat{\int a_{ij} \dif s}^n_{i,j = 1}.\]
+
+\section{Problema del valor inicial}
+
+\begin{definition}
+	Sean \(t_0 \in (\alpha, \omega)\) y 
+	\(x^0 = \mat{x^0_1, x^0_2, \dots, x^0_n}^t \in \R^n\), el problema del valor
+	inicial asociado a~\ref{def:siseq1ord} es de la forma
+	\[\eqsys{
+		x' = A(t)x + b(t) \\
+		x(t_0) = x^0}\]
+\end{definition}
+
+Probaremos que el problema de valor inicial tiene solución única en todo el
+dominio \((\alpha, \omega)\), para ello representaremos el problema del valor 
+inicial como una ecuación integral. Es una estrategia general en análisis 
+intentar representar las funciones como integrales debido a su buen
+comportamiento. Ser solución del problema del valor inicial equivale a
+\[x(t) = x^0 + \int_{t_0}^t A(s)x(s) + b(s) \dif s.\]
+
+Denotaremos por \(C^1(I, \R^n)\) el espacio vectorial de las funciones continuas
+del intervalo \(I \subset \R\) en \(\R^n\).
+
+\begin{definition}
+	El operador \(T\) es una función
+	\begin{align*}
+		T : C((\alpha, \omega), \R^n) &\to C((\alpha, \omega), \R^n) \\
+		\phi  &\mapsto x^0 + \int_{t_0}^t A(s) \phi(s) + b(s) \dif s
+	\end{align*}
+\end{definition}
+
+Evidentemente \(T(x) = x\) si demostramos que la función \(T\) tiene un único
+punto fijo habremos terminado, hemos definido \(T\) con espacio de
+salida y llegada iguales para poder aplicar el teorema del punto fijo de Banach,
+aunque necesitaremos que el espacio sea también completo. Sean
+\(\alpha < \tilde{\alpha}\) y \(\tilde{\omega} < \omega\), probaremos que 
+\(T\) tiene un único punto fijo como operador en 
+\([\tilde{\alpha}, \tilde{\omega}]\), haciendo tender 
+\(\tilde{\alpha} \to \alpha\) y \(\tilde{\omega} \to \omega\) obtendremos el
+resultado deseado.
+
+\begin{theorem}[Punto fijo de Banach]
+	Sea \((X, d)\) un espacio métrico completo y \(T : X \to X\) una aplicación
+	Lipschitz de constante \(\alpha \in [0, 1]\), contractiva, entonces \(T\)
+	tiene un único punto fijo.
+\end{theorem}
+
+\begin{corollary}
+	Sea \((X, d)\) un espacio métrico completo y \(T : X \to X\) tal que 
+	\(T^n = T \circ \stackrel{n}{\cdots} \circ T\) es contractiva para algún
+	\(n \in \N\), entonces \(T\) tiene un único punto fijo.
+\end{corollary}
+
+\begin{definition}
+	Un espacio métrico es completo si toda sucesión de Cauchy es convergente.
+\end{definition}
+
+Definimos en \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) la distancia 
+\[d(f, g) = \norm{f - g}_{\infty} = 
+	\max_{t \in [\tilde{\alpha}, \tilde{\omega}]} \norm{f(t) - g(t)}_2 .\]
 
 \end{document}
