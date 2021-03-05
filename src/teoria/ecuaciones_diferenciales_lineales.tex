@@ -410,16 +410,16 @@ Dividiendo ahora por \(x^n\) y multiplicando por en la ecuación de Bernoulli
 \end{example}
 
 \begin{solution}
-	Hacemos el cambio \(y = x^{-2}\), entonces \(y' = (-2/x^3) x'\), para 
-	\(x \neq 0\) tenemos
+	Hacemos el cambio \(y = x^{-2}\), entonces \(y' = (-2/x^3) x'\) siempre que
+	\(x \neq 0\), y así tenemos
 	\[y' = -\frac{2}{x^3} x' = -\frac{2}{x^3}\parens{\frac{x}{t} + x^3} = 
 		-\frac{2}{t}y - 2.\]
 	
-	Resolvemos ahora la ecuación homogénea asociada \(y = k/t^2\).
-	Necesitamos una solución particular de la ecuación, en vez de hacerlo
-	mediante variación de constantes la obtenemos mediante el método de la 
-	conjetura razonable. Asumimos, por la forma de la ecuación, que 
-	\(y_p(t) = ct\), ergo
+      Resolvemos ahora la ecuación homogénea asociada obteniendo la solución
+      general \(y = k/t^2\). Para calcular una solución particular de la
+      ecuación, en vez de hacerlo mediante variación de constantes la obtenemos
+      mediante el método de la \emph{conjetura razonable}. Conjeturamos, por la
+      forma de la ecuación, que \(y_p(t) = ct\), ergo
 	\[c = y_p'(t) = -\frac{2}{t} y_p(t) - 2 = -2c -2 
 		\leadsto c = -\frac{2}{3}.\]
 	
@@ -429,23 +429,27 @@ Dividiendo ahora por \(x^n\) y multiplicando por en la ecuación de Bernoulli
 	Deshacemos el cambio, \(y = 1/x^2\) o lo que es lo mismo
 	\(x = \pm \sqrt{y^{-1}}\), nos quedamos con la rama positiva, ya que 
 	\(x(1) = 1\),
-	\[x = \sqrt{\frac{1}{-\frac{2}{3}t + \frac{k}{t^2}}} 
-		= \frac{\abs{t}}{\sqrt{k - \frac{2}{3}t^3}} 
-		= \frac{t}{\sqrt{k - \frac{2}{3}t^3}},\]
-	la última igualdad se debe a que necesitamos que \(x\) sea derivable.
-	Sustituyendo en la condición inicial,
+	\[x = \sqrt{\frac{1}{-\frac{2}{3}t + \frac{k}{t^2}}} =
+      \frac{\abs{t}}{\sqrt{k - \frac{2}{3}t^3}} = \frac{t}{\sqrt{k -
+          \frac{2}{3}t^3}},\]
+
+    la última igualdad se debe a que necesitamos que \(x\) sea derivable, lo que
+    nos fuerza a restringirnos a algún intervalo contenido en
+    \(\openopen{-\infty}{0}\) ó \(\openopen{0}{\infty}\), y elegimos el segundo
+    porque contiene al valor inicial 1.  Sustituyendo en la condición inicial,
 	\[1 = x(1) = \frac{1}{\sqrt{k - \frac{2}{3}}} \leadsto k = \frac{5}{3},\]
 	la solución de nuestro problema del valor inicial es pues
 	\[\frac{t}{\sqrt{\frac{5}{3} - \frac{2}{3}t^3}}.\]
 \end{solution}
 
 \begin{remark}
-	Si la ecuación del ejemplo~\ref{ex:cambio_var} fuera lineal su espacio de
-	soluciones sería un espacio vectorial. Puesto que el dominio de la ecuación
-	es \((0, \infty)\) en el caso lineal esperaríamos que el dominio de la
-	solución sea el mismo, pero computando obtenemos que el dominio de \(x\)
-	es \((0, \sqrt[3]{5/2})\), por lo que vemos que en ocasiones las ecuaciones
-	no lineales poseen singularidades, ``explotan", en tiempo finito.
+    Si la ecuación del ejemplo~\ref{ex:cambio_var} fuera lineal su espacio de
+    soluciones sería un espacio vectorial. Puesto que el dominio de la ecuación
+    \(x' = \frac{x}{t} + x^3\) es \((0, \infty)\) en el caso lineal esperaríamos
+    que el dominio de la solución sea el mismo, pero computando obtenemos que el
+    dominio de \(x\) es \((0, \sqrt[3]{5/2})\), por lo que vemos que en ocasiones
+    las ecuaciones no lineales poseen singularidades, ``explotan", en tiempo
+    finito.
 \end{remark}
 
 \subsection{Caída libre con rozamiento}
@@ -459,12 +463,13 @@ pierde masa debido al rozamiento, los parámetros \(k\) y \(m\) dependen del
 tiempo. El caso con cocientes constantes es resoluble, en el otro tenemos la
 ecuación
 \[x' = p(t)x^2 + q(t)x + r(t),\]
+
 conocida como ecuación de Ricatti. Notamos que en caso de no tener término
-independiente se trata de la ecuación de Bernoulli, que, como ya hemos visto se
-puede resolver mediante cambio de variable. Esta ecuación se puede resolver 
-mediante cambio de variable solo si conocemos un valor inicial. Si \(x_p(t)\) es
-una solución particular, el cambio de variable \(x = x_p(t) + 1/y\) reduce la
-ecuación de Ricatti a una lineal. No existe ningún algoritmo general para 
-obtener una solución particular.
+independiente se trata de la ecuación de Bernoulli que, como ya hemos visto, se
+puede resolver mediante cambio de variable. De hecho, esta ecuación también se
+puede resolver mediante cambio de variable, pero solo si conocemos de antemano
+una solución particular: si \(x_p(t)\) es una solución particular, el cambio de
+variable \(x = x_p(t) + 1/y\) reduce la ecuación de Ricatti a una lineal. No
+se conoce ningún algoritmo general para obtener una solución particular.
 
 \end{document}
