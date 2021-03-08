@@ -16,6 +16,8 @@
 \usepackage{calculo}
 \usepackage{algebra}
 
+\renewcommand\appendixpagename{Apéndices}
+\renewcommand{\appendixtocname}{Apéndices}
 \renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
 \def\Snospace~{\S{}}
@@ -39,6 +41,7 @@
 \subfile{teoria/eqlin}
 
 \chapter{Sistemas de ecuaciones diferenciales lineales de primer orden}
+\label{chap:capitulo2}
 \subfile{teoria/siseq1ord}
 
 \begin{appendices}
@@ -47,6 +50,9 @@
 
 \section{Problemas del capítulo~\ref{chap:capitulo1}}
 \subfile{problemas/eqlin}
+
+\section{Problemas del capítulo~\ref{chap:capitulo2}}
+\subfile{problemas/siseq1ord}
 
 \end{appendices}
 
