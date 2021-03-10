@@ -42,4 +42,42 @@
 	\[v' = g - \frac{\kappa}{m} v^n, \quad n \in \set{1, 2}.\]
 \end{problem}
 
+\begin{solution}
+	Esta ecuación es separable, puesto que se puede expresar como
+	\[\frac{v'}{g - \frac{\kappa}{m} v^n} = 1.\]
+	Para resolverla así, distinguimos casos en función del valor de \(n\):
+	\begin{itemize}
+	  \item Caso \(n = 1\):
+		Como las dos primitivas son elementales, integrando a ambos lados
+		obtenemos sin mayor dificultad
+		\[-\frac{m}{\kappa} \log \abs{g - \frac{\kappa}{m} v} = t + c_1\]
+		y ahora sin más que despejar \(v\) llegamos a la solución general:
+		\[v(t) = \frac{gm}{\kappa} - ce^{-\frac{\kappa}{m}t}.\]
+
+		Observamos que \(\lim_{t \to \infty} v(t) = \frac{gm}{\kappa}\), es
+		decir, la velocidad aumenta (o disminuye, en función del valor inicial)
+		hasta una \emph{velocidad terminal}; esto contrasta con lo que ocurre en
+		un sistema sin rozamiento, en el que la velocidad aumenta sin
+		restricción.
+	  \item Caso \(n = 2\): Para hallar una primitiva del término de la
+		izquierda, lo separamos primero en fracciones simples; denotaremos
+		\(\alpha := \frac{\kappa}{m}\) para simplificar la notación.
+		\[\frac{1}{g - \alpha x^2} = \frac{\frac{1}{2\sqrt{g}}}{\sqrt{g} +
+				\sqrt{\alpha}x} + \frac{\frac{1}{2\sqrt{g}}}{\sqrt{g} -
+				\sqrt{\alpha}x}.\]
+		  Así es inmediato hallar las primitivas:
+		  \[t + c_1 = \frac{1}{2\sqrt{g}} \int \frac{v'(t)}{\sqrt{g} +
+				\sqrt{\alpha}v(t)} + \frac{v'(t)}{\sqrt{g} - \sqrt{\alpha}v(t)}
+			  \dif t = \frac{1}{2\sqrt{g\alpha}} \log \abs{\frac{\sqrt{g} +
+				  \sqrt{\alpha}v}{\sqrt{g} - \sqrt{\alpha}v}}\]
+		  y ahora basta despejar \(v\):
+		  \[v =
+			  \frac{\sqrt{g}}{\sqrt{\alpha}}\left(\frac{e^{2\sqrt{g\alpha}t+c_2}-1}{e^{2\sqrt{g\alpha}t+c_2}+1}\right)
+			  =
+			  \sqrt{\frac{gm}{\kappa}}\tanh\left(\sqrt{\frac{g\kappa}{m}}t+c\right).\]
+		  Igual que antes, la velocidad se acaba estabilizando, aunque en este
+		  caso el límite es \(\sqrt{\frac{gm}{\kappa}}\).
+	\end{itemize}
+\end{solution}
+
 \end{document}
