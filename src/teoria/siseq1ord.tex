@@ -374,13 +374,108 @@ constante, no depende de \(t\). Nos centraremos en el caso donde el dominio es
 \(\Phi(t) = e^{At}\), aunque primero tendremos que definir la exponencial de una
 matriz y obtener métodos para computarla.
 
-\begin{theorem}
+\begin{lemma}
+\label{lem:expphi}
+	Sea \(\Phi(t)\) la matriz fundamental asociada a las soluciones de
+	\[\eqsys{
+		x' = Ax \\
+		x(0) = e_j
+		}\]
+	o, equivalentemente, \(\Phi(t)\) es la única solución del problema de valor
+	inicial
+	\[\eqsys{
+		X' = AX \\
+		X(0) = \mathit{Id}
+		}\]
 	Se dan las siguientes igualdades:
-	\[
-		\Phi(0) = \mathit{Id}, \quad
-		\Phi(t + s) = \Phi(t) \Phi(s) \quad \text{y} \quad
-		\Phi(-t) = \Phi^{-1}(t).
-	\]
+	\begin{multicols}{3}
+	\begin{enumerate}[i)]
+		\item \(\displaystyle \Phi(0) = \mathit{Id}\) 
+		\item \(\displaystyle \Phi(t + s) = \Phi(t) \Phi(s)\) 
+		\item \(\displaystyle \Phi(-t) = \Phi^{-1}(t)\) 
+	\end{enumerate}
+	\end{multicols}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}[i), wide, labelwidth=0pt, labelindent=0pt]
+		\item La primera igualdad se sigue directamente de la definición.
+		\item Fijamos \(s\) y consideramos el problema de valor inicial
+			\[\eqsys{ x' = Ax \\ x(0) = \Phi(s) }\]
+			Vamos a ver que tanto \(\Phi(t + s)\) como \(\Phi(t)\Phi(s)\) (como
+			funciones en \(t\)) son soluciones de ese problema. Consideramos
+			primero \(X(t) := \Phi(t + s)\), tenemos que \(X(0) = \Phi(s)\) y
+			\[X'(t) = \Phi'(t + s) = A \Phi(t + s) = A X(t),\]
+			similarmente para \(Y(t) := \Phi(t)\Phi(s)\), aplicando la primera 
+			igualdad \(Y(0) = \Phi(0)\Phi(s) = \Phi(s)\) y
+			\[Y'(t) = \Phi'(t)\Phi(s) = A \Phi(t)\Phi(s) = A Y(t).\]
+		\item Aplicando la primera y segunda igualdad en los respectivos
+			miembros:
+			\[\mathit{Id} = \Phi(t + (-t)) = \Phi(t)\Phi(-t).\]
+	\end{enumerate}
+\end{proof}
+
+Para la matriz fundamental \(\Phi\) así definida la solución de
+\[\eqsys{x' = Ax \\ x(0) = x^0}\]
+es \(x(t) = \Phi(t)x^0\). Notamos también que la matriz \(\Phi\) cumple las
+mismas propiedades que la función exponencial, de hecho más adelante
+demostraremos que \(\Phi(t) = \sum_{k=0}^\infty (tA)^k/k!\), por ahora nos
+contentamos con la siguiente definición:
+
+\begin{definition}
+	Dada una matriz \(B\) se define \(\exp(B)\), o con la notación habitual
+	\(e^B\), como
+	\[e^B = \sum_{k = 0}^\infty \frac{B^k}{k!}.\]
+\end{definition}
+
+Presentamos ahora algunas propiedades típicas de la función exponencial que
+también cumple esta versión matricial, la mayoría son corolario de lo visto 
+arriba.
+
+\begin{proposition}
+	Se cumplen las siguientes igualdades.
+	\begin{multicols}{2}
+	\begin{enumerate}[i)]
+		\item \(\displaystyle e^0 = \mathit{Id}\) 
+		\item \(\displaystyle e^{(t + s)A} = e^{tA} e^{sA}\) 
+		\item \(\displaystyle \parens{e^{tA}}^{-1} = e^{-tA}\) 
+		\item \(\displaystyle \frac{d}{\dif t} e^{tA} = A e^{tA}\)
+	\end{enumerate}
+	\end{multicols}
+\end{proposition}
+
+\begin{remark}
+	No es cierto en general que \(e^{A + B} = e^A e^B\), solo se cumple si las
+	matrices \(A\) y \(B\) conmutan.
+\end{remark}
+
+\begin{theorem}
+	La matriz \(\Phi(t)\) definida en~\ref{lem:expphi} es igual a \(e^{At}\),
+	dicho de otro modo:
+	\[\Phi(t) = \sum_{k = 0}^\infty \frac{t^k A^k}{k!} = 
+		\sum_{k = 0}^\infty \frac{(tA)^k}{k!}.\]
 \end{theorem}
+
+\begin{proof}
+	Haremos uso de las iteraciones de Picard, para ello definimos
+	\begin{align*}
+		T : C((\alpha, \omega), M_{n \times n}) &\to 
+			C((\alpha, \omega), M_{n \times n}) \\
+		\Phi(t) &\mapsto \mathit{Id} + \int_0^t A \Phi(s) \dif s.
+	\end{align*}
+
+	Comenzamos la iteración con \(x_0(t) = \mathit{Id}\) y proseguimos:
+	\begin{align*}
+		x_1 &= T(x_0) = \mathit{Id} + \int_0^t A \mathit{Id} \dif s = 
+			\mathit{Id} + At \\
+		x_2 &= T(x_1) = \mathit{Id} + \int_0^t A (\mathit{Id} + As) \dif s = 
+			\mathit{Id} + At + \frac{A^2 t^2}{2} \\
+		&\vdots \\
+		x_n &= T(x_{n - 1}) =
+			\mathit{Id} + At + \frac{A^2 t^2}{2} + \cdots + \frac{A^n t^n}{n!}
+			= \sum_{k = 0}^n \frac{A^k t^k}{k!},
+	\end{align*}
+	tomando el límite \(\lim_{n \to \infty} x_n\) obtenemos el resultado.
+\end{proof}
 
 \end{document}
