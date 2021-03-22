@@ -52,12 +52,12 @@ y las derivadas e integrales se aplican ``coordenada a coordenada", v.g.
 
 Probaremos que el problema de valor inicial tiene solución única en todo el
 dominio \((\alpha, \omega)\), para ello representaremos el problema del valor 
-inicial como una ecuación integral. Es una estrategia general en análisis 
+inicial como una ecuación integral, es una estrategia general en análisis 
 intentar representar las funciones como integrales debido a su buen
 comportamiento. Ser solución del problema del valor inicial equivale a
 \[x(t) = x^0 + \int_{t_0}^t A(s)x(s) + b(s) \dif s.\]
 
-Denotaremos por \(C^1(I, \R^n)\) el espacio vectorial de las funciones continuas
+Denotaremos por \(C(I, \R^n)\) el espacio vectorial de las funciones continuas
 del intervalo \(I \subset \R\) en \(\R^n\).
 
 \begin{definition}
@@ -68,15 +68,23 @@ del intervalo \(I \subset \R\) en \(\R^n\).
 	\end{align*}
 \end{definition}
 
-Evidentemente \(T(x) = x\) si demostramos que la función \(T\) tiene un único
-punto fijo habremos terminado, hemos definido \(T\) con espacio de
+Evidentemente \(T(x) = x\) por lo que si demostramos que la función \(T\) tiene 
+un único punto fijo habremos terminado. Hemos definido \(T\) con espacio de
 salida y llegada iguales para poder aplicar el teorema del punto fijo de Banach,
-aunque necesitaremos que el espacio sea también completo. Sean
+visto en cálculo diferencial, para ello necesitaremos que el espacio sea también 
+completo, recordamos la definición de espacio métrico completo: 
+
+\begin{definition}
+	Un espacio métrico es completo si toda sucesión de Cauchy es convergente.
+\end{definition}
+
+De esto se deduce que necesitaremos aplicar el teorema sobre un espacio
+compacto, para ello sean
 \(\alpha < \tilde{\alpha}\) y \(\tilde{\omega} < \omega\), probaremos que 
 \(T\) tiene un único punto fijo como operador en 
-\([\tilde{\alpha}, \tilde{\omega}]\), haciendo tender 
-\(\tilde{\alpha} \to \alpha\) y \(\tilde{\omega} \to \omega\) obtendremos el
-resultado deseado.
+\([\tilde{\alpha}, \tilde{\omega}]\) y haciendo tender 
+\(\tilde{\alpha} \to \alpha\) y \(\tilde{\omega} \to \omega\) obtenemos el
+resultado deseado. Recordamos también el enunciado del teorema del punto fijo:
 
 \begin{theorem}[Punto fijo de Banach]
 	Sea \((X, d)\) un espacio métrico completo y \(T : X \to X\) una aplicación
@@ -84,18 +92,295 @@ resultado deseado.
 	tiene un único punto fijo.
 \end{theorem}
 
+Este teorema tiene una consecuencia que nos será muy útil.
+
 \begin{corollary}
 	Sea \((X, d)\) un espacio métrico completo y \(T : X \to X\) tal que 
-	\(T^n = T \circ \stackrel{n}{\cdots} \circ T\) es contractiva para algún
+	\(T^n = T \circ \overset{n}{\cdots} \circ T\) es contractiva para algún
 	\(n \in \N\), entonces \(T\) tiene un único punto fijo.
 \end{corollary}
 
-\begin{definition}
-	Un espacio métrico es completo si toda sucesión de Cauchy es convergente.
-\end{definition}
-
 Definimos en \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) la distancia 
 \[d(f, g) = \norm{f - g}_{\infty} = 
-	\max_{t \in [\tilde{\alpha}, \tilde{\omega}]} \norm{f(t) - g(t)}_2 .\]
+	\max_{t \in [\tilde{\alpha}, \tilde{\omega}]} \norm{f(t) - g(t)}_2,\]
+donde \(\norm{\cdot}_2\) es la norma euclídea en \(\R^n\). Así 
+\(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) completo como queríamos.
+
+\begin{lemma}
+	El espacio \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) con la distancia
+	\(\norm{f - g}_\infty\) es un espacio métrico completo.
+\end{lemma}
+
+\begin{lemma}
+\label{lem:desinfty}
+	Para todo \(m \in \N\) se da la desigualdad:
+	\[\norm{T^m(f)(t) - T^m(g)(t)}_2 \leq 
+		\frac{\norm{A}^m_\infty}{m!} \abs{t - t_0}^m \norm{f - g}_\infty.\]
+\end{lemma}
+
+\begin{proof}
+	El caso base \(m = 1\) está probado, suponemos el resultado cierto para 
+	\(m\) entonces para \(m + 1\):
+	\begin{align*}
+		\norm{T^{m + 1}(f)(t) - T^{m + 1}(g)(t)}_2 
+		&= \norm{T(T^m(f))(t) - T(T^m (g))(t)}_2 \\
+		&\leq \int_{t_0}^t \norm{A(s)}_2 
+			\norm{T^m(f)(t) - T^m (g)(t)}_2 \dif s,
+	\end{align*}
+	por la hipótesis de inducción:
+	\begin{align*}
+		\int_{t_0}^t \norm{A(s)}_2 
+			\norm{T^m(f)(t) - T^m (g)(t)}_2 \dif s
+		&\leq \int_{t_0}^t \norm{A}_\infty 
+			\frac{\norm{A}^m_\infty}{m!} \abs{s - t_0}^m 
+			\norm{f - g}_\infty \dif s \\
+		&\leq \frac{\norm{A}^{m + 1}_\infty}{m!} \norm{f - g}_\infty 
+			\int_{t_0}^t \abs{s - t_0}^m \dif s,
+	\end{align*}
+	ahora sin más que integrar:
+	\[
+		\frac{\norm{A}^{m + 1}_\infty}{m!} \norm{f - g}_\infty 
+			\frac{\abs{t - t_0}^{m + 1}}{m + 1}
+		= \frac{\norm{A}^{m + 1}_\infty}{(m + 1)!} \abs{t - t_0}^{m + 1} 
+			\norm{f - g}_\infty,
+	\]
+	con lo que obtenemos el resultado.
+\end{proof}
+
+Esto implica que el operador \(T\) cumple la propiedad de Lipschitz.
+
+\begin{corollary}
+	Se da la desigualdad
+	\[\norm{T^m(f) - T^m(g)}_\infty \leq 
+		\frac{\norm{A}^m_\infty}{m!} (\tilde{\omega} - \tilde{\alpha})^m
+		\norm{f - g}_\infty.\]
+\end{corollary}
+
+\begin{proof}
+	Tomamos supremos en \(t\) en el lema~\ref{lem:desinfty}.
+\end{proof}
+
+Hemos demostrado así el teorema de Picard:
+
+\begin{theorem}[Picard]
+	Si \(A(t)\), \(b(t)\) son continuas en \((\alpha, \omega) \in \R\), 
+	\(t_0 \in \R\) y \(x^0 \in \R^n\) el problema del valor inicial:
+	\[\eqsys{
+		x' = A(t)x + b(t) \\
+		x(t_0) = x^0
+		}\]
+	tiene solución única en \((\alpha, \omega)\).
+\end{theorem}
+
+\begin{remark}
+	La misma demostración prueba la existencia y unicidad para el caso lineal
+	bajo la hipótesis de Lipschitzianidad en el ``operador diferencial".
+\end{remark}
+
+Observamos que \(T^m(f_0)\), donde \(f_0\) es un punto inicial cualquiera
+converge exponencialmente rápido al punto fijo de \(T\). Esto nos da un método
+numérico para aproximar la solución del PVI escogiendo un punto inicial simple
+(constante). También nos proporciona en desarrollo en serie (analítico) de la
+solución del PVI, este método se conoce como método de las iteraciones de
+Picard.
+
+\begin{example}
+	Consideramos el PVI:
+	\[\eqsys{x' = ax \quad \text{(ecuación escalar)} \\
+		x(0) = x_0}\]
+
+	Iniciamos el proceso con la solución constante \(x_0\), 
+	\[x_1 = T(x_0) = x_0 + \int_0^t a x_0 \dif s = x_0 + x_0 a t,\]
+	reiterando tenemos que
+	\[x_n = T(x_{n - 1}) = x_0 \sum_{k = 0}^n \frac{(at)^k}{k!},\]
+	cuando \(n\) tiende a infinito nos queda \(x_\infty = x_0 e^{at}\).
+\end{example}
+
+\section{Estructura del espacio de soluciones}
+
+\subsection{Caso homogéneo}
+
+Consideramos el sistema homogéneo \(x' = A(t) x\) y definimos la función:
+\begin{align*}
+	T : C^1((\alpha, \omega), \R^n) &\to C \\
+	x &\mapsto x' - A(t)x,
+\end{align*}
+claramente \(x\) es solución de la ecuación si y solo si \(x \in \ker(T)\).
+Puesto que \(T\) es lineal el conjunto de soluciones es un espacio vectorial,
+más propiamente un subespacio vectorial de \(C^1((\alpha, \omega), \R^n)\).
+
+\begin{theorem}
+	El espacio de soluciones de un sistema de ecuaciones lineales homogéneas es
+	un subespacio vectorial de \(C^1((\alpha, \omega), \R^n)\) de dimensión 
+	\(n\). Además si \(\phi_j\) es la solución del problema de valor inicial:
+	\[\eqsys{
+		x' = A(t)x \\
+		x(t_0) = e_j = (0, \dots, \underset{j}{1}, \dots, 0)^T
+		}\]
+	donde \(t_0 \in (\alpha, \omega)\) arbitrario, tenemos que
+	\(\set{\phi_1, \dots, \phi_n}\) es base del susodicho espacio de soluciones.
+\end{theorem}
+
+\begin{proof}
+	Demostramos primero que los \(\phi_j\) son linealmente independientes,
+	evaluando \(\sum_{j = 1}^n \alpha_j \phi_j\) en \(t_0\):
+	\[\sum_{j = 1}^n \alpha_j e_j = 0 \implies \alpha_j = 0,\]
+	para todo \(j = 1, \dots, n\) como queríamos. Demostramos ahora que es
+	sistema de generadores. Sea \(y\) solución de la ecuación lineal y sea
+	\(y(t_0) = (\alpha_1, \dots, \alpha_n)^T\), definimos 
+	\(z = \sum_{j = 1}^n \alpha_j \phi_j\) y observamos que tanto \(y\) como
+	\(z\) son soluciones de
+	\[\eqsys{
+		x' = A(t)x \\
+		x(t_0) = (\alpha_1, \dots, \alpha_n)^T
+		}\]
+	por la unicidad de la solución concluimos que \(y = z\).
+\end{proof}
+
+\begin{definition}
+	Llamaremos matriz fundamental del sistema \(x' = A(t)x\) y la denotaremos
+	\(\Phi(t)\) a cualquier matriz cuyas columnas formen base del espacio de 
+	soluciones del sistema.
+\end{definition}
+
+Con las definiciones anteriores tenemos que \(\Phi(t) := 
+(\phi_1, \phi_2, \dots, \phi_n)\) es una matriz fundamental. Por la propia 
+definición tenemos que si \(\Phi\) matriz fundamental de un sistema
+de ecuaciones lineales homogéneas  entonces la solución general del sistema es
+\(\Phi(t)c\) con \(c \in \R^n\):
+\[x(t) = \Phi(t) c = (\phi_1, \dots, \phi_n) \mat{c_1 \\ \vdots \\ c_n} =
+	c_1\phi_1 + \cdots + c_n\phi_n.\]
+
+\begin{corollary}
+	Sea \(\Phi(t)\) una matriz cuyas columnas son solución de la ecuación
+	\(x' = A(t)x\), entonces \(\Phi(t)\) es matriz fundamental, o lo que es lo
+	mismo:
+	\[\det(\Phi(t)) \neq 0 \ \forall t \in (\alpha, \omega)
+		\iff \exists t_0 \in (\alpha, \omega) \ \det(\Phi(t_0)) \neq 0\]
+\end{corollary}
+
+La afirmación: las columnas de \(\Phi(t)\) son soluciones de \(x' = A(t)x\) es
+equivalente a: \(\Phi(t)\) es solución de la ecuación matricial \(X' = A(t)X\),
+donde
+\begin{align*}
+	X : (\alpha, \omega) &\to M_{n \times n} \\
+	t &\mapsto x(t)
+\end{align*}
+
+Asimismo \(\Phi(t)\) matriz fundamental equivale a que es solución de un
+problema de valor inicial de la forma:
+\[\eqsys{
+	X' = A(t)X \\
+	X(t_0) = X^0
+}\]
+donde ambas ecuaciones son matriciales y \(\det(X_0) \neq 0\). Notamos que la 
+matriz fundamental \(\Phi(t) = (\phi_1, \dots, \phi_n)\) es la única solución
+del problema de valor inicial:
+\[\eqsys{
+	X' = A(t)X \\
+	X(0) = \mathit{Id}
+	}\]
+
+\subsection{Caso no homogéneo}
+
+La misma demostración del caso escalar prueba que la solución general de 
+\(x' = A(t)x + b(t)\) es \(x_p(t) + x_n(t)\) donde \(x_p(t)\) es una solución
+particular arbitraria del sistema y \(x_n(t)\) es solución del sistema
+homogéneo asociado: \(x' = A(t)x\), por lo visto arriba, \(x_n(t) = \Phi(t)c\)
+con \(c \in \R^n\). Cómo veremos existen diversos métodos para obtener 
+\(x_p(t)\).
+
+\section{Método de variación de constantes}
+
+Un método para obtener una solución particular \(x_p(t)\) de un sistema 
+\(x' = A(t)x + b(t)\) es la variación de constantes, que como veremos es muy
+similar al al caso de una variable. Sabemos que la solución general de la
+ecuación homogénea asociada es \(x_n(t) = \Phi(t)c\), conjeturamos la existencia
+de \(x_p(t) = \Phi(t) c(t)\):
+\[x'_p(t) = \Phi'(t) c(t) + \Phi(t) c'(t) = A(t )\Phi(t) c(t) + \Phi(t) c'(t).\]
+
+Además, puesto que es solución del sistema homogéneo
+\[x'_p(t) = A(t)x_p(t) + b(t) = [A(t) \Phi(t) c(t)] + b(t),\]
+
+igualando ambas expresiones
+\[c'(t) = \Phi^{-1}(t) b(t).\]
+
+Basta por tanto elegir \(c(t) = \int_{t_0}^t \Phi^{-1}(s) b(s) \dif s\), hemos
+demostrado el siguiente teorema:
+
+\begin{theorem}
+	Sea \(\Phi(t)\) matriz fundamental del sistema \(x' = A(t)x\), entonces 
+	\[x_p(t) = \Phi(t) \int_{t_0}^t \Phi^{-1}(s) b(s) \dif s\]
+	con \(t_0 \in (\alpha, \omega)\) es una solución particular de 
+	\(x' = A(t)x + b(t)\) que satisface \(x_p(t_0) = \vec{0}\).
+\end{theorem}
+
+\section{Ecuación diferencial escalar de orden superior}
+
+\begin{definition}
+\label{def:sisescordsup}
+	Una ecuación diferencial escalar de orden superior es una ecuación de la
+	forma:
+	\[x^{(n)} = a_n(t) x^{(n - 1)} + \cdots + a_1(t)x + a_0(t).\]
+\end{definition}
+
+Definiendo las variables \(x_n = x^{(n - 1)}\), o lo que es lo mismo,
+\(x_n = x'_{n - 1}\), así el sistema~\ref{def:sisescordsup} es equivalente al
+sistema:
+\[\eqsys{
+	x_2 &= x'_1 \\
+	x_3 &= x'_2 \\
+	&\vdots \\
+	x_n &= x'_{n - 1} \\
+	x'_n &= a_n(t) x_n + \cdots + a_1(t) x_1 + a_0(t)
+	}\]
+
+donde la última ecuación es de primer orden, podemos también expresar este
+sistema vectorialmente como \(x' = A(t)x + b(t)\) con:
+\[A(t) = \mat{ 
+	0 & 1 & & \\
+	& \ddots & \ddots & \\
+	& & 0 & 1 \\
+	a_1(t) & a_2(t) & \cdots & a_n(t)
+	}
+	\quad \text{y} \quad
+	b(t) = \mat{0 \\ \vdots \\ 0 \\ a_0(t)}.
+	\]
+
+En este caso el problema del valor inicial consiste en fijar \(x_1(t_0), 
+x_2(t_0), \dots, x_n(t_0)\). Aplicando lo visto anteriormente el sistema tiene
+solución general dada por \(x_p(t) + x_n(t)\) donde, como de costumbre, 
+\(x_p(t)\) es una solución particular y \(x_n(t)\) es la solución general de la
+ecuación homogénea asociada, la cual es un espacio vectorial de dimensión \(n\).
+Si \(\phi_1, \dots, \phi_n\) son soluciones linealmente independientes 
+de~\ref{def:sisescordsup} la matriz fundamental asociada al sistema equivalente
+es
+\[\Phi(t) = \mat{
+	\phi_1 & \dots & \phi_n \\ 
+	\phi'_1 & \dots & \phi'_n \\ 
+	\vdots & & \vdots \\ 
+	\phi^{(n - 1)}_1 & \dots & \phi^{(n - 1)}_n \\ 
+	},\]
+llamaremos Wronskiano de \(\phi_1, \dots, \phi_n\) a \(\det(\Phi(t))\).
+
+\subsection{Matriz fundamental}
+
+Hemos dejado pendiente cómo obtener una matriz fundamental \(\Phi(t)\) asociada
+al sistema homogéneo \(x' = A(t)x\), por ahora nos restringiremos al caso de
+coeficientes constantes, es decir, \(x' = Ax\) donde \(A\) es una matriz
+constante, no depende de \(t\). Nos centraremos en el caso donde el dominio es 
+\(\R\). En el caso escalar, \(x' = ax\), sabemos que la solución es 
+\(x = e^{at}\), en el caso matricial veremos que una matriz fundamental es
+\(\Phi(t) = e^{At}\), aunque primero tendremos que definir la exponencial de una
+matriz y obtener métodos para computarla.
+
+\begin{theorem}
+	Se dan las siguientes igualdades:
+	\[
+		\Phi(0) = \mathit{Id}, \quad
+		\Phi(t + s) = \Phi(t) \Phi(s) \quad \text{y} \quad
+		\Phi(-t) = \Phi^{-1}(t).
+	\]
+\end{theorem}
 
 \end{document}
