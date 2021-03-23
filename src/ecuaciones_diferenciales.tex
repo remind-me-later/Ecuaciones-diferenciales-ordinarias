@@ -1,13 +1,12 @@
 \documentclass{report}
 
 \usepackage[a4paper]{geometry}
-\setlength\parindent{0pt}
-
 \usepackage[spanish]{babel}
 
 \usepackage{subfiles} 
 \usepackage{multicol}
 \usepackage{hyperref}
+\usepackage{parskip}
 \usepackage[toc]{appendix}
 
 \usepackage{general}
@@ -23,6 +22,12 @@
 \def\Snospace~{\S{}}
 \AtBeginDocument{\renewcommand*\sectionautorefname{\Snospace}}
 \AtBeginDocument{\renewcommand*\subsectionautorefname{\Snospace}}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
 
 \title{Elementos de ecuaciones diferenciales ordinarias}
 \author{Ricardo Maurizio Paul \and Pablo Castellanos García}
