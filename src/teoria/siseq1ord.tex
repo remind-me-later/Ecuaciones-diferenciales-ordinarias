@@ -60,19 +60,18 @@ comportamiento. Ser solución del problema del valor inicial equivale a
 Denotaremos por \(C(I, \R^n)\) el espacio vectorial de las funciones continuas
 del intervalo \(I \subset \R\) en \(\R^n\).
 
-\begin{definition}
-	El operador \(T\) es una función
-	\begin{align*}
-		T : C((\alpha, \omega), \R^n) &\to C((\alpha, \omega), \R^n) \\
-		\phi  &\mapsto x^0 + \int_{t_0}^t A(s) \phi(s) + b(s) \dif s
-	\end{align*}
-\end{definition}
+A raíz del sistema~\ref{def:siseq1ord} definimos el operador integral
+\begin{align*}
+  T : C((\alpha, \omega), \R^n) &\to C((\alpha, \omega), \R^n) \\
+  \phi  &\mapsto x^0 + \int_{t_0}^t A(s) \phi(s) + b(s) \dif s
+\end{align*}
 
-Evidentemente \(T(x) = x\) por lo que si demostramos que la función \(T\) tiene 
-un único punto fijo habremos terminado. Hemos definido \(T\) con espacio de
-salida y llegada iguales para poder aplicar el teorema del punto fijo de Banach,
-visto en cálculo diferencial, para ello necesitaremos que el espacio sea también 
-completo, recordamos la definición de espacio métrico completo: 
+Evidentemente si \(x\) es solución del sistema se tiene \(T(x) = x\), por lo que
+si demostramos que el operador \(T\) tiene un único punto fijo habremos
+terminado. Hemos definido \(T\) con espacio de salida y llegada iguales para
+poder aplicar el teorema del punto fijo de Banach, visto en cálculo diferencial,
+para ello necesitaremos que el espacio sea también completo, recordamos la
+definición de espacio métrico completo:
 
 \begin{definition}
 	Un espacio métrico es completo si toda sucesión de Cauchy es convergente.
@@ -87,9 +86,9 @@ compacto, para ello sean
 resultado deseado. Recordamos también el enunciado del teorema del punto fijo:
 
 \begin{theorem}[Punto fijo de Banach]
-	Sea \((X, d)\) un espacio métrico completo y \(T : X \to X\) una aplicación
-	Lipschitz de constante \(\alpha \in [0, 1]\), contractiva, entonces \(T\)
-	tiene un único punto fijo.
+  Sean \((X, d)\) un espacio métrico completo y \(T : X \to X\) una aplicación
+  contractiva (es decir, Lipschitz de constante \(\alpha \in [0, 1)\)), entonces
+  \(T\) tiene un único punto fijo.
 \end{theorem}
 
 Este teorema tiene una consecuencia que nos será muy útil.
@@ -173,14 +172,15 @@ Hemos demostrado así el teorema de Picard:
 \end{theorem}
 
 \begin{remark}
-	La misma demostración prueba la existencia y unicidad para el caso lineal
-	bajo la hipótesis de Lipschitzianidad en el ``operador diferencial".
+  En realidad no es necesaria la linealidad del operador: la misma demostración
+  prueba la existencia y unicidad de la solución pidiendo únicamente
+  la Lipschitzianidad del operador.
 \end{remark}
 
-Observamos que \(T^m(f_0)\), donde \(f_0\) es un punto inicial cualquiera
+Observamos que \(T^m(f_0)\), donde \(f_0\) es un punto inicial cualquiera,
 converge exponencialmente rápido al punto fijo de \(T\). Esto nos da un método
 numérico para aproximar la solución del PVI escogiendo un punto inicial simple
-(constante). También nos proporciona en desarrollo en serie (analítico) de la
+(constante). También nos proporciona el desarrollo en serie (analítico) de la
 solución del PVI, este método se conoce como método de las iteraciones de
 Picard.
 
@@ -192,8 +192,8 @@ Picard.
 	Iniciamos el proceso con la solución constante \(x_0\), 
 	\[x_1 = T(x_0) = x_0 + \int_0^t a x_0 \dif s = x_0 + x_0 a t,\]
 	reiterando tenemos que
-	\[x_n = T(x_{n - 1}) = x_0 \sum_{k = 0}^n \frac{(at)^k}{k!},\]
-	cuando \(n\) tiende a infinito nos queda \(x_\infty = x_0 e^{at}\).
+	\[x_n = T(x_{n - 1}) = x_0 \sum_{k = 0}^n \frac{(at)^k}{k!},\] cuando \(n\)
+    tiende a infinito nos queda \(x_\infty := \lim_n x_n = x_0 e^{at}\).
 \end{example}
 
 \section{Estructura del espacio de soluciones}
