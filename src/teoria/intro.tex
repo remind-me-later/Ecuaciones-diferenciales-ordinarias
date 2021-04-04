@@ -30,7 +30,7 @@ localmente sin pérdida de generalidad gracias al teorema de la función
 implícita.
 
 \begin{remark}
-	Llamaremos \(n\) al orden de la ecuación diferencial.
+	Llamaremos orden de la ecuación diferencial al número \(n\).
 \end{remark}
 
 \begin{definition}
@@ -51,11 +51,11 @@ material.
 
 Nos interesa la masa en función del tiempo relativa, esto es
 \[\frac{\Delta x}{x \Delta t} = \frac{x(t + \Delta t) - x(t)}{x(t) \Delta t}
-	= -\lambda, \quad \lambda > 0\]
-la última igualdad se deduce de lo dicho anteriormente. Llamaremos a
-\(\Delta t\) la tasa de crecimiento media. Tomando el límite \(\Delta t \to 0\)
-nos queda \(x'(t)/x(t) = -\lambda\) para todo \(t\). Esto nos da una ecuación
-diferencial lineal de primer orden (de coeficientes constantes).
+  = -\lambda, \quad \lambda > 0\] la última igualdad se deduce de lo dicho
+anteriormente. Llamaremos al término \(\frac{\Delta x}{x\Delta t}\) la tasa de
+(de)crecimiento media. Tomando el límite \(\Delta t \to 0\) nos queda
+\(x'(t)/x(t) = -\lambda\) para todo \(t\). Esto nos da una ecuación diferencial
+lineal de primer orden (de coeficientes constantes).
 
 En este caso, \(x\) es una masa, por lo que no puede ser negativa, por tanto
 \[f(t, x) = -\lambda x\]
@@ -63,11 +63,11 @@ con \(f : \Omega \to \R\) y \(\Omega = \R \times (0, +\infty)\).
 
 Esta ecuación diferencial es resoluble, para ello tomamos primitivas en
 \[\frac{x'(t)}{x(t)} = -\lambda \implies \log(x) = -\lambda t + c
-	\implies x = e^c e^{-\lambda t} = k e^{-\lambda t}\]
-con lo que nos queda \(x = k e^{-\lambda t}\). Llamamos a esta fórmula solución
-general de la ecuación, y nos da todo el conjunto de soluciones variando
-\(k\). En particular, el conjunto de soluciones es un subespacio vectorial de
-dimensión uno del espacio vectorial \(C^1(\R)\), que tiene dimensión infinita.
+  \implies x = e^c e^{-\lambda t} = k e^{-\lambda t}\] con lo que nos queda
+\(x = k e^{-\lambda t}\). Llamamos a esta familia de funciones \emph{solución general}
+de la ecuación, y nos da todo el conjunto de soluciones variando \(k\). En
+particular, el conjunto de soluciones es un subespacio vectorial de dimensión
+uno del espacio vectorial \(C^1(\R)\), que tiene dimensión infinita.
 
 \subsection{Movimiento armónico simple}
 
@@ -75,7 +75,7 @@ Vemos ahora otro ejemplo de modelado más complicado, el movimiento del péndulo
 El punto de masa \(m\) es el peso del péndulo y llamaremos \(\theta\) al ángulo
 formado entre la recta perpendicular al plano sobre el que esta apoyado el
 péndulo y que parte de su punto de apoyo y la cuerda. Denotaremos la longitud
-de la cuerda por \(l\) Recordamos que \(F = ma\) donde \(a\) es la aceleración.
+de la cuerda por \(l\). Recordamos que \(F = ma\) donde \(a\) es la aceleración.
 Tenemos entonces que
 \[-m g \sin\theta = m l \theta''\]
 por tanto
@@ -90,7 +90,7 @@ lineal de segundo orden
 
 Esta es la ecuación del movimiento armónico simple. Su solución general, que,
 recordamos, es el conjunto de todas las soluciones es
-\[\Theta(t) = C_1 \sin \omega t + C_2 \cos \omega t\]
+\[\theta(t) = C_1 \sin \omega t + C_2 \cos \omega t\]
 donde \(\omega^2 = g/l\), demostraremos esto más adelante. Este conjunto de
 soluciones forma un espacio vectorial de dimensión 2. Demostraremos también que
 el conjunto de soluciones de una ecuación lineal de orden \(n\) es un espacio
@@ -102,7 +102,7 @@ Dada una ecuación diferencial en forma normal
 \[x^{(n)} = f(t, x, x', \dots, x^{(n - 1)})\]
 nos dan los valores de la función y sus derivadas en un tiempo determinado
 \(t_0\),
-\[x(t_0) = x_0, x'(t_0) = x_1, \dots, x^{(n - 1)}(t_0) = x_{n - 1}.\]
+\[x(t_0) = x_0,\ x'(t_0) = x_1,\ \dots\ ,\ x^{(n - 1)}(t_0) = x_{n - 1}.\]
 Estas condiciones determinan una única solución para la ecuación diferencial
 original.
 
@@ -117,8 +117,8 @@ en la atmósfera pero este equilibrio se mantiene gracias a los rayos cósmicos
 que alcanzan la tierra. Debido a la fotosíntesis y a la cadena alimenticia esta
 proporción se mantiene constante en los seres vivos, énfasis en vivos. Al morir
 un ser vivo el carbono-12 se mantiene mientras que el carbono-14 disminuye en
-concentración, debido a su naturaleza radioactiva, aun ritmo que depende de
-\(\lambda\). Debido a esto analizando la proporción entre carbono-12 y 14 en
+concentración, debido a su naturaleza radioactiva, a un ritmo que depende de
+\(\lambda\). Debido a esto, analizando la proporción entre carbono-12 y 14 en
 material orgánico (madera, hueso, etc.) y comparándolo con uno vivo es posible
 determinar la edad del resto orgánico analizado. Veamos algunos ejemplos
 concretos.
@@ -140,8 +140,9 @@ concretos.
 	podemos obtener ahora el resultado \(x(3000) = 6,95 \cdot 10^{-7}\) gramos.
 \end{solution}
 
-Normalmente no sabemos la cantidad de carbono presente en un organismo antes de
-su muerte, veamos ahora un ejemplo más cercano a la realidad.
+Normalmente no sabemos la cantidad total de carbono presente en un organismo
+antes de su muerte, ni el tiempo transcurrido desde entonces. Veamos ahora un
+ejemplo más cercano a la realidad.
 
 \begin{example}
 	En una excavación en Nippur, Babilonia, en 1950 el carbón vegetal de la viga
@@ -155,10 +156,14 @@ su muerte, veamos ahora un ejemplo más cercano a la realidad.
 	\(R(t) = \lambda x(t) = \lambda x(0) e^{-\lambda t}\), donde \(x(0)\) es la
 	cantidad de carbono-14 en el trozo de madera cuando fue cortada y \(t\) el
 	tiempo transcurrido desde que se corta el árbol hasta 1950. Buscamos entonces
-	el año de construcción \(R(0) = \lambda x(0)\), tenemos que
-	\[\frac{R(t)}{R(0)} = 10^{-6} e^{-\frac{\log 2}{5730} t}\]
-	sustituimos \(R(t) = 4,09\) y \(R(0) = 6,68\) con lo que \(t = 4055\) años. Así
-	concluimos que el edificio se construyó en el \(2105\) a.C.
+	el año de construcción, para ello observamos que \(R(0) = \lambda x(0)\), de
+    donde el cociente \(\frac{R(t)}{R(0)} = e^{-\lambda t}\) no depende de la
+    cantidad de carbono-14 presente en el organismo vivo \(x_0\). Sustituyendo
+    los datos y despejando
+    \[\frac{4,09}{6,68} = \frac{R(t)}{R(0)} = e^{-\frac{\log 2}{5730} t}
+      \implies t \approx 4055,\]
+    medido en años. Así, concluimos que el edificio se construyó en el \(2105\)
+    a.C.
 \end{solution}
 
 \end{document}
