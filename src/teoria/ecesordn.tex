@@ -10,8 +10,7 @@
 \end{definition}
 
 Definiendo las variables \(x_n = x^{(n - 1)}\), o lo que es lo mismo,
-\(x_n = x'_{n - 1}\), así el sistema~\ref{def:sisescordsup} es equivalente al
-sistema:
+\(x_n = x'_{n - 1}\), el sistema~\ref{def:sisescordsup} es equivalente a:
 \[\eqsys{
 	x_2 &= x'_1 \\
 	x_3 &= x'_2 \\
@@ -21,7 +20,7 @@ sistema:
 	}\]
 
 donde la última ecuación es de primer orden, podemos también expresar este
-sistema vectorialmente como \(x' = A(t)x + b(t)\) con:
+sistema matricialmente como \(x' = A(t)x + b(t)\) con:
 \[A(t) = \mat{ 
 	0 & 1 & & \\
 	& \ddots & \ddots & \\
@@ -32,11 +31,13 @@ sistema vectorialmente como \(x' = A(t)x + b(t)\) con:
 	b(t) = \mat{0 \\ \vdots \\ 0 \\ a_0(t)}.
 	\]
 
-En este caso el problema del valor inicial consiste en fijar \(x_1(t_0), 
-x_2(t_0), \dots, x_n(t_0)\). Aplicando lo visto anteriormente el sistema tiene
-solución general dada por \(x_p(t) + x_n(t)\) donde, como de costumbre, 
-\(x_p(t)\) es una solución particular y \(x_n(t)\) es la solución general de la
+En el caso del sistema el problema del valor inicial consiste en fijar \(x_1(t_0), 
+x_2(t_0), \dots, x_n(t_0)\), lo que equivale aquí a fijar \(x(t_0), x'(t_0),
+\dots, x^{(n-1)}(t_0)\). Aplicando lo visto anteriormente el sistema tiene
+solución general dada por \(x_p(t) + x_h(t)\) donde, como de costumbre, 
+\(x_p(t)\) es una solución particular y \(x_h(t)\) es la solución general de la
 ecuación homogénea asociada, la cual es un espacio vectorial de dimensión \(n\).
+
 Si \(\phi_1, \dots, \phi_n\) son soluciones linealmente independientes 
 de~\ref{def:sisescordsup} la matriz fundamental asociada al sistema equivalente
 es
@@ -64,8 +65,10 @@ al sistema homogéneo \(x' = A(t)x\), por ahora nos restringiremos al caso de
 coeficientes constantes, es decir, \(x' = Ax\) donde \(A\) es una matriz
 constante, no depende de \(t\) y nos centraremos en particular en funciones de 
 dominio \(\R\).  
-En el caso escalar, \(x' = ax\), sabemos que la solución es 
-\(x = e^{at}\), en el caso matricial veremos que una matriz fundamental es
+
+En el caso escalar, \(x' = ax\), sabemos que la solución es \(x = ke^{at}\),
+donde podemos interpretar \(e^{at}\) como una ``matriz fundamental
+\(1 \times 1\)''. En el caso matricial veremos que una matriz fundamental es
 \(\Phi(t) = e^{At}\), aunque primero tendremos que definir la exponencial de una
 matriz y obtener métodos para computarla.
 
@@ -76,8 +79,7 @@ matriz y obtener métodos para computarla.
 		x' = Ax \\
 		x(0) = e_j
 		}\]
-	o, equivalentemente, \(\Phi(t)\) es la única solución del problema de valor
-	inicial
+      o, equivalentemente, la única solución del problema de valor inicial
 	\[\eqsys{
 		X' = AX \\
 		X(0) = \mathit{Id}
@@ -110,16 +112,16 @@ matriz y obtener métodos para computarla.
 	\end{enumerate}
 \end{proof}
 
-Para la matriz fundamental \(\Phi\) así definida \(x(t) = \Phi(t)x^0\)
-es solución del sistema
+Para la matriz fundamental \(\Phi\) así definida, \(x(t) = \Phi(t)x^0\)
+es la solución del sistema
 \[\eqsys{x' = Ax \\ x(0) = x^0}\]
 
 \section{Exponencial de una matriz}
 
-Notamos que la matriz que acabamos de definir \(\Phi\) cumple las
-mismas propiedades que la función exponencial, de hecho más adelante
-demostraremos que \(\Phi(t) = \sum_{k=0}^\infty (tA)^k/k!\), por ahora nos
-contentamos con la siguiente definición:
+Notamos que la matriz que acabamos de definir \(\Phi\) tiene muchas de las
+propiedades de la función exponencial, de hecho más adelante demostraremos que
+\(\Phi(t) = \sum_{k=0}^\infty (tA)^k/k!\), por ahora nos contentamos con la
+siguiente definición:
 
 \begin{definition}
 	Dada una matriz \(B\) se define \(\exp(B)\), o con la notación habitual
@@ -158,23 +160,23 @@ arriba.
 \begin{proof}
 	Haremos uso de las iteraciones de Picard, para ello definimos
 	\begin{align*}
-		T : C((\alpha, \omega), M_{n \times n}) &\to 
-			C((\alpha, \omega), M_{n \times n}) \\
-		\Phi(t) &\mapsto \mathit{Id} + \int_0^t A \Phi(s) \dif s.
+		T : C((\alpha, \omega), \mathcal{M}_{n \times n}) &\to 
+			C((\alpha, \omega), \mathcal{M}_{n \times n}) \\
+		\Psi &\mapsto \mathit{Id} + \int_0^t A \Psi(s) \dif s.
 	\end{align*}
 
-	Comenzamos la iteración con \(x_0(t) = \mathit{Id}\) y proseguimos:
+	Comenzamos la iteración con \(X_0(t) = \mathit{Id}\) y proseguimos:
 	\begin{align*}
-		x_1 &= T(x_0) = \mathit{Id} + \int_0^t A \mathit{Id} \dif s = 
+		X_1 &= T(X_0) = \mathit{Id} + \int_0^t A \mathit{Id} \dif s = 
 			\mathit{Id} + At \\
-		x_2 &= T(x_1) = \mathit{Id} + \int_0^t A (\mathit{Id} + As) \dif s = 
+		X_2 &= T(X_1) = \mathit{Id} + \int_0^t A (\mathit{Id} + As) \dif s = 
 			\mathit{Id} + At + \frac{A^2 t^2}{2} \\
 		&\vdots \\
-		x_n &= T(x_{n - 1}) =
+		X_n &= T(X_{n - 1}) =
 			\mathit{Id} + At + \frac{A^2 t^2}{2} + \cdots + \frac{A^n t^n}{n!}
 			= \sum_{k = 0}^n \frac{A^k t^k}{k!},
 	\end{align*}
-	tomando el límite \(\lim_{n \to \infty} x_n\) obtenemos el resultado.
+	tomando el límite \(\lim_{n \to \infty} X_n\) obtenemos el resultado.
 \end{proof}
 
 \section{Métodos de cómputo}
@@ -244,12 +246,15 @@ son los autovalores de \(A\) y \(v_1, \dots, v_n\) son sus autovectores;
 
 Con esto tenemos que la ecuación \(x' = Ax\) se puede escribir 
 \(x' = P D P^{-1} x\), con el cambio de variable \(y = P^{-1}x\) nos queda:
-\[(x' = Ax \iff x' = PDP^{-1}x) \iff (P^{-1}x' = DP^{-1}x \iff y' = y),\]
-con lo que podemos expresar la ecuación como
+\[x' = Ax \iff x' = PDP^{-1}x \iff P^{-1}x' = DP^{-1}x \iff y' = Dy,\]
+donde es fundamental que \(P\) (y por tanto \(P^{-1}\)) sea una matriz constante
+para poder afirmar \(y' = (P^{-1}x)' = P^{-1}x'\), con este cambio de variable 
+podemos expresar la ecuación como
 \[y' = \mat{\lambda_1 && \\ & \dots & \\ && \lambda_n} y \iff
 	y = e^{Dt}k \iff y = \mat{k_1 e^{\lambda_1 t} \\ \vdots \\
 		k_n e^{\lambda_n t}},\]
-con \(k = (k_1, \dots, k_n)^t \in \R^n\). Tras estos preámbulos podemos obtener 
+con \(k = (k_1, \dots, k_n)^t \in \R^n\). 
+Tras estos preámbulos podemos obtener 
 una expresión explícita del espacio de soluciones
 \begin{align*}
 	x &= P y = (v_1, \dots, v_n) \mat{k_1 e^{\lambda_1 t} \\ \vdots \\
