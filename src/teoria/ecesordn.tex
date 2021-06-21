@@ -227,16 +227,16 @@ Hemos demostrado así de dos formas distintas el siguiente teorema:
 
 \begin{proposition}
 	Sea \(A\) una matriz diagonal, podemos expresar \(e^{At}\) como:
-	\[e^{At} = e^{\smat{\lambda_1 & & \\ & \ddots & \\ & & \lambda_n} t}
+	\[e^{At} = \exp\smat{\lambda_1t & & \\ & \ddots & \\ & & \lambda_nt}
 		= \mat{e^{\lambda_1 t} & & \\ & \ddots & \\ & & e^{\lambda_n t}}.\]
 \end{proposition}
 
-Sea \(A\) una matriz diagonalizable con autovalores reales, sabemos, por álgebra
-lineal, que existe una matriz \(P\) tal que si \(\lambda_1, \dots, \lambda_n\)
-son los autovalores de \(A\) y \(v_1, \dots, v_n\) son sus autovectores;
+Sea \(A\) una matriz diagonalizable con autovalores reales; por definición, si
+\(\lambda_1, \dots, \lambda_n\) son los autovalores de \(A\) y
+\(v_1, \dots, v_n\) son autovectores asociados, entonces
 \[
 	P^{-1} A P = D = \mat{\lambda_1 && \\ & \ddots & \\ && \lambda_n}
-	\quad \text{y} \quad
+	\quad \text{siendo} \quad
 	P = (v_1, \dots, v_n).
 \]
 
@@ -246,4 +246,198 @@ Con esto tenemos que la ecuación \(x' = Ax\) se puede escribir
 donde es fundamental que \(P\) (y por tanto \(P^{-1}\)) sea una matriz constante
 para poder afirmar \(y' = (P^{-1}x)' = P^{-1}x'\).
 
+De esta forma, la solución de la ecuación transformada es
+
+\[y = e^{Dt}k = \mat{e^{\lambda_1 t} & & \\ & \ddots & \\ & & e^{\lambda_n t}}
+    \mat{k_1 \\ \vdots \\ k_n} = \mat{k_1e^{\lambda_1 t} \\ \vdots \\
+      k_ne^{\lambda_n t}} = \sum_{i=1}^n k_i e^{\lambda_i t} e_i,\]
+
+  siendo \(k^t = (k_1, \dots, k_n) \in \R^n\) y \(\{e_1, \dots, e_n\}\) la base
+  canónica de \(\R^n\). Por tanto,
+  
+  \[x = Py = (v_1, \dots, v_n) \mat{k_1e^{\lambda_1 t} \\ \vdots \\
+      k_ne^{\lambda_n t}} = \sum_{i=1}^n k_i e^{\lambda_i t} v_i\]
+
+  \begin{remark}
+    Una base del espacio de soluciones de \(x' = Ax\) es \(\{e^{\lambda_1 t} v_1,
+      \dots, e^{\lambda_n t} v_n\}\).
+  \end{remark}
+
+  Para el PVI
+
+  \[
+    \begin{cases}
+      x' = Ax \\
+      x(0) = x^0
+    \end{cases} \iff
+    \begin{cases}
+      y' = Dy \\
+      y(0) = P^{-1}x^0
+    \end{cases}
+  \]
+
+  la solución única es \(y(t) = e^{Dt}P^{-1}x^0 \iff x(t) = Pe^{Dt}P^{-1}x^0 =
+  e^{At}x^0\). Por la unicidad de la solución al PVI, esto equivale a \(e^{At} =
+  Pe^{Dt}P^{-1}\).
+
+  Consideramos ahora el caso diagonalizable general (\(A\) puede tener
+  autovalores complejos).
+
+  \begin{proposition}
+    Si \(A\) tiene coeficientes reales y \(\lambda\) es autovalor de \(A\),
+    entonces su conjugado \(\bar{\lambda}\) también lo es.
+    \begin{proof}
+      El polinomio característico de \(A\), \(p(\lambda) = \det(A-\lambda I)\)
+      tiene coeficientes reales, es decir, \(p(\lambda) = \sum_{i=1}^n
+      a_i\lambda^i\) con \(a_i \in \R\).
+
+      Si \(\lambda_0 \in \Complex\) es raíz del polinomio, es decir, \(\sum_{i=1}^n
+      a_i\lambda_0^i = 0\), entonces
+
+      \[0 = \bar{0} = \overline{\sum_{i=1}^n a_i\lambda_0^i} = \sum_{i=1}^n
+        \overline{a_i}(\overline{\lambda_0})^i = \sum_{i=1}^n
+        a_i(\overline{\lambda_0})^i = p(\overline{\lambda_0})\]
+    \end{proof}
+  \end{proposition}
+
+  \begin{remark}
+    Esto quiere decir que los autovalores no reales siempre vienen por pares,
+    por lo que nos restringiremos de momento a subespacios de dimensión 2.
+  \end{remark}
+
+  \begin{remark}
+    En estas condiciones, ya sabemos resolver \(x' = Ax\) en \(\Complex\), es
+    decir, si permitimos como solución \(z(t) = x(t) + iy(t)\) porque todo lo
+    que hemos visto funciona igual para números complejos. Vamos a ver cómo
+    aprovechar esto para transformar una solución con números complejos en otra
+    equivalente que sólo involucre números reales.
+  \end{remark}
+
+  \begin{proposition}
+    Si \(\lambda = a + ib\) es un autovalor complejo de \(A\) y \(w = u + iv\)
+    un autovector asociado, entonces \(\bar{\lambda} = a - ib\) es también
+    autovalor y \(\bar{w} = u - iv\) es un autovector asociado.
+    \begin{proof}
+      Como \(\lambda\) es un autovalor con autovector \(w\), se cumple
+      \(Aw = \lambda w\), por lo que
+      \(\overline{Aw} = \overline{\lambda w} = \bar{\lambda} \bar{w}\); por otro
+      lado, \(\overline{Aw} = \bar{A} \bar{w} = A \bar{w}\), luego \(A \bar{w} =
+      \bar{\lambda} \bar{w}\).
+    \end{proof}
+  \end{proposition}
+
+  Sabemos, por lo visto anteriormente, que \(z(t) = e^{\lambda t} w\) y
+  \(\bar{z}(t) = e^{\bar{\lambda} t} \bar{w}\) son soluciones de \(x' = Ax\) y
+  son linealmente independientes. Sin más que desarrollar los productos, se
+  llega a:
+  \begin{gather*}
+    z(t) = e^{(a+ib)t} (u+iv) = e^{at}\left( (u\cos bt - v\sin bt) + i(v\cos bt + u\sin bt) \right) \\
+    \bar{z}(t) = e^{(a-ib)t} (u-iv) = e^{at}\left( (u\cos bt - v\sin bt) - i(v\cos bt + u\sin bt) \right)
+  \end{gather*}
+
+  Como
+  \[\mat{\Re z(t) \\ \Im z(t)} = \frac{1}{2} \mat{z(t) + \bar{z}(t) \\
+      z(t) - \bar{z}(t)} = \frac{1}{2}\mat{1 & 1 \\ 1 & -1}\mat{z(t) \\
+      \bar{z}(t)} \]
+
+  y \(\det\smat{1 & 1 \\ 1 & -1} \neq 0\), se cumple que \(\Re z(t)\) y
+  \(\Im z(t)\) siguen siendo soluciones y linealmente independientes, que además
+  generan el mismo espacio de soluciones. Tenemos entonces las soluciones reales
+  \[
+    \begin{cases}
+      x(t) = \Re z(t) = e^{at}(u\cos bt - v\sin bt) \\
+      y(t) = \Im z(t) = e^{at}(v\cos bt + u\sin bt)
+    \end{cases}
+  \]
+  Consideramos \(A \in \mathcal{M}_{2 \times 2}(\R)\) con autovalores
+  \(\lambda = a+ib, \bar{\lambda} = a-ib \in \Complex\), con autovectores
+  asociados \(w = u+iv, \bar{w} = u-iv\). Se tiene
+  \[Au + iAv = Aw = \lambda w = (a+ib)(u+iv) = (au-bv) + i(av+bu),\]
+  de donde, igualando partes real e imaginaria,
+  \[
+  \begin{cases}
+    Au = au-bv \\
+    Av = bu+av
+  \end{cases}
+  \]
+  Ya hemos visto que \(u\) y \(v\) son linealmente independientes, lo que nos
+  permite definir una matriz de paso \(P = \mat{u & v}\). Entonces,
+  \[\mat{Au & Av} = A \mat{u & v} = \mat{au-bv & bu+av} = \mat{u & v} \mat{a & b
+      \\ -b & a} \implies P^{-1}AP = \mat{a & b \\ -b & a}\]
+  Nos centramos ahora en sistemas de la forma \(x' = \smat{a & b \\ -b & a}x\),
+  que tienen por solución general \(x(t) = \exp \smat{at & bt \\ -bt & at}
+  \smat{c_1 \\ c_2}\), \(\smat{c_1 \\ c_2} \in \R^2\). Nos falta ahora calcular
+  esta exponencial.
+  \begin{align*}
+    \exp\mat{at & bt \\ -bt & at} &= \exp\left(a\mat{1 & 0 \\ 0 & 1}t + b\mat{0 & 1 \\
+    -1 & 0}t\right) = \mat{e^{at} & 0 \\ 0 & e^{at}} \exp\left(b\mat{0 & 1
+    \\ -1 & 0}t\right) \\
+    &= e^{at}\exp\left(b\mat{0 & 1 \\ -1 & 0}t\right),
+  \end{align*}
+
+  por lo que nos basta analizar el caso \(y' = \smat{0 & 1 \\ -1 & 0}y\), es
+  decir, calcular \(\exp \smat{0 & t \\ -t & 0}\). Para ello, diagonalizamos la
+  matriz \(M := \smat{0 & 1 \\ -1 & 0}\):
+
+  Su polinomio característico es \(p(\lambda) = \lambda^2 + 1\), luego sus
+  autovalores son \(\pm i\). Los espacios invariantes son, respectivamente,
+  \[\ker(M - iI) = L\left[\mat{1 \\ i}\right] \quad \text{y} \quad \ker(M + iI) =
+    L\left[\mat{i \\ 1}\right],\]
+
+  con lo que una posible matriz de paso es \(P := \smat{1 & i \\ i & 1}\), con
+  inversa \(P^{-1} = \frac{1}{2} \smat{1 & -i \\ -i & 1}\). Se tiene entonces
+  \begin{gather*}
+    \mat{0 & 1 \\ -1 & 0} = \mat{1 & i \\ i & 1} \mat{i & 0 \\ 0 & -i}
+                             \mat{1 & i \\ i & 1} ^{-1} \implies \\
+    \exp \mat{0 & t \\ -t & 0} = \frac{1}{2} \mat{1 & i \\ i & 1}
+    \mat{e^{it} & 0 \\ 0 & e^{-it}} \mat {1 & -i \\ -i & 1} =
+    \frac{1}{2} \mat{e^{it}+e^{-it} & -ie^{it}+ie^{-it} \\ ie^{it}-ie^{-it} &
+      e^{it}+e^{-it}} \implies \\ 
+    \exp \mat{0 & t \\ -t & 0} = \mat{\cos t & \sin t \\ -\sin t & \cos t}
+  \end{gather*}
+
+  Volviendo al sistema que queríamos resolver, es decir, \(x' = \smat{a & b \\
+    -b & a}x\), se tiene
+
+  \[A = P \mat{a & b \\ -b & a} P^{-1} \implies e^{At} = P \mat{e^{at}\cos bt &
+      e^{at}\sin bt \\ -e^{at} \sin bt & e^{at} \cos bt} P^{-1}\]
+
+  y, así, la solución general del problema es
+
+  \[x(t) = P \mat{e^{at}\cos bt &
+      e^{at}\sin bt \\ -e^{at} \sin bt & e^{at} \cos bt} P^{-1} \mat{k_1 \\
+      k_2} = P \mat{e^{at}\cos bt & e^{at}\sin bt \\ -e^{at} \sin bt & e^{at}
+      \cos bt} \mat {c_1 \\ c_2}\]
+  
+  En el caso diagonalizable más general, es decir, con autovalores reales y
+  complejos, basta combinar todo lo que hemos visto: si \(\lambda_1, \dots,
+  \lambda_r\) son los autovalores reales de \(A\) y \(a_1 \pm ib_1, \dots, a_s
+  \pm ib_s (b_j>0)\) son sus autovalores complejos (en ambos casos se admiten
+  repeticiones), se considera la matriz de paso
+  \[P = \mat{v_1 & \cdots & v_r & \Re w_1 & \Im w_1 & \cdots & \Re w_s & \Im w_s}\]
+  siendo \(v_j\) y \(w_j\) autovectores asociados a \(\lambda_j\) y \(a_j
+  +ib_j\), respectivamente, de forma que se tiene la descomposición
+
+  \[P^{-1}AP = \mat{\lambda_1 & & & & & & & \\
+      & \ddots & & & & & & \\
+      & & \lambda_r & & & & & \\
+      & & & a_1 & b_1 & & & & \\
+      & & & -b_1 & a_1 & & & & \\
+      & & & & & \ddots & & \\
+      & & & & & & a_s & b_s \\
+      & & & & & & -b_s & a_s}\]
+
+  y la solución general del sistema es
+
+  \[x(t) = P \mat{e^{\lambda_1 t} & & & & & & & \\
+      & \ddots & & & & & & \\
+      & & e^{\lambda_r t} & & & & & \\
+      & & & e^{a_1 t} \cos b_1 t & e^{a_1 t} \sin b_1 t & & & & \\
+      & & & -e^{a_1 t} \sin b_1 t & e^{a_1 t} \cos b_1 t & & & & \\
+      & & & & & \ddots & & \\
+      & & & & & & e^{a_s t} \cos b_s t & e^{a_s t} \sin b_s t \\
+      & & & & & & -e^{a_s t} \sin b_s t & e^{a_s t} \cos b_s t}
+    \mat{c_1 \\ \vdots \\ c_r \\ k_1 \\ k_2 \\ \vdots \\ k_{2s-1}\\ k_{2s}}.\]
+
+  
 \end{document}
