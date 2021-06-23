@@ -229,7 +229,7 @@ Hemos demostrado así de dos formas distintas el siguiente teorema:
 
 \begin{proposition}
 	Sea \(A\) una matriz diagonal, podemos expresar \(e^{At}\) como:
-	\[e^{At} = e^{\smat{\lambda_1 & & \\ & \ddots & \\ & & \lambda_n} t}
+	\[e^{At} = \exp\smat{\lambda_1t & & \\ & \ddots & \\ & & \lambda_nt}
 		= \mat{e^{\lambda_1 t} & & \\ & \ddots & \\ & & e^{\lambda_n t}}.\]
 \end{proposition}
 
@@ -240,7 +240,7 @@ lineal, que existe una matriz \(P\) tal que si \(\lambda_1, \dots, \lambda_n\)
 son los autovalores de \(A\) y \(v_1, \dots, v_n\) son sus autovectores;
 \[
 	P^{-1} A P = D = \mat{\lambda_1 && \\ & \ddots & \\ && \lambda_n}
-	\quad \text{y} \quad
+	\quad \text{siendo} \quad
 	P = (v_1, \dots, v_n).
 \]
 
@@ -289,4 +289,512 @@ que en el caso diagonal se puede ver directamente que si \(A = PDP^{-1}\)
 entonces \(e^{At} = P e^{Dt} P^{-1}\), aquí lo hemos visto indirectamente,
 utilizando la unicidad de la solución. 
 
+De esta forma, la solución de la ecuación transformada es
+
+\[y = e^{Dt}k = \mat{e^{\lambda_1 t} & & \\ & \ddots & \\ & & e^{\lambda_n t}}
+    \mat{k_1 \\ \vdots \\ k_n} = \mat{k_1e^{\lambda_1 t} \\ \vdots \\
+      k_ne^{\lambda_n t}} = \sum_{i=1}^n k_i e^{\lambda_i t} e_i,\]
+
+  siendo \(k^t = (k_1, \dots, k_n) \in \R^n\) y \(\{e_1, \dots, e_n\}\) la base
+  canónica de \(\R^n\). Por tanto,
+  
+  \[x = Py = (v_1, \dots, v_n) \mat{k_1e^{\lambda_1 t} \\ \vdots \\
+      k_ne^{\lambda_n t}} = \sum_{i=1}^n k_i e^{\lambda_i t} v_i\]
+
+  \begin{remark}
+    Una base del espacio de soluciones de \(x' = Ax\) es \(\{e^{\lambda_1 t} v_1,
+      \dots, e^{\lambda_n t} v_n\}\).
+  \end{remark}
+
+  Para el PVI
+
+  \[
+    \begin{cases}
+      x' = Ax \\
+      x(0) = x^0
+    \end{cases} \iff
+    \begin{cases}
+      y' = Dy \\
+      y(0) = P^{-1}x^0
+    \end{cases}
+  \]
+
+  la solución única es \(y(t) = e^{Dt}P^{-1}x^0 \iff x(t) = Pe^{Dt}P^{-1}x^0 =
+  e^{At}x^0\). Por la unicidad de la solución al PVI, esto equivale a \(e^{At} =
+  Pe^{Dt}P^{-1}\).
+
+  Consideramos ahora el caso diagonalizable general (\(A\) puede tener
+  autovalores complejos).
+
+  \begin{proposition}
+    Si \(A\) tiene coeficientes reales y \(\lambda\) es autovalor de \(A\),
+    entonces su conjugado \(\bar{\lambda}\) también lo es.
+    \begin{proof}
+      El polinomio característico de \(A\), \(p(\lambda) = \det(A-\lambda I)\)
+      tiene coeficientes reales, es decir, \(p(\lambda) = \sum_{i=1}^n
+      a_i\lambda^i\) con \(a_i \in \R\).
+
+      Si \(\lambda_0 \in \Complex\) es raíz del polinomio, es decir, \(\sum_{i=1}^n
+      a_i\lambda_0^i = 0\), entonces
+
+      \[0 = \bar{0} = \overline{\sum_{i=1}^n a_i\lambda_0^i} = \sum_{i=1}^n
+        \overline{a_i}(\overline{\lambda_0})^i = \sum_{i=1}^n
+        a_i(\overline{\lambda_0})^i = p(\overline{\lambda_0})\]
+    \end{proof}
+  \end{proposition}
+
+  \begin{remark}
+    Esto quiere decir que los autovalores no reales siempre vienen por pares,
+    por lo que nos restringiremos de momento a subespacios de dimensión 2.
+  \end{remark}
+
+  \begin{remark}
+    En estas condiciones, ya sabemos resolver \(x' = Ax\) en \(\Complex\), es
+    decir, si permitimos como solución \(z(t) = x(t) + iy(t)\) porque todo lo
+    que hemos visto funciona igual para números complejos. Vamos a ver cómo
+    aprovechar esto para transformar una solución con números complejos en otra
+    equivalente que sólo involucre números reales.
+  \end{remark}
+
+  \begin{proposition}
+    Si \(\lambda = a + ib\) es un autovalor complejo de \(A\) y \(w = u + iv\)
+    un autovector asociado, entonces \(\bar{\lambda} = a - ib\) es también
+    autovalor y \(\bar{w} = u - iv\) es un autovector asociado.
+    \begin{proof}
+      Como \(\lambda\) es un autovalor con autovector \(w\), se cumple
+      \(Aw = \lambda w\), por lo que
+      \(\overline{Aw} = \overline{\lambda w} = \bar{\lambda} \bar{w}\); por otro
+      lado, \(\overline{Aw} = \bar{A} \bar{w} = A \bar{w}\), luego \(A \bar{w} =
+      \bar{\lambda} \bar{w}\).
+    \end{proof}
+  \end{proposition}
+
+  Sabemos, por lo visto anteriormente, que \(z(t) = e^{\lambda t} w\) y
+  \(\bar{z}(t) = e^{\bar{\lambda} t} \bar{w}\) son soluciones de \(x' = Ax\) y
+  son linealmente independientes. Sin más que desarrollar los productos, se
+  llega a:
+  \begin{gather*}
+    z(t) = e^{(a+ib)t} (u+iv) = e^{at}\left( (u\cos bt - v\sin bt) + i(v\cos bt + u\sin bt) \right) \\
+    \bar{z}(t) = e^{(a-ib)t} (u-iv) = e^{at}\left( (u\cos bt - v\sin bt) - i(v\cos bt + u\sin bt) \right)
+  \end{gather*}
+
+  Como
+  \[\mat{\Re z(t) \\ \Im z(t)} = \frac{1}{2} \mat{z(t) + \bar{z}(t) \\
+      z(t) - \bar{z}(t)} = \frac{1}{2}\mat{1 & 1 \\ 1 & -1}\mat{z(t) \\
+      \bar{z}(t)} \]
+
+  y \(\det\smat{1 & 1 \\ 1 & -1} \neq 0\), se cumple que \(\Re z(t)\) y
+  \(\Im z(t)\) siguen siendo soluciones y linealmente independientes, que además
+  generan el mismo espacio de soluciones. Tenemos entonces las soluciones reales
+  \[
+    \begin{cases}
+      x(t) = \Re z(t) = e^{at}(u\cos bt - v\sin bt) \\
+      y(t) = \Im z(t) = e^{at}(v\cos bt + u\sin bt)
+    \end{cases}
+  \]
+  Consideramos \(A \in \mathcal{M}_{2 \times 2}(\R)\) con autovalores
+  \(\lambda = a+ib, \bar{\lambda} = a-ib \in \Complex\), con autovectores
+  asociados \(w = u+iv, \bar{w} = u-iv\). Se tiene
+  \[Au + iAv = Aw = \lambda w = (a+ib)(u+iv) = (au-bv) + i(av+bu),\]
+  de donde, igualando partes real e imaginaria,
+  \[
+  \begin{cases}
+    Au = au-bv \\
+    Av = bu+av
+  \end{cases}
+  \]
+  Ya hemos visto que \(u\) y \(v\) son linealmente independientes, lo que nos
+  permite definir una matriz de paso \(P = \mat{u & v}\). Entonces,
+  \[\mat{Au & Av} = A \mat{u & v} = \mat{au-bv & bu+av} = \mat{u & v} \mat{a & b
+      \\ -b & a} \implies P^{-1}AP = \mat{a & b \\ -b & a}\]
+  Nos centramos ahora en sistemas de la forma \(x' = \smat{a & b \\ -b & a}x\),
+  que tienen por solución general \(x(t) = \exp \smat{at & bt \\ -bt & at}
+  \smat{c_1 \\ c_2}\), \(\smat{c_1 \\ c_2} \in \R^2\). Nos falta ahora calcular
+  esta exponencial.
+  \begin{align*}
+    \exp\mat{at & bt \\ -bt & at} &= \exp\left(a\mat{1 & 0 \\ 0 & 1}t + b\mat{0 & 1 \\
+    -1 & 0}t\right) = \mat{e^{at} & 0 \\ 0 & e^{at}} \exp\left(b\mat{0 & 1
+    \\ -1 & 0}t\right) \\
+    &= e^{at}\exp\left(b\mat{0 & 1 \\ -1 & 0}t\right),
+  \end{align*}
+
+  por lo que nos basta analizar el caso \(y' = \smat{0 & 1 \\ -1 & 0}y\), es
+  decir, calcular \(\exp \smat{0 & t \\ -t & 0}\). Para ello, diagonalizamos la
+  matriz \(M := \smat{0 & 1 \\ -1 & 0}\):
+
+  Su polinomio característico es \(p(\lambda) = \lambda^2 + 1\), luego sus
+  autovalores son \(\pm i\). Los espacios invariantes son, respectivamente,
+  \[\ker(M - iI) = L\left[\mat{1 \\ i}\right] \quad \text{y} \quad \ker(M + iI) =
+    L\left[\mat{i \\ 1}\right],\]
+
+  con lo que una posible matriz de paso es \(P := \smat{1 & i \\ i & 1}\), con
+  inversa \(P^{-1} = \frac{1}{2} \smat{1 & -i \\ -i & 1}\). Se tiene entonces
+  \begin{gather*}
+    \mat{0 & 1 \\ -1 & 0} = \mat{1 & i \\ i & 1} \mat{i & 0 \\ 0 & -i}
+                             \mat{1 & i \\ i & 1} ^{-1} \implies \\
+    \exp \mat{0 & t \\ -t & 0} = \frac{1}{2} \mat{1 & i \\ i & 1}
+    \mat{e^{it} & 0 \\ 0 & e^{-it}} \mat {1 & -i \\ -i & 1} =
+    \frac{1}{2} \mat{e^{it}+e^{-it} & -ie^{it}+ie^{-it} \\ ie^{it}-ie^{-it} &
+      e^{it}+e^{-it}} \implies \\ 
+    \exp \mat{0 & t \\ -t & 0} = \mat{\cos t & \sin t \\ -\sin t & \cos t}
+  \end{gather*}
+
+  Volviendo al sistema que queríamos resolver, es decir, \(x' = \smat{a & b \\
+    -b & a}x\), se tiene
+
+  \[A = P \mat{a & b \\ -b & a} P^{-1} \implies e^{At} = P \mat{e^{at}\cos bt &
+      e^{at}\sin bt \\ -e^{at} \sin bt & e^{at} \cos bt} P^{-1}\]
+
+  y, así, la solución general del problema es
+
+  \[x(t) = P \mat{e^{at}\cos bt &
+      e^{at}\sin bt \\ -e^{at} \sin bt & e^{at} \cos bt} P^{-1} \mat{k_1 \\
+      k_2} = P \mat{e^{at}\cos bt & e^{at}\sin bt \\ -e^{at} \sin bt & e^{at}
+      \cos bt} \mat {c_1 \\ c_2}\]
+  
+  En el caso diagonalizable más general, es decir, con autovalores reales y
+  complejos, basta combinar todo lo que hemos visto: si \(\lambda_1, \dots,
+  \lambda_r\) son los autovalores reales de \(A\) y \(a_1 \pm ib_1, \dots, a_s
+  \pm ib_s (b_j>0)\) son sus autovalores complejos (en ambos casos se admiten
+  repeticiones), se considera la matriz de paso
+  \[P = \mat{v_1 & \cdots & v_r & \Re w_1 & \Im w_1 & \cdots & \Re w_s & \Im w_s}\]
+  siendo \(v_j\) y \(w_j\) autovectores asociados a \(\lambda_j\) y \(a_j
+  +ib_j\), respectivamente, de forma que se tiene la descomposición
+
+  \[P^{-1}AP = \mat{\lambda_1 & & & & & & & \\
+      & \ddots & & & & & & \\
+      & & \lambda_r & & & & & \\
+      & & & a_1 & b_1 & & & & \\
+      & & & -b_1 & a_1 & & & & \\
+      & & & & & \ddots & & \\
+      & & & & & & a_s & b_s \\
+      & & & & & & -b_s & a_s}\]
+
+  y la solución general del sistema es
+
+  \[x(t) = P \mat{e^{\lambda_1 t} & & & & & & & \\
+      & \ddots & & & & & & \\
+      & & e^{\lambda_r t} & & & & & \\
+      & & & e^{a_1 t} \cos b_1 t & e^{a_1 t} \sin b_1 t & & & & \\
+      & & & -e^{a_1 t} \sin b_1 t & e^{a_1 t} \cos b_1 t & & & & \\
+      & & & & & \ddots & & \\
+      & & & & & & e^{a_s t} \cos b_s t & e^{a_s t} \sin b_s t \\
+      & & & & & & -e^{a_s t} \sin b_s t & e^{a_s t} \cos b_s t}
+    \mat{c_1 \\ \vdots \\ c_r \\ k_1 \\ k_2 \\ \vdots \\ k_{2s-1}\\ k_{2s}}.\]
+
+  \begin{example}
+    Resolver el sistema \(x' = Ax\), siendo \(A = \smat{1 & 0 & 0 \\ 6 & 2 & -3 \\ 1 & 3 & 2}\).
+
+    En primer lugar hay que diagonalizar la matriz: sus autovalores son
+    \(\lambda_1 = 1\), \(\lambda_2 = 2+3i\) y \(\lambda_3 = 2-3i\), con espacios
+    propios asociados
+
+    \[\ker(A-\lambda_1 I) = L \left[ \mat{10 \\ 3 \\ -19} \right], \quad
+      \ker(A-\lambda_2 I) = L \left[ \mat{0 \\ 1 \\ -i} \right], \quad
+      \ker(A-\lambda_3 I) = L \left[\mat{0 \\ 1 \\ i} \right],\]
+
+      con lo que podemos tomar
+
+      \[v_1 = \mat{10 \\ 3 \\ -19}, \quad v_2 = \Re \mat{0 \\ 1 \\ -i} = \mat{0
+          \\ 1 \\ 0}, \quad v_3 = \Im \mat{0 \\ 1 \\ -i} = \mat{0 \\ 0 \\ -1}.\]
+
+      Así, la matriz de paso \(P = \smat{10 & 0 & 0 \\ 3 & 1 & 0 \\ -19 & 0 &
+        -1}\) es tal que
+
+      \[P^{-1}AP = \mat{1 & & \\ & 2 & 3 \\ & -3 & 2},\]
+
+      que no es diagonal pero sí \emph{diagonal por bloques}, lo que nos permite
+      tomar la exponencial (por bloques) igual que en el caso diagonal:
+
+      Como \(A = P \smat{1 & & \\ & 2 & 3 \\ & -3 & 2} P^{-1}\), su exponencial es
+
+      \[e^{At} = P \mat{e^t & & \\ & e^{2t} \cos 3t & e^{2t} \sin 3t \\ &
+          -e^{2t} \sin 3t & e^{2t} \cos 3t} P^{-1},\]
+
+      con lo que la solución general del sistema es
+
+      \[x(t) = P \mat{e^t & & \\ & e^{2t} \cos 3t & e^{2t} \sin 3t \\ &
+          -e^{2t} \sin 3t & e^{2t} \cos 3t} \mat{c_1 \\ c_2 \\ c_3}, \quad
+        \mat{c_1 \\ c_2 \\ c_3} \in \R^3.\]
+  \end{example}
+  
+  Para terminar con el análisis de los sistemas de ecuaciones diferenciales
+  lineales con coeficientes constantes, únicamente nos falta estudiar qué ocurre
+  cuando la matriz que define el sistema no es diagonalizable.
+
+  \begin{theorem}[forma canónica de Jordan compleja]
+    Sea \(A \in \mathcal{M}_{n \times n}(\Complex)\) con \(s\) autovectores
+    linealmente independientes. Entonces, existe una matriz no singular \(P\)
+    tal que \(P^{-1} A P = B\), donde \(B\) es una matriz diagonal por bloques,
+    es decir,
+    \[B = \mat{B_1 & & & \\ & B_2 & & \\ & & \ddots & \\ & & & B_s},\]
+    donde cada \emph{bloque de Jordan} \(B_j\ (j = 1, \dots, s)\) es una matriz de
+    la forma
+    \[B_j = \mat{\lambda & 1 & & \\ & \lambda & \ddots & \\ & & \ddots & 1 \\ & & &
+        \lambda},\]
+    siendo \(\lambda\) autovalor de \(A\).
+  \end{theorem}
+
+  \begin{remark}
+    Cada autovalor de \(A\) apararece en \(B\) tantas veces como su
+    multiplicidad algebraica. El número de bloques asociados a un mismo
+    autovalor se corresponde con su multiplicidad geométrica.
+  \end{remark}
+
+  \begin{remark}
+    El caso diagonalizable corresponde al caso en que todos los bloques son \(1
+    \times 1\).
+  \end{remark}
+
+  Veamos cómo calcular la exponencial de un bloque de Jordan arbitrario:
+
+  \[B_j = \mat{\lambda & 1 & & \\ & \lambda & \ddots & \\ & & \ddots & 1 \\ & &
+      & \lambda} =
+    \underbrace{\mat{\lambda & & & \\ & \lambda & & \\ & & \ddots & \\ & & & \lambda}}_D
+    + \underbrace{\mat{0 & 1 & & \\ & 0 & \ddots & \\ & & \ddots & 1 \\ & & & 0}}_N\]
+
+  Ya sabemos calcular \(e^{Dt}\), y hallar \(e^{Nt}\) tampoco es complicado. Sus
+  potencias sucesivas son
+
+  \[
+    N^0 = \mat{1 & 0 & 0 & \cdots & 0      \\
+                 & 1 & 0 & \ddots & \vdots \\
+                 &   & 1 & \ddots & 0      \\
+                 &   &   & \ddots & 0      \\
+                 &   &   &        & 1 }, \quad
+    N^1 = \mat{0 & 1 & 0 & \cdots & 0      \\
+                 & 0 & 1 & \ddots & \vdots \\
+                 &   & 0 & \ddots & 0      \\
+                 &   &   & \ddots & 1      \\
+                 &   &   &        & 0 }, \ \ \dots \ \ ,
+    N^{n_j-1} = \mat{0 & 0 & 0 & \cdots & 1      \\
+                       & 0 & 0 & \ddots & \vdots \\
+                       &   & 0 & \ddots & 0      \\
+                       &   &   & \ddots & 0      \\
+                       &   &   &        & 0 }
+  \]
+
+  y, en particular, \(N\) es nilpotente de orden \(n_j\), por lo que basta
+  aplicar la definición para obtener
+
+  \[e^{Nt} = \sum_{k=0}^\infty \frac{t^k}{k!}N^k = \sum_{k=0}^{n_j-1}
+    \frac{t^k}{k!}N^k =
+    \mat{1 & t & \frac{t^2}{2!} & \cdots & \frac{t^{n_j-1}}{(n_j-1)!} \\
+           & 1 & t              & \ddots & \vdots                    \\
+           &   & 1              & \ddots & \frac{t^2}{2!}            \\
+           &   &                & \ddots & t                         \\
+           &   &                &        & 1 }
+  \]
+
+  Finalmente, como \(D = \lambda I\) y \(N\) conmutan, se tiene
+
+  \[e^{B_j t} = e^{Dt + Nt} = e^{Dt} e^{Nt} = (e^{\lambda t} I) e^{Nt} =
+    e^{\lambda t}e^{Nt} =
+    \mat{e^{\lambda t} & te^{\lambda t} & \frac{t^2}{2!}e^{\lambda t} & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}e^{\lambda t} \\
+           & e^{\lambda t} & te^{\lambda t}              & \ddots & \vdots                    \\
+           &   & e^{\lambda t}              & \ddots & \frac{t^2}{2!}e^{\lambda t}            \\
+           &   &                & \ddots & te^{\lambda t}                         \\
+           &   &                &        & e^{\lambda t} }.\]
+  
+  Esto es suficiente en el caso de que \(A\) sólo tenga autovalores reales. Si
+  hay alguno complejo, hay que trabajar un poco más:
+
+  \begin{theorem}[forma canónica de Jordan real]
+    Sea \(A \in \mathcal{M}_{n \times n}(\R)\). Existe una matriz no singular
+    \(P\) tal que \(P^{-1}AP = B\), donde \(B\) es una matriz diagonal por
+    bloques, cada uno de ellos de la forma
+    \begin{itemize}
+    \item \(\smat{\lambda & 1 & & \\ & \lambda & \cdot & \\ & & \cdot & 1 \\ & &
+        & \lambda}\), si \(\lambda\) es un autovalor real de \(A\)
+    \item \(\smat{D & I_2 & & \\ & D & \cdot & \\ & & \cdot & I_2 \\ & &
+        & D}\), con \(D = \smat{a & b \\ -b & a}\) e \(I_2 = \smat{1 & 0 \\ 0 & 1}\)
+      si \(a+ib\ (b>0)\) es un autovalor complejo de \(A\)
+    \end{itemize}
+  \end{theorem}
+
+  A la vista de este teorema, sólo nos falta saber calcular la exponencial de
+  matrices de la forma
+
+  \[\mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots & I_2 \\ & & & D} =
+    \mat{D & & & \\ & D & & \\ & & \ddots & \\ & & & D} +
+    \underbrace{\mat{0 & I_2 & & \\ & 0 & \ddots & \\ & & \ddots & I_2 \\ & & &
+        0}}_{N}.\]
+
+  Observamos que estas dos matrices conmutan:
+
+  \[\mat{D & & & \\ & D & & \\ & & \ddots & \\ & & & D}
+    \mat{0 & I_2 & & \\ & 0 & \ddots & \\ & & \ddots & I_2 \\ & & & 0} =
+    \mat{0 & D & & \\ & 0 & \ddots & \\ & & \ddots & D \\ & & & 0} =
+    \mat{0 & I_2 & & \\ & 0 & \ddots & \\ & & \ddots & I_2 \\ & & & 0}
+    \mat{D & & & \\ & D & & \\ & & \ddots & \\ & & & D},\]
+
+  luego la exponencial de su suma es
+
+  \[\exp \mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots & I_2 \\ & & & D} t =
+    \exp \mat{Dt & & & \\ & Dt & & \\ & & \ddots & \\ & & & Dt} \cdot \exp(Nt) =
+    \mat{e^{at}R & & & \\ & e^{at}R & & \\ & & \ddots & \\ & & & e^{at}R} \cdot \exp Nt,\]
+
+  puesto que \(\exp \smat{Dt & & & \\ & Dt & & \\ & & \ddots & \\ & & & Dt} =
+  \smat{e^{Dt} & & & \\ & e^{Dt} & & \\ & & \ddots & \\ & & & e^{Dt}}\) y
+  \(e^{Dt} = e^{at} \underbrace{\smat{\cos bt & \sin bt \\ -\sin bt & \cos
+      bt}}_{R}\). Por otro lado, igual que antes es fácil ver que
+  \[e^{Nt} = \sum_{k=0}^{n_j-1} \frac{t^k}{k!}N^k =
+    \mat{I_2 & tI_2 & \frac{t^2}{2!}I_2 & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}I_2 \\
+             & i_2  & tI_2              & \ddots & \vdots                        \\
+             &      & I_2               & \ddots & \frac{t^2}{2!}I_2             \\
+             &      &                   & \ddots & tI_2                          \\
+             &      &                   &        & I_2 }.\]
+
+  Juntándolo todo, llegamos a
+  \[\exp \mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots & I_2 \\ & & & D}t =
+    \mat{e^{\lambda t}R & te^{\lambda t}R & \frac{t^2}{2!}e^{\lambda t}R & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}e^{\lambda t}R \\
+           & e^{\lambda t}R & te^{\lambda t}R              & \ddots & \vdots                    \\
+           &   & e^{\lambda t}R              & \ddots & \frac{t^2}{2!}e^{\lambda t}R            \\
+           &   &                & \ddots & te^{\lambda t}R                         \\
+           &   &                &        & e^{\lambda t}R }
+  \]
+
+  Ahora que ya sabemos resolver cualquier sistema con coeficientes constantes,
+  centrémonos en cómo calcular la forma canónica de Jordan. La clave será
+  encontrar propiedades de \(B\) que caractericen su estructura de bloques y que
+  sean invariantes por semejanza, para poder hallarlas a partir de \(A\).
+
+  Por ser \(P\) no singular, se cumple \(\dim \ker (B - \lambda I) = \dim \ker
+  (P^{-1}(A - \lambda I)P) = \dim \ker (A - \lambda I)\) o, equivalentemente,
+  \(\ran (A - \lambda I) = \ran (B - \lambda I)\).
+
+  Recordando la estructura de \(B\), es fácil ver que
+  \(\dim \ker (B - \lambda I) = \sum_{i=1}^r \nu_i(\lambda)\), siendo
+  \(\nu_i(\lambda)\) el número de bloques de tamaño \(i \times i\) del autovalor
+  \(\lambda\).
+
+  Consideramos ahora potencias sucesivas de la matriz \(B - \lambda I\). Al
+  elevar al cuadrado, la dimensión del núcleo aumenta en una unidad por cada
+  bloque de tamaño mayor que 1:
+
+  \[
+    B_j - \lambda I =
+    \mat{0 & 1 &   &        &        &   \\
+           & 0 & 1 &        &        &   \\
+           &   & 0 & 1      &        &   \\
+           &   &   & \ddots & \ddots &   \\
+           &   &   &        & \ddots & 1 \\
+           &   &   &        &        & 0 \\} \qquad
+    (B_j - \lambda I)^2 =
+    \mat{0 & 0 & 1      &        &        &   \\
+           & 0 & 0      & 1      &        &   \\
+           &   & \ddots & \ddots & \ddots &   \\
+           &   &        & \ddots & \ddots & 1 \\
+           &   &        &        & \ddots & 0 \\
+           &   &        &        &        & 0 \\},
+  \]
+  por lo que
+  \(\dim \ker (B - \lambda I)^2 = \nu_1(\lambda) + 2 \sum_{i=2}^r
+  \nu_i(\lambda)\). Análogamente, para las terceras potencias se tiene
+  \(\dim \ker (B - \lambda I)^3 = \nu_1(\lambda) + 2\nu_2(\lambda) + 3
+  \sum_{i=3}^r \nu_i(\lambda)\) y, en general, para \(k = 1, \dots, r\):
+  \begin{align*}
+    \dim \ker (B - \lambda I)^k &= \sum_{i=1}^{k-1} i \nu_i(\lambda) + k
+    \sum_{i=k}^r \nu_i(\lambda) \\
+    &= \nu_1(\lambda) + \cdots + (k-1)\nu_{k-1}(\lambda) +
+    k[\nu_k(\lambda) + \cdots + \nu_r(\lambda)]
+  \end{align*}
+
+  \begin{remark}
+    \(P(B - \lambda I)^kP^{-1} = (A - \lambda I)^k\) y, como el rango es
+    invariante por semejanza, \(\dim \ker (A - \lambda I)^k = \dim \ker (B -
+    \lambda I)^k\).
+  \end{remark}
+
+  \begin{remark}
+    Los números \(\nu_i(\lambda)\) caracterizan \(B\), salvo permutación de bloques.
+  \end{remark}
+  
+  Denotamos \(\delta_i(\lambda) = \dim \ker (A - \lambda I)^i\). De esta forma,
+  \(r\) es el menor número natural tal que \(\delta_r(\lambda) =
+  \delta_{r+1}(\lambda)\) y se verifica
+
+  \[\left\{
+      \begin{array}[ht]{r c l}
+        \delta_1(\lambda) & = & \nu_1(\lambda) + \nu_2(\lambda) + \cdots +
+                            \nu_r(\lambda) \\
+        \delta_2(\lambda) & = & \nu_1(\lambda) + 2[\nu_2(\lambda) + \cdots +
+                            \nu_r(\lambda)] \\
+        & \vdots & \\
+        \delta_r(\lambda) & = & \nu_1(\lambda) + 2\nu_2(\lambda) + \cdots + r\nu_r(\lambda)
+      \end{array}
+      \right.
+    \]
+
+    Restando a cada ecuación la anterior, queda un sistema triangular
+
+  \[\left\{
+      \begin{array}[ht]{r c c c c c c c c}
+        \delta_1(\lambda) & = & \nu_1(\lambda) & + & \nu_2(\lambda) & + & \cdots & + & \nu_r(\lambda) \\
+        -\delta_1 + \delta_2(\lambda) & = & & & \nu_2(\lambda) & + & \cdots & + & \nu_r(\lambda) \\
+        & \vdots & \\
+        -\delta_{r-1} + \delta_r(\lambda) & = & & & & & & & \nu_r(\lambda)
+      \end{array}
+      \right.
+    \]
+
+    que tiene por solución
+
+    \[\left\{
+        \begin{array}[ht]{r c l}
+          \nu_1(\lambda) & = & 2\delta_1(\lambda) - \delta_2(\lambda) \\
+          \nu_k(\lambda) & = & -\delta_{k-1}(\lambda) + 2\delta_k(\lambda) - \delta_{k+1}(\lambda)
+        \end{array}
+      \right.
+    \]
+
+    Pasar de la forma de Jordan compleja a la real se hace como uno podría
+    esperar:
+
+    \[B_\Complex =
+      \mat{\ddots &      &      &      &      &         \\
+                  & a+bi & 1    &      &      &         \\
+                  & 0    & a+bi &      &      &         \\
+                  &      &      & a-bi & 1    &         \\
+                  &      &      & 0    & a-bi &         \\
+                  &      &      &      &      & \ddots} \leadsto
+      B_\R =
+      \mat{\ddots &    &   &    &      &         \\
+                  & a  & b & 1  & 0 &         \\
+                  & -b & a & 0  & 1 &         \\
+                  &    &   & a  & b &         \\
+                  &    &   & -b & a &         \\
+                  &    &   &    &   & \ddots},
+    \]
+
+    pero esto requiere modificar también la matriz de paso compleja:
+
+    \[P_\Complex =
+      \mat{\cdots & v_i & v_{i+1} & \cdots} \leadsto
+      P_\R =
+    \mat{\cdots & \Re v_i & \Im v_i & \cdots}\]
+
+  Falta únicamente ver cómo calcular
+  \(P_\Complex = \mat{v_1 & v_2 & \cdots & v_n}\). Para ello, es suficiente
+  estudiar cómo afecta \(B\) a los vectores de la base canónica, puesto que
+  \(A\) y la base \(\{v_i : i = 1, \dots, n\}\) se obtienen con el cambio de
+  base dado por \(P_\Complex\). Si el bloque \(j\)-ésimo de la matriz \(B\) (de
+  tamaño \(n_j \times n_j\)) empieza en el índice \(l+1\), se tiene
+
+  \[\left\{
+      \begin{array}[ht]{r c l}
+        Av_{l+1} & = & \lambda v_{l+1} \\
+        Av_{l+2} & = & \lambda v_{l+2} + v_{l+1} \\
+        & \vdots & \\
+        A v_{l+n_j} & = & \lambda v_{l+n_j} + v_{l+n_j-1}
+      \end{array} \right. \iff
+      \left\{
+      \begin{array}[ht]{r c l}
+        Av_{l+1} & = & \lambda v_{l+1} \\
+        Av_{l+k} & = & \lambda v_{l+k} + v_{l+k-1}, \ 1 < k \leq n_j\\
+      \end{array}
+      \right.\]
+
+    Estas ecuaciones (junto con el hecho de que \(P\) es invertible)
+    caracterizan \(P\).
 \end{document}
