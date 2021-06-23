@@ -350,7 +350,7 @@ modela enfermedades que no generan inmunidad. Este modelo posee una cualidad
 importante del modelo SIR, el teorema del umbral, que enuncia que en función de
 los parámetros la enfermedad desaparece o se hace endémica.
 
-\subsection{El modelo más simple}
+\subsection{Modelo SIS}
 
 Nos proponemos resolver la ecuación:
 \[x' = k x(n - x),\]
@@ -378,7 +378,7 @@ práctica, la evolución de una pandemia depende de las medidas que se tomen
 para evitar la infección, por lo que modelos más refinados modelan la
 probabilidad de contagio en función del tiempo.
 
-\subsection{Modelo SIS}
+\subsection{Ecuación de Bernoulli}
 
 Recordamos que la ecuación del modelo SIS, donde \(\beta\) es la probabilidad de
 recuperación, es
@@ -390,9 +390,14 @@ obtenemos la ecuación
 \[x' = a(t)x + b(t)x^2.\]
 
 Este es un caso particular de la ecuación de Bernoulli, planteada en 1695 y
-resuelta por Leibniz en 1696
-\[x' = a(t)x + b(t)x^n,\]
-está ecuación es de primer grado pero, evidentemente, no es lineal. Para poder
+resuelta por Leibniz en 1696.
+
+\begin{definition}[Ecuación de Bernoulli]
+	Una ecuación diferencial de Bernoulli es una ecuación de la forma:
+	\[x' = a(t)x + b(t)x^n.\]
+\end{definition}
+
+Esta ecuación es de primer grado pero, evidentemente, no es lineal. Para poder
 resolverla necesitaremos una nueva técnica, el cambio de variable.
 
 \section{Método de cambio de variable}
@@ -466,16 +471,20 @@ que la tira hacia arriba es una función de la velocidad \(kv^n\), con
 diferencial \(v' = -\frac{k}{m} v^n + g\), lineal para \(n = 1\), no lineal
 en caso contrario. En algunos casos, como la caída de un meteorito que
 pierde masa debido al rozamiento, los parámetros \(k\) y \(m\) dependen del
-tiempo. El caso con cocientes constantes es resoluble, en el otro tenemos una
-ecuación de la forma
-\[x' = p(t)x^2 + q(t)x + r(t),\]
+tiempo. El caso con coeficientes constantes es resoluble, en el otro tenemos una
+ecuación de  Riccati.
 
-conocida como ecuación de Ricatti. Notamos que en caso de no tener término
+\begin{definition}[Ecuación de Riccati]
+	Una ecuación diferencial de Riccati es una ecuación de la forma:
+	\[x' = p(t)x^2 + q(t)x + r(t).\]
+\end{definition}
+
+Notamos que en caso de no tener término
 independiente se trata de la ecuación de Bernoulli que, como ya hemos visto, se
 puede resolver mediante cambio de variable. De hecho, esta ecuación también se
 puede resolver mediante cambio de variable, pero solo si conocemos de antemano
 una solución particular: si \(x_p(t)\) es una solución particular, el cambio de
-variable \(x = x_p(t) + 1/y\) reduce la ecuación de Ricatti a una lineal. No
+variable \(x = x_p(t) + 1/y\) reduce la ecuación de Riccati a una lineal. No
 se conoce ningún algoritmo general para obtener una solución particular.
 
 \end{document}

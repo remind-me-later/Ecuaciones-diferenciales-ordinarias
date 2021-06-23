@@ -209,17 +209,17 @@ Puesto que es solución del problema de valor inicial
 \(\set{X' = AX \wedge X(0) = \mathit{Id}}\) hemos comprobado a posteriori, por 
 la unicidad de la solución, que la matriz de la izquierda es \(e^{At}\). Para
 convencernos lo comprobamos también directamente, tenemos que
-\[e^{\smat{\lambda_1 & & \\ & \ddots & \\ & & \lambda_n} t}
+\[e^{At} = \exp\smat{\lambda_1t & & \\ & \ddots & \\ & & \lambda_nt}
 	= \sum_{k = 0}^\infty 
-	\frac{\smat{\lambda_1 & & \\ & \ddots & \\ & & \lambda_n}^k t^k}{k!} 
+	\frac{1}{k!}\smat{\lambda_1 & & \\ & \ddots & \\ & & \lambda_n}^k t^k
 	= \sum_{k = 0}^\infty 
-	\frac{\smat{\lambda_1 t & & \\ & \ddots & \\ & & \lambda_n t}^k}{k!},
+	\frac{1}{k!} \smat{\lambda_1 t & & \\ & \ddots & \\ & & \lambda_n t}^k,
 	\]
 ahora, explotando la diagonalidad
 \[\sum_{k = 0}^\infty 
-	\frac{\smat{\lambda_1 t & & \\ & \ddots & \\ & & \lambda_n t}^k}{k!}
+	\frac{1}{k!} \smat{\lambda_1 t & & \\ & \ddots & \\ & & \lambda_n t}^k
 	= \sum_{k = 0}^\infty 
-	\frac{\smat{(\lambda_1 t)^k & & \\ & \ddots & \\ & & (\lambda_n t)^k}}{k!}
+	\frac{1}{k!} \smat{(\lambda_1 t)^k & & \\ & \ddots & \\ & & (\lambda_n t)^k}
 	= 
 	\mat{\sum_{k = 0}^\infty \frac{(\lambda_1 t)^k}{k!} & & \\
 		& \ddots & 
@@ -602,13 +602,13 @@ De esta forma, la solución de la ecuación transformada es
   \begin{theorem}[forma canónica de Jordan real]
     Sea \(A \in \mathcal{M}_{n \times n}(\R)\). Existe una matriz no singular
     \(P\) tal que \(P^{-1}AP = B\), donde \(B\) es una matriz diagonal por
-    bloques, cada uno de ellos de la forma
+    bloques, cada uno de ellos de la forma:
     \begin{itemize}
     \item \(\smat{\lambda & 1 & & \\ & \lambda & \cdot & \\ & & \cdot & 1 \\ & &
-        & \lambda}\), si \(\lambda\) es un autovalor real de \(A\)
+        & \lambda}\), si \(\lambda\) es un autovalor real de \(A\),
     \item \(\smat{D & I_2 & & \\ & D & \cdot & \\ & & \cdot & I_2 \\ & &
-        & D}\), con \(D = \smat{a & b \\ -b & a}\) e \(I_2 = \smat{1 & 0 \\ 0 & 1}\)
-      si \(a+ib\ (b>0)\) es un autovalor complejo de \(A\)
+        & D}\), con \(D = \smat{a & b \\ -b & a}\) e \(I_2 = \smat{1 & 0 \\ 0 & 1}\),
+      si \(a+ib\ (b>0)\) es un autovalor complejo de \(A\).
     \end{itemize}
   \end{theorem}
 
