@@ -1,0 +1,138 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+Hasta ahora nos hemos preocupado de \emph{resolver} los sistemas de ecuaciones
+diferenciales lineales. Ahora queremos entender el comportamiento
+\emph{cualitativo} de sus soluciones.
+
+Haciendo una analogía con el análisis real, un planteamiento cuantitativo es
+tener una fórmula explícita para una función y uno cualitativo es dar la forma
+global de su gráfica (crecimiento, convexidad, asíntotas...)
+
+Si sabemos resolver explícitamente los sistemas, ¿por qué interesa hacer un
+análisis cualitativo?
+
+\begin{enumerate}[1)]
+\item En muchos casos, nos da información relevante del modelo estudiado. Por
+  ejemplo, es importante saber si una enfermedad desaparece o se hace endémica,
+  si una población oscila, se estabiliza o desaparece, si un tumor crece sin
+  control o su crecimiento se termina estabilizando, si las oscilaciones de un
+  puente acabarán pasando el umbral de rotura, etc.
+\item En el caso no lineal, esto es esencialmente lo único que se puede decir
+  (aparte de dar aproximaciones numéricas de la solución).
+\end{enumerate}
+
+Nos centraremos exclusivamente en \emph{sistemas planos} (matrices \(2 \times 2\))
+y en el caso homogéneo de coeficientes constantes, es decir, en sistemas de la
+forma
+\[x' = Ax, \qquad A = \mat{a_{11} & a_{12} \\ a_{21} & a_{22}}.\]
+Estamos interesados en pintar las trayectorias u órbitas:
+
+\begin{definition}
+  Dada una solución \((x_1(t), x_2(t))\) de un sistema \(x' = Ax\), su
+  \emph{trayectoria} u \emph{órbita} es el conjunto
+  \(\{(x_1(t), x_2(t)) : t \in \R\} \subset \R^2\).
+\end{definition}
+
+\begin{definition}
+  El conjunto de todas las trayectorias de \(x' = Ax\) se llama \emph{diagrama
+    de fases} del sistema.
+\end{definition}
+
+\begin{example}
+  Dibujar el diagrama de fases del sistema \(x' = Ax\) siendo
+  \(A = \smat{0 & 1 \\ -1 & 0}\).
+
+  Como ya vimos, la solución general viene dada por
+  \[\begin{cases}
+      x_1(t) = k_1 \cos t + k_2 \sin t \\
+      x_2(t) = - k_1 \sin t + k_2 \cos t
+    \end{cases}\]
+
+  Nuestro objetivo es eliminar \(t\) de estas ecuaciones para obtener la
+  relación entre \(x_1\) y \(x_2\) que define la trayectoria.
+
+  La solución se puede escribir como
+
+  \[\mat{x_1 \\ x_2} = e^{At}\mat{k_1 \\ k_2} =
+    \underbrace{\mat{\cos t & \sin t \\ -\sin t & \cos t}}_{\text{matriz de
+        rotación}} \mat{k_1 \\ k_2},\]
+
+  así que, intuitivamente, la trayectoria es una circunferencia que pasa por
+  \(\smat{k_1 \\ k_2}\). Analíticamente,
+  \begin{align*}
+    x_1^2 + x_2^2 &= (k_1^2\cos^2t + k_2^2\sin^2t + 2k_1k_2\cos t \sin t) +
+                    (k_1^2\sin^2t + k_2^2\cos^2t - 2k_1k_2\cos t \sin t) \\
+    &= k_1^2(\cos^2 t + \sin^2 t) + k_2^2(\cos^2t + \sin^2t) = k_1^2+k_2^2.
+  \end{align*}
+  Efectivamente, la trayectoria que pasa por \(\smat{k_1 \\ k_2}\) es la
+  circunferencia centrada en el origen de radio \(\sqrt{k_1^2+k_2^2}\).
+\end{example}
+
+\begin{theorem}
+  Las trayectorias no se cortan.
+  \begin{proof}
+    Supongamos que las trayectorias asociadas a las soluciones \(x(t), y(t)\) de
+    \(x' = Ax\) se cortan o, en otras palabras, que existen \(t_1, t_2\) tales
+    que \(x(t_1) = y(t_2)\). Lo que ocurre es que \(y(t) = x(t + (t_1-t_2))\),
+    luego la trayectoria que definen ambas soluciones resulta ser la misma.
+
+    Para ver esto, definimos \(z(t) = x(t + (t_1-t_2))\). Se cumple que \(z' =
+    Az\) y \(z(t_2) = x(t_1) = y(t_2)\), luego, en virtud del teorema de
+    existencia y unicidad, debe ser \(z(t) = y(t)\).
+  \end{proof}
+\end{theorem}
+
+\begin{remark}
+  Ya vimos que las gráficas de \(x(t), y(t)\) no se cortan (como subconjuntos de
+  \(\R^3\)). Este resultado, más fuerte, quiere decir que no se cortan \emph{sus
+    proyecciones}, y se cumple porque \(A\) tiene coeficientes constantes (en
+  caso contrario, no sería necesariamente cierto que \(z' = Az\)).
+\end{remark}
+
+\section{Interpretación geométrica de las trayectorias}
+
+Una matriz \(A\), o más precisamente su aplicación lineal asociada \(A : \R^2
+\to \R^2,\ x \mapsto Ax\), es un \emph{campo vectorial}. Una solución del
+sistema \(x' = Ax\) no es más que una curva \(t \mapsto x(t)\) tal que su
+velocidad \(x'(t)\) coincide con el valor del campo en \(x(t)\), es decir, una
+\emph{curva integral} del campo.
+
+\begin{example}
+  Sea la matriz \(A = \smat{0 & 1 \\ -1 & 0}\). Esbozar el campo vectorial que
+  define.
+
+  La matriz \(A\) actúa sobre un vector genérico \(\smat{x_1 \\ x_2}\) como
+  \(\smat{x_1 \\ x_2} \mapsto A\smat{x_1 \\ x_2} = \smat{x_2 \\ -x_1}\).
+  Observamos que \(\langle x, Ax \rangle = 0\), es decir, la velocidad es
+  ortogonal a la posición en todo punto, y además \(\|x\| = \|Ax\|\), es decir,
+  \(A\) no cambia la norma de los vectores. El campo vectorial que define esta
+  matriz es, entonces,
+
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=0.6]
+      \draw[->] (-3.5,0) -- (3.5,0) node[above right] {\(x_1\)};
+      \draw[->] (0,-3.5) -- (0,3.5) node[above right] {\(x_2\)};
+      \foreach \r in {1, 2, 3}
+      \foreach \a in {0,...,7}
+      \draw[->] ({\r*cos(45*\a)}, {\r*sin(45*\a)}) --
+      ({\r*cos(45*\a)+\r/2*sin(45*\a)}, {\r*sin(45*\a)-\r/2*cos(45*\a)});
+    \end{tikzpicture}
+  \end{figure}
+\end{example}
+
+Nos centramos ahora en esbozar el diagrama de fases de un sistema plano general
+\(x' = Ax\), siendo \(B = P^{-1}AP\) su forma de Jordan. Las formas de Jordan
+posibles son
+
+\begin{enumerate}[a)]
+\item \(B = \smat{\lambda_1 & \\ & \lambda_2},\ \lambda_1 \neq \lambda_2\)
+\item \(B = \smat{\lambda & \\ & \lambda}\)
+\item \(B = \smat{\lambda & 1 \\ & \lambda}\)
+\item \(B = \smat{a & b \\ -b & a},\ b>0\)
+\end{enumerate}
+
+Haremos los diagramas de fase para las formas de Jordan, y luego desharemos el
+cambio de base para obtener el diagrama final.
+\end{document}
