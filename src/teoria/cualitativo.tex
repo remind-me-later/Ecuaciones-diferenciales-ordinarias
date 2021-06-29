@@ -126,8 +126,8 @@ velocidad \(x'(t)\) coincide con el valor del campo en \(x(t)\), es decir, una
   \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[scale=0.6]
-      \draw[->] (-3.5,0) -- (3.5,0) node[above right] {\(x_1\)};
-      \draw[->] (0,-3.5) -- (0,3.5) node[above right] {\(x_2\)};
+      \draw[->] (-3.5,0) -- (3.5,0);
+      \draw[->] (0,-3.5) -- (0,3.5);
       \foreach \r in {1, 2, 3}
       \foreach \a in {0,...,7}
       \draw[->] ({\r*cos(45*\a)}, {\r*sin(45*\a)}) --
@@ -476,8 +476,14 @@ coordenadas polares.
 
 \begin{itemize}
 \item Si \(a = 0\), entonces \(r(t) \equiv r_0\), es decir, las trayectorias son
-  circunferencias de radio \(r_0\)
+  circunferencias de radio \(r_0\). El diagrama recibe el nombre de \emph{centro}.
 \item Si \(a \neq 0\), entonces las trayectorias son \emph{espirales logarítmicas}
+  \begin{itemize}
+  \item Si \(\lambda > 0\), las soluciones se alejan exponencialmente del
+    origen. En este caso, el diagrama recibe el nombre de \emph{foco inestable}.
+  \item Si \(\lambda < 0\), las soluciones se acercan exponencialmente al
+    origen. En este caso, el diagrama recibe el nombre de \emph{foco estable}.
+  \end{itemize}
 \end{itemize}
 
 \begin{figure}[ht]
@@ -506,12 +512,6 @@ coordenadas polares.
   \end{subfigure}
 \end{figure}
 
-\begin{itemize}
-\item Si \(\lambda > 0\), las soluciones se alejan exponencialmente del
-  origen. En este caso, el diagrama recibe el nombre de \emph{foco inestable}.
-\item Si \(\lambda < 0\), las soluciones se acercan exponencialmente al
-  origen. En este caso, el diagrama recibe el nombre de \emph{foco estable}.
-\end{itemize}
 
 \subsection{Deshacer el cambio}
 Habíamos hecho el cambio de variable \(y = P^{-1}x\) para resolver el sistema
@@ -530,4 +530,243 @@ basta transformar el de \(y' = By\) de forma que sea compatible con las
 transformaciones
 \[e_1 \mapsto v_1 \qquad e_2 \mapsto e_2.\]
 
+\section{Oscilaciones mecánicas}
+
+Para terminar con el capítulo, veamos cómo se puede aplicar lo que hemos visto a
+la modelización de las \emph{oscilaciones mécanicas} y, de hecho, a muchos otros
+fenómenos.
+
+Como vamos a ver, las oscilaciones mecánicas se pueden modelizar con ecuaciones
+diferenciales lineales de segundo orden con coeficientes constantes; además,
+cualquier ecuación diferencial tal modela un sistema físico que presenta
+``oscilaciones'' en algún sentido, por lo que no perdemos generalidad al
+restringirnos a este caso. Esto ayuda a tener una intuición física de cómo se
+comporta el sistema.
+
+Consideramos un objeto de masa \(m\) suspendido del techo mediante un muelle,
+como se muestra en la figura~\ref{fig:muelle}. El sistema de referencia está
+elegido de tal manera que \(x=0\) corresponde con la posición de equilibrio de
+la masa.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[scale=0.5]
+    \fill[color=gray!20] (-5,10) rectangle (5,8);
+    \draw (-5,8) -- (5,8);
+    \draw (0,8) -- (0,7.5);
+    \draw (0,7.5) -- (0.5,7.25);
+    \draw (0.5,7.25) -- (-0.5,6.75);
+    \draw (-0.5,6.75) -- (0.5,6.25);
+    \draw (0.5,6.25) -- (-0.5,5.75);
+    \draw (-0.5,5.75) -- (0.5,5.25);
+    \draw (0.5,5.25) -- (-0.5,4.75);
+    \draw (-0.5,4.75) -- (0.5,4.25);
+    \draw (0.5,4.25) -- (-0.5,3.75);
+    \draw (-0.5,3.75) -- (0.5,3.25);
+    \draw (0.5,3.25) -- (-0.5,2.75);
+    \draw (-0.5,2.75) -- (0,2.5);
+    \draw (0,2) -- (0,2.5);
+    \draw (-2,2) rectangle (2,0);
+    \node at (0,1) {\(m\)};
+    \draw[dotted] (-5,1) -- (-2,1);
+    \draw[->] (-4.5,1) -- node[left,midway] {\(x < 0\)}(-4.5,2);
+    \draw[->] (-4.5,1) -- node[left,midway] {\(x > 0\)}(-4.5,0);
+    \draw[dotted] (2,1) -- (4,1) node[right] {\(x = 0\)};
+  \end{tikzpicture}
+  \caption{Masa colgada de un muelle}
+  \label{fig:muelle}
+\end{figure}
+
+Según la segunda ley de Newton, \(\sum_i F_i = mx''\). Las fuerzas que actúan sobre
+la masa son
+
+\begin{itemize}
+\item la gravedad, en sentido positivo, de módulo \(mg\)
+\item la fuerza de recuperación del muelle, en sentido opuesto al
+  desplazamiento, de módulo \(|kx|\), siendo \(k \geq 0\) la \emph{constante de
+    recuperación del muelle}
+\item la fuerza de rozamiento o amortiguación, en sentido opuesto a la
+  velocidad, de módulo \(|cx'|\), siendo \(c \geq 0\) la \emph{constante de rozamiento}
+\item una fuerza externa \(b(t)\)
+\end{itemize}
+
+Por tanto, la ecuación diferencial que modela este sistema es
+\begin{equation} \label{eq:osc1}
+  mx'' = mg - kx - cx' + b(t)
+\end{equation}
+
+\begin{remark}
+  La hipótesis de que \(k\) y \(c\) son constantes es razonable. La hipótesis de
+  linealidad de la ecuación es algo más atrevida, pero observaciones empíricas
+  justifican esta elección de las fuerzas de recuperación y rozamiento.
+\end{remark}
+
+Para analizar la ecuación~\eqref{eq:osc1}, suponemos que \(m=1\) e incluimos la
+fuerza de la gravedad en la fuerza externa, de forma que queda
+\begin{equation} \label{eq:osc2}
+  x'' = - kx - cx' + b(t)
+\end{equation}
+
+\begin{remark}
+  Esta es la ecuación diferencial lineal de orden 2 más general tal que su
+  homogénea asociada tiene coeficientes constantes (e.d. la ecuación diferencial
+  lineal de orden 2 más general que sabemos resolver).
+\end{remark}
+
+La ecuación homogénea asociada a~\eqref{eq:osc2} es
+\begin{equation} \label{eq:osch}
+  x'' = - cx' - kx \iff x'' + cx' + kx = 0
+\end{equation}
+
+Introduciendo las variables \(x_1 = x\) y \(x_2 = x'\), tenemos que el sistema
+\(2 \times 2\) asociado es
+\[\mat{x_1' \\ x_2'} = \mat{0 & 1 \\ -k & -c} \mat{x_1 \\ x_2} \iff
+  \left\{\begin{array}{c c c c}
+          x_1' & = & & x_2 \\
+          x_2' & = & -kx_1 & -cx_2
+  \end{array}\right.
+\]
+
+La matriz del sistema tiene por polinomio característico
+\[
+  p(\lambda) =
+  \begin{vmatrix}
+    -\lambda & 1 \\ -k & -c-\lambda
+  \end{vmatrix} =
+  \lambda(\lambda + c) + k = \lambda^2 + c\lambda + k
+\]
+\begin{remark}
+  El polinomio característico (y por tanto los autovalores) se puede obtener
+  directamente a partir de la ecuación homogénea~\eqref{eq:osch}: \(x'' + cx' +
+  kx = 0 \leftrightarrow \lambda^2 + c\lambda + k = 0\).
+\end{remark}
+
+Tenemos entonces que los autovalores de la matriz del sistema son
+\[\lambda_1 = \frac{-c + \sqrt{c^2 - 4k}}{2}, \quad \lambda_2 = \frac{-c - \sqrt{c^2-4k}}{2}\]
+
+Vamos a empezar resolviendo casos particulares sencillos, para ir complicando el
+problema poco a poco hasta llegar al caso general.
+
+\subsection{Movimiento oscilatorio armónico}
+Este es el caso (mínimamente interesante) más sencillo, en el que no hay
+amortiguación ni fuerzas externas, es decir, \(c = 0, b(t) = 0\).
+
+Con estas simplificaciones, la ecuación queda reducida a \(x'' = -kx\), y los
+autovalores son \(\pm i\sqrt{k}\). El valor \(\omega_0 = \sqrt{k}\) recibe el
+nombre de \emph{frecuencia fundamental} del sistema.
+
+La matriz \(B\) asociada es, por tanto, \(B = \smat{0 & \omega_0 \\ -\omega_0 &
+  0}\), y su exponencial es \(e^{Bt} = \smat{\cos \omega_0 t & \sin \omega_0 t
+  \\ -\sin \omega_0 t & \cos \omega_0 t}\). Así, la solución general del sistema
+es
+\[\mat{x_1 \\ x_2} = P \mat{\cos \omega_0 t & \sin \omega_0 t
+  \\ -\sin \omega_0 t & \cos \omega_0 t}\mat{c_1 \\ c_2} = \mat{p_{11} & p_{12} \\
+  p_{21} & p_{22}} \mat{c_1 \cos \omega_0 t + c_2 \sin \omega_0 t \\ -c_1 \sin
+  \omega_0 t + c_2 \cos \omega_o t}\]
+y la solución de la ecuación de orden 2 es
+\begin{align*}
+  x = x_1 &= p_{11}c_1 \cos \omega_0 t + p_{11}c_2 \sin \omega_0 t - p_{12}c_1
+  \sin \omega_0 t + p_{12}c_2 \cos \omega_0 t \\
+  &= \underbrace{(p_{11}c_1+p_{12}c_2)}_{k_1} \cos \omega_0 t +
+  \underbrace{(p_{11}c_2 - p_{12}c_1)}_{k_2} \sin \omega_0 t = k_1 \cos \omega_0
+  t + k_2 \sin \omega_0 t
+\end{align*}
+
+\begin{remark}
+  En realidad, esto se podía haber deducido directamente de la solución general
+  del sistema, porque sabemos de la teoría general que el conjunto de soluciones
+  es un espacio vectorial de dimensión 2 y, en este caso, cada solución
+  particular debe ser combinación lineal de
+  \(\{\cos \omega_0 t, \sin \omega_0 t\}\), que son linealmente independientes,
+  así que debe ser de la forma \(k_1 \cos \omega_0 t + k_2 \sin \omega_0 t\).
+\end{remark}
+
+Tomando \(r_0 = \sqrt{k_1^2+k_2^2}\) y \(\theta_0 \in \R\) tal que \(r_0 \cos
+\theta_0 = k_1\) y \(r_0 \sin \theta_0\), nos queda
+\[r_0 \cos (\omega_0 t - \theta_0) = r_0(\cos \omega_0 t \cos \theta_0 + \sin
+  \omega_0 t \sin \theta_0) = k_1 \cos \omega_0 t + k_2 \sin \omega_0 t\]
+
+En resumen, la masa oscilará sinusoidalmente con un periodo de \(T =
+\frac{2\pi}{\omega_0}\) y el diagrama es el de un centro.
+
+\subsection{Movimiento oscilatorio amortiguado}
+Introducimos ahora una amortiguación, de forma que la ecuación queda
+\(x'' = - cx' - kx\). Los autovalores son \(\frac{1}{2}(-c \pm \sqrt{c^2-4k})\), así
+  que distinguimos casos en función del valor de \(c^2-4k\):
+  \begin{itemize}
+  \item \(c^2-4k > 0\) (caso \emph{sobreamortiguado}): se tienen dos autovalores
+    reales distintos, ambos negativos:
+    \[\lambda_1 = \frac{-c + \sqrt{c^2-4k}}{2}, \quad \lambda_2 = \frac{-c -
+        \sqrt{c^2-4k}}{2}.\]
+    La solución general del sistema asociado es
+    \[\mat{x_1 \\ x_2} = P \mat{e^{\lambda_1 t} & 0 \\ 0 & e^{\lambda_2 t}} \mat{c_1
+        \\ c_2};\]
+    razonando como en la observación anterior, la solución de la ecuación de
+    orden 2 es
+    \[x = x_1 = k_1e^{\lambda_1 t} + k_2e^{\lambda_2 t}\]
+    Como los autovalores son negativos, el diagrama de fases es el de un nodo
+    estable. Además, \(x(t) \to 0\) exponencialmente rápido. La gráfica de la
+    solución puede tomar tres formas distintas:
+    \begin{figure}[ht]
+      \centering
+      \begin{subfigure}{0.33\textwidth}
+        \centering
+        \begin{tikzpicture}
+          \draw (-0.5,0) -- (3,0);
+          \draw (0,-1) -- (0,2);
+          \draw [domain=0:3] plot (\x, {0.7*exp(-\x)+exp(-2*\x)});
+        \end{tikzpicture}
+      \end{subfigure}%
+      \begin{subfigure}{0.33\textwidth}
+        \centering
+        \begin{tikzpicture}
+          \draw (-0.5,0) -- (3,0);
+          \draw (0,-1) -- (0,2);
+          \draw [domain=0:3] plot (\x, {5*exp(-\x)-4*exp(-2*\x)});
+        \end{tikzpicture}
+      \end{subfigure}%
+      \begin{subfigure}{0.33\textwidth}
+        \centering
+        \begin{tikzpicture}
+          \draw (-0.5,0) -- (3,0);
+          \draw (0,-1) -- (0,2);
+          \draw [domain=0:3] plot (\x, {-4*exp(-\x)+5*exp(-2*\x)});
+        \end{tikzpicture}
+      \end{subfigure}%
+    \end{figure}
+
+    En particular, la amortiguación es demasiado grande para que haya
+    oscilaciones. Si las condiciones iniciales son demasiado extremas (mucho
+    desplazamiento o velocidad muy grande), puede parecer que la masa va a
+    oscilar; sin embargo, rápidamente se estabiliza.
+  \item \(c^2 - 4k < 0\) (caso \emph{subamortiguado}): se tienen dos autovalores
+    complejos:
+    \[\lambda_1 = -\frac{c}{2}+i\sqrt{k-\left(\frac{c}{2}\right)^2} = a + bi, \quad
+      \lambda_2 = -\frac{c}{2}-i\sqrt{-k\left(\frac{c}{2}\right)^2} = a - bi\]
+
+    La solución general del sistema asociado es
+    \[\mat{x_1 \\ x_2} = P \mat{e^{at} \cos bt & e^{at} \sin bt \\ -e^{at} \sin
+        bt & e^{at} \cos bt} \mat{c_1 \\ c_2}\]
+    y, procediendo como antes, la solución de la ecuación de orden 2 es
+    \[x = x_1 = k_1e^{at} \cos bt + k_2e^{at} \sin bt.\]
+    Tomando \(r_0 = \sqrt{k_1^2+k_2^2}\) y \(\theta_0 \in \R\) tal que \(r_0
+    \cos bt = k_1\) y \(r_0 \sin bt = k_2\), nos queda
+    \[x = r_0e^{at} \cos (bt - \theta_0),\]
+    siendo \(a = -c/2 < 0\). El diagrama de fases es ahora el de un foco
+    estable, y la gráfica de la solución tiene esta forma:
+    \begin{figure}[ht]
+      \centering
+      \begin{tikzpicture}
+        \draw[->] (-0.5,0) -- (4,0);
+        \draw[->] (0,-1.5) -- (0,1.5);
+        \draw [domain = 0:3.5, samples=100] plot (\x, {exp(-\x)*cos((4*\x-1) r)});
+        \draw [domain = 0:3.5, dotted] plot (\x, {exp(-\x)});
+        \draw [domain = 0:3.5, dotted] plot (\x, {-exp(-\x)});
+        \node at (1.5,0.5) {\small\(r_0e^{at}\)};
+        \node at (1.5,-0.5) {\small\(-r_0e^{at}\)};
+      \end{tikzpicture}
+    \end{figure}
+
+    En este caso sí que hay oscilaciones, aunque decaen a 0 exponencialmente rápido.
+  \end{itemize}
 \end{document}
