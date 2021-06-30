@@ -388,7 +388,7 @@ Juntándolo todo, los diagramas de fase son
 
 \begin{figure}[ht]
   \centering
-  \begin{subfigure}{0.3\textwidth}
+  \begin{subfigure}{0.33\textwidth}
     \centering
     \begin{tikzpicture}[scale=1.5]
       \draw[->] (-1.3,0) -- (1.3,0);
@@ -401,7 +401,7 @@ Juntándolo todo, los diagramas de fase son
     \end{tikzpicture}
     \caption*{\(\lambda > 0\)}
   \end{subfigure}%
-  \begin{subfigure}{0.3\textwidth}
+  \begin{subfigure}{0.33\textwidth}
     \centering
     \begin{tikzpicture}[scale=1.5]
       \draw[->] (-1.3,0) -- (1.3,0);
@@ -414,7 +414,7 @@ Juntándolo todo, los diagramas de fase son
     \end{tikzpicture}
     \caption*{\(\lambda < 0\)}
   \end{subfigure}%
-  \begin{subfigure}{0.3\textwidth}
+  \begin{subfigure}{0.33\textwidth}
     \centering
     \begin{tikzpicture}[scale=1.5]
       \draw[->] (-1.3,0) -- (1.3,0);
@@ -712,25 +712,25 @@ Introducimos ahora una amortiguación, de forma que la ecuación queda
       \begin{subfigure}{0.33\textwidth}
         \centering
         \begin{tikzpicture}
-          \draw (-0.5,0) -- (3,0);
-          \draw (0,-1) -- (0,2);
-          \draw [domain=0:3] plot (\x, {0.7*exp(-\x)+exp(-2*\x)});
+          \draw[->] (-0.5,0) -- (3,0);
+          \draw[->] (0,-1) -- (0,2);
+          \draw [domain=0:2.8] plot (\x, {0.7*exp(-\x)+exp(-2*\x)});
         \end{tikzpicture}
       \end{subfigure}%
       \begin{subfigure}{0.33\textwidth}
         \centering
         \begin{tikzpicture}
-          \draw (-0.5,0) -- (3,0);
-          \draw (0,-1) -- (0,2);
-          \draw [domain=0:3] plot (\x, {5*exp(-\x)-4*exp(-2*\x)});
+          \draw[->] (-0.5,0) -- (3,0);
+          \draw[->] (0,-1) -- (0,2);
+          \draw [domain=0:2.8, samples=50] plot (\x, {5*exp(-\x)-4*exp(-2*\x)});
         \end{tikzpicture}
       \end{subfigure}%
       \begin{subfigure}{0.33\textwidth}
         \centering
         \begin{tikzpicture}
-          \draw (-0.5,0) -- (3,0);
-          \draw (0,-1) -- (0,2);
-          \draw [domain=0:3] plot (\x, {-4*exp(-\x)+5*exp(-2*\x)});
+          \draw[->] (-0.5,0) -- (3,0);
+          \draw[->] (0,-1) -- (0,2);
+          \draw [domain=0:2.8, samples=50] plot (\x, {-4*exp(-\x)+5*exp(-2*\x)});
         \end{tikzpicture}
       \end{subfigure}%
     \end{figure}
@@ -759,14 +759,117 @@ Introducimos ahora una amortiguación, de forma que la ecuación queda
       \begin{tikzpicture}
         \draw[->] (-0.5,0) -- (4,0);
         \draw[->] (0,-1.5) -- (0,1.5);
-        \draw [domain = 0:3.5, samples=100] plot (\x, {exp(-\x)*cos((4*\x-1) r)});
-        \draw [domain = 0:3.5, dotted] plot (\x, {exp(-\x)});
-        \draw [domain = 0:3.5, dotted] plot (\x, {-exp(-\x)});
+        \draw [domain = 0:3.8, samples=100] plot (\x, {exp(-\x)*cos((4*\x-1) r)});
+        \draw [domain = 0:3.8, dotted] plot (\x, {exp(-\x)});
+        \draw [domain = 0:3.8, dotted] plot (\x, {-exp(-\x)});
         \node at (1.5,0.5) {\small\(r_0e^{at}\)};
         \node at (1.5,-0.5) {\small\(-r_0e^{at}\)};
       \end{tikzpicture}
     \end{figure}
 
     En este caso sí que hay oscilaciones, aunque decaen a 0 exponencialmente rápido.
+    
+  \item \(c^2-4k=0\) (caso \emph{críticamente amortiguado}): ahora hay un único
+    autovalor real, \(\lambda = -c/2\), de multiplicidad algebraica 2 y
+    multiplicidad geométrica 1, puesto que
+    \[\mat{0 & 1 \\ -k & -c} - \mat{\lambda & 0 \\ 0 & \lambda} = \mat{c/2 & 1
+        \\ -k & -c/2}\]
+    es una matriz de rango 1.
+
+    La solución general del sistema es
+    \[\mat{x_1 \\ x_2} = e^{\lambda t} P \mat{1 & t \\ 0 & 1} \mat{c_1 \\
+        c_2},\]
+    con lo que el diagrama de fases es el de un nodo impropio estable y la
+    solución de la ecuación de orden 2 es de la forma
+    \[x = x_1 = e^{\lambda t}(k_1 + k_2t).\]
+    La gráfica puede tomar tres formas distintas:
+    \begin{figure}[ht]
+      \centering
+      \begin{subfigure}{0.33\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.67]
+          \draw[->] (-0.5,0) -- (4,0);
+          \draw[->] (0,-0.5) -- (0,3);
+          \draw [domain=0:3.7] plot (\x, {exp(-\x)*(2+\x)});
+        \end{tikzpicture}
+      \end{subfigure}%
+      \begin{subfigure}{0.33\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.67]
+          \draw[->] (-0.5,0) -- (4,0);
+          \draw[->] (0,-0.5) -- (0,3);
+          \draw [domain=0:3.7, samples=50] plot (\x, {exp(-\x)*(2+5*\x)});
+        \end{tikzpicture}
+      \end{subfigure}%
+      \begin{subfigure}{0.33\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.67]
+          \draw[->] (-0.5,0) -- (4,0);
+          \draw[->] (0,-0.5) -- (0,3);
+          \draw [domain=0:3.7, samples=50] plot (\x, {exp(-\x)*(2-\x)});
+        \end{tikzpicture}
+      \end{subfigure}%
+    \end{figure}
+
+    Como se puede apreciar, el caso críticamente amortiguado se comporta igual,
+    cualitativamente, que el sobreamortiguado; en particular, ahora tampoco hay
+    oscilaciones de ningún tipo.
   \end{itemize}
+
+  \subsection{Caso general}
+  Consideramos, para finalizar, el caso en que existe una fuerza externa
+  \(b(t) \not \equiv 0\). Como ya sabemos, la solución general del caso no
+  homogéneo es \(x(t) = x_h(t) + x_p(t)\), siendo \(x_h(t)\) la solución general
+  de la ecuación homogénea y \(x_p(t)\) una solución particular de la ecuación
+  no homogénea. Como ya hemos visto, en cualquier caso con amortiguación
+  \(x_h(t) \to 0\) exponencialmente rápido y, por tanto, el comportamiento a
+  largo plazo del sistema es el de \(x_p(t)\).
+
+  Vamos a estudiar dos casos de interés especial:
+
+  \begin{itemize}
+  \item \(b(t) \equiv g\), es decir, sólo existe la fuerza de la gravedad. En
+    este caso, una solución particular es la solución constante \(x_p(t) \equiv
+    \frac{g}{k}\) y, por tanto, la solución general es \(x(t) = x_h(t) +
+    \frac{g}{k}\). Esta solución es la misma que en el caso homogéneo, solo que
+    la posición de equilibrio se desplaza de \(x=0\) a \(x=\frac{g}{k}\) por
+    efecto de la gravedad.
+  \item La fuerza externa es periódica, de la forma
+    \(b(t) = F_0 \cos \omega t\). \(F_0\) es la \emph{amplitud} de la fuerza y
+    \(\omega\) es la \emph{frecuencia} con la que se ejerce.
+
+    Es razonable conjeturar una solución particular de la forma \(x_p(t) =
+    \alpha \cos (\omega t - \beta)\). De hecho, se obtiene que \(x_p\) así
+    definida es solución para los valores de los parámetros
+    \[\alpha = \frac{F_0}{\sqrt{(\omega_0^2-\omega^2)^2+c^2\omega^2}} \quad
+      \text{y} \quad \beta \in \R \text{ tal que }
+      \begin{cases}
+        \cos \beta =
+        \frac{\omega_0^2-\omega^2}{\sqrt{(\omega_0^2-\omega^2)^2+c^2\omega^2}} \\
+        \sin \beta = \frac{c\omega}{\sqrt{(\omega_0^2-\omega^2)^2+c^2\omega^2}}
+      \end{cases}
+    \]
+
+    siendo \(\omega_0 = \sqrt{k}\) la frecuencia fundamental definida
+    anteriormente.
+
+    En estas condiciones puede aparecer el fenómeno de \emph{resonancia},
+    consistente en que las oscilaciones son mucho mayores de lo que serían en
+    ausencia de una fuerza externa y mucho mayores que la amplitud de la fuerza
+    externa \(F_0\):
+
+    Si \(\omega \approx \omega_0\), entonces \(\omega_0^2-\omega^2 \approx 0\),
+    con lo que \(\alpha \approx \frac{F_0}{c\omega}\). En particular, si
+    \(c \approx 0\) (i.e. hay muy poca amortiguación), entonces \(\alpha\) (la
+    amplitud de las \emph{oscilaciones}) puede ser enorme aunque \(F_0\) (la
+    amplitud de la \emph{fuerza externa}) sea pequeña.
+
+    El fenómeno de resonancia es el responsable del colapso de numerosos puentes
+    y estructuras similares, debido a fuerzas externas con una frecuencia
+    peligrosamente cercana a la de la estructura. Esta fuerza puede ser debida
+    al viento\footnote{\url{https://archive.org/details/CEP176}}, a los pasos
+    sincronizados de gente caminando por
+    encima\footnote{\url{https://youtu.be/2cuXbpXRvJ0}}, etc.
+  \end{itemize}
+
 \end{document}
