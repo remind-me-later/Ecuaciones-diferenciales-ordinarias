@@ -1,0 +1,147 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+En este capítulo vamos a estudiar la transformada de Laplace y su utilidad a la
+hora de resolver ecuaciones diferenciales.
+
+La transformada de Laplace es un ejemplo de transformada integral (en
+particular, lineal y continua). Para entender mejor este concepto, vamos a
+hacer un recordatorio de las transformaciones lineales discretas:
+
+Cualquier transformación lineal \(T : \R^n \to \R^m\) se corresponde con una
+matriz \(A \in \mathcal{M}_{m \times n}\). Cualquier vector \(v \in \R^n\) se
+puede ver como una aplicación
+\(v : \{1, \dots, n\} \to \R,\ i \mapsto v(i) = v_i\) y, en particular, una
+transformación lineal actuando sobre un vector, \(T(v)\), es una aplicación
+\[T(v) : \{1, \dots, m\} \to \R, \qquad j \mapsto T(v)(j) = \sum_i A(j,i)v(i).\]
+Una \emph{transformada integral} es el análogo continuo de esta idea. Es una
+aplicación que lleva una función \(f\) a otra función \(\hat{f}\) mediante una
+``fórmula'' del tipo
+\[\hat{f}(s) = \int_0^\infty \kappa(s,t) f(t) \dif t,\]
+donde \(\kappa\) recibe el nombre de \emph{kernel} o \emph{núcleo integral}.
+
+La transformada de Laplace viene dada por el núcleo \(\kappa(s,t) =
+e^{-st}\). La transformada de Fourier, estrechamente relacionada, viene dada por
+\(\kappa(s,t) = e^{-ist}\).
+
+\begin{remark}
+  Si \(s \in \Complex\) en la transformada de Laplace, la parte imaginaria de
+  \(\hat{f}\) se corresponde con la \(\hat{f}\) de la transformada de
+  Fourier. Aquí nos centraremos en \(s \in \R\).
+\end{remark}
+
+Entrando en más detalle:
+
+\begin{definition}
+  Sea \(f(t)\) una función continua a trozos en \([0,+\infty)\). Su
+  \emph{transformada de Laplace} es la función
+  \[\L\{f(t)\} : s \mapsto \int_0^\infty f(t)e^{-st} \dif t.\]
+  El \emph{dominio} de \(\L\{f(t)\}\) es el conjunto de \(s\) para los que la
+  integral converge.
+\end{definition}
+
+\begin{remark}
+  El dominio de \(\L\{f(t)\}\) depende de \(f(t)\).
+\end{remark}
+
+\begin{remark}
+  En general, la transformada de Laplace se puede definir en contextos más
+  generales, pero aquí nos basta con continuidad a trozos.
+\end{remark}
+
+\begin{remark}
+  Se trata de un operador lineal, es decir, \(\L\{\alpha f(t) + \beta g(t)\} =
+  \alpha \L\{f(t)\} + \beta \L\{g(t)\}\).
+\end{remark}
+
+\textbf{Notación.} Denotaremos a las funciones en \(t\) con letras minúsculas y
+a sus transformadas con la correspondiente letra mayúscula. Por
+ejemplo, \(\L\{f(t)\}(s) = F(s)\) y \(\L\{g(t)\}(s) = G(s)\).
+
+\textbf{Notación.} Usaremos \([\;\cdot\;]_{t=0}^{t=\infty}\) o simplemente
+\([\;\cdot\;]_0^\infty\) para referirnos a \(\lim \limits_{b \to \infty} [\;\cdot\;]_0^b\).
+
+\textbf{Notación.} Frecuentemente escribiremos \(\L\{f(t)\}\) en lugar de
+\(\L\{f(t)\}(s)\) por simplicidad.
+
+\subsection{Transformadas de Laplace de funciones elementales}
+
+\begin{itemize}
+\item \(f(t) = 1\):
+  \[\L\{1\} = \int_0^\infty e^{-st} \dif t = \frac{1}{s}
+    \left[-e^{-st}\right]_0^\infty = \frac{1}{s}(0-(-1)) =
+    \frac{1}{s},\]
+  si \(s > 0\), mientras que la integral diverge en caso contrario.
+\item \(f(t) = t\):
+  \[\L\{t\} = \int_0^\infty e^{-st}t \dif t =
+    \left[-\frac{te^{-st}}{s}\right]_0^\infty + \frac{1}{s} \int_0^\infty
+    e^{-st} \dif t = 0 + \frac{1}{s} \L\{1\} = \frac{1}{s^2},\]
+  si \(s > 0\), mientras que la integral diverge en caso contrario.
+\item \(f(t) = t^n,\ n \in \N\):
+  \[\L\{t^n\} = \frac{n!}{s^{n+1}} \quad (s>0).\]
+  Se prueba inmediatamente por inducción.
+\item \(f(t) = e^{at}\):
+  \[\L\{e^{at}\} = \int_0^\infty e^{at}e^{-st} \dif t = \int_0^\infty
+    e^{-(s-a)t} \dif t = \frac{1}{s-a}\left[-e^{-(s-a)t}\right]_0^\infty =
+    \frac{1}{s-a} \quad (s>a)\]
+\item \(f(t) = \sin kt\):
+  \[\L\{\sin kt\} = \int_0^\infty \sin kt e^{-st} \dif t = \cdots = \frac{k}{s^2} -
+    \frac{k^2}{s^2} \L\{\sin kt\} \implies \L\{\sin kt\} = \frac{k}{s^2+k^2}
+    \quad (s>0)\]
+\item \(f(t) = \cos kt\):
+  \[\L\{\cos kt\} = \int_0^\infty \cos kt e^{-st} \dif t = \cdots = \frac{1}{s} -
+    \frac{k^2}{s^2}\L\{\cos kt\} \implies  \L\{\cos kt\} = \frac{s}{s^2+k^2}
+    \quad (s>0)\]
+\end{itemize}
+
+Damos ahora una condición suficiente de existencia de la transformada de Laplace.
+
+\begin{definition}
+  \(f(t)\) es \emph{de orden exponencial} con constante \(c\) si existen \(M, T
+  > 0\) tales que
+  \[|f(t)| \leq Me^{ct} \quad \forall t \geq T.\]
+\end{definition}
+
+\begin{theorem}
+  Si \(f(t)\) es continua a trozos y de orden exponencial con constante \(c\),
+  entonces su transformada de Laplace \(F(s)\) existe si \(s > c\) (i.e. la
+  integral converge). Además, en este caso, \(F(s) \to 0\) cuando \(s \to +\infty\).
+  \begin{proof}
+    Por definición,
+    \[F(s) = \int_0^\infty f(t)e^{-st} \dif t,\]
+    de donde
+    \begin{align*}
+      \lim_{b \to \infty} \int_0^b |f(t)|e^{-st} \dif t &\leq \lim_{b \to
+        \infty} \left( \int_0^T |f(t)|e^{-st} \dif t + \int_T^b Me^{ct}e^{-st}
+        \dif t \right) \\
+      &= \int_0^T |f(t)|e^{-st} \dif t + \lim_{b \to \infty} \int_T^b Me^{-(s-c)t} \dif t,
+    \end{align*}
+    y el último límite converge si \(s>c\). Para terminar, \(\lim_{s \to \infty}
+    F(s) = 0\) sale del teorema de intercambiar límites e integrales.
+  \end{proof}
+\end{theorem}
+
+\subsection{Transformada de Laplace inversa}
+Si \(\L\{f(t)\} = F(s)\), diremos que \(f(t)\) es la \emph{transformada de
+  Laplace inversa} de \(F(s)\) y lo denotaremos como \(f(t) = \L^{-1}\{F(s)\}\).
+
+\begin{remark}
+  Si \(f(t)\) es continua, la transformada inversa está bien definida
+  (i.e. \(f(t)\) es la única función continua tal que su transformada es \(F(s)\)).
+\end{remark}
+
+\begin{remark}
+  \(\L^{-1}\) también es lineal.
+\end{remark}
+
+\begin{example}
+  Hallar la transformada de Laplace inversa de
+  \[F(s) = \frac{-2s+6}{s^2+4}.\]
+  Usamos la linealidad del operador \(\L^{-1}\), para lo que resulta útil
+  descomponer \(F(s)\) en funciones cuya transformada inversa ya conozcamos:
+  \[\L^{-1}\left\{\frac{-2s+6}{s^2+4}\right\} =
+    -2\L^{-1}\left\{\frac{s}{s^2+2^2}\right\} +
+    \frac{6}{2}\L^{-1}\left\{\frac{2}{s^2+2^2}\right\} = -2 \cos 2t + 3 \sin 2t\]
+\end{example}
+
+\end{document}
