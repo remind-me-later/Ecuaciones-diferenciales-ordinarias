@@ -263,4 +263,151 @@ mucho más fáciles de resolver. Veamos otro ejemplo un poco más complicado:
   el espacio de soluciones.
 \end{remark}
 
+\section{Propiedades de \(\L\) y \(\L^{-1}\)}
+\begin{proposition}
+  Si \(F(s)\) es la transformada de Laplace de \(f(t)\), entonces
+  \[\L\left\{e^{at}f(t)\right\} = F(s-a).\]
+  \begin{proof}
+    Basta aplicar la definición:
+    \[\L\left\{e^{at}f(t)\right\}(s) = \int_0^\infty e^{at}f(t) e^{-st} \dif t
+      = \int_0^\infty f(t) e^{-(s-a)t} \dif t = \L\{f(t)\}(s-a)\]
+  \end{proof}
+\end{proposition}
+
+\begin{example}
+  Calcular la transformada de Laplace de \(e^{-2t} \cos 4t\).
+  \[\L\left\{e^{-2t} \cos 4t\right\}(s) = \L\{\cos 4t\}(s+2) = \frac{(s+2)}{(s+2)^2+16}\]
+\end{example}
+
+Normalmente este resultado se usa en sentido inverso: a menudo queremos
+encontrar transformadas inversas de funciones que son traslación de
+transformadas que conocemos.
+
+\begin{example}
+  Calcular la transformada inversa de \((s-3)^{-2}\).
+  \[\L^{-1}\left\{\frac{1}{(s-3)^2}\right\} = \L^{-1}\left\{\restr{\frac{1}{s^2}}{s
+        \to s-3}\right\} = te^{3t},\]
+  teniendo en cuenta que
+  \[\L\{t\} = \frac{1}{s^2}.\]
+\end{example}
+
+\textbf{Notación} Cuando queramos decir explícitamente que una función es
+traslación de otra, lo denotaremos como en el ejemplo, es decir,
+\[\restr{f(x)}{x \to x+a} = f(x+a).\]
+
+También es útil hacer traslaciones en \(t\), para lo que introducimos el
+siguiente resultado.
+
+\begin{definition}
+  Se define la \emph{función escalón} o \emph{función de Heaviside} \(\mathcal{U}\) como
+  \[\mathcal{U}(t) =
+    \begin{cases}
+      0 & \mathrm{si}\ t < 0 \\
+      1 & \mathrm{si}\ t \geq 0
+    \end{cases}
+  \]
+  Aquí nos interesará considerar traslaciones de \(\mathcal{U}\) restringidas a
+  \([0,+\infty)\):
+  \[\mathcal{U}(t-a) =
+    \begin{cases}
+      0 & \mathrm{si}\ 0 \leq t < a \\
+      1 & \mathrm{si}\ t \geq a
+    \end{cases}
+  \]
+\end{definition}
+
+La función de Heaviside permite definir fácilmente funciones a trozos.
+
+\begin{example}
+  Dada la función \(f\) definida como
+  \[f(t) =
+    \begin{cases}
+      g(t) & \mathrm{si}\ 0 \leq t < a \\
+      h(t) & \mathrm{si}\ t \geq a
+    \end{cases}
+  \]
+  se puede expresar de forma más concisa como
+  \(f(t) = g(t) + (h(t)-g(t))\mathcal{U}(t-a)\).
+\end{example}
+
+\begin{proposition}
+  Si \(F(s)\) es la transformada de Laplace de \(f(t)\), entonces
+  \[\L\{f(t-a)\mathcal{U}(t-a)\} = e^{-as}F(s).\]
+  \begin{proof}
+    Basta aplicar la definición:
+    \begin{align*}
+      \L\{f(t-a)\mathcal{U}(t-a)\} &= \int_0^\infty f(t-a)\mathcal{U}(t-a)
+      e^{-st} \dif t = \int_a^\infty f(t-a)e^{-st} \dif t \\
+      &= \int_0^\infty f(u)e^{-s(u+a)} \dif u = e^{-sa} \int_0^\infty f(u)
+      e^{-su} \dif u \\
+      &= e^{-sa}F(s),
+    \end{align*}
+    haciendo el cambio de variable \(u = t-a\).
+  \end{proof}
+\end{proposition}
+
+\begin{example}
+  Hallar la transformada inversa de \(\frac{1}{s-4}e^{-2s}\).
+
+  Teniendo en cuenta que
+  \[\L^{-1}\left\{\frac{1}{s-4}\right\} = e^{4t},\]
+  aplicando la proposición anterior con \(a=2\) se tiene
+  \[\L^{-1}\left\{\frac{1}{s-4}e^{-2s}\right\} = e^{4(t-2)}\mathcal{U}(t-2).\]
+\end{example}
+
+\begin{theorem}
+  Si \(n \in \N\) y \(f(t)\) es continua a trozos y de orden exponencial, entonces
+  \[(-1)^n\L\left\{t^nf(t)\right\} = \frac{\dif {}^n}{\dif s^n} F(s).\]
+  \begin{proof}
+    Partiendo de la definición
+    \[F(s) = \int_0^\infty f(t)e^{-st} \dif t,\]
+    basta aplicar el teorema de derivación bajo el signo integral para obtener
+    \[\frac{\dif F(s)}{\dif s} = \int_0^\infty (-t)f(t)e^{-st} \dif t =
+      -\L\{tf(t)\}.\]
+    El caso general se demuestra igual por inducción.
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  Si \(f\) y \(g\) son continuas a trozos en \([0,+\infty)\), se define su
+  \emph{convolución} como
+  \[(f \ast g)(t) = \int_0^t f(u) g(t-u) \dif u.\]
+\end{definition}
+
+\begin{remark}
+  \(f \ast g = g \ast f.\)
+  \begin{proof}
+    Es inmediato haciendo el cambio de variable \(u = t-v\) en la integral:
+    \[(f \ast g)(t) = \int_0^t f(u) g(t-u) \dif u = \int_t^0 f(t-v)g(v) (-\dif
+      v) = \int_0^t g(v) f(t-v) \dif v = (g \ast f)(t).\]
+  \end{proof}
+\end{remark}
+
+\begin{theorem}
+  Si \(f\) y \(g\) son continuas a trozos en \([0,\infty)\) y de orden
+  exponencial, y si \(F\) y \(G\) son sus transformadas de Laplace, entonces
+  \[\L\{f \ast g\} = F(s) \cdot G(s).\]
+  \begin{proof}
+    Por definición,
+    \[\L\{f \ast g\} = \int_0^\infty \left( \int_0^t f(u)g(t-u) \dif u \right)
+      e^{-st} \dif t.\]
+    Observamos que estamos integrando sobre la región \(R = \{t > u > 0\} \subseteq
+    \R^2\); aplicando el teorema de Fubini:
+    \begin{align*}
+      \L\{f \ast g\} &= \iint_R f(u) g(t-u) \dif u \dif t = \int_0^\infty
+      \int_u^\infty f(u)g(t-u)e^{-st} \dif t \dif u \\
+      &= \int_0^\infty f(u) \left( \int_u^\infty g(t-u)e^{-st} \dif t \right)
+      \dif u = \int_0^\infty f(u) \left( \int_0^\infty g(v)e^{-s(v+u)} \dif v
+        \right) \dif u,
+    \end{align*}
+    donde hemos hecho el cambio de variable \(v = t-u\) en la integral
+    interior. Desarrollando, esto se puede separar en dos integrales:
+    \[\int_0^\infty f(u) e^{-su} \left( \int_0^\infty g(v)e^{-sv} \dif v \right) \dif u =
+      \left( \int_0^\infty f(u)e^{-su} \dif u \right)
+      \left( \int_0^\infty g(v)e^{-sv} \dif v \right) =
+      F(s) G(s),\]
+    como queríamos.
+  \end{proof}
+\end{theorem}
+
 \end{document}
