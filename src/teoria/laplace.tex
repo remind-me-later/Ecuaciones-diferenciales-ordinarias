@@ -64,7 +64,7 @@ ejemplo, \(\L\{f(t)\}(s) = F(s)\) y \(\L\{g(t)\}(s) = G(s)\).
 \textbf{Notación.} Frecuentemente escribiremos \(\L\{f(t)\}\) en lugar de
 \(\L\{f(t)\}(s)\) por simplicidad.
 
-\subsection{Transformadas de Laplace de funciones elementales}
+\section{Transformadas de Laplace de funciones elementales}
 
 \begin{itemize}
 \item \(f(t) = 1\):
@@ -121,7 +121,7 @@ Damos ahora una condición suficiente de existencia de la transformada de Laplac
   \end{proof}
 \end{theorem}
 
-\subsection{Transformada de Laplace inversa}
+\section{Transformada de Laplace inversa}
 Si \(\L\{f(t)\} = F(s)\), diremos que \(f(t)\) es la \emph{transformada de
   Laplace inversa} de \(F(s)\) y lo denotaremos como \(f(t) = \L^{-1}\{F(s)\}\).
 
@@ -141,7 +141,126 @@ Si \(\L\{f(t)\} = F(s)\), diremos que \(f(t)\) es la \emph{transformada de
   descomponer \(F(s)\) en funciones cuya transformada inversa ya conozcamos:
   \[\L^{-1}\left\{\frac{-2s+6}{s^2+4}\right\} =
     -2\L^{-1}\left\{\frac{s}{s^2+2^2}\right\} +
-    \frac{6}{2}\L^{-1}\left\{\frac{2}{s^2+2^2}\right\} = -2 \cos 2t + 3 \sin 2t\]
+    \frac{6}{2}\L^{-1}\left\{\frac{2}{s^2+2^2}\right\} = -2 \cos 2t + 3 \sin 2t.\]
 \end{example}
+
+\section{Transformada de Laplace y derivadas}
+A la hora de aplicar la transformada de Laplace para resolver ecuaciones
+diferenciales, es imprescindible saber cómo se comporta respecto a las derivadas
+sucesivas de una función. El siguiente teorema es fundamental para nuestro
+objetivo:
+
+\begin{theorem}
+  Si \(f, f', \dots, f^{(n-1)}\) son continuas en \([0,+\infty)\) y de orden
+  exponencial con constante \(c\) y \(f^{(n)}\) es continua \emph{a trozos} en
+  \([0,+\infty)\) y de orden exponencial con constante \(c\), entonces
+  \[\L\left\{f^{(n)}(t)\right\} = s^nF(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \cdots -
+    s^0f^{(n-1)}(0) \qquad (s>c)\]
+  \begin{proof}
+    Procedemos por inducción sobre el orden de la derivada. Para el caso base
+    \(n=1\) desarrollamos la definición mediante integración por partes:
+    \begin{align*}
+      \L\{f'(t)\} &= \int_0^\infty f'(t)e^{-st} \dif t =
+      \left[f(t)e^{-st}\right]_0^\infty - (-s) \int_0^\infty f(t)e^{-st} \dif t \\
+      &= (0-f(0)) + sF(s) = sF(s) - f(0) \qquad (s > c)
+    \end{align*}
+    Suponiendo el resultado cierto para \(n-1\), vamos a probar que se cumple
+    para \(n\):
+    \begin{align*}
+      \L\left\{f^{(n)}(t)\right\} &= \L\left\{\left(f^{(n-1)}\right)'(t)\right\} =
+      s\L\left\{f^{(n-1)}(t)\right\} - f^{(n-1)}(0) \\
+      &= s \left( s^{n-1}F(s) - s^{n-2}f(0) - s^{n-3}f'(0) - \cdots -
+        s^0f^{(n-2)}(0) \right) - f^{(n-1)}(0) \\
+      &= s^nF(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \cdots - s^1f^{(n-2)}(0) - s^0f^{(n-1)}(0),
+    \end{align*}
+    con lo que queda probado el teorema.
+  \end{proof}
+\end{theorem}
+
+Después de este resultado, ya estamos listos para ver cómo se puede aplicar la
+transformada de Laplace para resolver ecuaciones diferenciales:
+
+\begin{example}
+  Resolver el problema de valor inicial
+  \[
+    \begin{cases}
+      y' + 3y = 13 \sin 2t \\
+      y(0) = 6
+    \end{cases}
+  \]
+  Vamos a hacerlo en tres pasos:
+  \begin{enumerate}[1)]
+  \item Aplicamos la transformada de Laplace a ambos lados de la ecuación
+    diferencial y simplificamos aprovechando la linealidad:
+    \[\L\{y'\} + 3\L\{y\} = 13\L\{\sin 2t\}\]
+  \item Operamos, teniendo en cuenta que
+    \begin{gather*}
+      \L\{y'\} = sY(s) - y(0) = sY(s) -  6, \\
+      \L\{\sin 2t\} = \frac{2}{s^2+4}.
+    \end{gather*}
+    Así, la ecuación transformada es
+    \[(sY(s) - 6) + 3Y(s) = \frac{26}{s^2+4}\]
+    o, despejando \(Y(s)\),
+    \[
+      Y(s) = \frac{6}{s+3} + \frac{26}{(s+3)(s^2+4)} = \frac{6}{s+3} + \left(
+        \frac{2}{s+3} + \frac{-2s+6}{s^2+4} \right) = \frac{8}{s+3} + \frac{-2s+6}{s^2+4}
+    \]
+  \item Aplicamos la transformada inversa:
+    \begin{align*}
+      y(t) &= 8 \L^{-1}\left\{\frac{1}{s+3}\right\} + 3
+      \L^{-1}\left\{\frac{2}{s^2+2^2}\right\} -2
+      \L^{-1}\left\{\frac{s}{s^2+2^2}\right\} \\
+      &= 8e^{-3t} + 3\sin 2t - 2\cos 2t.
+    \end{align*}
+  \end{enumerate}
+\end{example}
+
+Como se aprecia en el ejemplo, la utilidad de la transformada de Laplace consiste
+en que transforma ecuaciones diferenciales en ecuaciones algebraicas, que son
+mucho más fáciles de resolver. Veamos otro ejemplo un poco más complicado:
+
+\begin{example}
+  Resolver el PVI
+  \[
+    \begin{cases}
+      y'' - 3y' + 2y = e^{-4t} \\
+      y(0) = 1, y'(0) = 5
+    \end{cases}
+  \]
+  Seguimos los mismos pasos que antes:
+  \begin{enumerate}[1)]
+  \item Aplicamos \(\L\):
+    \[\L\{y''\} - 3\L\{y'\} + 2\L\{y\} = \L\{e^{-4t}\}\]
+  \item Operamos, teniendo en cuenta que
+    \begin{gather*}
+      \L\{y''\} = s^2Y(s) - sy(0) - y'(0) = s^2Y(s) - s - 5, \\
+      \L\{y'\} = sY(s) - y(0) = sY(s) - 1,
+    \end{gather*}
+    con lo que la ecuación queda
+    \begin{gather*}
+      \left(s^2Y(s) - s - 5\right) - 3\left(sY(s) - 1\right) + 2Y(s) =
+      \frac{1}{s+4} \implies \\
+      Y(s) = \frac{s+2}{s^2-3s+2} + \frac{1}{(s^2-3s+2)(s+4)} =
+      \frac{-16/5}{s-1} + \frac{25/6}{s-2} + \frac{1/30}{s+4}.
+    \end{gather*}
+  \item Aplicamos \(\L^{-1}\):
+    \begin{align*}
+      y(t) &= \L^{-1}\{Y(s)\} = -\frac{16}{5}\L^{-1}\left\{\frac{1}{s-1}\right\}
+      +\frac{25}{6}\L^{-1}\left\{\frac{1}{s-2}\right\}
+      +\frac{1}{30}\L^{-1}\left\{\frac{1}{s+4}\right\} \\
+      &= -\frac{16}{5}e^t + \frac{25}{6}e^{2t} + \frac{1}{30}e^{-4t}.
+    \end{align*}
+  \end{enumerate}
+\end{example}
+
+\begin{remark}
+  La transformada de Laplace es especialmente útil para problemas de valor
+  inicial, aunque también sirve para encontrar la solución general de una
+  ecuación diferencial. Si al aplicar el operador \(\L\) a las derivadas de la
+  función no se sustituyen directamente los valores
+  \(x(0), x'(0), \dots, x^{(n-1)}(0)\), el resultado final queda en función de
+  estos valores, que son precisamente los parámetros que permiten generar todo
+  el espacio de soluciones.
+\end{remark}
 
 \end{document}
