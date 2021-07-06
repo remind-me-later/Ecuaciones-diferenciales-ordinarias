@@ -1,7 +1,7 @@
-\documentclass{report}
-%\documentclass[draft]{report}
+\documentclass[a4paper]{book}
+%\documentclass[draft, a4paper]{book}
 
-\usepackage[a4paper]{geometry}
+\usepackage{geometry}
 \usepackage[spanish]{babel}
 
 \usepackage{subfiles} 
@@ -44,28 +44,28 @@
 \chapter{Introducción}
 \subfile{teoria/intro}
 
-\chapter{Ecuaciones diferenciales lineales de primer orden}
+\chapter{Ecuaciones lineales de primer orden}
 \label{chap:capitulo1}
 \subfile{teoria/eqlin}
 
-\chapter{Sistemas de ecuaciones diferenciales lineales de primer orden}
+\chapter{Sistemas de ecuaciones lineales de primer orden}
 \label{chap:capitulo2}
 \subfile{teoria/siseq1ord}
 
 
-\chapter{Ecuación diferencial escalar de orden superior}
+\chapter{Ecuación escalar de orden superior}
 \label{chap:capitulo3}
 \subfile{teoria/ecesordn.tex}
 
-\chapter{Análisis cualitativo de los sistemas de ecuaciones diferenciales lineales}
+\chapter{Análisis cualitativo de los sistemas planos}
 \label{chap:capitulo4}
 \subfile{teoria/cualitativo.tex}
 
-\chapter{Solución de ecuaciones diferenciales (lineales) mediante series de potencias}
+\chapter{Series de potencias}
 \label{chap:capitulo5}
 \subfile{teoria/series.tex}
 
-\chapter{La transformada de Laplace}
+\chapter{Transformada de Laplace}
 \label{chap:capitulo6}
 \subfile{teoria/laplace.tex}
 
@@ -73,10 +73,10 @@
 
 \chapter{Problemas resueltos}
 
-\section{Problemas del capítulo~\ref{chap:capitulo1}}
+\section[Problemas del capítulo 1]{Problemas del capítulo~\ref{chap:capitulo1}}
 \subfile{problemas/eqlin}
 
-\section{Problemas del capítulo~\ref{chap:capitulo2}}
+\section[Problemas del capítulo 2]{Problemas del capítulo~\ref{chap:capitulo2}}
 \subfile{problemas/siseq1ord}
 
 \end{appendices}
