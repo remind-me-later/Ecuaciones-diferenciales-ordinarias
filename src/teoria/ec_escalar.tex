@@ -619,7 +619,7 @@ De esta forma, la solución de la ecuación transformada es
   A la vista de este teorema, sólo nos falta saber calcular la exponencial de
   matrices de la forma
 
-  \[\mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots & I_2 \\ & & & D} =
+  \[\tilde{D} = \mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots & I_2 \\ & & & D} =
     \mat{D & & & \\ & D & & \\ & & \ddots & \\ & & & D} +
     \underbrace{\mat{0 & I_2 & & \\ & 0 & \ddots & \\ & & \ddots & I_2 \\ & & &
         0}}_{N}.\]
@@ -630,12 +630,10 @@ De esta forma, la solución de la ecuación transformada es
 		= N \mat{D & & & \\ & D & & \\ & & \ddots & \\ & & & D},\]
 
   luego la exponencial de su suma es
-	\begin{align*}
-		\exp \mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots & I_2 \\ & & & D} t &=
-		\exp \mat{Dt & & & \\ & Dt & & \\ & & \ddots & \\ & & & Dt} \cdot \exp(Nt) \\ 
-		&= \mat{e^{at}R & & & \\ & e^{at}R & & \\ & & \ddots & \\ & & & e^{at}R}
-		\cdot \exp(Nt),
-	\end{align*}
+  	\[\exp(\tilde{D}) t =
+		\exp \mat{Dt & & & \\ & Dt & & \\ & & \ddots & \\ & & & Dt} \cdot \exp(Nt)
+		= \mat{e^{at}R & & & \\ & e^{at}R & & \\ & & \ddots & \\ & & & e^{at}R}
+		\cdot \exp(Nt),\]
 
   puesto que \(\exp \smat{Dt & & & \\ & Dt & & \\ & & \ddots & \\ & & & Dt} =
   \smat{e^{Dt} & & & \\ & e^{Dt} & & \\ & & \ddots & \\ & & & e^{Dt}}\) y
@@ -649,7 +647,7 @@ De esta forma, la solución de la ecuación transformada es
              &      &                   &        & I_2 }.\]
 
   Juntándolo todo, llegamos a
-  \[\exp \mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots & I_2 \\ & & & D}t =
+  \[\exp(\tilde{D}) t =
     \mat{e^{\lambda t}R & te^{\lambda t}R & \frac{t^2}{2!}e^{\lambda t}R & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}e^{\lambda t}R \\
            & e^{\lambda t}R & te^{\lambda t}R              & \ddots & \vdots                    \\
            &   & e^{\lambda t}R              & \ddots & \frac{t^2}{2!}e^{\lambda t}R            \\
