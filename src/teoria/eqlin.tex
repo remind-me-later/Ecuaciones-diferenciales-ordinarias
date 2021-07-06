@@ -378,7 +378,7 @@ práctica, la evolución de una pandemia depende de las medidas que se tomen
 para evitar la infección, por lo que modelos más refinados modelan la
 probabilidad de contagio en función del tiempo.
 
-\subsection{Ecuación de Bernoulli}
+\section{Ecuación de Bernoulli}
 
 Recordamos que la ecuación del modelo SIS, donde \(\beta\) es la probabilidad de
 recuperación, es
@@ -393,14 +393,15 @@ Este es un caso particular de la ecuación de Bernoulli, planteada en 1695 y
 resuelta por Leibniz en 1696.
 
 \begin{definition}[Ecuación de Bernoulli]
-	Una ecuación diferencial de Bernoulli es una ecuación de la forma:
+	Una ecuación diferencial de Bernoulli es una \\ % Ntheorem bug, produce overfull 
+	ecuación de la forma:
 	\[x' = a(t)x + b(t)x^n.\]
 \end{definition}
 
 Esta ecuación es de primer grado pero, evidentemente, no es lineal. Para poder
 resolverla necesitaremos una nueva técnica, el cambio de variable.
 
-\section{Método de cambio de variable}
+\subsection{Método de cambio de variable}
 
 Asumiendo que \(x \neq 0\), consideramos el cambio de variable
 \(y = x^{1 - n}\), de donde obtenemos

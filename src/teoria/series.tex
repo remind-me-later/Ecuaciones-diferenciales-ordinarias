@@ -28,10 +28,10 @@ El método se entiende mejor con un ejemplo:
   sucesión \((a_n)_n\), de forma que, al resolverlas, obtengamos la función \(x(t)\).
 
   Derivando en~\eqref{eq:solpot}, llegamos a las series de potencias
-  \[x'(t) = \sum_{n=1}^\infty na_nt^{n-1} = \sum_{n=0}^\infty (n+1)a_{n+1}t^n,
-    \qquad
-  x''(t) = \sum_{n=2}^\infty n(n-1)a_nt^{n-2} = \sum_{n=0}^\infty
-  (n+2)(n+1)a_{n+2}t^n,\]
+	\begin{align*}
+		x'(t) &= \sum_{n=1}^\infty na_nt^{n-1} = \sum_{n=0}^\infty (n+1)a_{n+1}t^n, \\
+		x''(t) &= \sum_{n=2}^\infty n(n-1)a_nt^{n-2} = \sum_{n=0}^\infty (n+2)(n+1)a_{n+2}t^n,
+	\end{align*}
 donde ambas series de potencias tienen radio de convergencia \(\geq \rho\).
 
 Teniendo esto en cuenta y volviendo a~\eqref{eq:eqpot}, tenemos
