@@ -1,4 +1,4 @@
-\documentclass[../main.tex]{subfiles}
+\documentclass[../ecuaciones_diferenciales.tex]{subfiles}
 
 \begin{document}
 En este capítulo vamos a estudiar la transformada de Laplace y su utilidad a la
@@ -25,33 +25,33 @@ e^{-st}\). La transformada de Fourier, estrechamente relacionada, viene dada por
 \(\kappa(s,t) = e^{-ist}\).
 
 \begin{remark}
-  Si \(s \in \Complex\) en la transformada de Laplace, la parte imaginaria de
-  \(\hat{f}\) se corresponde con la \(\hat{f}\) de la transformada de
-  Fourier. Aquí nos centraremos en \(s \in \R\).
+	Si \(s \in \Complex\) en la transformada de Laplace, la parte imaginaria de
+	\(\hat{f}\) se corresponde con la \(\hat{f}\) de la transformada de
+	Fourier. Aquí nos centraremos en \(s \in \R\).
 \end{remark}
 
 Entrando en más detalle:
 
 \begin{definition}
-  Sea \(f(t)\) una función continua a trozos en \([0,+\infty)\). Su
-  \emph{transformada de Laplace} es la función
-  \[\L\{f(t)\} : s \mapsto \int_0^\infty f(t)e^{-st} \dif t.\]
-  El \emph{dominio} de \(\L\{f(t)\}\) es el conjunto de \(s\) para los que la
-  integral converge.
+	Sea \(f(t)\) una función continua a trozos en \([0,+\infty)\). Su
+	\emph{transformada de Laplace} es la función
+	\[\L\{f(t)\} : s \mapsto \int_0^\infty f(t)e^{-st} \dif t.\]
+	El \emph{dominio} de \(\L\{f(t)\}\) es el conjunto de \(s\) para los que la
+	integral converge.
 \end{definition}
 
 \begin{remark}
-  El dominio de \(\L\{f(t)\}\) depende de \(f(t)\).
+	El dominio de \(\L\{f(t)\}\) depende de \(f(t)\).
 \end{remark}
 
 \begin{remark}
-  En general, la transformada de Laplace se puede definir en contextos más
-  generales, pero aquí nos basta con continuidad a trozos.
+	En general, la transformada de Laplace se puede definir en contextos más
+	generales, pero aquí nos basta con continuidad a trozos.
 \end{remark}
 
 \begin{remark}
-  Se trata de un operador lineal, es decir, \(\L\{\alpha f(t) + \beta g(t)\} =
-  \alpha \L\{f(t)\} + \beta \L\{g(t)\}\).
+	Se trata de un operador lineal, es decir, \(\L\{\alpha f(t) + \beta g(t)\} =
+	\alpha \L\{f(t)\} + \beta \L\{g(t)\}\).
 \end{remark}
 
 \textbf{Notación.} Denotaremos a las funciones en \(t\) con letras minúsculas y
@@ -59,7 +59,8 @@ a sus transformadas con la correspondiente letra mayúscula. Por
 ejemplo, \(\L\{f(t)\}(s) = F(s)\) y \(\L\{g(t)\}(s) = G(s)\).
 
 \textbf{Notación.} Usaremos \([\;\cdot\;]_{t=0}^{t=\infty}\) o simplemente
-\([\;\cdot\;]_0^\infty\) para referirnos a \(\lim \limits_{b \to \infty} [\;\cdot\;]_0^b\).
+\([\;\cdot\;]_0^\infty\) para referirnos a
+\(\lim \limits_{b \to \infty} [\;\cdot\;]_0^b\).
 
 \textbf{Notación.} Frecuentemente escribiremos \(\L\{f(t)\}\) en lugar de
 \(\L\{f(t)\}(s)\) por simplicidad.
@@ -67,81 +68,83 @@ ejemplo, \(\L\{f(t)\}(s) = F(s)\) y \(\L\{g(t)\}(s) = G(s)\).
 \section{Transformadas de Laplace de funciones elementales}
 
 \begin{itemize}
-\item \(f(t) = 1\):
-  \[\L\{1\} = \int_0^\infty e^{-st} \dif t = \frac{1}{s}
-    \left[-e^{-st}\right]_0^\infty = \frac{1}{s}(0-(-1)) =
-    \frac{1}{s},\]
-  si \(s > 0\), mientras que la integral diverge en caso contrario.
-\item \(f(t) = t\):
-  \[\L\{t\} = \int_0^\infty e^{-st}t \dif t =
-    \left[-\frac{te^{-st}}{s}\right]_0^\infty + \frac{1}{s} \int_0^\infty
-    e^{-st} \dif t = 0 + \frac{1}{s} \L\{1\} = \frac{1}{s^2},\]
-  si \(s > 0\), mientras que la integral diverge en caso contrario.
-\item \(f(t) = t^n,\ n \in \N\):
-  \[\L\{t^n\} = \frac{n!}{s^{n+1}} \quad (s>0).\]
-  Se prueba inmediatamente por inducción.
-\item \(f(t) = e^{at}\):
-  \[\L\{e^{at}\} = \int_0^\infty e^{at}e^{-st} \dif t = \int_0^\infty
-    e^{-(s-a)t} \dif t = \frac{1}{s-a}\left[-e^{-(s-a)t}\right]_0^\infty =
-    \frac{1}{s-a} \quad (s>a)\]
-\item \(f(t) = \sin kt\):
-  \[\L\{\sin kt\} = \int_0^\infty \sin kt e^{-st} \dif t = \cdots = \frac{k}{s^2} -
-    \frac{k^2}{s^2} \L\{\sin kt\} \implies \L\{\sin kt\} = \frac{k}{s^2+k^2}
-    \quad (s>0)\]
-\item \(f(t) = \cos kt\):
-  \[\L\{\cos kt\} = \int_0^\infty \cos kt e^{-st} \dif t = \cdots = \frac{1}{s} -
-    \frac{k^2}{s^2}\L\{\cos kt\} \implies  \L\{\cos kt\} = \frac{s}{s^2+k^2}
-    \quad (s>0)\]
+	\item \(f(t) = 1\):
+	      \[\L\{1\} = \int_0^\infty e^{-st} \dif t = \frac{1}{s}
+		      \left[-e^{-st}\right]_0^\infty = \frac{1}{s}(0-(-1)) =
+		      \frac{1}{s},\]
+	      si \(s > 0\), mientras que la integral diverge en caso contrario.
+	\item \(f(t) = t\):
+	      \[\L\{t\} = \int_0^\infty e^{-st}t \dif t =
+		      \left[-\frac{te^{-st}}{s}\right]_0^\infty + \frac{1}{s} \int_0^\infty
+		      e^{-st} \dif t = 0 + \frac{1}{s} \L\{1\} = \frac{1}{s^2},\]
+	      si \(s > 0\), mientras que la integral diverge en caso contrario.
+	\item \(f(t) = t^n,\ n \in \N\):
+	      \[\L\{t^n\} = \frac{n!}{s^{n+1}} \quad (s>0).\]
+	      Se prueba inmediatamente por inducción.
+	\item \(f(t) = e^{at}\):
+	      \[\L\{e^{at}\} = \int_0^\infty e^{at}e^{-st} \dif t = \int_0^\infty
+		      e^{-(s-a)t} \dif t = \frac{1}{s-a}\left[-e^{-(s-a)t}\right]_0^\infty =
+		      \frac{1}{s-a} \quad (s>a)\]
+	\item \(f(t) = \sin kt\):
+	      \[\L\{\sin kt\} = \int_0^\infty \sin kt e^{-st} \dif t = \cdots = \frac{k}{s^2} -
+		      \frac{k^2}{s^2} \L\{\sin kt\} \implies \L\{\sin kt\} = \frac{k}{s^2+k^2}
+		      \quad (s>0)\]
+	\item \(f(t) = \cos kt\):
+	      \[\L\{\cos kt\} = \int_0^\infty \cos kt e^{-st} \dif t = \cdots = \frac{1}{s} -
+		      \frac{k^2}{s^2}\L\{\cos kt\} \implies  \L\{\cos kt\} = \frac{s}{s^2+k^2}
+		      \quad (s>0)\]
 \end{itemize}
 
 Damos ahora una condición suficiente de existencia de la transformada de Laplace.
 
 \begin{definition}
-  \(f(t)\) es \emph{de orden exponencial} con constante \(c\) si existen \(M, T
-  > 0\) tales que
-  \[|f(t)| \leq Me^{ct} \quad \forall t \geq T.\]
+	\(f(t)\) es \emph{de orden exponencial} con constante \(c\) si existen \(M, T
+	> 0\) tales que
+	\[|f(t)| \leq Me^{ct} \quad \forall t \geq T.\]
 \end{definition}
 
 \begin{theorem}
-  Si \(f(t)\) es continua a trozos y de orden exponencial con constante \(c\),
-  entonces su transformada de Laplace \(F(s)\) existe si \(s > c\) (i.e. la
-  integral converge). Además, en este caso, \(F(s) \to 0\) cuando \(s \to +\infty\).
-  \begin{proof}
-    Por definición,
-    \[F(s) = \int_0^\infty f(t)e^{-st} \dif t,\]
-    de donde
-    \begin{align*}
-      \lim_{b \to \infty} \int_0^b |f(t)|e^{-st} \dif t &\leq \lim_{b \to
-        \infty} \left( \int_0^T |f(t)|e^{-st} \dif t + \int_T^b Me^{ct}e^{-st}
-        \dif t \right) \\
-      &= \int_0^T |f(t)|e^{-st} \dif t + \lim_{b \to \infty} \int_T^b Me^{-(s-c)t} \dif t,
-    \end{align*}
-    y el último límite converge si \(s>c\). Para terminar, \(\lim_{s \to \infty}
-    F(s) = 0\) sale del teorema de intercambiar límites e integrales.
-  \end{proof}
+	Si \(f(t)\) es continua a trozos y de orden exponencial con constante \(c\),
+	entonces su transformada de Laplace \(F(s)\) existe si \(s > c\) (i.e. la
+	integral converge). Además, en este caso, \(F(s) \to 0\) cuando \(s \to +\infty\).
+	\begin{proof}
+		Por definición,
+		\[F(s) = \int_0^\infty f(t)e^{-st} \dif t,\]
+		de donde
+		\begin{align*}
+			\lim_{b \to \infty} \int_0^b |f(t)|e^{-st} \dif t
+			 & \leq \lim_{b \to \infty} \left( \int_0^T |f(t)|e^{-st} \dif t
+			+ \int_T^b Me^{ct}e^{-st} \dif t \right)                         \\
+			 & = \int_0^T |f(t)|e^{-st} \dif t + \lim_{b \to \infty}
+			\int_T^b Me^{-(s-c)t} \dif t,
+		\end{align*}
+		y el último límite converge si \(s>c\). Para terminar,
+		\(\lim_{s \to \infty} F(s) = 0\) sale del teorema de intercambiar
+		límites e integrales.
+	\end{proof}
 \end{theorem}
 
 \section{Transformada de Laplace inversa}
 Si \(\L\{f(t)\} = F(s)\), diremos que \(f(t)\) es la \emph{transformada de
-  Laplace inversa} de \(F(s)\) y lo denotaremos como \(f(t) = \L^{-1}\{F(s)\}\).
+	Laplace inversa} de \(F(s)\) y lo denotaremos como \(f(t) = \L^{-1}\{F(s)\}\).
 
 \begin{remark}
-  Si \(f(t)\) es continua, la transformada inversa está bien definida
-  (i.e. \(f(t)\) es la única función continua tal que su transformada es \(F(s)\)).
+	Si \(f(t)\) es continua, la transformada inversa está bien definida
+	(i.e. \(f(t)\) es la única función continua tal que su transformada es \(F(s)\)).
 \end{remark}
 
 \begin{remark}
-  \(\L^{-1}\) también es lineal.
+	\(\L^{-1}\) también es lineal.
 \end{remark}
 
 \begin{example}
-  Hallar la transformada de Laplace inversa de
-  \[F(s) = \frac{-2s+6}{s^2+4}.\]
-  Usamos la linealidad del operador \(\L^{-1}\), para lo que resulta útil
-  descomponer \(F(s)\) en funciones cuya transformada inversa ya conozcamos:
-  \[\L^{-1}\left\{\frac{-2s+6}{s^2+4}\right\} =
-    -2\L^{-1}\left\{\frac{s}{s^2+2^2}\right\} +
-    \frac{6}{2}\L^{-1}\left\{\frac{2}{s^2+2^2}\right\} = -2 \cos 2t + 3 \sin 2t.\]
+	Hallar la transformada de Laplace inversa de
+	\[F(s) = \frac{-2s+6}{s^2+4}.\]
+	Usamos la linealidad del operador \(\L^{-1}\), para lo que resulta útil
+	descomponer \(F(s)\) en funciones cuya transformada inversa ya conozcamos:
+	\[\L^{-1}\left\{\frac{-2s+6}{s^2+4}\right\} =
+		-2\L^{-1}\left\{\frac{s}{s^2+2^2}\right\} +
+		\frac{6}{2}\L^{-1}\left\{\frac{2}{s^2+2^2}\right\} = -2 \cos 2t + 3 \sin 2t.\]
 \end{example}
 
 \section{Transformada de Laplace y derivadas}
@@ -151,68 +154,70 @@ sucesivas de una función. El siguiente teorema es fundamental para nuestro
 objetivo:
 
 \begin{theorem}
-  Si \(f, f', \dots, f^{(n-1)}\) son continuas en \([0,+\infty)\) y de orden
-  exponencial con constante \(c\) y \(f^{(n)}\) es continua \emph{a trozos} en
-  \([0,+\infty)\) y de orden exponencial con constante \(c\), entonces
-  \[\L\left\{f^{(n)}(t)\right\} = s^nF(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \cdots -
-    s^0f^{(n-1)}(0) \qquad (s>c)\]
-  \begin{proof}
-    Procedemos por inducción sobre el orden de la derivada. Para el caso base
-    \(n=1\) desarrollamos la definición mediante integración por partes:
-    \begin{align*}
-      \L\{f'(t)\} &= \int_0^\infty f'(t)e^{-st} \dif t =
-      \left[f(t)e^{-st}\right]_0^\infty - (-s) \int_0^\infty f(t)e^{-st} \dif t \\
-      &= (0-f(0)) + sF(s) = sF(s) - f(0) \qquad (s > c)
-    \end{align*}
-    Suponiendo el resultado cierto para \(n-1\), vamos a probar que se cumple
-    para \(n\):
-    \begin{align*}
-      \L\left\{f^{(n)}(t)\right\} &= \L\left\{\left(f^{(n-1)}\right)'(t)\right\} =
-      s\L\left\{f^{(n-1)}(t)\right\} - f^{(n-1)}(0) \\
-      &= s \left( s^{n-1}F(s) - s^{n-2}f(0) - s^{n-3}f'(0) - \cdots -
-        s^0f^{(n-2)}(0) \right) - f^{(n-1)}(0) \\
-      &= s^nF(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \cdots - s^1f^{(n-2)}(0) - s^0f^{(n-1)}(0),
-    \end{align*}
-    con lo que queda probado el teorema.
-  \end{proof}
+	Si \(f, f', \dots, f^{(n-1)}\) son continuas en \([0,+\infty)\) y de orden
+	exponencial con constante \(c\) y \(f^{(n)}\) es continua \emph{a trozos} en
+	\([0,+\infty)\) y de orden exponencial con constante \(c\), entonces
+	\[\L\left\{f^{(n)}(t)\right\} = s^nF(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \cdots -
+		s^0f^{(n-1)}(0) \qquad (s>c)\]
+	\begin{proof}
+		Procedemos por inducción sobre el orden de la derivada. Para el caso base
+		\(n=1\) desarrollamos la definición mediante integración por partes:
+		\begin{align*}
+			\L\{f'(t)\} & = \int_0^\infty f'(t)e^{-st} \dif t =
+			\left[f(t)e^{-st}\right]_0^\infty - (-s) \int_0^\infty f(t)e^{-st} \dif t \\
+			            & = (0-f(0)) + sF(s) = sF(s) - f(0) \qquad (s > c)
+		\end{align*}
+		Suponiendo el resultado cierto para \(n-1\), vamos a probar que se cumple
+		para \(n\):
+		\begin{align*}
+			\L\left\{f^{(n)}(t)\right\}
+			 & = \L\left\{\left(f^{(n-1)}\right)'(t)\right\}
+			= s\L\left\{f^{(n-1)}(t)\right\} - f^{(n-1)}(0)        \\
+			 & = s \left( s^{n-1}F(s) - s^{n-2}f(0) - s^{n-3}f'(0)
+			- \cdots - s^0f^{(n-2)}(0) \right) - f^{(n-1)}(0)      \\
+			 & = s^nF(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \cdots
+			- s^1f^{(n-2)}(0) - s^0f^{(n-1)}(0),
+		\end{align*}
+		con lo que queda probado el teorema.
+	\end{proof}
 \end{theorem}
 
 Después de este resultado, ya estamos listos para ver cómo se puede aplicar la
 transformada de Laplace para resolver ecuaciones diferenciales:
 
 \begin{example}
-  Resolver el problema de valor inicial
-  \[
-    \begin{cases}
-      y' + 3y = 13 \sin 2t \\
-      y(0) = 6
-    \end{cases}
-  \]
-  Vamos a hacerlo en tres pasos:
-  \begin{enumerate}[1)]
-  \item Aplicamos la transformada de Laplace a ambos lados de la ecuación
-    diferencial y simplificamos aprovechando la linealidad:
-    \[\L\{y'\} + 3\L\{y\} = 13\L\{\sin 2t\}\]
-  \item Operamos, teniendo en cuenta que
-    \begin{gather*}
-      \L\{y'\} = sY(s) - y(0) = sY(s) -  6, \\
-      \L\{\sin 2t\} = \frac{2}{s^2+4}.
-    \end{gather*}
-    Así, la ecuación transformada es
-    \[(sY(s) - 6) + 3Y(s) = \frac{26}{s^2+4}\]
-    o, despejando \(Y(s)\),
-    \[
-      Y(s) = \frac{6}{s+3} + \frac{26}{(s+3)(s^2+4)} = \frac{6}{s+3} + \left(
-        \frac{2}{s+3} + \frac{-2s+6}{s^2+4} \right) = \frac{8}{s+3} + \frac{-2s+6}{s^2+4}
-    \]
-  \item Aplicamos la transformada inversa:
-    \begin{align*}
-      y(t) &= 8 \L^{-1}\left\{\frac{1}{s+3}\right\} + 3
-      \L^{-1}\left\{\frac{2}{s^2+2^2}\right\} -2
-      \L^{-1}\left\{\frac{s}{s^2+2^2}\right\} \\
-      &= 8e^{-3t} + 3\sin 2t - 2\cos 2t.
-    \end{align*}
-  \end{enumerate}
+	Resolver el problema de valor inicial
+	\[
+		\begin{cases}
+			y' + 3y = 13 \sin 2t \\
+			y(0) = 6
+		\end{cases}
+	\]
+	Vamos a hacerlo en tres pasos:
+	\begin{enumerate}[1)]
+		\item Aplicamos la transformada de Laplace a ambos lados de la ecuación
+		      diferencial y simplificamos aprovechando la linealidad:
+		      \[\L\{y'\} + 3\L\{y\} = 13\L\{\sin 2t\}\]
+		\item Operamos, teniendo en cuenta que
+		      \begin{gather*}
+			      \L\{y'\} = sY(s) - y(0) = sY(s) -  6, \\
+			      \L\{\sin 2t\} = \frac{2}{s^2+4}.
+		      \end{gather*}
+		      Así, la ecuación transformada es
+		      \[(sY(s) - 6) + 3Y(s) = \frac{26}{s^2+4}\]
+		      o, despejando \(Y(s)\),
+		      \[
+			      Y(s) = \frac{6}{s+3} + \frac{26}{(s+3)(s^2+4)} = \frac{6}{s+3} + \left(
+			      \frac{2}{s+3} + \frac{-2s+6}{s^2+4} \right) = \frac{8}{s+3} + \frac{-2s+6}{s^2+4}
+		      \]
+		\item Aplicamos la transformada inversa:
+		      \begin{align*}
+			      y(t) & = 8 \L^{-1}\left\{\frac{1}{s+3}\right\} + 3
+			      \L^{-1}\left\{\frac{2}{s^2+2^2}\right\} -2
+			      \L^{-1}\left\{\frac{s}{s^2+2^2}\right\}            \\
+			           & = 8e^{-3t} + 3\sin 2t - 2\cos 2t.
+		      \end{align*}
+	\end{enumerate}
 \end{example}
 
 Como se aprecia en el ejemplo, la utilidad de la transformada de Laplace consiste
@@ -220,63 +225,66 @@ en que transforma ecuaciones diferenciales en ecuaciones algebraicas, que son
 mucho más fáciles de resolver. Veamos otro ejemplo un poco más complicado:
 
 \begin{example}
-  Resolver el PVI
-  \[
-    \begin{cases}
-      y'' - 3y' + 2y = e^{-4t} \\
-      y(0) = 1, y'(0) = 5
-    \end{cases}
-  \]
-  Seguimos los mismos pasos que antes:
-  \begin{enumerate}[1)]
-  \item Aplicamos \(\L\):
-    \[\L\{y''\} - 3\L\{y'\} + 2\L\{y\} = \L\{e^{-4t}\}\]
-  \item Operamos, teniendo en cuenta que
-    \begin{gather*}
-      \L\{y''\} = s^2Y(s) - sy(0) - y'(0) = s^2Y(s) - s - 5, \\
-      \L\{y'\} = sY(s) - y(0) = sY(s) - 1,
-    \end{gather*}
-    con lo que la ecuación queda
-    \begin{gather*}
-      \left(s^2Y(s) - s - 5\right) - 3\left(sY(s) - 1\right) + 2Y(s) =
-      \frac{1}{s+4} \implies \\
-      Y(s) = \frac{s+2}{s^2-3s+2} + \frac{1}{(s^2-3s+2)(s+4)} =
-      \frac{-16/5}{s-1} + \frac{25/6}{s-2} + \frac{1/30}{s+4}.
-    \end{gather*}
-  \item Aplicamos \(\L^{-1}\):
-    \begin{align*}
-      y(t) &= \L^{-1}\{Y(s)\} = -\frac{16}{5}\L^{-1}\left\{\frac{1}{s-1}\right\}
-      +\frac{25}{6}\L^{-1}\left\{\frac{1}{s-2}\right\}
-      +\frac{1}{30}\L^{-1}\left\{\frac{1}{s+4}\right\} \\
-      &= -\frac{16}{5}e^t + \frac{25}{6}e^{2t} + \frac{1}{30}e^{-4t}.
-    \end{align*}
-  \end{enumerate}
+	Resolver el PVI
+	\[
+		\begin{cases}
+			y'' - 3y' + 2y = e^{-4t} \\
+			y(0) = 1, y'(0) = 5
+		\end{cases}
+	\]
+	Seguimos los mismos pasos que antes:
+	\begin{enumerate}[1)]
+		\item Aplicamos \(\L\):
+		      \[\L\{y''\} - 3\L\{y'\} + 2\L\{y\} = \L\{e^{-4t}\}\]
+		\item Operamos, teniendo en cuenta que
+		      \begin{gather*}
+			      \L\{y''\} = s^2Y(s) - sy(0) - y'(0) = s^2Y(s) - s - 5, \\
+			      \L\{y'\} = sY(s) - y(0) = sY(s) - 1,
+		      \end{gather*}
+		      con lo que la ecuación queda
+		      \begin{gather*}
+			      \left(s^2Y(s) - s - 5\right) - 3\left(sY(s) - 1\right) + 2Y(s) =
+			      \frac{1}{s+4} \implies \\
+			      Y(s) = \frac{s+2}{s^2-3s+2} + \frac{1}{(s^2-3s+2)(s+4)} =
+			      \frac{-16/5}{s-1} + \frac{25/6}{s-2} + \frac{1/30}{s+4}.
+		      \end{gather*}
+		\item Aplicamos \(\L^{-1}\):
+		      \begin{align*}
+			      y(t) & = \L^{-1}\{Y(s)\}
+			      = -\frac{16}{5}\L^{-1}\left\{\frac{1}{s-1}\right\}
+			      + \frac{25}{6}\L^{-1}\left\{\frac{1}{s-2}\right\}
+			      + \frac{1}{30}\L^{-1}\left\{\frac{1}{s+4}\right\} \\
+			           & = -\frac{16}{5}e^t + \frac{25}{6}e^{2t}
+			      + \frac{1}{30}e^{-4t}.
+		      \end{align*}
+	\end{enumerate}
 \end{example}
 
 \begin{remark}
-  La transformada de Laplace es especialmente útil para problemas de valor
-  inicial, aunque también sirve para encontrar la solución general de una
-  ecuación diferencial. Si al aplicar el operador \(\L\) a las derivadas de la
-  función no se sustituyen directamente los valores
-  \(x(0), x'(0), \dots, x^{(n-1)}(0)\), el resultado final queda en función de
-  estos valores, que son precisamente los parámetros que permiten generar todo
-  el espacio de soluciones.
+	La transformada de Laplace es especialmente útil para problemas de valor
+	inicial, aunque también sirve para encontrar la solución general de una
+	ecuación diferencial. Si al aplicar el operador \(\L\) a las derivadas de la
+	función no se sustituyen directamente los valores
+	\(x(0), x'(0), \dots, x^{(n-1)}(0)\), el resultado final queda en función de
+	estos valores, que son precisamente los parámetros que permiten generar todo
+	el espacio de soluciones.
 \end{remark}
 
 \section{Propiedades de \(\L\) y \(\L^{-1}\)}
 \begin{proposition}
-  Si \(F(s)\) es la transformada de Laplace de \(f(t)\), entonces
-  \[\L\left\{e^{at}f(t)\right\} = F(s-a).\]
-  \begin{proof}
-    Basta aplicar la definición:
-    \[\L\left\{e^{at}f(t)\right\}(s) = \int_0^\infty e^{at}f(t) e^{-st} \dif t
-      = \int_0^\infty f(t) e^{-(s-a)t} \dif t = \L\{f(t)\}(s-a)\]
-  \end{proof}
+	Si \(F(s)\) es la transformada de Laplace de \(f(t)\), entonces
+	\[\L\left\{e^{at}f(t)\right\} = F(s-a).\]
+	\begin{proof}
+		Basta aplicar la definición:
+		\[\L\left\{e^{at}f(t)\right\}(s) = \int_0^\infty e^{at}f(t) e^{-st} \dif t
+			= \int_0^\infty f(t) e^{-(s-a)t} \dif t = \L\{f(t)\}(s-a)\]
+	\end{proof}
 \end{proposition}
 
 \begin{example}
-  Calcular la transformada de Laplace de \(e^{-2t} \cos 4t\).
-  \[\L\left\{e^{-2t} \cos 4t\right\}(s) = \L\{\cos 4t\}(s+2) = \frac{(s+2)}{(s+2)^2+16}\]
+	Calcular la transformada de Laplace de \(e^{-2t} \cos 4t\).
+	\[\L\left\{e^{-2t} \cos 4t\right\}(s) = \L\{\cos 4t\}(s+2)
+		= \frac{(s+2)}{(s+2)^2+16}\]
 \end{example}
 
 Normalmente este resultado se usa en sentido inverso: a menudo queremos
@@ -284,11 +292,11 @@ encontrar transformadas inversas de funciones que son traslación de
 transformadas que conocemos.
 
 \begin{example}
-  Calcular la transformada inversa de \((s-3)^{-2}\).
-  \[\L^{-1}\left\{\frac{1}{(s-3)^2}\right\} = \L^{-1}\left\{\restr{\frac{1}{s^2}}{s
-        \to s-3}\right\} = te^{3t},\]
-  teniendo en cuenta que
-  \[\L\{t\} = \frac{1}{s^2}.\]
+	Calcular la transformada inversa de \((s-3)^{-2}\).
+	\[\L^{-1}\left\{\frac{1}{(s-3)^2}\right\} = \L^{-1}\left\{\restr{\frac{1}{s^2}}{s
+			\to s-3}\right\} = te^{3t},\]
+	teniendo en cuenta que
+	\[\L\{t\} = \frac{1}{s^2}.\]
 \end{example}
 
 \textbf{Notación} Cuando queramos decir explícitamente que una función es
@@ -299,147 +307,149 @@ También es útil hacer traslaciones en \(t\), para lo que introducimos el
 siguiente resultado.
 
 \begin{definition}
-  Se define la \emph{función escalón} o \emph{función de Heaviside} \(\mathcal{U}\) como
-  \[\mathcal{U}(t) =
-    \begin{cases}
-      0 & \mathrm{si}\ t < 0 \\
-      1 & \mathrm{si}\ t \geq 0
-    \end{cases}
-  \]
-  Aquí nos interesará considerar traslaciones de \(\mathcal{U}\) restringidas a
-  \([0,+\infty)\):
-  \[\mathcal{U}(t-a) =
-    \begin{cases}
-      0 & \mathrm{si}\ 0 \leq t < a \\
-      1 & \mathrm{si}\ t \geq a
-    \end{cases}
-  \]
+	Se define la \emph{función escalón} o \emph{función de Heaviside} \(\mathcal{U}\) como
+	\[\mathcal{U}(t) =
+		\begin{cases}
+			0 & \mathrm{si}\ t < 0    \\
+			1 & \mathrm{si}\ t \geq 0
+		\end{cases}
+	\]
+	Aquí nos interesará considerar traslaciones de \(\mathcal{U}\) restringidas a
+	\([0,+\infty)\):
+	\[\mathcal{U}(t-a) =
+		\begin{cases}
+			0 & \mathrm{si}\ 0 \leq t < a \\
+			1 & \mathrm{si}\ t \geq a
+		\end{cases}
+	\]
 \end{definition}
 
 La función de Heaviside permite definir fácilmente funciones a trozos.
 
 \begin{example}
-  Dada la función \(f\) definida como
-  \[f(t) =
-    \begin{cases}
-      g(t) & \mathrm{si}\ 0 \leq t < a \\
-      h(t) & \mathrm{si}\ t \geq a
-    \end{cases}
-  \]
-  se puede expresar de forma más concisa como
-  \(f(t) = g(t) + (h(t)-g(t))\mathcal{U}(t-a)\).
+	Dada la función \(f\) definida como
+	\[f(t) =
+		\begin{cases}
+			g(t) & \mathrm{si}\ 0 \leq t < a \\
+			h(t) & \mathrm{si}\ t \geq a
+		\end{cases}
+	\]
+	se puede expresar de forma más concisa como
+	\(f(t) = g(t) + (h(t)-g(t))\mathcal{U}(t-a)\).
 \end{example}
 
 \begin{proposition}
-  Si \(F(s)\) es la transformada de Laplace de \(f(t)\), entonces
-  \[\L\{f(t-a)\mathcal{U}(t-a)\} = e^{-as}F(s).\]
-  \begin{proof}
-    Basta aplicar la definición:
-    \begin{align*}
-      \L\{f(t-a)\mathcal{U}(t-a)\} &= \int_0^\infty f(t-a)\mathcal{U}(t-a)
-      e^{-st} \dif t = \int_a^\infty f(t-a)e^{-st} \dif t \\
-      &= \int_0^\infty f(u)e^{-s(u+a)} \dif u = e^{-sa} \int_0^\infty f(u)
-      e^{-su} \dif u \\
-      &= e^{-sa}F(s),
-    \end{align*}
-    haciendo el cambio de variable \(u = t-a\).
-  \end{proof}
+	Si \(F(s)\) es la transformada de Laplace de \(f(t)\), entonces
+	\[\L\{f(t-a)\mathcal{U}(t-a)\} = e^{-as}F(s).\]
+	\begin{proof}
+		Basta aplicar la definición:
+		\begin{align*}
+			\L\{f(t-a)\mathcal{U}(t-a)\}
+			 & = \int_0^\infty f(t-a)\mathcal{U}(t-a) e^{-st} \dif t
+			= \int_a^\infty f(t-a)e^{-st} \dif t                     \\
+			 & = \int_0^\infty f(u)e^{-s(u+a)} \dif u
+			= e^{-sa} \int_0^\infty f(u) e^{-su} \dif u              \\
+			 & = e^{-sa}F(s),
+		\end{align*}
+		haciendo el cambio de variable \(u = t - a\).
+	\end{proof}
 \end{proposition}
 
 \begin{example}
-  Hallar la transformada inversa de \(\frac{1}{s-4}e^{-2s}\).
+	Hallar la transformada inversa de \(\frac{1}{s-4}e^{-2s}\).
 
-  Teniendo en cuenta que
-  \[\L^{-1}\left\{\frac{1}{s-4}\right\} = e^{4t},\]
-  aplicando la proposición anterior con \(a=2\) se tiene
-  \[\L^{-1}\left\{\frac{1}{s-4}e^{-2s}\right\} = e^{4(t-2)}\mathcal{U}(t-2).\]
+	Teniendo en cuenta que
+	\[\L^{-1}\left\{\frac{1}{s-4}\right\} = e^{4t},\]
+	aplicando la proposición anterior con \(a=2\) se tiene
+	\[\L^{-1}\left\{\frac{1}{s-4}e^{-2s}\right\} = e^{4(t-2)}\mathcal{U}(t-2).\]
 \end{example}
 
 \begin{theorem}
-  Si \(n \in \N\) y \(f(t)\) es continua a trozos y de orden exponencial, entonces
-  \[(-1)^n\L\left\{t^nf(t)\right\} = \frac{\dif {}^n}{\dif s^n} F(s).\]
-  \begin{proof}
-    Partiendo de la definición
-    \[F(s) = \int_0^\infty f(t)e^{-st} \dif t,\]
-    basta aplicar el teorema de derivación bajo el signo integral para obtener
-    \[\frac{\dif F(s)}{\dif s} = \int_0^\infty (-t)f(t)e^{-st} \dif t =
-      -\L\{tf(t)\}.\]
-    El caso general se demuestra igual por inducción.
-  \end{proof}
+	Si \(n \in \N\) y \(f(t)\) es continua a trozos y de orden exponencial, entonces
+	\[(-1)^n\L\left\{t^nf(t)\right\} = \frac{\dif {}^n}{\dif s^n} F(s).\]
+	\begin{proof}
+		Partiendo de la definición
+		\[F(s) = \int_0^\infty f(t)e^{-st} \dif t,\]
+		basta aplicar el teorema de derivación bajo el signo integral para obtener
+		\[\frac{\dif F(s)}{\dif s} = \int_0^\infty (-t)f(t)e^{-st} \dif t =
+			-\L\{tf(t)\}.\]
+		El caso general se demuestra igual por inducción.
+	\end{proof}
 \end{theorem}
 
 \begin{definition}
-  Si \(f\) y \(g\) son continuas a trozos en \([0,+\infty)\), se define su
-  \emph{convolución} como
-  \[(f \ast g)(t) = \int_0^t f(u) g(t-u) \dif u.\]
+	Si \(f\) y \(g\) son continuas a trozos en \([0,+\infty)\), se define su
+	\emph{convolución} como
+	\[(f \ast g)(t) = \int_0^t f(u) g(t-u) \dif u.\]
 \end{definition}
 
 \begin{remark}
-  \(f \ast g = g \ast f.\)
-  \begin{proof}
-    Es inmediato haciendo el cambio de variable \(u = t-v\) en la integral:
-    \[(f \ast g)(t) = \int_0^t f(u) g(t-u) \dif u = \int_t^0 f(t-v)g(v) (-\dif
-      v) = \int_0^t g(v) f(t-v) \dif v = (g \ast f)(t).\]
-  \end{proof}
+	\(f \ast g = g \ast f.\)
+	\begin{proof}
+		Es inmediato haciendo el cambio de variable \(u = t-v\) en la integral:
+		\[(f \ast g)(t) = \int_0^t f(u) g(t-u) \dif u = \int_t^0 f(t-v)g(v)
+			(-\dif v) = \int_0^t g(v) f(t-v) \dif v = (g \ast f)(t).\]
+	\end{proof}
 \end{remark}
 
 \begin{theorem}
-  Si \(f\) y \(g\) son continuas a trozos en \([0,\infty)\) y de orden
-  exponencial, y si \(F\) y \(G\) son sus transformadas de Laplace, entonces
-  \[\L\{f \ast g\} = F(s) \cdot G(s).\]
-  \begin{proof}
-    Por definición,
-    \[\L\{f \ast g\} = \int_0^\infty \left( \int_0^t f(u)g(t-u) \dif u \right)
-      e^{-st} \dif t.\]
-    Observamos que estamos integrando sobre la región \(R = \{t > u > 0\} \subseteq
-    \R^2\); aplicando el teorema de Fubini:
-    \begin{align*}
-      \L\{f \ast g\} &= \iint_R f(u) g(t-u) \dif u \dif t = \int_0^\infty
-      \int_u^\infty f(u)g(t-u)e^{-st} \dif t \dif u \\
-      &= \int_0^\infty f(u) \left( \int_u^\infty g(t-u)e^{-st} \dif t \right)
-      \dif u = \int_0^\infty f(u) \left( \int_0^\infty g(v)e^{-s(v+u)} \dif v
-        \right) \dif u,
-    \end{align*}
-    donde hemos hecho el cambio de variable \(v = t-u\) en la integral
-    interior. Desarrollando, esto se puede separar en dos integrales:
-    \[\int_0^\infty f(u) e^{-su} \left( \int_0^\infty g(v)e^{-sv} \dif v \right) \dif u =
-      \left( \int_0^\infty f(u)e^{-su} \dif u \right)
-      \left( \int_0^\infty g(v)e^{-sv} \dif v \right) =
-      F(s) G(s),\]
-    como queríamos.
-  \end{proof}
+	Si \(f\) y \(g\) son continuas a trozos en \([0,\infty)\) y de orden
+	exponencial, y si \(F\) y \(G\) son sus transformadas de Laplace, entonces
+	\[\L\{f \ast g\} = F(s) \cdot G(s).\]
+	\begin{proof}
+		Por definición,
+		\[\L\{f \ast g\} = \int_0^\infty \left( \int_0^t f(u)g(t-u) \dif u \right)
+			e^{-st} \dif t.\]
+		Observamos que estamos integrando sobre la región \(R = \{t > u > 0\} \subseteq
+		\R^2\); aplicando el teorema de Fubini:
+		\begin{align*}
+			\L\{f \ast g\}
+			 & = \iint_R f(u) g(t-u) \dif u \dif t
+			= \int_0^\infty \int_u^\infty f(u)g(t-u)e^{-st} \dif t \dif u            \\
+			 & = \int_0^\infty f(u) \left(\int_u^\infty g(t-u)e^{-st} \dif t \right)
+			\dif u = \int_0^\infty f(u) \left( \int_0^\infty g(v)e^{-s(v+u)} \dif v
+			\right) \dif u,
+		\end{align*}
+		donde hemos hecho el cambio de variable \(v = t-u\) en la integral
+		interior. Desarrollando, esto se puede separar en dos integrales:
+		\[\int_0^\infty f(u) e^{-su} \left( \int_0^\infty g(v)e^{-sv} \dif v \right) \dif u
+			= \left( \int_0^\infty f(u)e^{-su} \dif u \right)
+			\left( \int_0^\infty g(v)e^{-sv} \dif v \right)
+			= F(s) G(s),\]
+		como queríamos.
+	\end{proof}
 \end{theorem}
 
 A modo de resumen, incluimos en una tabla los resultados más relevantes del
 capítulo:
 
 \begin{figure}[ht]
-  \centering
-  \begin{tabular}{c|c}
-    Transformada & Comentarios
-    \\[0.7em] \hline \\[-1.0em]
-    \(\displaystyle \L\{1\} = \frac{1}{s}\) & \(s>0\)
-    \\[0.7em] \hline \\[-1.0em]
-    \(\displaystyle \L\{t^n\} = \frac{n!}{s^{n+1}}\) & \(s>0\)
-    \\[0.7em] \hline \\[-1.0em]
-    \(\displaystyle \L\{e^{at}\} = \frac{1}{s-a}\) & \(s>a\)
-    \\[0.7em] \hline \\[-1.0em]
-    \(\displaystyle \L\{\sin kt\} = \frac{k}{s^2+k^2}\) & \(s>0\)
-    \\[0.7em] \hline \\[-1.0em]
-    \(\displaystyle \L\{\cos kt\} = \frac{s}{s^2+k^2}\) & \(s>0\)
-    \\[0.7em] \hline \\[-1.0em]
-    \(\displaystyle \L\{f^{(n)}(t)\} = s^nF(s) - s^{n-1}f(0) - \cdots -
-    f^{(n-1)}(0)\) & ---
-    \\[0.4em] \hline \\[-1.0em]
-    \(\displaystyle \L\left\{e^{at}f(t)\right\} = F(s-a)\) & ---
-    \\[0.4em] \hline \\[-1.0em]
-    \(\displaystyle \L\{f(t-a)\mathcal{U}(t-a)\} = e^{-as}F(s)\) & ---
-    \\[0.4em] \hline \\[-1.0em]
-    \(\displaystyle (-1)^n\L\left\{t^nf(t)\right\} = \frac{\dif {}^n}{\dif s^n}
-    F(s)\) & ---
-    \\[0.7em] \hline \\[-1.0em]
-    \(\displaystyle \L\{f \ast g\} = F(s) \cdot G(s)\) & ---
-  \end{tabular}
+	\centering
+	\begin{tabular}{c|c}
+		Transformada                                                 & Comentarios
+		\\[0.7em] \hline \\[-1.0em]
+		\(\displaystyle \L\{1\} = \frac{1}{s}\)                      & \(s>0\)
+		\\[0.7em] \hline \\[-1.0em]
+		\(\displaystyle \L\{t^n\} = \frac{n!}{s^{n+1}}\)             & \(s>0\)
+		\\[0.7em] \hline \\[-1.0em]
+		\(\displaystyle \L\{e^{at}\} = \frac{1}{s-a}\)               & \(s>a\)
+		\\[0.7em] \hline \\[-1.0em]
+		\(\displaystyle \L\{\sin kt\} = \frac{k}{s^2+k^2}\)          & \(s>0\)
+		\\[0.7em] \hline \\[-1.0em]
+		\(\displaystyle \L\{\cos kt\} = \frac{s}{s^2+k^2}\)          & \(s>0\)
+		\\[0.7em] \hline \\[-1.0em]
+		\(\displaystyle \L\{f^{(n)}(t)\} = s^nF(s) - s^{n-1}f(0) - \cdots -
+		f^{(n-1)}(0)\)                                               & ---
+		\\[0.4em] \hline \\[-1.0em]
+		\(\displaystyle \L\left\{e^{at}f(t)\right\} = F(s-a)\)       & ---
+		\\[0.4em] \hline \\[-1.0em]
+		\(\displaystyle \L\{f(t-a)\mathcal{U}(t-a)\} = e^{-as}F(s)\) & ---
+		\\[0.4em] \hline \\[-1.0em]
+		\(\displaystyle (-1)^n\L\left\{t^nf(t)\right\} = \frac{\dif {}^n}{\dif s^n}
+		F(s)\)                                                       & ---
+		\\[0.7em] \hline \\[-1.0em]
+		\(\displaystyle \L\{f \ast g\} = F(s) \cdot G(s)\)           & ---
+	\end{tabular}
 \end{figure}
 
 \end{document}

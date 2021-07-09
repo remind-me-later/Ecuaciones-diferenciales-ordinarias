@@ -1,35 +1,35 @@
-\documentclass[../main.tex]{subfiles}
+\documentclass[../ecuaciones_diferenciales.tex]{subfiles}
 
 \begin{document}
 
 \begin{problem}
-	Resolver la ecuación diferencial asociada al modelo SIS:
-	\[x' = \kappa x(N - x) - \beta x.\]
+Resolver la ecuación diferencial asociada al modelo SIS:
+\[x' = \kappa x(N - x) - \beta x.\]
 
-	Estudiar el problema del valor inicial asociado y obtener el teorema del
-	umbral para este modelo.
+Estudiar el problema del valor inicial asociado y obtener el teorema del
+umbral para este modelo.
 \end{problem}
 
 \begin{solution}
-	Utilizamos el cambio de variable \(y = 1/x\), donde \(x > 0\), con lo que 
+	Utilizamos el cambio de variable \(y = 1/x\), donde \(x > 0\), con lo que
 	\(y' = -x'/x^2\), sustituyendo
-	\[y' = \kappa + (\beta - \kappa N) \frac{1}{x} 
+	\[y' = \kappa + (\beta - \kappa N) \frac{1}{x}
 		= \kappa + (\beta - \kappa N) y,\]
 	obtenemos así una ecuación lineal, cuya solución general es
 	\[y(t) = \frac{\kappa}{N\kappa - \beta} + x e^{(\beta - N\kappa)t},\]
 	en la variable original \(x(t) = 1/y(t)\). Nos planteamos ahora el problema
 	del valor inicial con \(x(t_0) = x_0\), sustituyendo en la solución obtenida
 	\[x_0 = \frac{1}{
-		\frac{\kappa}{N\kappa - \beta} + \parens{\frac{1}{x_0} 
-		- \frac{\kappa}{N\kappa - \beta}} e^{(\beta - \kappa N)(t - t_0)}}.\]
+			\frac{\kappa}{N\kappa - \beta} + \parens{\frac{1}{x_0}
+				- \frac{\kappa}{N\kappa - \beta}} e^{(\beta - \kappa N)(t - t_0)}}.\]
 	Nos preguntamos ahora cuál es el límite cuando \(t\) tiende a infinito.
-	Tenemos dos casos, si \(\beta > \kappa N\) entonces 
+	Tenemos dos casos, si \(\beta > \kappa N\) entonces
 	\(\lim_{t \to \infty} x(t) = 0\), por lo que la enfermedad desaparece.
 	Si \(\beta < \kappa N\) el límite es \(N - \beta/\kappa\), por lo que la
 	enfermedad se hace endémica. En el caso \(\beta = \kappa N\) no podemos
 	sustituir en la solución por lo que consideramos \(y' = \kappa\) e
 	\(y = \kappa t + c\), con esto \(x = 1/(\kappa t + c)\), sustituyendo en la
-	condición inicial 
+	condición inicial
 	\[x(t) = \frac{1}{\kappa(t - t_0) + \frac{1}{x_0}},\]
 	con lo que la enfermedad también desaparece. La diferencia entre el caso uno
 	y el tres es que en el primero la función tiende a \(0\) mucho más rápido
@@ -37,9 +37,9 @@
 \end{solution}
 
 \begin{problem}
-	Resolver los problemas lineal y cuadrático asociados al problema de caída
-	libre con resistencia al aire. Es decir, la ecuación
-	\[v' = g - \frac{\kappa}{m} v^n, \quad n \in \set{1, 2}.\]
+Resolver los problemas lineal y cuadrático asociados al problema de caída
+libre con resistencia al aire. Es decir, la ecuación
+\[v' = g - \frac{\kappa}{m} v^n, \quad n \in \set{1, 2}.\]
 \end{problem}
 
 \begin{solution}
@@ -47,36 +47,39 @@
 	\[\frac{v'}{g - \frac{\kappa}{m} v^n} = 1.\]
 	Para resolverla así, distinguimos casos en función del valor de \(n\):
 	\begin{itemize}
-	  \item Caso \(n = 1\):
-		Como las dos primitivas son elementales, integrando a ambos lados
-		obtenemos sin mayor dificultad
-		\[-\frac{m}{\kappa} \log \abs{g - \frac{\kappa}{m} v} = t + c_1\]
-		y ahora sin más que despejar \(v\) llegamos a la solución general:
-		\[v(t) = \frac{gm}{\kappa} - ce^{-\frac{\kappa}{m}t}.\]
+		\item Caso \(n = 1\):
+		      Como las dos primitivas son elementales, integrando a ambos lados
+		      obtenemos sin mayor dificultad
+		      \[-\frac{m}{\kappa} \log \abs{g - \frac{\kappa}{m} v} = t + c_1\]
+		      y ahora sin más que despejar \(v\) llegamos a la solución general:
+		      \[v(t) = \frac{gm}{\kappa} - ce^{-\frac{\kappa}{m}t}.\]
 
-		Observamos que \(\lim_{t \to \infty} v(t) = \frac{gm}{\kappa}\), es
-		decir, la velocidad aumenta (o disminuye, en función del valor inicial)
-		hasta una \emph{velocidad terminal}; esto contrasta con lo que ocurre en
-		un sistema sin rozamiento, en el que la velocidad aumenta sin
-		restricción.
-	  \item Caso \(n = 2\): Para hallar una primitiva del término de la
-		izquierda, lo separamos primero en fracciones simples; denotaremos
-		\(\alpha := \frac{\kappa}{m}\) para simplificar la notación.
-		\[\frac{1}{g - \alpha x^2} = \frac{\frac{1}{2\sqrt{g}}}{\sqrt{g} +
-				\sqrt{\alpha}x} + \frac{\frac{1}{2\sqrt{g}}}{\sqrt{g} -
-				\sqrt{\alpha}x}.\]
-		  Así es inmediato hallar las primitivas:
-		  \[t + c_1 = \frac{1}{2\sqrt{g}} \int \frac{v'(t)}{\sqrt{g} +
-				\sqrt{\alpha}v(t)} + \frac{v'(t)}{\sqrt{g} - \sqrt{\alpha}v(t)}
-			  \dif t = \frac{1}{2\sqrt{g\alpha}} \log \abs{\frac{\sqrt{g} +
-				  \sqrt{\alpha}v}{\sqrt{g} - \sqrt{\alpha}v}}\]
-		  y ahora basta despejar \(v\):
-		  \[v =
-			  \frac{\sqrt{g}}{\sqrt{\alpha}}\left(\frac{e^{2\sqrt{g\alpha}t+c_2}-1}{e^{2\sqrt{g\alpha}t+c_2}+1}\right)
-			  =
-			  \sqrt{\frac{gm}{\kappa}}\tanh\left(\sqrt{\frac{g\kappa}{m}}t+c\right).\]
-		  Igual que antes, la velocidad se acaba estabilizando, aunque en este
-		  caso el límite es \(\sqrt{\frac{gm}{\kappa}}\).
+		      Observamos que \(\lim_{t \to \infty} v(t) = \frac{gm}{\kappa}\), es
+		      decir, la velocidad aumenta (o disminuye, en función del valor inicial)
+		      hasta una \emph{velocidad terminal}; esto contrasta con lo que ocurre en
+		      un sistema sin rozamiento, en el que la velocidad aumenta sin
+		      restricción.
+		\item Caso \(n = 2\): Para hallar una primitiva del término de la
+		      izquierda, lo separamos primero en fracciones simples; denotaremos
+		      \(\alpha := \frac{\kappa}{m}\) para simplificar la notación.
+		      \[\frac{1}{g - \alpha x^2} = \frac{\frac{1}{2\sqrt{g}}}{\sqrt{g} +
+				      \sqrt{\alpha}x} + \frac{\frac{1}{2\sqrt{g}}}{\sqrt{g} -
+				      \sqrt{\alpha}x}.\]
+		      Así es inmediato hallar las primitivas:
+		      \[t + c_1 = \frac{1}{2\sqrt{g}} \int \frac{v'(t)}{\sqrt{g} +
+				      \sqrt{\alpha}v(t)} + \frac{v'(t)}{\sqrt{g} - \sqrt{\alpha}v(t)}
+			      \dif t = \frac{1}{2\sqrt{g\alpha}} \log \abs{\frac{\sqrt{g} +
+					      \sqrt{\alpha}v}{\sqrt{g} - \sqrt{\alpha}v}}\]
+		      y ahora basta despejar \(v\):
+		      \[v =
+			      \frac{\sqrt{g}}{\sqrt{\alpha}}
+			      \left(\frac{e^{2\sqrt{g\alpha}t+c_2}-1}
+			      {e^{2\sqrt{g\alpha}t+c_2}+1}\right)
+			      =
+			      \sqrt{\frac{gm}{\kappa}}\tanh
+			      \left(\sqrt{\frac{g\kappa}{m}}t+c\right).\]
+		      Igual que antes, la velocidad se acaba estabilizando, aunque en este
+		      caso el límite es \(\sqrt{\frac{gm}{\kappa}}\).
 	\end{itemize}
 \end{solution}
 

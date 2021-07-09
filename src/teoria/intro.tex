@@ -1,4 +1,4 @@
-\documentclass[../main.tex]{subfiles}
+\documentclass[../ecuaciones_diferenciales.tex]{subfiles}
 
 \begin{document}
 
@@ -17,9 +17,10 @@
 	Se cumple además que:
 	\begin{enumerate}[i)]
 		\item La función \(x\) tiene todas las derivadas hasta orden \(n\) y son
-			continuas.
+		      continuas.
+
 		\item El punto \((t, x(t), x'(t), \dots, x^{(n)}(t)) \in \Omega\) para
-			todo \(t\) en \(I\).
+		      todo \(t\) en \(I\).
 	\end{enumerate}
 \end{definition}
 
@@ -51,7 +52,7 @@ material.
 
 Nos interesa la masa en función del tiempo relativa, esto es
 \[\frac{\Delta x}{x \Delta t} = \frac{x(t + \Delta t) - x(t)}{x(t) \Delta t}
-  = -\lambda, \quad \lambda > 0\] la última igualdad se deduce de lo dicho
+	= -\lambda, \quad \lambda > 0\] la última igualdad se deduce de lo dicho
 anteriormente. Llamaremos al término \(\frac{\Delta x}{x\Delta t}\) la tasa de
 (de)crecimiento media. Tomando el límite \(\Delta t \to 0\) nos queda
 \(x'(t)/x(t) = -\lambda\) para todo \(t\). Esto nos da una ecuación diferencial
@@ -63,7 +64,7 @@ con \(f : \Omega \to \R\) y \(\Omega = \R \times (0, +\infty)\).
 
 Esta ecuación diferencial es resoluble, para ello tomamos primitivas en
 \[\frac{x'(t)}{x(t)} = -\lambda \implies \log(x) = -\lambda t + c
-  \implies x = e^c e^{-\lambda t} = k e^{-\lambda t}\] con lo que nos queda
+	\implies x = e^c e^{-\lambda t} = k e^{-\lambda t}\] con lo que nos queda
 \(x = k e^{-\lambda t}\). Llamamos a esta familia de funciones \emph{solución general}
 de la ecuación, y nos da todo el conjunto de soluciones variando \(k\). En
 particular, el conjunto de soluciones es un subespacio vectorial de dimensión
@@ -158,13 +159,13 @@ ejemplo más cercano a la realidad.
 	cantidad de carbono-14 en el trozo de madera cuando fue cortada y \(t\) el
 	tiempo transcurrido desde que se corta el árbol hasta 1950. Buscamos entonces
 	el año de construcción, para ello observamos que \(R(0) = \lambda x(0)\), de
-    donde el cociente \(\frac{R(t)}{R(0)} = e^{-\lambda t}\) no depende de la
-    cantidad de carbono-14 presente en el organismo vivo \(x_0\). Sustituyendo
-    los datos y despejando
-    \[\frac{4,09}{6,68} = \frac{R(t)}{R(0)} = e^{-\frac{\log 2}{5730} t}
-      \implies t \approx 4055,\]
-    medido en años. Así, concluimos que el edificio se construyó en el \(2105\)
-    a.C.
+	donde el cociente \(\frac{R(t)}{R(0)} = e^{-\lambda t}\) no depende de la
+	cantidad de carbono-14 presente en el organismo vivo \(x_0\). Sustituyendo
+	los datos y despejando
+	\[\frac{4,09}{6,68} = \frac{R(t)}{R(0)} = e^{-\frac{\log 2}{5730} t}
+		\implies t \approx 4055,\]
+	medido en años. Así, concluimos que el edificio se construyó en el \(2105\)
+	a.C.
 \end{solution}
 
 \end{document}

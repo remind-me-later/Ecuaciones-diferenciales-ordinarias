@@ -37,9 +37,13 @@
 \date{Curso 2020--2021}
 
 \begin{document}
+
+\frontmatter
+
 \maketitle
 
-\clearpage
+%\clearpage
+\cleardoublepage
 \vspace*{\fill}
 \thispagestyle{empty} % Sin número de página
 \begin{quotation}
@@ -57,9 +61,10 @@ Ducunt volentem fata, nolentem trahunt. \\
 
 \tableofcontents
 
-\setcounter{chapter}{-1}
 \chapter{Introducción}
 \subfile{teoria/intro}
+
+\mainmatter
 
 \chapter{Ecuaciones lineales de primer orden}
 \label{chap:capitulo1}
@@ -74,7 +79,7 @@ Ducunt volentem fata, nolentem trahunt. \\
 \label{chap:capitulo3}
 \subfile{teoria/escalar}
 
-\chapter{Análisis cualitativo de los sistemas planos}
+\chapter{Análisis cualitativo de sistemas planos}
 \label{chap:capitulo4}
 \subfile{teoria/cualitativo}
 
@@ -97,5 +102,7 @@ Ducunt volentem fata, nolentem trahunt. \\
 \subfile{problemas/sistemas}
 
 \end{appendices}
+
+\backmatter
 
 \end{document}

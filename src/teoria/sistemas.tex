@@ -1,4 +1,4 @@
-\documentclass[../main.tex]{subfiles}
+\documentclass[../ecuaciones_diferenciales.tex]{subfiles}
 
 \begin{document}
 
@@ -11,19 +11,19 @@ funciones de clase \(C^1\) sobre un intervalo de \(\R\).
 	\[\eqsys{
 			x'_1 &= f_1(t, x_1, x_2, \dots, x_n) \\
 			x'_2 &= f_2(t, x_1, x_2, \dots, x_n) \\
-				 &\vdots \\
+			&\vdots \\
 			x'_n &= f_n(t, x_1, x_2, \dots, x_n)}\]
 \end{definition}
 
 \begin{definition}
-\label{def:siseq1ord}
+	\label{def:siseq1ord}
 	Un sistema de ecuaciones diferenciales lineales de primer orden es de la
 	forma:
 	\[\eqsys{
-		x'_1 &= a_{11}(t)x_1 + a_{12}(t)x_2 + \dots + a_{1n}(t)x_n + b_1(t) \\
-		x'_2 &= a_{21}(t)x_1 + a_{22}(t)x_2 + \dots + a_{2n}(t)x_n + b_2(t) \\
-			 &\vdots \\
-		x'_n &= a_{n1}(t)x_1 + a_{n2}(t)x_2 + \dots + a_{nn}(t)x_n + b_n(t)}\]
+			x'_1 &= a_{11}(t)x_1 + a_{12}(t)x_2 + \dots + a_{1n}(t)x_n + b_1(t) \\
+			x'_2 &= a_{21}(t)x_1 + a_{22}(t)x_2 + \dots + a_{2n}(t)x_n + b_2(t) \\
+			&\vdots \\
+			x'_n &= a_{n1}(t)x_1 + a_{n2}(t)x_2 + \dots + a_{nn}(t)x_n + b_n(t)}\]
 \end{definition}
 
 donde \(a_{ij}\), \(b_i\) son funciones continuas en un intervalo
@@ -32,28 +32,28 @@ sistema de este tipo en forma matricial como
 \[x' = Ax + b\]
 donde
 \[x = x(t) = \mat{x_1(t) \\ x_2(t) \\ \vdots \\ x_n(t)}, \quad
-  A = A(t) = \mat{a_{ij}(t)}^n_{i,j = 1},\quad 
-  b = b(t) = \mat{b_1(t) \\ b_2(t) \\ \vdots \\ b_n(t)} \]
+	A = A(t) = \mat{a_{ij}(t)}^n_{i,j = 1},\quad
+	b = b(t) = \mat{b_1(t) \\ b_2(t) \\ \vdots \\ b_n(t)} \]
 y las derivadas e integrales se aplican ``coordenada a coordenada'', v.g.
 \[x' = \mat{x'_1(t) \\ x'_2(t) \\ \vdots \\ x'_n(t)}
-	 = \mat{x'_1 \\ x'_2 \\ \vdots \\ x'_n}, \quad
-  A' = \mat{a'_{ij}(t)}^n_{i,j = 1}, \quad
-  \int A(s) \dif s = \mat{\int a_{ij} \dif s}^n_{i,j = 1}.\]
+	= \mat{x'_1 \\ x'_2 \\ \vdots \\ x'_n}, \quad
+	A' = \mat{a'_{ij}(t)}^n_{i,j = 1}, \quad
+	\int A(s) \dif s = \mat{\int a_{ij} \dif s}^n_{i,j = 1}.\]
 
 \section{Problema del valor inicial}
 
 \begin{definition}
-	Sean \(t_0 \in (\alpha, \omega)\) y 
+	Sean \(t_0 \in (\alpha, \omega)\) y
 	\(x^0 = \mat{x^0_1, x^0_2, \dots, x^0_n}^t \in \R^n\), el problema del valor
 	inicial asociado a~\ref{def:siseq1ord} es de la forma
 	\[\eqsys{
-		x' = A(t)x + b(t) \\
-		x(t_0) = x^0}\]
+			x' = A(t)x + b(t) \\
+			x(t_0) = x^0}\]
 \end{definition}
 
 Probaremos que el problema de valor inicial tiene solución única en todo el
-dominio \((\alpha, \omega)\), para ello representaremos el problema del valor 
-inicial como una ecuación integral, es una estrategia general en análisis 
+dominio \((\alpha, \omega)\), para ello representaremos el problema del valor
+inicial como una ecuación integral, es una estrategia general en análisis
 intentar representar las funciones como integrales debido a su buen
 comportamiento. Ser solución del problema del valor inicial equivale a
 \[x(t) = x^0 + \int_{t_0}^t A(s)x(s) + b(s) \dif s.\]
@@ -63,20 +63,20 @@ del intervalo \(I \subset \R\) en \(\R^n\).
 
 A raíz del sistema~\ref{def:siseq1ord} definimos el operador
 \begin{align*}
-  T : C((\alpha, \omega), \R^n) &\to C((\alpha, \omega), \R^n) \\
-  \phi  &\mapsto x^0 + \int_{t_0}^t A(s) \phi(s) + b(s) \dif s
+	T : C((\alpha, \omega), \R^n) & \to C((\alpha, \omega), \R^n)                         \\
+	\phi                          & \mapsto x^0 + \int_{t_0}^t A(s) \phi(s) + b(s) \dif s
 \end{align*}
 
 Evidentemente \(x\) es solución del sistema si y solo si \(T(x) = x\), por lo
 que si demostramos que el operador \(T\) tiene un único punto fijo habremos
-terminado. 
+terminado.
 
 \begin{remark}
-  En realidad, \(T(\phi) \in C^1((\alpha, \omega), \R^n)\) para
-  \(\phi \in C((\alpha, \omega), \R^n)\); hemos definido \(T\) con espacio de
-  llegada \(C((\alpha, \omega), \R^n)\), del que \(C^1((\alpha, \omega), \R^n)\)
-  es subespacio vectorial, para poder aplicar el teorema del punto fijo de
-  Banach, que requiere espacios de salida y llegada iguales.
+	En realidad, \(T(\phi) \in C^1((\alpha, \omega), \R^n)\) para
+	\(\phi \in C((\alpha, \omega), \R^n)\); hemos definido \(T\) con espacio de
+	llegada \(C((\alpha, \omega), \R^n)\), del que \(C^1((\alpha, \omega), \R^n)\)
+	es subespacio vectorial, para poder aplicar el teorema del punto fijo de
+	Banach, que requiere espacios de salida y llegada iguales.
 \end{remark}
 
 Consideraremos \(\alpha < \tilde{\alpha} < t_0 < \tilde{\omega} < \omega\), y
@@ -91,64 +91,65 @@ Antes de seguir necesitamos algunos recordatorios:
 \end{definition}
 
 \begin{theorem}[Punto fijo de Banach]
-  Sean \((X, d)\) un espacio métrico completo y \(T : X \to X\) una aplicación
-  contractiva (es decir, Lipschitz con constante \(\alpha \in [0, 1)\)), entonces
-  \(T\) tiene un único punto fijo.
+	Sean \((X, d)\) un espacio métrico completo y \(T : X \to X\) una aplicación
+	contractiva (es decir, Lipschitz con constante \(\alpha \in [0, 1)\)), entonces
+	\(T\) tiene un único punto fijo.
 \end{theorem}
 
 Este teorema tiene una consecuencia que nos será muy útil.
 
 \begin{corollary}
-	Sea \((X, d)\) un espacio métrico completo y \(T : X \to X\) tal que 
+	Sea \((X, d)\) un espacio métrico completo y \(T : X \to X\) tal que
 	\(T^m = T \circ \overset{m}{\cdots} \circ T\) es contractiva para algún
 	\(m \in \N\), entonces \(T\) tiene un único punto fijo.
 \end{corollary}
 
-Definimos en \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) la distancia 
+Definimos en \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) la distancia
 \[d(f, g) = \norm{f - g}_{\infty} = \max_{t \in [\tilde{\alpha},
-    \tilde{\omega}]} \norm{f(t) - g(t)}_2,\] donde \(\norm{\cdot}_2\) es la
+			\tilde{\omega}]} \norm{f(t) - g(t)}_2,\] donde \(\norm{\cdot}_2\) es la
 norma euclídea en \(\R^n\). Así \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\)
 es completo, como queríamos:
 
 \begin{proposition}
-  \(\left( C([\tilde{\alpha}, \tilde{\omega}], \R^n), d \right)\) es un espacio
-  métrico completo.
-  \begin{proof}
-    Para comprobar que \(d\) es una distancia, basta ver que
-    \[\norm{f}_\infty := \max_{t \in [\tilde{\alpha}, \tilde{\omega}]}
-      \norm{f(t)}_2\]
-    es una norma (basta usar que \(\norm{\cdot}_2\) es una norma y las
-    propiedades del máximo).
-
-   Para ver que es completo, consideramos \((f_n)_n\) una sucesión de Cauchy
-   arbitraria en \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\), lo que quiere
-   decir que para cualquier \(\epsilon > 0\) existe un natural \(N_0\) tal que
-   si \(n, m \geq N_0\) entonces
-   \(\norm{f_n-f_m}_\infty = d(f_n, f_m) < \epsilon\). Fijamos ahora
-   \(t \in [\tilde{\alpha}, \tilde{\omega}]\) y consideramos la sucesión
-   \((f_n(t))_n \subset \R^n\), que es de Cauchy porque
-   \(\norm{f_n(t) - f_m(t)}_2 \leq \norm{f_n - f_m}_\infty\). Usamos la
-   completitud de \(\R^n\) para obtener un límite \(f(t) = \lim_n f_n(t)\), lo
-   que nos proporciona una función \(f: [\tilde{\alpha}, \tilde{\omega}] \to
-   \R^n\) que será la candidata a límite. Lo único que nos queda por ver es que
-   \(f \in C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) y \(f_n \overset{d}{\to} f\).
-
-   Dado \(\epsilon > 0\), existe \(N_0 \in \N\) tal que si \(n, m \geq N_0\)
-   entonces \(\norm{f_n(t) - f_m(t)}_2 \leq \norm{f_n - f_m}_\infty < \epsilon\)
-   para todo \(t \in [\tilde{\alpha}, \tilde{\omega}]\), y haciendo tender
-   \(m \to \infty\), se tiene \(\norm{f_n(t) - f(t)}_2 \leq \epsilon\) para todo
-   \(t \in [\tilde{\alpha}, \tilde{\omega}]\), de donde
-   \(\norm{f_n-f}_\infty \leq \epsilon\).
-
-   Queda así demostrado que \(f_n \to f\) uniformemente; por un lado, esto
-   implica que \(f_n \overset{d}{\to} f\) y, por otro, que \(f\) es continua
-   (por serlo las \(f_n\)).
-  \end{proof}
+	\(\left( C([\tilde{\alpha}, \tilde{\omega}], \R^n), d \right)\) es un espacio
+	métrico completo.
 \end{proposition}
 
+\begin{proof}
+	Para comprobar que \(d\) es una distancia, basta ver que
+	\[\norm{f}_\infty := \max_{t \in [\tilde{\alpha}, \tilde{\omega}]}
+		\norm{f(t)}_2\]
+	es una norma (basta usar que \(\norm{\cdot}_2\) es una norma y las
+	propiedades del máximo).
+
+	Para ver que es completo, consideramos \((f_n)_n\) una sucesión de Cauchy
+	arbitraria en \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\), lo que quiere
+	decir que para cualquier \(\epsilon > 0\) existe un natural \(N_0\) tal que
+	si \(n, m \geq N_0\) entonces
+	\(\norm{f_n-f_m}_\infty = d(f_n, f_m) < \epsilon\). Fijamos ahora
+	\(t \in [\tilde{\alpha}, \tilde{\omega}]\) y consideramos la sucesión
+	\((f_n(t))_n \subset \R^n\), que es de Cauchy porque
+	\(\norm{f_n(t) - f_m(t)}_2 \leq \norm{f_n - f_m}_\infty\). Usamos la
+	completitud de \(\R^n\) para obtener un límite \(f(t) = \lim_n f_n(t)\), lo
+	que nos proporciona una función \(f: [\tilde{\alpha}, \tilde{\omega}] \to
+	\R^n\) que será la candidata a límite. Lo único que nos queda por ver es que
+	\(f \in C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) y \(f_n \overset{d}{\to} f\).
+
+	Dado \(\epsilon > 0\), existe \(N_0 \in \N\) tal que si \(n, m \geq N_0\)
+	entonces \(\norm{f_n(t) - f_m(t)}_2 \leq \norm{f_n - f_m}_\infty < \epsilon\)
+	para todo \(t \in [\tilde{\alpha}, \tilde{\omega}]\), y haciendo tender
+	\(m \to \infty\), se tiene \(\norm{f_n(t) - f(t)}_2 \leq \epsilon\) para todo
+	\(t \in [\tilde{\alpha}, \tilde{\omega}]\), de donde
+	\(\norm{f_n-f}_\infty \leq \epsilon\).
+
+	Queda así demostrado que \(f_n \to f\) uniformemente; por un lado, esto
+	implica que \(f_n \overset{d}{\to} f\) y, por otro, que \(f\) es continua
+	(por serlo las \(f_n\)).
+\end{proof}
+
 \begin{remark}
-  La estrategia de esta demostración para probar la completitud es frecuente en
-  espacios de funciones.
+	La estrategia de esta demostración para probar la completitud es frecuente en
+	espacios de funciones.
 \end{remark}
 
 Para demostrar el teorema de existencia y unicidad de la solución, únicamente
@@ -157,34 +158,34 @@ nos queda por ver que existe un \(m \in \N\) tal que \(T^m\) es contractiva.
 Sean \(f, g \in C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) y \(t \in
 [\tilde{\alpha}, \tilde{\omega}]\), entonces
 \begin{equation}
-  \label{eq:contr}
-  \norm{T(f)(t) - T(g)(t)}_2 = \norm{\int_{t_0}^tA(s)(f(s)-g(s))\dif s}_2 \leq
-  \int_{t_0}^t \norm{A(s)(f(s)-g(s))}_2\dif s.
+	\label{eq:contr}
+	\norm{T(f)(t) - T(g)(t)}_2 = \norm{\int_{t_0}^tA(s)(f(s)-g(s))\dif s}_2 \leq
+	\int_{t_0}^t \norm{A(s)(f(s)-g(s))}_2\dif s.
 \end{equation}
 
 \begin{definition}
-  Dada una matriz \(M \in \mathcal{M}_{n \times n}\), definimos su norma como operador como
-  \[\norm{M}_{op} = \max_{\norm{x}_2 \leq 1} \norm{Mx}_2 = \sup_{x \neq 0}
-    \frac{\norm{Mx}_2}{\norm{x}_2}\]
+	Dada una matriz \(M \in \mathcal{M}_{n \times n}\), definimos su norma como operador como
+	\[\norm{M}_{op} = \max_{\norm{x}_2 \leq 1} \norm{Mx}_2 = \sup_{x \neq 0}
+		\frac{\norm{Mx}_2}{\norm{x}_2}\]
 \end{definition}
 
 \begin{remark}
-  Para toda matriz \(M \in \mathcal{M}_{n \times n}\) y todo \(x \in \R^n\) se cumple
-  \(\norm{Mx}_2 \leq \norm{M}_{op} \norm{x}_2\).
+	Para toda matriz \(M \in \mathcal{M}_{n \times n}\) y todo \(x \in \R^n\) se cumple
+	\(\norm{Mx}_2 \leq \norm{M}_{op} \norm{x}_2\).
 \end{remark}
 
 \begin{definition}
-  Si \(A : X \subset \R \to \mathcal{M}_{n \times n}\), definimos su norma infinito como
-  \[\norm{A}_\infty = \max_{x \in X} \norm{A(x)}_{op}\]
+	Si \(A : X \subset \R \to \mathcal{M}_{n \times n}\), definimos su norma infinito como
+	\[\norm{A}_\infty = \max_{x \in X} \norm{A(x)}_{op}\]
 \end{definition}
 
 Con esta notación, de~\eqref{eq:contr} se deduce
 \begin{align*}
-  \norm{T(f)(t) - T(g)(t)}_2 &\leq \int_{t_0}^t
-  \norm{A(s)}_{op}\norm{f(s)-g(s)}_2\dif s \\
-  &\leq \int_{t_0}^t \norm{A}_\infty
-    \norm{f-g}_\infty\dif s\\
-  &= \norm{A}_\infty\norm{f-g}_\infty(t-t_0)
+	\norm{T(f)(t) - T(g)(t)}_2 & \leq \int_{t_0}^t
+	\norm{A(s)}_{op}\norm{f(s)-g(s)}_2\dif s                               \\
+	                           & \leq \int_{t_0}^t \norm{A}_\infty
+	\norm{f-g}_\infty\dif s                                                \\
+	                           & = \norm{A}_\infty\norm{f-g}_\infty(t-t_0)
 \end{align*}
 
 Como \(t, t_0 \in [\tilde{\alpha}, \tilde{\omega}]\), se tiene
@@ -198,48 +199,48 @@ acabado en el caso de que \(\norm{A}_\infty(\tilde{\omega}-\tilde{\alpha}) <
 
 \begin{lemma}\label{lem:desinfty}
 	Para todo \(m \in \N\) se da la desigualdad:
-	\[\norm{T^m(f)(t) - T^m(g)(t)}_2 \leq 
+	\[\norm{T^m(f)(t) - T^m(g)(t)}_2 \leq
 		\frac{\norm{A}^m_\infty}{m!} \abs{t - t_0}^m \norm{f - g}_\infty.\]
 \end{lemma}
 
 \begin{proof}
-	El caso base \(m = 1\) está probado; suponemos el resultado cierto para 
+	El caso base \(m = 1\) está probado; suponemos el resultado cierto para
 	\(m\) y para \(m + 1\) se tiene:
 	\begin{align*}
-		\norm{T^{m + 1}(f)(t) - T^{m + 1}(g)(t)}_2 
-		&= \norm{T(T^m(f))(t) - T(T^m (g))(t)}_2 \\
-		&\leq \int_{t_0}^t \norm{A(s)}_{op} 
-			\norm{T^m(f)(s) - T^m (g)(s)}_2 \dif s,
+		\norm{T^{m + 1}(f)(t) - T^{m + 1}(g)(t)}_2
+		 & = \norm{T(T^m(f))(t) - T(T^m (g))(t)}_2 \\
+		 & \leq \int_{t_0}^t \norm{A(s)}_{op}
+		\norm{T^m(f)(s) - T^m (g)(s)}_2 \dif s,
 	\end{align*}
 	por la hipótesis de inducción:
 	\begin{align*}
-		\int_{t_0}^t \norm{A(s)}_{op} 
-			\norm{T^m(f)(s) - T^m (g)(s)}_2 \dif s
-		&\leq \int_{t_0}^t \norm{A}_\infty 
-			\frac{\norm{A}^m_\infty}{m!} \abs{s - t_0}^m 
-			\norm{f - g}_\infty \dif s \\
-		&\leq \frac{\norm{A}^{m + 1}_\infty}{m!} \norm{f - g}_\infty 
-			\int_{t_0}^t \abs{s - t_0}^m \dif s,
+		\int_{t_0}^t \norm{A(s)}_{op}
+		\norm{T^m(f)(s) - T^m (g)(s)}_2 \dif s
+		 & \leq \int_{t_0}^t \norm{A}_\infty
+		\frac{\norm{A}^m_\infty}{m!} \abs{s - t_0}^m
+		\norm{f - g}_\infty \dif s                                     \\
+		 & \leq \frac{\norm{A}^{m + 1}_\infty}{m!} \norm{f - g}_\infty
+		\int_{t_0}^t \abs{s - t_0}^m \dif s,
 	\end{align*}
 	ahora sin más que integrar:
 	\begin{align*}
-		\norm{T^{m + 1}(f)(t) - T^{m + 1}(g)(t)}_2 &\leq
-		\frac{\norm{A}^{m + 1}_\infty}{m!} \norm{f - g}_\infty 
-			\frac{\abs{t - t_0}^{m + 1}}{m + 1}\\
-		&= \frac{\norm{A}^{m + 1}_\infty}{(m + 1)!} \abs{t - t_0}^{m + 1} 
-			\norm{f - g}_\infty,
+		\norm{T^{m + 1}(f)(t) - T^{m + 1}(g)(t)}_2
+		 & \leq \frac{\norm{A}^{m + 1}_\infty}{m!} \norm{f - g}_\infty
+		\frac{\abs{t - t_0}^{m + 1}}{m + 1}                                 \\
+		 & = \frac{\norm{A}^{m + 1}_\infty}{(m + 1)!} \abs{t - t_0}^{m + 1}
+		\norm{f - g}_\infty,
 	\end{align*}
 	con lo que obtenemos el resultado.
 \end{proof}
 
 \begin{remark}
-  \(\norm{A(s)(f(s)-g(s))}_2 \leq \norm{A}_\infty \norm{f-g}_\infty\) no es más
-  que la propiedad de Lipschitz para \(A\) (no hace falta la linealidad).
+	\(\norm{A(s)(f(s)-g(s))}_2 \leq \norm{A}_\infty \norm{f-g}_\infty\) no es más
+	que la propiedad de Lipschitz para \(A\) (no hace falta la linealidad).
 \end{remark}
 
 \begin{corollary}
 	Se da la desigualdad
-	\[\norm{T^m(f) - T^m(g)}_\infty \leq 
+	\[\norm{T^m(f) - T^m(g)}_\infty \leq
 		\frac{\norm{A}^m_\infty}{m!} (\tilde{\omega} - \tilde{\alpha})^m
 		\norm{f - g}_\infty.\]
 \end{corollary}
@@ -252,18 +253,17 @@ En particular, existe \(m \in \N\) tal que \(T^m\) es contractiva, y queda así
 demostrado el teorema de Picard:
 
 \begin{theorem}[Picard]
-	Si \(A(t)\), \(b(t)\) son continuas en \((\alpha, \omega) \subset \R\), 
+	Si \(A(t)\), \(b(t)\) son continuas en \((\alpha, \omega) \subset \R\),
 	\(t_0 \in \R\) y \(x^0 \in \R^n\), entonces el problema del valor inicial:
 	\[\eqsys{
-		x' = A(t)x + b(t) \\
-		x(t_0) = x^0
-		}\]
+			x' = A(t)x + b(t) \\
+			x(t_0) = x^0}\]
 	tiene solución única en \((\alpha, \omega)\).
 \end{theorem}
 
 \begin{remark}
-  La misma demostración prueba existencia y unicidad para el caso no lineal bajo
-  hipótesis de Lipschitzianidad en el ``operador diferencial''.
+	La misma demostración prueba existencia y unicidad para el caso no lineal bajo
+	hipótesis de Lipschitzianidad en el ``operador diferencial''.
 \end{remark}
 
 Observamos que \(T^m(f_0)\), donde \(f_0\) es un punto inicial cualquiera,
@@ -276,18 +276,18 @@ Picard.
 \begin{example}
 	Consideramos el PVI:
 	\[\eqsys{x' = ax \quad \text{(ecuación escalar)} \\
-		x(0) = x_0}\]
+			x(0) = x_0}\]
 
-	Iniciamos el proceso con la solución constante \(x_0\), 
+	Iniciamos el proceso con la solución constante \(x_0\),
 	\[x_1 = T(x_0) = x_0 + \int_0^t a x_0 \dif s = x_0 + x_0 a t,\]
 	reiterando tenemos que
 	\[x_n = T(x_{n - 1}) = x_0 \sum_{k = 0}^n \frac{(at)^k}{k!},\] cuando \(n\)
-    tiende a infinito nos queda \(x_\infty := \lim_n x_n = x_0 e^{at}\).
+	tiende a infinito nos queda \(x_\infty := \lim_n x_n = x_0 e^{at}\).
 \end{example}
 
 \begin{remark}
-  Este procedimiento también vale, con las modificaciones obvias, para el caso
-  matricial, a diferencia de la separación de variables que ya vimos.
+	Este procedimiento también vale, con las modificaciones obvias, para el caso
+	matricial, a diferencia de la separación de variables que ya vimos.
 \end{remark}
 
 \section{Estructura del espacio de soluciones}
@@ -296,8 +296,8 @@ Picard.
 
 Consideramos el sistema homogéneo \(x' = A(t) x\) y definimos la función:
 \begin{align*}
-	T : C^1((\alpha, \omega), \R^n) &\to C \\
-	x &\mapsto x' - A(t)x,
+	T : C^1((\alpha, \omega), \R^n) & \to C               \\
+	x                               & \mapsto x' - A(t)x,
 \end{align*}
 claramente \(x\) es solución de la ecuación si y solo si \(x \in \ker(T)\).
 Puesto que \(T\) es lineal el conjunto de soluciones es un espacio vectorial,
@@ -305,36 +305,34 @@ más propiamente un subespacio vectorial de \(C^1((\alpha, \omega), \R^n)\).
 
 \begin{theorem}
 	El espacio de soluciones de un sistema de ecuaciones lineales homogéneas es
-	un subespacio vectorial de \(C^1((\alpha, \omega), \R^n)\) de dimensión 
+	un subespacio vectorial de \(C^1((\alpha, \omega), \R^n)\) de dimensión
 	\(n\). Además, si \(\phi_j\) es la solución del problema de valor inicial
 	\[\eqsys{
-		x' = A(t)x \\
-		x(t_0) = e_j = (0, \dots, \underset{j}{1}, \dots, 0)^T
-		}\]
+			x' = A(t)x \\
+			x(t_0) = e_j = (0, \dots, \underset{j}{1}, \dots, 0)^T}\]
 	siendo \(t_0 \in (\alpha, \omega)\) arbitrario, tenemos que
 	\(\set{\phi_1, \dots, \phi_n}\) es base del susodicho espacio de soluciones.
 \end{theorem}
 
 \begin{proof}
 	Demostramos primero que los \(\phi_j\) son linealmente independientes. Si
-    \(\alpha_1, \dots, \alpha_n\) son tales que \(\sum_{j = 1}^n \alpha_j \phi_j
-    \equiv 0\), evaluando en \(t_0\) se obtiene
+	\(\alpha_1, \dots, \alpha_n\) son tales que \(\sum_{j = 1}^n \alpha_j \phi_j
+	\equiv 0\), evaluando en \(t_0\) se obtiene
 	\[\sum_{j = 1}^n \alpha_j e_j = 0 \implies \alpha_j = 0,\]
 	para todo \(j = 1, \dots, n\) como queríamos, por ser \(e_1, \dots,
-    e_n\) base. Demostramos ahora que es sistema de generadores. Sea \(y\) solución
-    de la ecuación lineal y sea \(y(t_0) = (\alpha_1, \dots, \alpha_n)^t\),
-    definimos \(z = \sum_{j = 1}^n \alpha_j \phi_j\) y observamos que tanto
-    \(y\) como \(z\) son soluciones de
+	e_n\) base. Demostramos ahora que es sistema de generadores. Sea \(y\) solución
+	de la ecuación lineal y sea \(y(t_0) = (\alpha_1, \dots, \alpha_n)^t\),
+	definimos \(z = \sum_{j = 1}^n \alpha_j \phi_j\) y observamos que tanto
+	\(y\) como \(z\) son soluciones de
 	\[\eqsys{
-		x' = A(t)x \\
-		x(t_0) = (\alpha_1, \dots, \alpha_n)^t
-		}\]
+			x' = A(t)x \\
+			x(t_0) = (\alpha_1, \dots, \alpha_n)^t}\]
 	de donde deducimos que \(y = z\) en virtud del Teorema de Picard.
 \end{proof}
 
 \begin{definition}
 	Llamaremos matriz fundamental del sistema \(x' = A(t)x\) y la denotaremos
-	\(\Phi(t)\) a cualquier matriz cuyas columnas formen base del espacio de 
+	\(\Phi(t)\) a cualquier matriz cuyas columnas formen base del espacio de
 	soluciones del sistema.
 \end{definition}
 
@@ -347,36 +345,36 @@ sistema es \(\Phi(t)c\) con \(c \in \R^n\):
 	c_1\phi_1 + \cdots + c_n\phi_n.\]
 
 \begin{corollary}
-  Sea \(\Phi(t)\) una matriz cuyas columnas son solución del sistema
-  \(x' = A(t)x\), entonces son equivalentes:
+	Sea \(\Phi(t)\) una matriz cuyas columnas son solución del sistema
+	\(x' = A(t)x\), entonces son equivalentes:
 
-  \begin{enumerate}[i)]
-  \item \(\Phi(t)\) es matriz fundamental
-  \item \(\det(\Phi(t)) \neq 0 \ \forall t \in (\alpha, \omega)\)
-  \item \(\exists t_0 \in (\alpha, \omega) \ \det(\Phi(t_0)) \neq 0\)
-  \end{enumerate}
+	\begin{enumerate}[i)]
+		\item \(\Phi(t)\) es matriz fundamental.
+
+		\item \(\det(\Phi(t)) \neq 0 \ \forall t \in (\alpha, \omega)\).
+
+		\item \(\exists t_0 \in (\alpha, \omega) \ \det(\Phi(t_0)) \neq 0\).
+	\end{enumerate}
 \end{corollary}
 
 Las columnas de \(\Phi(t)\) son soluciones de \(x' = A(t)x\) si y solo si
 \(\Phi(t)\) es solución de la ecuación matricial \(X' = A(t)X\), donde
 \begin{align*}
-	X : (\alpha, \omega) &\to \mathcal{M}_{n \times n} \\
-	t &\mapsto x(t)
+	X : (\alpha, \omega) & \to \mathcal{M}_{n \times n} \\
+	t                    & \mapsto x(t)
 \end{align*}
 
 Asimismo, que \(\Phi(t)\) sea matriz fundamental equivale a que sea solución de
 un problema de valor inicial de la forma:
 \[\eqsys{
-	X' = A(t)X \\
-	X(t_0) = X^0
-}\]
+		X' = A(t)X \\
+		X(t_0) = X^0}\]
 donde ambas ecuaciones son matriciales y \(\det(X_0) \neq 0\). Notamos que la
 matriz fundamental \(\Phi(t) = (\phi_1, \dots, \phi_n)\) que definimos
 anteriormente es la única solución del problema de valor inicial:
 \[\eqsys{
-	X' = A(t)X \\
-	X(0) = \mathit{Id}
-	}\]
+		X' = A(t)X \\
+		X(0) = \mathit{Id}}\]
 
 \subsection{Caso no homogéneo}
 
@@ -389,7 +387,7 @@ diversos métodos para obtener \(x_p(t)\).
 
 \section{Método de variación de constantes}
 
-Un método para obtener una solución particular \(x_p(t)\) de un sistema 
+Un método para obtener una solución particular \(x_p(t)\) de un sistema
 \(x' = A(t)x + b(t)\) es la variación de constantes, que como veremos es muy
 similar al al caso de una variable. Sabemos que la solución general de la
 ecuación homogénea asociada es \(x_h(t) = \Phi(t)c\), conjeturamos la existencia
@@ -406,9 +404,9 @@ Basta por tanto elegir \(c(t) = \int_{t_0}^t \Phi^{-1}(s) b(s) \dif s\), hemos
 demostrado el siguiente teorema:
 
 \begin{theorem}
-	Sea \(\Phi(t)\) una matriz fundamental del sistema \(x' = A(t)x\), entonces 
+	Sea \(\Phi(t)\) una matriz fundamental del sistema \(x' = A(t)x\), entonces
 	\[x_p(t) = \Phi(t) \int_{t_0}^t \Phi^{-1}(s) b(s) \dif s\]
-	con \(t_0 \in (\alpha, \omega)\) es una solución particular de 
+	con \(t_0 \in (\alpha, \omega)\) es una solución particular de
 	\(x' = A(t)x + b(t)\) que satisface \(x_p(t_0) = 0 \in \R^n\).
 \end{theorem}
 

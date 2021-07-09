@@ -1,180 +1,179 @@
-\documentclass[../main.tex]{subfiles}
+\documentclass[../ecuaciones_diferenciales.tex]{subfiles}
 
 \begin{document}
 
 \begin{problem}
-	Encontrar la solución general de las siguientes ecuaciones diferenciales,
-	indicando su intervalo de definición.
+Encontrar la solución general de las siguientes ecuaciones diferenciales,
+indicando su intervalo de definición.
 
-	\begin{multicols}{2}
+\begin{multicols}{2}
 	\begin{enumerate}[a)]
 		\item \(\displaystyle x' + x \cos t = 0\)
 		\item \(\displaystyle x' + x\sqrt{t} \sin t = 0\)
 		\item \(\displaystyle x' + \frac{2t}{1 + t^2}x = \frac{1}{1 + t^2}\)
 		\item \(\displaystyle x' + x = t e^t\)
 	\end{enumerate}
-	\end{multicols}
+\end{multicols}
 \end{problem}
 
 \begin{solution}
 	\begin{enumerate}[a), wide, labelwidth=0pt, labelindent=0pt]
 		\item Se trata de una ecuación homogénea, puesto que
-			\(\cos t \in C(\R)\), el intervalo de definición de la ecuación es
-			\(\R\). Separando variables:
-			\begin{align*}
-				\frac{x'}{x} = -\cos t &\iff
-				\log\abs{x(t)} = \int_0^t -\cos s \dif s + c
-				= -(\sin t - \sin 0) + c \\
-				&\iff x(t) = k e^{-\sin t}.
-			\end{align*}
+		      \(\cos t \in C(\R)\), el intervalo de definición de la ecuación es
+		      \(\R\). Separando variables:
+		      \begin{align*}
+			      \frac{x'}{x} = -\cos t & \iff
+			      \log\abs{x(t)} = \int_0^t -\cos s \dif s + c
+			      = -(\sin t - \sin 0) + c                            \\
+			                             & \iff x(t) = k e^{-\sin t}.
+		      \end{align*}
 
 		\item El intervalo de definición es \(\R^+ \cup \set{0}\), utilizando la
-			fórmula obtenida en~\ref{sec:hom}:
-			\[x(t) = k e^{\int^t \sqrt{s} \sin s \dif s},\]
-			la integral no posee una primitiva elemental, por lo que no podemos
-			simplificar más la solución.
+		      fórmula obtenida en~\ref{sec:hom}:
+		      \[x(t) = k e^{\int^t \sqrt{s} \sin s \dif s},\]
+		      la integral no posee una primitiva elemental, por lo que no podemos
+		      simplificar más la solución.
 
 		\item Tanto \(a(t)\) como \(b(t)\) son continuas en \(\R\). Utilizamos
-			el método de variación de constantes, resolvemos primero la ecuación
-			homogénea asociada:
-			\[x_n(t) = k e^{\int_0^t \frac{-2s}{1 + s^2} \dif s},\]
-			notamos que la derivada de \(-\log(1 + s^2)\) coincide con el
-			interior de nuestra integral, por tanto:
-			\[x_n(t) = k e^{-\log(1 + t^2)} = \frac{k}{1 + t^2}.\]
+		      el método de variación de constantes, resolvemos primero la ecuación
+		      homogénea asociada:
+		      \[x_n(t) = k e^{\int_0^t \frac{-2s}{1 + s^2} \dif s},\]
+		      notamos que la derivada de \(-\log(1 + s^2)\) coincide con el
+		      interior de nuestra integral, por tanto:
+		      \[x_n(t) = k e^{-\log(1 + t^2)} = \frac{k}{1 + t^2}.\]
 
-			Ahora, sea \(x_p = \frac{k(t)}{1 + t^2}\) solución de la ecuación
-			diferencial, entonces
-			\[x_p'(t) = k'(t)\frac{1}{1 + t^2} + k(t)\frac{-2t}{(1 + t^2)^2}\]
-			sustituyendo en la ecuación obtenemos que
-			\[x_p'(t) = \frac{-2t}{1 + t^2} x_p(t) + \frac{1}{1 + t^2}
-				= k(t)\frac{-2t}{(1 + t^2)^2}  + \frac{1}{1 + t^2}.\]
+		      Ahora, sea \(x_p = \frac{k(t)}{1 + t^2}\) solución de la ecuación
+		      diferencial, entonces
+		      \[x_p'(t) = k'(t)\frac{1}{1 + t^2} + k(t)\frac{-2t}{(1 + t^2)^2}\]
+		      sustituyendo en la ecuación obtenemos que
+		      \[x_p'(t) = \frac{-2t}{1 + t^2} x_p(t) + \frac{1}{1 + t^2}
+			      = k(t)\frac{-2t}{(1 + t^2)^2}  + \frac{1}{1 + t^2}.\]
 
-			Igualando hallamos que \(k'(t) = 1\) y, por ende, \(k(t) = t\).
-			La solución general es
-			\[x(t) = x_n(t) + x_p(t) = \frac{k + t}{1 + t^2}.\]
+		      Igualando hallamos que \(k'(t) = 1\) y, por ende, \(k(t) = t\).
+		      La solución general es
+		      \[x(t) = x_n(t) + x_p(t) = \frac{k + t}{1 + t^2}.\]
 
 		\item Tanto \(a = 1\) como \(b\) son continuas en todo \(\R\) por lo que
-			este es nuestro intervalo de definición. Resolvemos la ecuación
-			homogénea asociada, obteniendo \(x_n(t) = k e^{-t}\). Sea
-			\(x_p(t) = k(t) e^{-t}\) solución de la ecuación, entonces:
-			\[\begin{cases}
-				x_p'(t) = k'(t) e^{-t} - k(t) e^{-t} \\
-				x_p'(t) = t e^t - x_p(t) = t e^t - k(t) e^{-t}
-			  \end{cases}
-			  \leadsto
-			  k'(t) = t e^{2t}.
-			\]
-			Integrando por partes:
-			\[k(t) = \int t e^{2t} \dif t
-				= \frac{t e^{2t}}{2} - \int \frac{e^{2t}}{2} \dif t
-				= \frac{t e^{2t}}{2} - \frac{e^{2t}}{4}.\]
-			La solución general de la ecuación es pues
-			\[x(t) = x_n(t) + x_p(t) = (k + k(t))e^{-t}
-				= k e^{-t} + \frac{t e^{t}}{2} - \frac{e^{t}}{4}.\]
+		      este es nuestro intervalo de definición. Resolvemos la ecuación
+		      homogénea asociada, obteniendo \(x_n(t) = k e^{-t}\). Sea
+		      \(x_p(t) = k(t) e^{-t}\) solución de la ecuación, entonces:
+		      \[\begin{cases}
+				      x_p'(t) = k'(t) e^{-t} - k(t) e^{-t} \\
+				      x_p'(t) = t e^t - x_p(t) = t e^t - k(t) e^{-t}
+			      \end{cases}
+			      \leadsto
+			      k'(t) = t e^{2t}.
+		      \]
+		      Integrando por partes:
+		      \[k(t) = \int t e^{2t} \dif t
+			      = \frac{t e^{2t}}{2} - \int \frac{e^{2t}}{2} \dif t
+			      = \frac{t e^{2t}}{2} - \frac{e^{2t}}{4}.\]
+		      La solución general de la ecuación es pues
+		      \[x(t) = x_n(t) + x_p(t) = (k + k(t))e^{-t}
+			      = k e^{-t} + \frac{t e^{t}}{2} - \frac{e^{t}}{4}.\]
 	\end{enumerate}
 \end{solution}
 
 \begin{problem}
-	Hallar las soluciones de los siguientes problemas de valor inicial,
-	indicando su intervalo de definición.
-	\begin{multicols}{2}
+Hallar las soluciones de los siguientes problemas de valor inicial,
+indicando su intervalo de definición.
+\begin{multicols}{2}
 	\begin{enumerate}[a)]
 		\item \(\displaystyle
-				\begin{cases}
-					x' + 5x = t^2 \\
-					x(0) = 3
-				\end{cases}\)
+		      \begin{cases}
+			      x' + 5x = t^2 \\
+			      x(0) = 3
+		      \end{cases}\)
 
 		\item \(\displaystyle
-				\begin{cases}
-					x' = (\tan t)x + \cos t \\
-					x(0) = 1
-				\end{cases}\)
+		      \begin{cases}
+			      x' = (\tan t)x + \cos t \\
+			      x(0) = 1
+		      \end{cases}\)
 
 		\item \(\displaystyle
-				\begin{cases}
-					x' + 2tx = t^3 \\
-					x(0) = 1
-				\end{cases}\)
+		      \begin{cases}
+			      x' + 2tx = t^3 \\
+			      x(0) = 1
+		      \end{cases}\)
 
 		\item \(\displaystyle
-				\begin{cases}
-					tx' + \frac{t}{\sqrt{1 + t^3}}x = 1 \\
-					x(1) = 2
-				\end{cases}\)
+		      \begin{cases}
+			      tx' + \frac{t}{\sqrt{1 + t^3}}x = 1 \\
+			      x(1) = 2
+		      \end{cases}\)
 	\end{enumerate}
-	\end{multicols}
+\end{multicols}
 \end{problem}
 
 \begin{solution}
 	\begin{enumerate}[a), wide, labelwidth=0pt, labelindent=0pt]
 		\item Resolvemos la ecuación homogénea asociada, \(x_n(t) = k e^{-5t}\),
-			y, mediante variación de constantes, obtenemos, integrando por
-			partes dos veces,
-			\[k(t) = \parens{\frac{t^2}{5} - \frac{2t}{25}
-				+ \frac{2}{125}} e^{-5t},\]
-			así una solución general es
-			\[x(t) = (k + k(t)) e^{-5t}
-				= k e^{-5t} + \frac{t^2}{5} - \frac{2t}{25} + \frac{2}{125}.\]
+		      y, mediante variación de constantes, obtenemos, integrando por
+		      partes dos veces,
+		      \[k(t) = \parens{\frac{t^2}{5} - \frac{2t}{25}
+				      + \frac{2}{125}} e^{-5t},\]
+		      así una solución general es
+		      \[x(t) = (k + k(t)) e^{-5t}
+			      = k e^{-5t} + \frac{t^2}{5} - \frac{2t}{25} + \frac{2}{125}.\]
 
-			Evaluamos en la condición inicial
-			\[3 = x(0) = k + \frac{2}{125} \leadsto k = \frac{373}{125},\]
-			obtenemos así la solución del problema del valor inicial
-			\[x(t) =  \frac{373}{125} e^{-5t} + \frac{t^2}{5} - \frac{2t}{25}
-				+ \frac{2}{125}.\]
+		      Evaluamos en la condición inicial
+		      \[3 = x(0) = k + \frac{2}{125} \leadsto k = \frac{373}{125},\]
+		      obtenemos así la solución del problema del valor inicial
+		      \[x(t) =  \frac{373}{125} e^{-5t} + \frac{t^2}{5} - \frac{2t}{25}
+			      + \frac{2}{125}.\]
 
 		\item TODO.
 
 		\item Resolvemos la ecuación homogénea asociada separando variables,
-			\(x = k e^{-t^2}\), por variación de constantes,
-			\(k'(t) = t^3 e^{t^2}\) y, por partes,
-			\(k(t) = 1/2 (e^{t^2}t^2 - e^{t^2})\). La solución general es pues
-			\[x(t) = k e^{-t^2} + \frac{1}{2}(t^2 - 1).\]
+		      \(x = k e^{-t^2}\), por variación de constantes,
+		      \(k'(t) = t^3 e^{t^2}\) y, por partes,
+		      \(k(t) = 1/2 (e^{t^2}t^2 - e^{t^2})\). La solución general es pues
+		      \[x(t) = k e^{-t^2} + \frac{1}{2}(t^2 - 1).\]
 
-			Evaluando en la condición inicial, \(1 = x(0) = k - 1/2\), por lo
-			que \(k = 1/2\).
+		      Evaluando en la condición inicial, \(1 = x(0) = k - 1/2\), por lo
+		      que \(k = 1/2\).
 
 		\item El intervalo de definición es \((0, \infty)\), ya que es el
-			intervalo más grande en el cual las funciones \(a\) y \(b\) son
-			continuas. Separando y puesto que el integrando no posee
-			primitiva elemental:
-			\[x = k e^{-\int^t \frac{1}{\sqrt{1 + s^3}} \dif s}.\]
+		      intervalo más grande en el cual las funciones \(a\) y \(b\) son
+		      continuas. Separando y puesto que el integrando no posee
+		      primitiva elemental:
+		      \[x = k e^{-\int^t \frac{1}{\sqrt{1 + s^3}} \dif s}.\]
 
-			Por variación de constantes,
-			\[k(t) = \int^t \frac{1}{s}
-				e^{\int^s \frac{1}{\sqrt{1 + u^3}} \dif u} \dif s,\]
-			con lo cual
-			\[x(t) = (k + k(t))  e^{-\int^t \frac{1}{\sqrt{1 + s^3}} \dif s}.\]
+		      Por variación de constantes,
+		      \[k(t) = \int^t \frac{1}{s}
+			      e^{\int^s \frac{1}{\sqrt{1 + u^3}} \dif u} \dif s,\]
+		      con lo cual
+		      \[x(t) = (k + k(t))  e^{-\int^t \frac{1}{\sqrt{1 + s^3}} \dif s}.\]
 
-			Obtenemos la solución del problema del valor inicial evaluando,
-			\(x(1) = k = 2\).
+		      Obtenemos la solución del problema del valor inicial evaluando,
+		      \(x(1) = k = 2\).
 	\end{enumerate}
 \end{solution}
 
-
 \begin{problem}
-	El nivel de carbón vegetal encontrado en las grutas de Lascaux, en Francia,
-	dio una medida de 0,91 desintegraciones por minuto y gramo (la madera viva
-	da 6,68 desintegraciones). Estimad la edad probable de las pinturas que se
-	hallan en dichas cuevas.
+El nivel de carbón vegetal encontrado en las grutas de Lascaux, en Francia,
+dio una medida de 0,91 desintegraciones por minuto y gramo (la madera viva
+da 6,68 desintegraciones). Estimad la edad probable de las pinturas que se
+hallan en dichas cuevas.
 \end{problem}
 
 \begin{solution}
-    Elegimos \(t = 0\) el momento en el que se corta el árbol, y denotamos por
-    \(x(t)\) la cantidad de carbono-14 a tiempo \(t\), por lo que
-    \(x'(0) = -6,68 q\), donde \(q\) es la cantidad de carbono-14 en 1 gramo de
-    madera.  Utilizando la fórmula vista en clase,
-    \[x(t) = x(0) e^{-\lambda t},\]
-    donde \(\lambda = \frac{\log 2}{5730}\), deducimos que
-    \[x'(t) = -\lambda x(0) e^{-\lambda t}.\]
+	Elegimos \(t = 0\) el momento en el que se corta el árbol, y denotamos por
+	\(x(t)\) la cantidad de carbono-14 a tiempo \(t\), por lo que
+	\(x'(0) = -6,68 q\), donde \(q\) es la cantidad de carbono-14 en 1 gramo de
+	madera.  Utilizando la fórmula vista en clase,
+	\[x(t) = x(0) e^{-\lambda t},\]
+	donde \(\lambda = \frac{\log 2}{5730}\), deducimos que
+	\[x'(t) = -\lambda x(0) e^{-\lambda t}.\]
 
-    Según los datos del enunciado, \(-6,68 q = x'(0) = -\lambda x(0)\). Si
-    llamamos \(t_\alpha\) al momento en el que estamos, tenemos
-    \(-0,91 q = x'(t_\alpha) = - \lambda x(0) e^{-\lambda t_\alpha}\), y
-    dividiendo queda
-    \[\frac{0,91}{6,68} = \frac{x'(t_\alpha)}{x'(0)} = e^{-\lambda t_\alpha},\]
-    de donde se deduce que \(t_\alpha = 16479\), es decir, las pinturas tienen una
-    antigüedad de 16479 años.
+	Según los datos del enunciado, \(-6,68 q = x'(0) = -\lambda x(0)\). Si
+	llamamos \(t_\alpha\) al momento en el que estamos, tenemos
+	\(-0,91 q = x'(t_\alpha) = - \lambda x(0) e^{-\lambda t_\alpha}\), y
+	dividiendo queda
+	\[\frac{0,91}{6,68} = \frac{x'(t_\alpha)}{x'(0)} = e^{-\lambda t_\alpha},\]
+	de donde se deduce que \(t_\alpha = 16479\), es decir, las pinturas tienen una
+	antigüedad de 16479 años.
 \end{solution}
 
 \end{document}

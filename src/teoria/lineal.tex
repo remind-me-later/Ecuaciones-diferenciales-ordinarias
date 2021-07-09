@@ -1,4 +1,4 @@
-\documentclass[../main.tex]{subfiles}
+\documentclass[../ecuaciones_diferenciales.tex]{subfiles}
 
 \begin{document}
 
@@ -9,9 +9,9 @@ elemental\footnote{\url{https://en.wikipedia.org/wiki/Elementary_function}}) que
 proporciona todo el conjunto de soluciones.
 
 \begin{definition}
-Las ecuaciones diferenciales lineales de primer orden son aquellas de la forma
-\[x' = a(t)x + b(t)\]
-donde \(a\) y \(b\) son continuas en \((\alpha, \omega) \subset \R\).
+	Las ecuaciones diferenciales lineales de primer orden son aquellas de la forma
+	\[x' = a(t)x + b(t)\]
+	donde \(a\) y \(b\) son continuas en \((\alpha, \omega) \subset \R\).
 \end{definition}
 
 Antes de resolver estas ecuaciones, centraremos nuestra atención en un problema
@@ -21,10 +21,10 @@ primer orden asociada a la ecuación original.
 \section{Ecuación diferencial lineal homogénea de primer orden} \label{sec:hom}
 
 \begin{definition}
-Una ecuación diferencial lineal homogénea de primer orden es una ecuación de la
-forma
-\[x' = a(t)x.\]
-con \(a\) continua en \((\alpha, \omega) \subset \R\).
+	Una ecuación diferencial lineal homogénea de primer orden es una ecuación de la
+	forma
+	\[x' = a(t)x.\]
+	con \(a\) continua en \((\alpha, \omega) \subset \R\).
 \end{definition}
 
 Buscamos ahora las soluciones de la ecuación homogénea. Supongamos que la
@@ -32,7 +32,8 @@ solución no se anula en ningún punto, entonces por el teorema de Bolzano
 \(x > 0\) o \(x < 0\) en \((\alpha, \omega)\). En este caso recurrimos a un
 método que llamaremos separación de variables, por el teorema fundamental del
 cálculo podemos escribir
-\[\frac{x'(t)}{x(t)} = a(t) \iff \log\abs{x(t)} = \int_{\beta}^t a(s) \dif s + c,
+\[\frac{x'(t)}{x(t)} = a(t) \iff \log\abs{x(t)}
+	= \int_{\beta}^t a(s) \dif s + c,
 	\quad \beta \in (\alpha, \omega).\]
 Para aligerar la notación escribiremos \(\int^t a(s) \dif s\) para referirnos
 a cualquier primitiva de \(a\). Por lo anterior
@@ -60,11 +61,10 @@ ecuación homogénea.
 	\[\Phi(t) = u(t) e^{-\int^t a(s) \dif s}\]
 	y calculamos su derivada obteniendo
 	\begin{align*}
-		\Phi'(t) &= u'(t) e^{-\int^t a(s) \dif s}
-			- u(t) a(t) e^{-\int^t a(s) \dif s} \\
-			&= a(t) u(t) e^{-\int^t a(s) \dif s}
-			- u(t) a(t) e^{-\int^t a(s) \dif s}
-			= 0.
+		\Phi'(t) & = u'(t) e^{-\int^t a(s) \dif s}
+		- u(t) a(t) e^{-\int^t a(s) \dif s}            \\
+		         & = a(t) u(t) e^{-\int^t a(s) \dif s}
+		- u(t) a(t) e^{-\int^t a(s) \dif s} = 0.
 	\end{align*}
 
 	De aquí se deduce que la función \(\Phi\) es constante, por lo que
@@ -109,8 +109,8 @@ espacio vectorial de funciones de clase \(C^1\) en el intervalo
 Vamos a ver cómo esto se deduce de la linealidad de la ecuación. Para ello
 definimos el operador diferencial
 \begin{align*}
-  L : C^1(\alpha, \omega) &\to C(\alpha, \omega) \\
-  x &\mapsto \frac{d x}{\dif t} - a(t)x
+	L : C^1(\alpha, \omega) & \to C(\alpha, \omega)              \\
+	x                       & \mapsto \frac{d x}{\dif t} - a(t)x
 \end{align*}
 
 Recordamos que decimos que una función es lineal cuando cumple
@@ -124,7 +124,7 @@ operaciones dentro de su definición.
 	\(x \in \text{ker}(L)\). Sabemos del álgebra lineal que el núcleo de un
 	homomorfismo vectorial es siempre un subespacio vectorial del espacio de dominio
 	y, por tanto, el conjunto de soluciones de la ecuación homogénea es un espacio
-  vectorial.
+	vectorial.
 \end{remark}
 
 \section{El operador diferencial}
@@ -138,7 +138,7 @@ podemos asociarle un operador diferencial
 donde el término \(k\)-ésimo \(a_k(t) d^k/\dif t^k\) actúa sobre una
 función \(u(t)\) como
 \[\left(a_k(t)\frac{d^k}{\dif t^k}\right)(u(t)) = a_k(t) \frac{d^ku}{\dif t^k}(t)
-  = a_k(t) u^{(k)}(t).\]
+	= a_k(t) u^{(k)}(t).\]
 
 Como derivar es lineal:
 \[\frac{d}{\dif t} (\alpha u(t) + \beta v(t))
@@ -213,7 +213,7 @@ Conocemos una forma explícita de calcular una solución de la ecuación homogé
 asociada a una ecuación lineal~\autoref{sec:hom}. Conjeturamos que hay una
 solución particular de la ecuación lineal de la forma
 \begin{equation}\label{xp}
-  x_p(t) = k(t) e^{\int^t a(s) \dif s}
+	x_p(t) = k(t) e^{\int^t a(s) \dif s}
 \end{equation}
 e intentamos obtener \(k(t)\). Buscamos entonces que se cumpla la igualdad
 \[x'_p(t) = a(t)x_p(t) + b(t) = a(t)k(t) e^{\int^t a(s) \dif s} + b(t),\]
@@ -245,12 +245,9 @@ nuestra ecuación tiene solución única.
 
 \begin{theorem}
 	El problema del valor inicial
-	\[
-	\begin{cases}
-		x' = a(t)x + b(t), & a, b \in C(\alpha, \omega) \\
-		x(t_0) = x_0, 	  & t_0 \in (\alpha, \omega), \quad x_0 \in \R
-	\end{cases}
-	\]
+	\[\eqsys{
+			x' = a(t)x + b(t), & a, b \in C(\alpha, \omega) \\
+			x(t_0) = x_0, 	  & t_0 \in (\alpha, \omega), \quad x_0 \in \R}\]
 	tiene solución única dada por
 	\[x(t) =
 		\parens{x_0 + \int_{t_0}^t b(s) e^{-\int_{t_0}^s a(u) \dif u} \dif s}
@@ -265,18 +262,15 @@ punto, como consecuencia del teorema anterior.
 
 \begin{example}
 	Resuélvase el problema del valor inicial:
-	\[
-	\begin{cases}
-		x' + \frac{x}{t} = \cos t \\
-		x(\pi) = 1
-	\end{cases}
-	\]
+	\[\eqsys{
+			x' + \frac{x}{t} = \cos t \\
+			x(\pi) = 1}\]
 \end{example}
 
 \begin{solution}
 	Observamos que el intervalo donde vamos a resolver el problema es
 	\((0, +\infty)\). Como estamos dividiendo por \(t\), el origen no puede
-    estar en el intervalo, y puesto que \(\pi\) sí ha de pertenecer escogemos
+	estar en el intervalo, y puesto que \(\pi\) sí ha de pertenecer escogemos
 	\((0, +\infty)\). La ecuación homogénea asociada es \(x' + x/t = 0\),
 	separando variables y calculando primitivas a ambos lados obtenemos
 	\[\frac{x'}{x} = -\frac{1}{t} \iff \log\abs{x}
@@ -292,7 +286,8 @@ punto, como consecuencia del teorema anterior.
 	\(k(t) = t \sin t + \cos t\). Recordamos que la solución general de la
 	ecuación diferencial es la suma de la solución general de la homogénea más
 	la solución particular obtenida
-	\[x(t) = \frac{k}{t} + \frac{t \sin t + \cos t}{t} = \frac{1}{t}(k + t \sin t + \cos t).\]
+	\[x(t) = \frac{k}{t} + \frac{t \sin t + \cos t}{t}
+		= \frac{1}{t}(k + t \sin t + \cos t).\]
 
 	Calculamos \(k\) usando la condición inicial \(x(\pi) = 1\),
 	\[\frac{1}{\pi}(k - 1) = 1 \iff k = \pi + 1.\]
@@ -320,7 +315,7 @@ incluye personas inmunizadas y muertos, que hacen variar el total de personas en
 nuestro modelo. Haremos un par de hipótesis para simplificar el modelo:
 \begin{enumerate}[i)]
 	\item \(x'\) depende del número de interacciones entre personas sanas y
-		enfermas.
+	      enfermas.
 
 	\item El susodicho número de interacciones es proporcional a \(xy\).
 \end{enumerate}
@@ -408,66 +403,67 @@ Asumiendo que \(x \neq 0\), consideramos el cambio de variable
 \(y' = (1 - n) x^{-n} x' = (1 - n)x'/x^n\). Dividiendo ahora por \(x^n\) y
 multiplicando por \((1 - n)\) en la ecuación de Bernoulli obtenemos la ecuación
 lineal
-\begin{align*}
-  (1 - n)\frac{x'}{x^n} &= (1-n)a(t)x^{1-n} + (1-n)b(t)\iff \\ y' &= (1 - n)a(t)y + (1 - n)b(t)
-\end{align*}
+\begin{alignat*}{2}
+	     &  & (1 - n)\frac{x'}{x^n} & = (1-n)a(t)x^{1-n} + (1-n)b(t) \\
+	\iff &  & y'                    & = (1 - n)a(t)y + (1 - n)b(t)
+\end{alignat*}
 
 \begin{example}
-\label{ex:cambio_var}
+	\label{ex:cambio_var}
 	Resuélvase el problema del valor inicial:
 	\[\begin{cases}
 			x' = \frac{x}{t} + x^3 \\
 			x(1) = 1
-	  \end{cases}\]
+		\end{cases}\]
 \end{example}
 
 \begin{solution}
 	Hacemos el cambio \(y = x^{-2}\), entonces \(y' = (-2/x^3) x'\) siempre que
 	\(x \neq 0\), y así tenemos
-	\[y' = -\frac{2}{x^3} x' = -\frac{2}{x^3}\parens{\frac{x}{t} + x^3} = 
+	\[y' = -\frac{2}{x^3} x' = -\frac{2}{x^3}\parens{\frac{x}{t} + x^3} =
 		-\frac{2}{t}y - 2.\]
-	
-      Resolvemos ahora la ecuación homogénea asociada obteniendo la solución
-      general \(y = k/t^2\). Para calcular una solución particular de la
-      ecuación, en vez de hacerlo mediante variación de constantes la obtenemos
-      mediante el método de la \emph{conjetura razonable}. Conjeturamos, por la
-      forma de la ecuación, que \(y_p(t) = ct\), ergo
-	\[c = y_p'(t) = -\frac{2}{t} y_p(t) - 2 = -2c -2 
+
+	Resolvemos ahora la ecuación homogénea asociada obteniendo la solución
+	general \(y = k/t^2\). Para calcular una solución particular de la
+	ecuación, en vez de hacerlo mediante variación de constantes la obtenemos
+	mediante el método de la \emph{conjetura razonable}. Conjeturamos, por la
+	forma de la ecuación, que \(y_p(t) = ct\), ergo
+	\[c = y_p'(t) = -\frac{2}{t} y_p(t) - 2 = -2c -2
 		\leadsto c = -\frac{2}{3}.\]
-	
+
 	La solución general de la ecuación es
 	\[y(t) = -\frac{2}{3}t + \frac{k}{t^2}.\]
 
 	Deshacemos el cambio, \(y = 1/x^2\) o lo que es lo mismo
-	\(x = \pm \sqrt{y^{-1}}\), nos quedamos con la rama positiva, ya que 
+	\(x = \pm \sqrt{y^{-1}}\), nos quedamos con la rama positiva, ya que
 	\(x(1) = 1\),
 	\[x = \sqrt{\frac{1}{-\frac{2}{3}t + \frac{k}{t^2}}} =
-      \frac{\abs{t}}{\sqrt{k - \frac{2}{3}t^3}} = \frac{t}{\sqrt{k -
-          \frac{2}{3}t^3}},\]
+		\frac{\abs{t}}{\sqrt{k - \frac{2}{3}t^3}} = \frac{t}{\sqrt{k -
+				\frac{2}{3}t^3}},\]
 
-    la última igualdad se debe a que necesitamos que \(x\) sea derivable, lo que
-    nos fuerza a restringirnos a algún intervalo contenido en
-    \(\openopen{-\infty}{0}\) ó \(\openopen{0}{\infty}\), y elegimos el segundo
-    porque contiene al valor inicial 1.  Sustituyendo en la condición inicial,
+	la última igualdad se debe a que necesitamos que \(x\) sea derivable, lo que
+	nos fuerza a restringirnos a algún intervalo contenido en
+	\(\openopen{-\infty}{0}\) ó \(\openopen{0}{\infty}\), y elegimos el segundo
+	porque contiene al valor inicial 1.  Sustituyendo en la condición inicial,
 	\[1 = x(1) = \frac{1}{\sqrt{k - \frac{2}{3}}} \leadsto k = \frac{5}{3},\]
 	la solución de nuestro problema del valor inicial es pues
 	\[\frac{t}{\sqrt{\frac{5}{3} - \frac{2}{3}t^3}}.\]
 \end{solution}
 
 \begin{remark}
-    Si la ecuación del ejemplo~\ref{ex:cambio_var} fuera lineal su espacio de
-    soluciones sería un espacio vectorial. Puesto que el dominio de la ecuación
-    \(x' = \frac{x}{t} + x^3\) es \((0, \infty)\) en el caso lineal esperaríamos
-    que el dominio de la solución sea el mismo, pero computando obtenemos que el
-    dominio de \(x\) es \((0, \sqrt[3]{5/2})\), por lo que vemos que en ocasiones
-    las ecuaciones no lineales poseen singularidades, ``explotan'', en tiempo
-    finito.
+	Si la ecuación del ejemplo~\ref{ex:cambio_var} fuera lineal su espacio de
+	soluciones sería un espacio vectorial. Puesto que el dominio de la ecuación
+	\(x' = \frac{x}{t} + x^3\) es \((0, \infty)\) en el caso lineal esperaríamos
+	que el dominio de la solución sea el mismo, pero computando obtenemos que el
+	dominio de \(x\) es \((0, \sqrt[3]{5/2})\), por lo que vemos que en ocasiones
+	las ecuaciones no lineales poseen singularidades, ``explotan'', en tiempo
+	finito.
 \end{remark}
 
 \subsection{Caída libre con rozamiento}
 Tenemos un objeto que cae con rozamiento, es decir, la fuerza que lo tira
 hacia abajo es de \(mg\), masa por aceleración de gravedad, mientras que la
-que la tira hacia arriba es una función de la velocidad \(kv^n\), con 
+que la tira hacia arriba es una función de la velocidad \(kv^n\), con
 \(n = 1,2\). Sabemos que \(mv' = mg - kv^n\), obtenemos así la ecuación
 diferencial \(v' = -\frac{k}{m} v^n + g\), lineal para \(n = 1\), no lineal
 en caso contrario. En algunos casos, como la caída de un meteorito que
