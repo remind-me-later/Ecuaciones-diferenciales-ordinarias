@@ -5,7 +5,7 @@
 Comenzamos estudiando las ecuaciones diferenciales más sencillas, las ecuaciones
 lineales de primer orden, que, como veremos, son siempre resolubles; esto es,
 existe una fórmula explícita (aunque no necesariamente
-elemental\footnote{\url{https://en.wikipedia.org/wiki/Elementary_function}}) que
+elemental\footnote{\url{https://es.wikipedia.org/wiki/Función_elemental}}) que
 proporciona todo el conjunto de soluciones.
 
 \begin{definition}
@@ -18,7 +18,7 @@ Antes de resolver estas ecuaciones, centraremos nuestra atención en un problema
 más simple, la obtención de soluciones de una ecuación lineal homogénea de
 primer orden asociada a la ecuación original.
 
-\section{Ecuación diferencial lineal homogénea de primer orden} \label{sec:hom}
+\section{Ecuación lineal homogénea de primer orden} \label{sec:hom}
 
 \begin{definition}
 	Una ecuación diferencial lineal homogénea de primer orden es una ecuación de la
@@ -80,9 +80,9 @@ ecuación homogénea.
 	\[\frac{y'}{y} = -2t \iff \log\abs{y} = -t^2 + c \iff y = k e^{-t^2}\]
 \end{solution}
 
-\subsection{Problema del valor inicial} \label{sec:pvi}
+\subsection{Problema de valor inicial} \label{sec:pvi}
 
-Vemos cómo se plantea el problema del valor inicial en el caso de ecuaciones
+Vemos cómo se plantea el problema de valor inicial en el caso de ecuaciones
 homogéneas. Tenemos una ecuación lineal homogénea de primer orden, esto es
 \(x' = a(t)x\) y además queremos que \(x(t_0) = x_0\) para algún
 \(t_0 \in (\alpha, \omega)\) y \(x_0 \in \R\).
@@ -91,7 +91,7 @@ y podemos usar la libertad que tenemos para elegir la primitiva para ponerla com
 \[x(t) = k e^{\int_{t_0}^t a(s) \dif s},\]
 ahora queremos que \(x(t_0) = x_0\), para ello notamos que
 \[x_0 = x(t_0) = k e^{\int_{t_0}^{t_0} a(s) \dif s} = ke^0 = k,\]
-hemos probado así que el problema del valor inicial tiene solución única,
+hemos probado así que el problema de valor inicial tiene solución única,
 dada por
 \begin{equation}
 	x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s} \label{eq:sol_pvi}
@@ -168,7 +168,7 @@ lineal. Tenemos así que \(L\) es lineal como operador de tipo
 
 Ahora que ya hemos obtenido la solución general~\autoref{sec:hom} para
 ecuaciones lineales homogéneas de primer orden y también su solución única en el
-caso del problema del valor inicial~\autoref{sec:pvi}, podemos afrontar el
+caso del problema de valor inicial~\autoref{sec:pvi}, podemos afrontar el
 problema de obtener las soluciones de una ecuación diferencial lineal de primer
 orden no homogénea
 \[x' = a(t)x + b(t).\]
@@ -232,7 +232,7 @@ Tenemos así que la solución general de la ecuación diferencial es
 	particular.
 \end{remark}
 
-\subsection{Problema del valor inicial}
+\subsection{Problema de valor inicial}
 
 Como de costumbre consideramos la ecuación diferencial lineal junto a una
 condición \(x(t_0) = x_0\), con \(t_0 \in (\alpha, \omega)\) y \(x_0 \in \R\).
@@ -244,7 +244,7 @@ Sin más que sustituir \(t = t_0\) obtenemos que \(k = x_0\), por lo que
 nuestra ecuación tiene solución única.
 
 \begin{theorem}
-	El problema del valor inicial
+	El problema de valor inicial
 	\[\eqsys{
 			x' = a(t)x + b(t), & a, b \in C(\alpha, \omega) \\
 			x(t_0) = x_0, 	  & t_0 \in (\alpha, \omega), \quad x_0 \in \R}\]
@@ -261,7 +261,7 @@ por él, y no se cortan entre sí porque sólo hay una solución que pase por ca
 punto, como consecuencia del teorema anterior.
 
 \begin{example}
-	Resuélvase el problema del valor inicial:
+	Resuélvase el problema de valor inicial:
 	\[\eqsys{
 			x' + \frac{x}{t} = \cos t \\
 			x(\pi) = 1}\]
@@ -302,10 +302,10 @@ punto, como consecuencia del teorema anterior.
 El pionero en la modelización de la propagación de enfermedades mediante
 ecuaciones diferenciales fue Ronald Ross (Premio Nobel de Medicina 1915). Los
 grandes avances en esta disciplina comenzaron cuando Kermack y McKendrick
-propusieron el modelo SIR en 1927, lo que se conoce como el inicio de la
+propusieron el modelo SIR en 1927, lo que marca el inicio de la
 epidemiología moderna.
 
-\subsection{Modelos simples para propagación de enfermedades}
+\subsection{Modelos simples}
 
 Una enfermedad contagiosa se propaga a través de la interacción entre personas
 enfermas y sanas. Denotaremos \(x(t)\) al número de persona enfermas a tiempo
@@ -325,35 +325,20 @@ la propagación del sarampión en Inglaterra en 1905. Tenemos así un primer
 modelo sencillo, en una población de \(n\) individuos:
 \[x' = k x(n - x).\]
 
-Veremos que dependiendo de \(k\) la enfermedad desaparecerá o se hará endémica.
-Otra observación es que la ecuación es no lineal, por lo que se escapa de
-nuestra ``zona de comfort'', pero podremos resolverla fácilmente separando
-variables.
-
 \begin{remark}
 	La misma ecuación, conocida como ecuación logística, aparece también en
 	modelos poblacionales.
 \end{remark}
 
-Tal como hemos planteado la ecuación modela solo enfermedades sin cura, por
-ejemplo el SIDA, ya que no contemplamos que un paciente pueda pasar de enfermo a
-sano. Se puede incluir en el modelo una tasa de recuperación, quedaría entonces:
-\[x' = k x(n - x) - \beta x,\]
-donde \(\beta\) es la probabilidad de recuperación, independiente de factores
-poblacionales. Este es el modelo más simple con nombre, el modelo SIS, el cual
-modela enfermedades que no generan inmunidad. Este modelo posee una cualidad
-importante del modelo SIR, el teorema del umbral, que enuncia que en función de
-los parámetros la enfermedad desaparece o se hace endémica.
-
-\subsection{Modelo SIS}
-
-Nos proponemos resolver la ecuación:
-\[x' = k x(n - x),\]
-lo haremos mediante la técnica de las variables separadas. Para ello notamos que
+Veremos que dependiendo de \(k\) la enfermedad desaparecerá o se hará endémica.
+Otra observación es que la ecuación es no lineal, por lo que se escapa de
+nuestra ``zona de comfort'', pero podemos resolverla fácilmente separando
+variables. Para ello notamos que
 el número de personas infectadas y sanas es siempre mayor o igual que 0, en caso
 de que alguno sea cero no hay evolución, por lo que asumimos que \(0 < x < n\).
 Separando las variables nos queda
 \[\frac{x'}{x(n - x)} = k.\]
+
 Para poder continuar debemos obtener una primitiva del término a la izquierda,
 separamos en fracciones parciales
 \[\frac{1}{y(n - y)} = \frac{A}{y} + \frac{B}{n - y}
@@ -373,19 +358,30 @@ práctica, la evolución de una pandemia depende de las medidas que se tomen
 para evitar la infección, por lo que modelos más refinados modelan la
 probabilidad de contagio en función del tiempo.
 
-\section{Ecuación de Bernoulli}
+\subsection{Modelo SIS}
 
-Recordamos que la ecuación del modelo SIS, donde \(\beta\) es la probabilidad de
-recuperación, es
-\[x' = k x(n - x) - \beta x = (kn - \beta)x - kx^2.\]
+Tal como hemos planteado la ecuación esta modela solo enfermedades sin cura, por
+ejemplo el SIDA, ya que no contemplamos que un paciente pueda pasar de enfermo a
+sano. Se puede incluir en el modelo una tasa de recuperación, quedaría entonces:
+\[x' = k x(n - x) - \beta x,\]
+donde \(\beta\) es la probabilidad de recuperación, independiente de factores
+poblacionales. Este es el modelo más simple con nombre, el modelo SIS, el cual
+modela enfermedades que no generan inmunidad. Este modelo posee una cualidad
+importante del modelo SIR, el teorema del umbral, que enuncia que en función de
+los parámetros la enfermedad desaparece o se hace endémica.
 
-Como hemos visto, por diversas razones, nos interesa que tanto la población como
+Podemos reescribir la ecuación del modelo SIS tal que
+\[x' = k x(n - x) - \beta x = (kn - \beta)x - kx^2,\]
+
+como hemos visto, por diversas razones, nos interesa que tanto la población como
 la probabilidad de recuperación varíen con respecto al tiempo, haciendo esto
 obtenemos la ecuación
 \[x' = a(t)x + b(t)x^2.\]
 
 Este es un caso particular de la ecuación de Bernoulli, planteada en 1695 y
 resuelta por Leibniz en 1696.
+
+\section{Ecuación de Bernoulli}
 
 \begin{definition}[Ecuación de Bernoulli]
 	Una ecuación diferencial de Bernoulli es una \\ % Ntheorem bug, produce overfull 
@@ -405,12 +401,13 @@ multiplicando por \((1 - n)\) en la ecuación de Bernoulli obtenemos la ecuació
 lineal
 \begin{alignat*}{2}
 	     &  & (1 - n)\frac{x'}{x^n} & = (1-n)a(t)x^{1-n} + (1-n)b(t) \\
-	\iff &  & y'                    & = (1 - n)a(t)y + (1 - n)b(t)
+	\iff &  & y'                    & = (1 - n)a(t)y + (1 - n)b(t),
 \end{alignat*}
+la cual podemos resolver con las técnicas ya aprendidas.
 
 \begin{example}
 	\label{ex:cambio_var}
-	Resuélvase el problema del valor inicial:
+	Resuélvase el problema de valor inicial:
 	\[\begin{cases}
 			x' = \frac{x}{t} + x^3 \\
 			x(1) = 1
@@ -446,7 +443,7 @@ lineal
 	\(\openopen{-\infty}{0}\) ó \(\openopen{0}{\infty}\), y elegimos el segundo
 	porque contiene al valor inicial 1.  Sustituyendo en la condición inicial,
 	\[1 = x(1) = \frac{1}{\sqrt{k - \frac{2}{3}}} \leadsto k = \frac{5}{3},\]
-	la solución de nuestro problema del valor inicial es pues
+	la solución de nuestro problema de valor inicial es pues
 	\[\frac{t}{\sqrt{\frac{5}{3} - \frac{2}{3}t^3}}.\]
 \end{solution}
 

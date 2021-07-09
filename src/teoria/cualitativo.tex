@@ -148,17 +148,19 @@ Nos centramos ahora en esbozar el diagrama de fases de un sistema plano general
 \(y = P^{-1}x\) transforma el sistema \(x' = Ax\) en \(y' = By\), mucho más
 manejable. Las formas de Jordan posibles son
 
+\begin{multicols}{2}
 \begin{enumerate}[a)]
 	\item \(B = \smat{\lambda_1 & \\ & \lambda_2},\ \lambda_1 \neq \lambda_2\)
 	\item \(B = \smat{\lambda & \\ & \lambda}\)
 	\item \(B = \smat{\lambda & 1 \\ & \lambda}\)
 	\item \(B = \smat{a & b \\ -b & a},\ b>0\)
 \end{enumerate}
+\end{multicols}
 
 Haremos los diagramas de fase para las formas de Jordan, y luego desharemos el
 cambio de variable para obtener el diagrama final.
 
-\subsection{Diagonalizable (dos autovalores distintos)}
+\subsection{Diagonalizable con dos autovalores reales distintos}
 
 Consideramos el sistema \(y' = \smat{\lambda_1 & \\ & \lambda_2} y\), con
 \(\lambda_1 \neq \lambda_2\). Como hemos visto, la solución general del sistema
@@ -293,7 +295,7 @@ función del valor de \(\alpha\):
 Los demás casos los veremos con menos detalle, porque las ideas generales son
 las mismas para todos y porque éste es el más delicado.
 
-\subsection{Diagonalizable (un autovalor)}
+\subsection{Diagonalizable con un autovalor real}
 
 Consideramos el sistema \(y' = \smat{\lambda & \\ & \lambda} y\). La solución
 general es
@@ -347,7 +349,7 @@ apartado anterior).
 	      es decir, el sistema no evoluciona con el tiempo.
 \end{itemize}
 
-\subsection{No diagonalizable (autovalor real)}
+\subsection{No diagonalizable con un autovalor real}
 Consideramos el sistema \(y' = \smat{\lambda & 1 \\ & \lambda}y\), cuya solución
 general es
 \[
@@ -452,7 +454,7 @@ Como siempre, el comportamiento es distinto en función del signo de \(\lambda\)
 	      este caso, el diagrama se llama \emph{nodo impropio estable}.
 \end{itemize}
 
-\subsection{No diagonalizable (autovalores complejos)}
+\subsection{No diagonalizable con dos autovalores complejos conjugados}
 Consideramos el sistema \(y' = \smat{a & b \\ -b & a}y\), que tiene por solución
 general
 

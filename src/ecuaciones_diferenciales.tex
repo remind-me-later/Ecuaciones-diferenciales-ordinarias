@@ -1,4 +1,4 @@
-\documentclass[a4paper, 10pt]{book}
+\documentclass[a4paper, 10pt, openany]{book}
 %\documentclass[draft, a4paper, 10pt]{book}
 
 \usepackage{geometry}
@@ -6,7 +6,6 @@
 
 \usepackage{subfiles} 
 \usepackage{multicol}
-\usepackage{hyperref}
 \usepackage{parskip}
 \usepackage{rotating}
 \usepackage[toc]{appendix}
@@ -14,6 +13,7 @@
 \usetikzlibrary{arrows, babel}
 \usepackage[justification=centering]{caption}
 \usepackage{subcaption}
+\usepackage{hyperref}
 
 \usepackage{general}
 \usepackage{conjuntos}
@@ -31,6 +31,11 @@
 \AtBeginDocument{\renewcommand*\sectionautorefname{\Snospace}}
 \AtBeginDocument{\renewcommand*\subsectionautorefname{\Snospace}}
 
+\makeatletter
+\renewcommand\mainmatter{
+    \@mainmattertrue\cleardoublepage\renewcommand\thepage{\arabic{page}}}
+\makeatother
+
 \newcommand{\verteq}{\rotatebox[origin=c]{90}{$\mkern1mu=$}}
 
 \title{Elementos de ecuaciones diferenciales ordinarias}
@@ -43,8 +48,8 @@
 
 \maketitle
 
-%\clearpage
-\cleardoublepage
+\clearpage
+%\cleardoublepage % openright
 \vspace*{\fill}
 \thispagestyle{empty} % Sin número de página
 \begin{quotation}
@@ -62,53 +67,55 @@ Ducunt volentem fata, nolentem trahunt. \\
 
 \tableofcontents
 
-\chapter{Introducción}
-\subfile{teoria/intro}
+%\chapter{Prefacio}
 
 \mainmatter
 
+\chapter{Introducción}
+\subfile{teoria/intro}
+
 \chapter{Ecuaciones lineales de primer orden}
-\label{chap:capitulo1}
+\label{CHAP:1}
 \subfile{teoria/lineal}
 
 \chapter{Sistemas de ecuaciones lineales de primer orden}
-\label{chap:capitulo2}
+\label{CHAP:2}
 \subfile{teoria/sistemas}
 
-
 \chapter{Ecuación escalar de orden superior}
-\label{chap:capitulo3}
+\label{CHAP:3}
 \subfile{teoria/escalar}
 
 \chapter{Análisis cualitativo de sistemas planos}
-\label{chap:capitulo4}
+\label{CHAP:4}
 \subfile{teoria/cualitativo}
 
 \chapter{Series de potencias}
-\label{chap:capitulo5}
+\label{CHAP:5}
 \subfile{teoria/series}
 
 \chapter{Transformada de Laplace}
-\label{chap:capitulo6}
+\label{CHAP:6}
 \subfile{teoria/laplace}
 
 \begin{appendices}
 
 \chapter{Problemas resueltos}
 
-\section[Problemas del capítulo 1]{Problemas del capítulo~\ref{chap:capitulo1}}
+\section{Problemas del capítulo~\ref{CHAP:1}}
 \subfile{problemas/lineal}
 
-\section[Problemas del capítulo 2]{Problemas del capítulo~\ref{chap:capitulo2}}
+\section{Problemas del capítulo~\ref{CHAP:2}}
 \subfile{problemas/sistemas}
 
 \end{appendices}
 
 \backmatter
 
-\addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
-\addcontentsline{toc}{chapter}{\listtablename}
+\addcontentsline{toc}{chapter}{\listfigurename}
+
 \listoftables
+\addcontentsline{toc}{chapter}{\listtablename}
 
 \end{document}
