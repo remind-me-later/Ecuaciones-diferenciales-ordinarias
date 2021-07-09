@@ -12,6 +12,7 @@
 \usepackage[toc]{appendix}
 \usepackage{tikz}
 \usetikzlibrary{arrows, babel}
+\usepackage[justification=centering]{caption}
 \usepackage{subcaption}
 
 \usepackage{general}
@@ -104,5 +105,10 @@ Ducunt volentem fata, nolentem trahunt. \\
 \end{appendices}
 
 \backmatter
+
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
 
 \end{document}

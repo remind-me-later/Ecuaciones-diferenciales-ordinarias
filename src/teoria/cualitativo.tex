@@ -40,7 +40,7 @@ Estamos interesados en pintar las trayectorias u órbitas:
 		de fases} del sistema.
 \end{definition}
 
-\begin{example}
+\begin{example}\label{ex:fases_1}
 	Dibujar el diagrama de fases del sistema \(x' = Ax\) siendo
 	\(A = \smat{0 & 1 \\ -1 & 0}\).
 
@@ -68,20 +68,23 @@ Estamos interesados en pintar las trayectorias u órbitas:
 	Efectivamente, la trayectoria que pasa por \(\smat{k_1 \\ k_2}\) es la
 	circunferencia centrada en el origen de radio \(\sqrt{k_1^2+k_2^2}\). Además,
 	conforme \(t\) aumenta, la trayectoria se recorre en sentido horario.
-	\begin{figure}[ht]
-		\centering
-		\begin{tikzpicture}
-			\draw[->] (-2.4,0) -- (2.4,0);
-			\draw[->] (0,-2.4) -- (0,2.4);
-			\draw (0,0) circle (0.67);
-			\fill[rotate=45] (0.67,-0.05) -- (0.72, 0.05) -- (0.62, 0.05) -- cycle;
-			\draw (0,0) circle (1.33);
-			\fill[rotate=45] (1.33,-0.05) -- (1.38, 0.05) -- (1.28, 0.05) -- cycle;
-			\draw (0,0) circle (2.00);
-			\fill[rotate=45] (2.00,-0.05) -- (2.05, 0.05) -- (1.95, 0.05) -- cycle;
-		\end{tikzpicture}
-	\end{figure}
 \end{example}
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}
+		\draw[->] (-2.4,0) -- (2.4,0);
+		\draw[->] (0,-2.4) -- (0,2.4);
+		\draw (0,0) circle (0.67);
+		\fill[rotate=45] (0.67,-0.05) -- (0.72, 0.05) -- (0.62, 0.05) -- cycle;
+		\draw (0,0) circle (1.33);
+		\fill[rotate=45] (1.33,-0.05) -- (1.38, 0.05) -- (1.28, 0.05) -- cycle;
+		\draw (0,0) circle (2.00);
+		\fill[rotate=45] (2.00,-0.05) -- (2.05, 0.05) -- (1.95, 0.05) -- cycle;
+	\end{tikzpicture}
+	\caption{Diagrama de fases del sistema del ejemplo~\ref{ex:fases_1}}
+\end{figure}
+
 
 \begin{theorem}
 	Las trayectorias no se cortan.
@@ -112,7 +115,7 @@ sistema \(x' = Ax\) no es más que una curva \(t \mapsto x(t)\) tal que su
 velocidad \(x'(t)\) coincide con el valor del campo en \(x(t)\), es decir, una
 \emph{curva integral} del campo.
 
-\begin{example}
+\begin{example} \label{ex:campo_vec}
 	Sea la matriz \(A = \smat{0 & 1 \\ -1 & 0}\). Esbozar el campo vectorial que
 	define.
 
@@ -122,19 +125,21 @@ velocidad \(x'(t)\) coincide con el valor del campo en \(x(t)\), es decir, una
 	ortogonal a la posición en todo punto, y además \(\|x\| = \|Ax\|\), es decir,
 	\(A\) no cambia la norma de los vectores. El campo vectorial que define esta
 	matriz es, entonces,
-
-	\begin{figure}[ht]
-		\centering
-		\begin{tikzpicture}[scale=0.6]
-			\draw[->] (-3.5,0) -- (3.5,0);
-			\draw[->] (0,-3.5) -- (0,3.5);
-			\foreach \r in {1, 2, 3}
-			\foreach \a in {0,...,7}
-			\draw[->] ({\r*cos(45*\a)}, {\r*sin(45*\a)}) --
-			({\r*cos(45*\a)+\r/2*sin(45*\a)}, {\r*sin(45*\a)-\r/2*cos(45*\a)});
-		\end{tikzpicture}
-	\end{figure}
 \end{example}
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[scale=0.6]
+		\draw[->] (-3.5,0) -- (3.5,0);
+		\draw[->] (0,-3.5) -- (0,3.5);
+		\foreach \r in {1, 2, 3}
+		\foreach \a in {0,...,7}
+		\draw[->] ({\r*cos(45*\a)}, {\r*sin(45*\a)}) --
+		({\r*cos(45*\a)+\r/2*sin(45*\a)}, {\r*sin(45*\a)-\r/2*cos(45*\a)});
+	\end{tikzpicture}
+	\caption{Campo vectorial generado por la matriz del
+		ejemplo~\ref{ex:campo_vec}}
+\end{figure}
 
 \section{Representación gráfica de los sistemas planos}
 
@@ -260,6 +265,8 @@ función del valor de \(\alpha\):
 		\end{tikzpicture}
 		\caption*{\(\alpha < 0\)}
 	\end{subfigure}
+	\caption{Posibles diagramas de fase de un sistema plano diagonalizable con 
+	dos autovalores distintos, dependiendo del parámetro \(\alpha\)}
 \end{figure}
 
 \begin{itemize}
@@ -325,6 +332,8 @@ apartado anterior).
 		\end{tikzpicture}
 		\caption*{\(\lambda = 0\)}
 	\end{subfigure}
+	\caption{Posibles diagramas de fase de un sistema plano diagonalizable con 
+	un único autovalor, dependiendo del parámetro \(\lambda\)}
 \end{figure}
 
 \begin{itemize}
@@ -430,6 +439,8 @@ Juntándolo todo, los diagramas de fase son
 		\end{tikzpicture}
 		\caption*{\(\lambda = 0\)}
 	\end{subfigure}
+	\caption{Posibles diagramas de fase de un sistema plano no diagonalizable con 
+	un único autovalor real, dependiendo del parámetro \(\lambda\)}
 \end{figure}
 
 Como siempre, el comportamiento es distinto en función del signo de \(\lambda\):
@@ -508,6 +519,8 @@ coordenadas polares.
 		\end{tikzpicture}
 		\caption*{\(a = 0\)}
 	\end{subfigure}
+	\caption{Posibles diagramas de fase de un sistema plano no diagonalizable con 
+	dos autovalores complejos conjugados, dependiendo del parámetro \(a\)}
 \end{figure}
 
 \subsection{Deshacer el cambio}
@@ -729,7 +742,9 @@ que distinguimos casos en función del valor de \(c^2-4k\):
 				      \draw[->] (0,-1) -- (0,2);
 				      \draw [domain=0:2.8, samples=50] plot (\x, {-4*exp(-\x)+5*exp(-2*\x)});
 			      \end{tikzpicture}
-		      \end{subfigure}%
+		      \end{subfigure}
+			\caption{Posibles gráficas con respecto al tiempo de un objeto que
+			  sigue un movimiento armónico, caso sobreamortiguado}
 	      \end{figure}
 
 	      En particular, la amortiguación es demasiado grande para que haya
@@ -762,6 +777,8 @@ que distinguimos casos en función del valor de \(c^2-4k\):
 			      \node at (1.5,0.5) {\small\(r_0e^{at}\)};
 			      \node at (1.5,-0.5) {\small\(-r_0e^{at}\)};
 		      \end{tikzpicture}
+			\caption{Posibles gráficas con respecto al tiempo de un objeto que
+			  sigue un movimiento armónico, caso subamortiguado}
 	      \end{figure}
 
 	      En este caso sí que hay oscilaciones, aunque decaen a 0 exponencialmente rápido.
@@ -805,7 +822,9 @@ que distinguimos casos en función del valor de \(c^2-4k\):
 				      \draw[->] (0,-0.5) -- (0,3);
 				      \draw [domain=0:3.7, samples=50] plot (\x, {exp(-\x)*(2-\x)});
 			      \end{tikzpicture}
-		      \end{subfigure}%
+		      \end{subfigure}
+			\caption{Posibles gráficas con respecto al tiempo de un objeto que
+			  sigue un movimiento armónico, caso críticamente amortiguado}
 	      \end{figure}
 
 	      Como se puede apreciar, el caso críticamente amortiguado se comporta igual,
