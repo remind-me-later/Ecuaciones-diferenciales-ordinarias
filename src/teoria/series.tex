@@ -3,19 +3,88 @@
 \begin{document}
 
 En este capítulo presentamos un método para obtener soluciones a ecuaciones
-diferenciales lineales en forma de series de potencias. Para ello, no queda otra
-opción que restringirnos a soluciones \emph{analíticas}, es decir, funciones que
-se puedan expresar de esta manera.
+diferenciales lineales en forma de series de potencias. Comenzamos recordando
+algunos resultados de análisis real que nos serán útiles.
 
-El método se entiende mejor con un ejemplo:
+\begin{definition}[Serie de potencias]
+	Una serie de funciones \(\sum f_n\) es una serie de potencias alrededor de
+	\(t_0\) si es una serie de la forma
+	\[\sum_{n = 0}^\infty a_n (t - t_0)^n, \quad a_n \in \R.\]
+\end{definition}
 
+Puesto que haremos uso de series de potencias no tenemos otra opción 
+que restringirnos a soluciones \emph{analíticas}.
+
+\begin{definition}[Función analítica]
+	Una función \(f\) es analítica en un intervalo abierto \(I\) si para cada
+	\(t_0 \in I\) se puede expresar como una serie de potencias:
+	\[f(t) = \sum_{n = 0}^\infty a_n (t - t_0)^n\]
+	convergente a \(f(t)\) para todo \(t\) en un entorno de \(t_0\).
+\end{definition}
+
+También serán necesarios algunos resultados que presentaremos sin demostrar
+sobre la convergencia de este tipo de series.
+
+\begin{definition}[Radio de convergencia]
+	Sea \(\sum a_n (t - t_0)^n\) una serie de potencias. Si la sucesión 
+	\(\abs{a_n}^{1/n}\) es acotada definimos 
+	\(\rho := \lim\sup\abs{a_n}^{1/n}\), si esta sucesión no es acotada 
+	\(\rho = \infty\). 
+
+	Definimos el \emph{radio de convergencia} de \(\sum a_n (t - t_0)^n\) como
+	\[R := 
+		\begin{cases}
+			0 & \text{si} \quad \rho = \infty \\
+			1/\rho & \text{si} \quad 0 < \rho < \infty \\
+			\infty & \text{si} \quad \rho = 0
+		\end{cases}
+	\]
+\end{definition}
+
+Con esto podemos definir el intervalo de convergencia.
+
+\begin{definition}[Intervalo de convergencia]
+	Sea \(\sum a_n (t - t_0)^n\) una serie de potencias y \(R\) su radio de
+	convergencia. En intervalo de convergencia de la serie es \((-R, R)\).
+\end{definition}
+
+El teorema que enunciamos ahora justificará el nombre \textquote{radio de
+convergencia}.
+
+\begin{theorem}[Cauchy-Hadamard]
+	Si \(R\) es el radio de convergencia de la serie de potencias 
+	\(\sum a_n (t - t_0)^n\), entonces la serie es absolutamente convergente si 
+	\(\abs{t} < R\) y diverge si \(\abs{t} > R\).
+\end{theorem}
+
+\begin{remark}
+	Notamos que el teorema precedente no dice nada acerca de la convergencia de
+	la serie cuando \(\abs{t} = R\), en este caso tanto la convergencia como la
+	divergencia son posibles y debemos analizarlo por separado.
+\end{remark}
+
+La forma de calcular el radio de convergencia dada en el teorema de
+Cauchy-Hadamard puede ser tediosa en algunos casos, por lo que mostramos una
+forma alternativa de computar el radio.
+
+\begin{lemma}
+	Sea \(\sum a_n (t - t_0)^n\) una serie de potencias, su radio de
+	convergencia viene dado por
+	\[\lim\abs{\frac{a_n}{a_{n + 1}}},\]
+	si este límite existe.
+\end{lemma}
+
+Después de este pequeño repaso podemos presentar el método en cuestión, para
+ello damos primero un ejemplo que muestra inmediatamente su utilidad.
 \begin{example}
 	Expresar las soluciones a la ecuación
 	\begin{equation} \label{eq:eqpot}
 		x''-2tx'-2x=0
 	\end{equation}
 	como series de potencias.
+\end{example}
 
+\begin{solution}
 	Buscamos soluciones analíticas con radio de convergencia \(\geq \rho\) y
 	estamos interesados en el rango de tiempos \(t\) tal que \(|t-t_0| <
 	\rho\). En este ejemplo tomamos \(t_0 = 0\), por lo que las soluciones serán
@@ -93,7 +162,7 @@ El método se entiende mejor con un ejemplo:
 		      elemental, aunque es analítica con radio de
 		      convergencia \(\rho = +\infty\).
 	\end{itemize}
-\end{example}
+\end{solution}
 
 Para terminar con el capítulo, recogemos las ideas generales en un teorema:
 \begin{theorem}
