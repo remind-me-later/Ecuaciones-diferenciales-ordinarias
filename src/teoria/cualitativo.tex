@@ -43,7 +43,9 @@ Estamos interesados en pintar las trayectorias u órbitas:
 \begin{example}\label{ex:fases_1}
 	Dibujar el diagrama de fases del sistema \(x' = Ax\) siendo
 	\(A = \smat{0 & 1 \\ -1 & 0}\).
+\end{example}
 
+\begin{solution}
 	Como ya vimos, la solución general viene dada por
 	\[\eqsys{
 			x_1(t) = k_1 \cos t + k_2 \sin t \\
@@ -68,7 +70,7 @@ Estamos interesados en pintar las trayectorias u órbitas:
 	Efectivamente, la trayectoria que pasa por \(\smat{k_1 \\ k_2}\) es la
 	circunferencia centrada en el origen de radio \(\sqrt{k_1^2+k_2^2}\). Además,
 	conforme \(t\) aumenta, la trayectoria se recorre en sentido horario.
-\end{example}
+\end{solution}
 
 \begin{figure}[ht]
 	\centering
@@ -118,14 +120,16 @@ velocidad \(x'(t)\) coincide con el valor del campo en \(x(t)\), es decir, una
 \begin{example} \label{ex:campo_vec}
 	Sea la matriz \(A = \smat{0 & 1 \\ -1 & 0}\). Esbozar el campo vectorial que
 	define.
+\end{example}
 
+\begin{solution}
 	La matriz \(A\) actúa sobre un vector genérico \(\smat{x_1 \\ x_2}\) como
 	\(\smat{x_1 \\ x_2} \mapsto A\smat{x_1 \\ x_2} = \smat{x_2 \\ -x_1}\).
 	Observamos que \(\langle x, Ax \rangle = 0\), es decir, la velocidad es
 	ortogonal a la posición en todo punto, y además \(\|x\| = \|Ax\|\), es decir,
 	\(A\) no cambia la norma de los vectores. El campo vectorial que define esta
 	matriz es, entonces,
-\end{example}
+\end{solution}
 
 \begin{figure}[ht]
 	\centering

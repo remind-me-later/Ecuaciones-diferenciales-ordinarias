@@ -147,12 +147,15 @@ Si \(\L\{f(t)\} = F(s)\), diremos que \(f(t)\) es la \emph{transformada de
 \begin{example}
 	Hallar la transformada de Laplace inversa de
 	\[F(s) = \frac{-2s+6}{s^2+4}.\]
+\end{example}
+
+\begin{solution}
 	Usamos la linealidad del operador \(\L^{-1}\), para lo que resulta útil
 	descomponer \(F(s)\) en funciones cuya transformada inversa ya conozcamos:
 	\[\L^{-1}\left\{\frac{-2s+6}{s^2+4}\right\} =
 		-2\L^{-1}\left\{\frac{s}{s^2+2^2}\right\} +
 		\frac{6}{2}\L^{-1}\left\{\frac{2}{s^2+2^2}\right\} = -2 \cos 2t + 3 \sin 2t.\]
-\end{example}
+\end{solution}
 
 \section{Transformada de Laplace y derivadas}
 A la hora de aplicar la transformada de Laplace para resolver ecuaciones
@@ -200,6 +203,9 @@ transformada de Laplace para resolver ecuaciones diferenciales:
 			y(0) = 6
 		\end{cases}
 	\]
+\end{example}
+
+\begin{solution}
 	Vamos a hacerlo en tres pasos:
 	\begin{enumerate}[1)]
 		\item Aplicamos la transformada de Laplace a ambos lados de la ecuación
@@ -225,7 +231,7 @@ transformada de Laplace para resolver ecuaciones diferenciales:
 			           & = 8e^{-3t} + 3\sin 2t - 2\cos 2t.
 		      \end{align*}
 	\end{enumerate}
-\end{example}
+\end{solution}
 
 Como se aprecia en el ejemplo, la utilidad de la transformada de Laplace consiste
 en que transforma ecuaciones diferenciales en ecuaciones algebraicas, que son
@@ -239,6 +245,9 @@ mucho más fáciles de resolver. Veamos otro ejemplo un poco más complicado:
 			y(0) = 1, y'(0) = 5
 		\end{cases}
 	\]
+\end{example}
+
+\begin{solution}
 	Seguimos los mismos pasos que antes:
 	\begin{enumerate}[1)]
 		\item Aplicamos \(\L\):
@@ -265,7 +274,7 @@ mucho más fáciles de resolver. Veamos otro ejemplo un poco más complicado:
 			      + \frac{1}{30}e^{-4t}.
 		      \end{align*}
 	\end{enumerate}
-\end{example}
+\end{solution}
 
 \begin{remark}
 	La transformada de Laplace es especialmente útil para problemas de valor
@@ -290,9 +299,13 @@ mucho más fáciles de resolver. Veamos otro ejemplo un poco más complicado:
 
 \begin{example}
 	Calcular la transformada de Laplace de \(e^{-2t} \cos 4t\).
+\end{example}
+
+\begin{solution}
+	Simplemente:
 	\[\L\left\{e^{-2t} \cos 4t\right\}(s) = \L\{\cos 4t\}(s+2)
 		= \frac{(s+2)}{(s+2)^2+16}\]
-\end{example}
+\end{solution}
 
 Normalmente este resultado se usa en sentido inverso: a menudo queremos
 encontrar transformadas inversas de funciones que son traslación de
@@ -300,11 +313,15 @@ transformadas que conocemos.
 
 \begin{example}
 	Calcular la transformada inversa de \((s-3)^{-2}\).
+\end{example}
+
+\begin{solution}
+	Calculamos
 	\[\L^{-1}\left\{\frac{1}{(s-3)^2}\right\} = \L^{-1}\left\{\restr{\frac{1}{s^2}}{s
 			\to s-3}\right\} = te^{3t},\]
 	teniendo en cuenta que
 	\[\L\{t\} = \frac{1}{s^2}.\]
-\end{example}
+\end{solution}
 
 \begin{notation}
 	Cuando queramos decir explícitamente que una función es
@@ -366,12 +383,14 @@ La función de Heaviside permite definir fácilmente funciones a trozos.
 
 \begin{example}
 	Hallar la transformada inversa de \(\frac{1}{s-4}e^{-2s}\).
+\end{example}
 
+\begin{solution}
 	Teniendo en cuenta que
 	\[\L^{-1}\left\{\frac{1}{s-4}\right\} = e^{4t},\]
 	aplicando la proposición anterior con \(a=2\) se tiene
 	\[\L^{-1}\left\{\frac{1}{s-4}e^{-2s}\right\} = e^{4(t-2)}\mathcal{U}(t-2).\]
-\end{example}
+\end{solution}
 
 \begin{theorem}
 	Si \(n \in \N\) y \(f(t)\) es continua a trozos y de orden exponencial, entonces
