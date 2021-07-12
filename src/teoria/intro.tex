@@ -145,10 +145,15 @@ de la cuerda por \(l\).
 		\node at (.35,5.5) {\(\theta\)};
 		\draw (-5,8) -- (5,8);
 		\draw (0, 8) -- node[right, midway]{\(l\)} (2, 2);
-		\draw[dotted] (0, 8) -- (0, 0);
-		\draw[->] (2,2) -- (2,0);
-		\draw[fill=white] (2,2) ellipse (.75);
-		\node at (3,0) {\(mg\)};
+		\draw[->] (2,2) -- node[left, midway]{\(T\)} (.33,7);
+		\draw[dotted] (0, 8) -- (0, -1);
+		\draw[->] (2,2) -- (2,-1);
+		\node at (1.2,-1) {\(mg\)};
+		\draw[->] (0, 8) -- (2.88, -.7);
+		\draw[->, dotted] (2.88, -.7) -- (2, -1);
+		\draw[->] (2, 2) -- (1.12, 1.7);
+		\draw[dotted] (2, -1) -- (1.12, 1.7);
+		\draw[fill=white] (2,2) ellipse (.5);
 	\end{tikzpicture}
 	\caption{Fuerzas que actúan sobre un péndulo}
 	\label{fig:muelle}
