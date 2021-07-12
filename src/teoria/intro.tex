@@ -137,6 +137,23 @@ péndulo y que parte de su punto de apoyo y la cuerda y \(m\) al punto de masa
 donde se concentra todo el peso del mismo, por último denotaremos la longitud
 de la cuerda por \(l\). 
 
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[scale=0.5]
+		\fill[color=gray!20] (-5,10) rectangle (5,8);
+		\draw (0,6) arc (270:288:2);
+		\node at (.35,5.5) {\(\theta\)};
+		\draw (-5,8) -- (5,8);
+		\draw (0, 8) -- node[right, midway]{\(l\)} (2, 2);
+		\draw[dotted] (0, 8) -- (0, 0);
+		\draw[->] (2,2) -- (2,0);
+		\draw[fill=white] (2,2) ellipse (.75);
+		\node at (3,0) {\(mg\)};
+	\end{tikzpicture}
+	\caption{Fuerzas que actúan sobre un péndulo}
+	\label{fig:muelle}
+\end{figure}
+
 Recordamos que, por la segunda ley de Newton, \(F = ma\) donde \(a\) es la 
 aceleración. Tenemos entonces que
 \[-m g \sin\theta = m l \theta''\]
