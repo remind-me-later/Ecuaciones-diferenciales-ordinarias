@@ -203,13 +203,13 @@ Sea \(A\) una matriz diagonal, entonces:
 	}
 \]
 La solución general de este sistema viene dada por
-\(x_1(t) = k_1 e^{\lambda_1 t}, \dots, x_n(t) = k_n e^{\lambda_n t}\) o lo que es
-lo mismo:
+\(x_1(t) = k_1 e^{\lambda_1 t}, \dots, x_n(t) = k_n e^{\lambda_n t}\) o, lo que es
+lo mismo,
 \[x = \mat{e^{\lambda_1 t} & & \\ & \ddots & \\ & & e^{\lambda_n t}}
 	\mat{k_1 \\ \vdots \\ k_n}.\]
 
 Puesto que es solución del problema de valor inicial
-\(\set{X' = AX \wedge X(0) = \mathit{Id}}\) hemos comprobado a posteriori, por
+\(\set{X' = AX,\ X(0) = \mathit{Id}}\) hemos comprobado a posteriori, por
 la unicidad de la solución, que la matriz de la izquierda es \(e^{At}\). Para
 convencernos lo comprobamos también directamente, tenemos que
 \[e^{At} = \exp\smat{\lambda_1t & & \\ & \ddots & \\ & & \lambda_nt}
@@ -238,9 +238,9 @@ Hemos demostrado así de dos formas distintas el siguiente teorema:
 
 \subsection{Matrices diagonalizables con autovalores reales}
 
-Sea \(A\) una matriz diagonalizable con autovalores reales, sabemos, por álgebra
-lineal, que existe una matriz \(P\) tal que si \(\lambda_1, \dots, \lambda_n\)
-son los autovalores de \(A\) y \(v_1, \dots, v_n\) son sus autovectores;
+Sea \(A\) una matriz diagonalizable con autovalores reales
+\(\lambda_1, \dots, \lambda_n\). Si \(\{v_1, \dots, v_n\}\) es una base de
+autovectores asociados, entonces
 \[
 	P^{-1} A P = D = \mat{\lambda_1 && \\ & \ddots & \\ && \lambda_n}
 	\quad \text{siendo} \quad
@@ -248,83 +248,30 @@ son los autovalores de \(A\) y \(v_1, \dots, v_n\) son sus autovectores;
 \]
 
 Con esto tenemos que la ecuación \(x' = Ax\) se puede escribir
-\(x' = P D P^{-1} x\), con el cambio de variable \(y = P^{-1}x\) nos queda:
+\(x' = P D P^{-1} x\); con el cambio de variable \(y = P^{-1}x\), nos queda
 \[x' = Ax \iff x' = PDP^{-1}x \iff P^{-1}x' = DP^{-1}x \iff y' = Dy,\]
 donde es fundamental que \(P\) (y por tanto \(P^{-1}\)) sea una matriz constante
-para poder afirmar \(y' = (P^{-1}x)' = P^{-1}x'\), con este cambio de variable
+para poder afirmar \(y' = (P^{-1}x)' = P^{-1}x'\). Con este cambio de variable
 podemos expresar la ecuación como
-\[y' = \mat{\lambda_1 && \\ & \dots & \\ && \lambda_n} y \iff
+\[y' = \mat{\lambda_1 && \\ & \ddots & \\ && \lambda_n} y \iff
 	y = e^{Dt}k \iff y = \mat{k_1 e^{\lambda_1 t} \\ \vdots \\
 		k_n e^{\lambda_n t}},\]
 con \(k = (k_1, \dots, k_n)^t \in \R^n\).
 Tras estos preámbulos podemos obtener
 una expresión explícita del espacio de soluciones
 \begin{align*}
-	x & = P y = (v_1, \dots, v_n) \mat{k_1 e^{\lambda_1 t}      \\ \vdots \\
-	k_n e^{\lambda_n t}} = k_1 e^{\lambda_1 t} v_1 + \cdots
-	+ k_n e^{\lambda_n t}v_n                                    \\
-	  & = P \mat{e^{\lambda_1 t}                           &  & \\ & \dots & \\  &  & e^{\lambda_n t}}
-	\mat{k_1                                                    \\ \vdots \\ k_n} = P e^{D t} P^{-1} \mat{c_1 \\ \vdots
-	\\ c_n} = e^{A t} \mat{c_1 \\ \vdots \\ c_n}
+	x &= Py = (v_1, \dots, v_n) \mat{k_1 e^{\lambda_1 t} \\ \vdots \\ k_n e^{\lambda_n t}} =
+    k_1 e^{\lambda_1 t} v_1 + \cdots + k_n e^{\lambda_n t}v_n \\
+	  &= P \mat{e^{\lambda_1 t} & & \\ & \ddots & \\ & & e^{\lambda_n t}}
+      \mat{k_1 \\ \vdots \\ k_n} = P e^{D t} P^{-1} \mat{c_1 \\ \vdots \\ c_n} =
+      e^{A t} \mat{c_1 \\ \vdots \\ c_n}
 \end{align*}
 
-Notamos que \(e^{\lambda_1 t} v_1, \dots, e^{\lambda_n t} v_n\) es base del
-espacio de soluciones. Con esto estamos preparados para afrontar el problema del
-valor inicial.
-
-\subsection{Problema del valor inicial}
-
-Consideramos el problema del valor inicial dado por el sistema con matriz \(A\)
-diagonalizable
-\[\eqsys{
-		x' = Ax \\
-		x(0) = x^0
-	}
-	\iff
-	\eqsys{
-		y' = Dy \\
-		y(0) = P^{-1}x^0
-	}\]
-considerando el mismo cambio de referencia de antes. La solución única de este
-sistema viene dada por \(y(t) = e^{Dt} P^{-1}x^0\), volviendo a la base original
-\(x(t) = e^{At} x^0\), donde hemos utilizado la unicidad de la solución. Igual
-que en el caso diagonal se puede ver directamente que si \(A = PDP^{-1}\)
-entonces \(e^{At} = P e^{Dt} P^{-1}\), aquí lo hemos visto indirectamente,
-utilizando la unicidad de la solución.
-
-De esta forma, la solución de la ecuación transformada es
-
-\[y = e^{Dt}k = \mat{e^{\lambda_1 t} & & \\ & \ddots & \\ & & e^{\lambda_n t}}
-	\mat{k_1 \\ \vdots \\ k_n} = \mat{k_1e^{\lambda_1 t} \\ \vdots \\
-	k_ne^{\lambda_n t}} = \sum_{i=1}^n k_i e^{\lambda_i t} e_i,\]
-
-siendo \(k^t = (k_1, \dots, k_n) \in \R^n\) y \(\{e_1, \dots, e_n\}\) la base
-canónica de \(\R^n\). Por tanto,
-
-\[x = Py = (v_1, \dots, v_n) \mat{k_1e^{\lambda_1 t} \\ \vdots \\
-	k_ne^{\lambda_n t}} = \sum_{i=1}^n k_i e^{\lambda_i t} v_i\]
-
 \begin{remark}
-	Una base del espacio de soluciones de \(x' = Ax\) es \(\{e^{\lambda_1 t} v_1,
-	\dots, e^{\lambda_n t} v_n\}\).
+  El espacio de soluciones es el espacio vectorial generado por
+  \[e^{\lambda_1 t} v_1, \dots, e^{\lambda_n t} v_n.\]
 \end{remark}
-
-Para el PVI
-
-\[
-	\begin{cases}
-		x' = Ax \\
-		x(0) = x^0
-	\end{cases} \iff
-	\begin{cases}
-		y' = Dy \\
-		y(0) = P^{-1}x^0
-	\end{cases}
-\]
-
-la solución única es \(y(t) = e^{Dt}P^{-1}x^0 \iff x(t) = Pe^{Dt}P^{-1}x^0 =
-e^{At}x^0\). Por la unicidad de la solución al PVI, esto equivale a \(e^{At} =
-Pe^{Dt}P^{-1}\).
+\pagebreak
 
 \subsection{Matrices diagonalizables con autovalores complejos}
 
@@ -385,10 +332,10 @@ llega a:
 
 Como
 \[\mat{\Re z(t) \\ \Im z(t)} = \frac{1}{2} \mat{z(t) + \bar{z}(t) \\
-		z(t) - \bar{z}(t)} = \frac{1}{2}\mat{1 & 1 \\ 1 & -1}\mat{z(t) \\
+		(z(t) - \bar{z}(t))/i} = \frac{1}{2}\mat{1 & 1 \\ -i & i}\mat{z(t) \\
 		\bar{z}(t)} \]
 
-y \(\det\smat{1 & 1 \\ 1 & -1} \neq 0\), se cumple que \(\Re z(t)\) y
+y \(\det\smat{1 & 1 \\ -i & i} \neq 0\), se cumple que \(\Re z(t)\) y
 \(\Im z(t)\) siguen siendo soluciones y linealmente independientes, que además
 generan el mismo espacio de soluciones. Tenemos entonces las soluciones reales
 \[
@@ -527,6 +474,8 @@ la solución general del sistema es:
 		-e^{2t} \sin 3t & e^{2t} \cos 3t} \mat{c_1 \\ c_2 \\ c_3}, \quad
 		\mat{c_1 \\ c_2 \\ c_3} \in \R^3.\]
 \end{solution}
+
+\subsection{Matrices no diagonalizables}
 
 Para terminar con el análisis de los sistemas de ecuaciones diferenciales
 lineales con coeficientes constantes, únicamente nos falta estudiar qué ocurre
