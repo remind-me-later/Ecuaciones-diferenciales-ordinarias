@@ -495,9 +495,9 @@ coordenadas polares.
 	      circunferencias de radio \(r_0\). El diagrama recibe el nombre de \emph{centro}.
 	\item Si \(a \neq 0\), entonces las trayectorias son \emph{espirales logarítmicas}
 	      \begin{itemize}
-		      \item Si \(\lambda > 0\), las soluciones se alejan exponencialmente del
+		      \item Si \(a > 0\), las soluciones se alejan exponencialmente del
 		            origen. En este caso, el diagrama recibe el nombre de \emph{foco inestable}.
-		      \item Si \(\lambda < 0\), las soluciones se acercan exponencialmente al
+		      \item Si \(a < 0\), las soluciones se acercan exponencialmente al
 		            origen. En este caso, el diagrama recibe el nombre de \emph{foco estable}.
 	      \end{itemize}
 \end{itemize}
@@ -699,7 +699,7 @@ y la solución de la ecuación de orden 2 es
 \end{remark}
 
 Tomando \(r_0 = \sqrt{k_1^2+k_2^2}\) y \(\theta_0 \in \R\) tal que \(r_0 \cos
-\theta_0 = k_1\) y \(r_0 \sin \theta_0\), nos queda
+\theta_0 = k_1\) y \(r_0 \sin \theta_0 = k_2\), nos queda
 \[r_0 \cos (\omega_0 t - \theta_0) = r_0(\cos \omega_0 t \cos \theta_0 + \sin
 	\omega_0 t \sin \theta_0) = k_1 \cos \omega_0 t + k_2 \sin \omega_0 t\]
 
@@ -761,7 +761,7 @@ que distinguimos casos en función del valor de \(c^2-4k\):
 	\item \(c^2 - 4k < 0\) (caso \emph{subamortiguado}): se tienen dos autovalores
 	      complejos:
 	      \[\lambda_1 = -\frac{c}{2}+i\sqrt{k-\left(\frac{c}{2}\right)^2} = a + bi, \quad
-		      \lambda_2 = -\frac{c}{2}-i\sqrt{-k\left(\frac{c}{2}\right)^2} = a - bi\]
+		      \lambda_2 = -\frac{c}{2}-i\sqrt{k-\left(\frac{c}{2}\right)^2} = a - bi\]
 
 	      La solución general del sistema asociado es
 	      \[\mat{x_1 \\ x_2} = P \mat{e^{at} \cos bt & e^{at} \sin bt \\ -e^{at} \sin
