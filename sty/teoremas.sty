@@ -1,0 +1,45 @@
+\ProvidesPackage{teoremas}
+
+% Requirements
+\RequirePackage{amssymb}
+\RequirePackage{etoolbox}
+\RequirePackage{amsmath}
+\RequirePackage[thmmarks, amsmath, thref]{ntheorem}
+
+\AtBeginEnvironment{definition}{\vspace{\parskip}}
+\AtBeginEnvironment{theorem}{\vspace{\parskip}}
+\AtBeginEnvironment{proposition}{\vspace{\parskip}}
+\AtBeginEnvironment{corollary}{\vspace{\parskip}}
+\AtBeginEnvironment{lemma}{\vspace{\parskip}}
+\AtBeginEnvironment{remark}{\vspace{\parskip}}
+\AtBeginEnvironment{notation}{\vspace{\parskip}}
+\AtBeginEnvironment{example}{\vspace{\parskip}}
+\AtBeginEnvironment{problem}{\vspace{\parskip}}
+\AtBeginEnvironment{proof}{\vspace{\parskip}}
+\AtBeginEnvironment{solution}{\vspace{\parskip}}
+
+% Theorems
+\theoremstyle{plain}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+
+\theorembodyfont{\normalfont}
+\newtheorem{remark}[theorem]{Nota}
+\newtheorem{notation}[theorem]{Notación}
+\newtheorem{example}{Ejemplo}[section]
+
+% Problems
+\theorembodyfont{\normalfont}
+\newtheorem{problem}[example]{Número}
+
+% Solutions
+\theoremheaderfont{\itshape}
+\theoremseparator{. ---}
+\theorembodyfont{\upshape}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem{proof}{Demostración}[theorem]
+\newtheorem{solution}{Solución}[example]
+

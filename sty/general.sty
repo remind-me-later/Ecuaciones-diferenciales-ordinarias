@@ -1,0 +1,23 @@
+\ProvidesPackage{general}
+\RequirePackage{rotating}
+
+\let\oldepsilon\epsilon
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\let\oldphi\phi
+\renewcommand{\phi}{\ensuremath{\varphi}}
+
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+\newcommand{\parens}[1]{\left(#1\right)}
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\braces}[1]{\left\{#1\right\}}
+
+% Vertical equality
+\newcommand{\verteq}{\rotatebox[origin=c]{90}{$\mkern1mu=$}}
+
+% Roman numerals for sections
+%\renewcommand{\thesection}{\Roman{section}} 
+

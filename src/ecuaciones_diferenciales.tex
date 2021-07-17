@@ -1,44 +1,40 @@
 \documentclass[a4paper, 10pt, openany]{book}
 %\documentclass[draft, a4paper, 10pt, openany]{book}
-
-\usepackage{geometry}
 \usepackage[spanish]{babel}
 
-\usepackage{subfiles} 
 \usepackage{parskip}
+\usepackage{geometry}
 \usepackage{multicol}
-\usepackage{csquotes}
-\usepackage{rotating}
+
+\usepackage{subfiles} 
+\usepackage{tocbibind}
 \usepackage[toc]{appendix}
+
 \usepackage{tikz}
 \usetikzlibrary{arrows, babel}
 \usepackage[justification=centering]{caption}
 \usepackage{subcaption}
-\usepackage{hyperref}
+
+\usepackage[shortlabels, inline]{enumitem}
+\usepackage{csquotes}
 \usepackage{hologo}
 
-\usepackage{general}
-\usepackage{conjuntos}
-\usepackage{teoremas}
-\usepackage{calculo}
-\usepackage{algebra}
+\usepackage{../sty/teoremas}
+\usepackage{../sty/general}
+\usepackage{../sty/conjuntos}
+\usepackage{../sty/calculo}
+\usepackage{../sty/algebra}
 
-\renewcommand{\L}{\mathcal{L}}
+% Se carga el último 
+\usepackage{hyperref}
 
 \renewcommand\appendixpagename{Apéndices}
 \renewcommand{\appendixtocname}{Apéndices}
-\renewcommand{\theequation}{\thechapter.\arabic{equation}}
-
-\def\Snospace~{\S{}}
-\AtBeginDocument{\renewcommand*\sectionautorefname{\Snospace}}
-\AtBeginDocument{\renewcommand*\subsectionautorefname{\Snospace}}
 
 \makeatletter
 \renewcommand\mainmatter{
     \@mainmattertrue\cleardoublepage\renewcommand\thepage{\arabic{page}}}
 \makeatother
-
-\newcommand{\verteq}{\rotatebox[origin=c]{90}{$\mkern1mu=$}}
 
 \title{Elementos de ecuaciones diferenciales ordinarias}
 \author{Ricardo Maurizio Paul \and Pablo Castellanos García}
@@ -119,17 +115,14 @@ Ducunt volentem fata, nolentem trahunt. \\
 \backmatter
 
 \listoffigures
-\addcontentsline{toc}{chapter}{\listfigurename}
 
 \listoftables
-\addcontentsline{toc}{chapter}{\listtablename}
 
 \begin{thebibliography}{1}
-\bibitem{introduction_real_analysis} 
-Bartle, Robert G., and Donald R. Sherbert.
-\textit{Introduction to Real Analysis}. 
-New York: Wiley, 2000. 
+	\bibitem{introduction_real_analysis} 
+		Bartle, Robert G., and Donald R. Sherbert.
+		\textit{Introduction to Real Analysis}. 
+		New York: Wiley, 2000. 
 \end{thebibliography}
-\addcontentsline{toc}{chapter}{\bibname}
 
 \end{document}
