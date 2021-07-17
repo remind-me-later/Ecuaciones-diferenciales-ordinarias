@@ -6,6 +6,8 @@ En este capítulo presentamos un método para obtener soluciones a ecuaciones
 diferenciales lineales en forma de series de potencias. Comenzamos recordando
 algunos resultados de análisis real que nos serán útiles.
 
+\section{Repaso de series de potencias}
+
 \begin{definition}[Serie de potencias]
 	Una serie de funciones \(\sum f_n\) es una serie de potencias alrededor de
 	\(t_0\) si es una serie de la forma
@@ -22,8 +24,9 @@ que restringirnos a soluciones \emph{analíticas}.
 	convergente a \(f(t)\) para todo \(t\) en un entorno de \(t_0\).
 \end{definition}
 
-También serán necesarios algunos resultados que presentaremos sin demostrar
-sobre la convergencia de este tipo de series.
+Necesitaremos una forma de calcular el conjunto donde estas series convergen,
+que como veremos es un intervalo centrado en \(t_0\) o todo \(\R\), para ello 
+recordamos algunos resultados sobre convergencia.
 
 \begin{definition}[Radio de convergencia]
 	Sea \(\sum a_n (t - t_0)^n\) una serie de potencias. Si la sucesión 
@@ -41,11 +44,11 @@ sobre la convergencia de este tipo de series.
 	\]
 \end{definition}
 
-Con esto podemos definir el intervalo de convergencia.
+Con esto podemos definir el término \textquote{intervalo de convergencia}.
 
 \begin{definition}[Intervalo de convergencia]
 	Sea \(\sum a_n (t - t_0)^n\) una serie de potencias y \(R\) su radio de
-	convergencia. En intervalo de convergencia de la serie es \((-R, R)\).
+	convergencia. El intervalo de convergencia de la serie es \((-R, R)\).
 \end{definition}
 
 El teorema que enunciamos ahora justificará el nombre \textquote{radio de
@@ -71,8 +74,54 @@ forma alternativa de computar el radio.
 	Sea \(\sum a_n (t - t_0)^n\) una serie de potencias, su radio de
 	convergencia viene dado por
 	\[\lim\abs{\frac{a_n}{a_{n + 1}}},\]
-	si este límite existe.
+	si este límite existe o es infinito.
 \end{lemma}
+
+Para finalizar recordamos también un par de teoremas que nos permitirán
+diferenciar e integrar cómodamente este tipo de series, ambos consecuencia casi
+inmediata del siguiente lema.
+
+\begin{lemma}
+	Sea \(R\) el radio de convergencia de una serie de potencias y \(V\) un
+	intervalo cerrado y acotado contenido en el intervalo de convergencia 
+	\((-R, R)\), entonces, la serie de potencias converge uniformemente en
+	\(V\).
+\end{lemma}
+
+Puesto que la serie de potencias converge uniformemente en cualquier compacto
+contenido en el intervalo de convergencia tenemos que su límite es continuo
+dentro de este intervalo, y no solo eso, además es integrable término a
+término y derivable término a término.
+
+\begin{corollary}
+	El límite de una serie de potencias es continuo en su intervalo de
+	convergencia.
+\end{corollary}
+
+\begin{theorem}[Integración]
+	Una serie de potencias puede ser integrada término a término en cualquier
+	intervalo cerrado y acotado contenido en su intervalo de convergencia. O lo
+	que es lo mismo:
+	\[\int_a^b f = \int_a^b \sum_{n = 0}^\infty a_n (t - t_0)^n
+		= \sum_{n = 0}^\infty \int_a^b a_n (t - t_0)^n
+		= c + \sum_{n = 0}^\infty a_n \frac{(t - t_0)^{n + 1}}{n + 1}.\]
+\end{theorem}
+
+En el caso de la derivación presentamos un teorema más fuerte que el de la
+derivación de series de funciones uniformemente convergentes.
+
+\begin{theorem}[Diferenciación]
+	Una serie de potencias puede ser diferenciada término a término en su
+	intervalo de convergencia. Es más, si
+	\[f(x) = \sum_{n = 0}^\infty a_n (t - t_0)^n, \quad \text{entonces} \quad
+		f'(x) = \sum_{n = 0}^\infty a_n n (t - t_0)^{n - 1},\]
+	para \(\abs{x} < R\) y ambas series tienen el mismo radio de convergencia.
+\end{theorem}
+
+Remitimos al lector que quiera demostraciones detalladas de estos
+teoremas al capítulo 9.4 de \cite{introduction_real_analysis}.
+
+\section{Aplicación a la resolución de ecuaciones diferenciales}
 
 Después de este pequeño repaso podemos presentar el método en cuestión, para
 ello damos primero un ejemplo que muestra inmediatamente su utilidad.
