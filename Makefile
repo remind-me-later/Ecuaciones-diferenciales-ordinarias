@@ -23,6 +23,9 @@ pdf:
 	mkdir -p pdf
 
 clean:
+	for dir in $(subdir); do \
+        make -C $$dir clean; \
+    done
 	$(RM) build/* pdf/*
 
 .PHONY: all clean
