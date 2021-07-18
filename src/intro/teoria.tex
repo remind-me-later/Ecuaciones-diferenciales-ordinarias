@@ -39,6 +39,17 @@ definiciones.
 
 \section{Primeras definiciones}
 
+Puesto que solo trataremos funciones en una variable a lo largo del texto
+utilizaremos la notación para las derivadas más usada para este tipo de
+funciones, la notación de Lagrange, esto es \(f'(x)\) y \(f''(x)\) denotan la 
+primera y segunda derivada de \(f\) respectivamente. Esta notación se vuelve
+molesta cuando queremos denotar derivadas de orden grande, normalmente mayor de
+dos, para estos casos introducimos la siguiente notación.
+
+\begin{notation}
+	Denotaremos la derivada enésima de la función \(f\) como \(f^{(n)}\).
+\end{notation}
+
 \begin{definition}[Ecuación diferencial]
 	Una ecuación diferencial es una ecuación de la forma
 	\[F(t, x, x', x'', \dots, x^{(n)}) = 0\]
@@ -139,24 +150,9 @@ de la cuerda por \(l\).
 
 \begin{figure}[ht]
 	\centering
-	\begin{tikzpicture}[scale=0.5]
-		\fill[color=gray!20] (-5,10) rectangle (5,8);
-		\draw (0,6) arc (270:288:2);
-		\node at (.35,5.5) {\(\theta\)};
-		\draw (-5,8) -- (5,8);
-		\draw (0, 8) -- node[right, midway]{\(l\)} (2, 2);
-		\draw[->] (2,2) -- node[left, midway]{\(T\)} (.33,7);
-		\draw[dotted] (0, 8) -- (0, -1);
-		\draw[->] (2,2) -- (2,-1);
-		\node at (1.2,-1) {\(mg\)};
-		\draw[->] (0, 8) -- (2.88, -.7);
-		\draw[->, dotted] (2.88, -.7) -- (2, -1);
-		\draw[->] (2, 2) -- (1.12, 1.7);
-		\draw[dotted] (2, -1) -- (1.12, 1.7);
-		\draw[fill=white] (2,2) ellipse (.5);
-	\end{tikzpicture}
+	\includegraphics{figuras/pdf/pendulo.pdf}
 	\caption{Fuerzas que actúan sobre un péndulo}
-	\label{fig:muelle}
+	\label{fig:pendulo}
 \end{figure}
 
 Recordamos que, por la segunda ley de Newton, \(F = ma\) donde \(a\) es la 

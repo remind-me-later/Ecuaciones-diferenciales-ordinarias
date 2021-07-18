@@ -10,6 +10,7 @@
 \usepackage{tocbibind}
 \usepackage[toc]{appendix}
 
+\usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{arrows, babel}
 \usepackage[justification=centering]{caption}
@@ -70,45 +71,46 @@ Ducunt volentem fata, nolentem trahunt. \\
 
 \mainmatter
 
-\chapter{Introducción}
-\subfile{teoria/intro}
-
 % Es necesario que las etiquetas de los capítulos estén en mayúsculas para que
 % puedan ser referenciadas en el header de los apéndices :/
 
+\chapter{Introducción}
+\label{CHAP:INTRO}
+\subfile{intro/teoria}
+
 \chapter{Ecuaciones lineales de primer orden}
-\label{CHAP:1}
-\subfile{teoria/lineal}
+\label{CHAP:LINEAL}
+\subfile{lineal/teoria}
 
 \chapter{Sistemas de ecuaciones lineales de primer orden}
-\label{CHAP:2}
-\subfile{teoria/sistemas}
+\label{CHAP:SISTEMAS}
+\subfile{sistemas/teoria}
 
 \chapter{Ecuación escalar de orden superior}
-\label{CHAP:3}
-\subfile{teoria/escalar}
+\label{CHAP:ESCALAR}
+\subfile{escalar/teoria}
 
 \chapter{Análisis cualitativo de sistemas planos}
-\label{CHAP:4}
-\subfile{teoria/cualitativo}
+\label{CHAP:CUALITATIVO}
+\subfile{cualitativo/teoria}
 
 \chapter{Series de potencias}
-\label{CHAP:5}
-\subfile{teoria/series}
+\label{CHAP:SERIES}
+\subfile{series/teoria}
 
 \chapter{Transformada de Laplace}
-\label{CHAP:6}
-\subfile{teoria/laplace}
+\label{CHAP:LAPLACE}
+\subfile{laplace/teoria}
 
 \begin{appendices}
 
 \chapter{Problemas resueltos}
 
-\section{Problemas del capítulo~\ref{CHAP:1}}
-\subfile{problemas/lineal}
+\section{Problemas del capítulo~\ref{CHAP:LINEAL}}
+\subfile{lineal/problemas}
 
-\section{Problemas del capítulo~\ref{CHAP:2}}
-\subfile{problemas/sistemas}
+\section{Problemas del capítulo~\ref{CHAP:SISTEMAS}}
+\subfile{sistemas/problemas}
 
 \end{appendices}
 

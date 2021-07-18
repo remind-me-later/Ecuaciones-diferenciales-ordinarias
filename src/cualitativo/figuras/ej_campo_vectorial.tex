@@ -1,0 +1,14 @@
+\documentclass[crop,tikz]{standalone}
+
+\begin{document}
+
+\begin{tikzpicture}
+	\draw[->] (-3.5,0) -- (3.5,0);
+	\draw[->] (0,-3.5) -- (0,3.5);
+	\foreach \r in {1, 2, 3}
+	\foreach \a in {0,...,7}
+	\draw[->] ({\r*cos(45*\a)}, {\r*sin(45*\a)}) --
+	({\r*cos(45*\a)+\r/2*sin(45*\a)}, {\r*sin(45*\a)-\r/2*cos(45*\a)});
+\end{tikzpicture}
+
+\end{document}

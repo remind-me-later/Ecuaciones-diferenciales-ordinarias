@@ -1,4 +1,5 @@
-build/
+**/build/
+**/pdf/
 *.aux
 *.log
 *.thm

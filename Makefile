@@ -1,19 +1,28 @@
 .POSIX:
 
-name=ecuaciones_diferenciales
-srcdir:=src
-sources:=$(shell find $(srcdir) -name '*.tex')
+name=elementos_de_ecuaciones_diferenciales_ordinarias
+sources:=$(shell find src -maxdepth 2 -name '*.tex')
+makefiles:=$(shell find . -mindepth 1 -maxdepth 4 -type f -name Makefile)
+subdir:=$(filter-out ./,$(dir $(makefiles)))
 
-all: $(name).pdf
+all: pdf/$(name).pdf
 
-$(name).pdf: $(sources) | build 
-	latexmk -pdf -xelatex -output-directory=../build -cd src/$(name).tex
-	mv build/$(name).pdf .
+figures:
+	for dir in $(subdir); do \
+        make -C $$dir all; \
+    done
+
+pdf/$(name).pdf: $(sources) | figures build pdf
+	latexmk -pdf -xelatex -output-directory=../build -cd src/main.tex
+	mv build/main.pdf $@
 
 build:
 	mkdir -p build
 
+pdf:
+	mkdir -p pdf
+
 clean:
-	$(RM) build/* $(name).pdf
+	$(RM) build/* pdf/*
 
 .PHONY: all clean
