@@ -432,7 +432,7 @@ La función de Heaviside permite definir fácilmente funciones a trozos.
 		\R^2\); aplicando el teorema de Fubini:
 		\begin{align*}
 			\laplace\{f \ast g\}
-			 & = \iint_R f(u) g(t-u) \dif u \dif t
+			 & = \iint_R f(u) g(t-u) e^{-st} \dif u \dif t
 			= \int_0^\infty \int_u^\infty f(u)g(t-u)e^{-st} \dif t \dif u            \\
 			 & = \int_0^\infty f(u) \left(\int_u^\infty g(t-u)e^{-st} \dif t \right)
 			\dif u = \int_0^\infty f(u) \left( \int_0^\infty g(v)e^{-s(v+u)} \dif v
