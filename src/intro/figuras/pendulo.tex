@@ -33,13 +33,13 @@
     \draw [-stealth] (centro) -- ($(centro)!\Gcos cm!(anclaje)$);
     \draw [-stealth] (centro) -- ($(centro)!-\Gcos cm!(anclaje)$)
       coordinate (gcos)
-      node[midway,above right] {$a\cos\theta$};
+      node[midway,above right] {$mg\cos\theta$};
     \draw [-stealth] (centro) -- ($(centro)!\Gsin cm!90:(anclaje)$)
       coordinate (gsin)
-      node[midway,above left] {$a\sin\theta$};
+      node[midway,above left] {$mg\sin\theta$};
     \draw [-stealth] (centro) -- ++(0,-\Gvec)
       coordinate (g)
-      node[near end,left] {$g$};
+      node[near end,left] {$mg$};
 
 	% ángulo theta bajo la bola
     \pic [draw, "$\theta$", angle eccentricity=1.2, angle radius=.8cm] 

@@ -142,11 +142,9 @@ uno del espacio vectorial \(C^1(\R)\), que tiene dimensión infinita.
 
 Vemos ahora un ejemplo de modelado más complicado, el movimiento del péndulo.
 Queremos hallar el ángulo del péndulo en un momento determinado, para ello
-hacemos algunas observaciones. Llamaremos \(\theta\) al ángulo
-formado entre la recta perpendicular al plano sobre el que esta apoyado el
-péndulo y que parte de su punto de apoyo y la cuerda y \(m\) al punto de masa
-donde se concentra todo el peso del mismo, por último denotaremos la longitud
-de la cuerda por \(l\). 
+nombramos las magnitudes relevantes. Llamaremos \(\theta\) al ángulo que forma
+la cuerda con la vertical, \(m\) a la masa puntual colgante y \(l\) a la
+longitud de la cuerda.
 
 \begin{figure}[ht]
 	\centering
@@ -155,8 +153,9 @@ de la cuerda por \(l\).
 	\label{fig:pendulo}
 \end{figure}
 
-Recordamos que, por la segunda ley de Newton, \(F = ma\) donde \(a\) es la 
-aceleración. Tenemos entonces que
+Recordamos que, por la segunda ley de Newton, \(F = ma\), donde \(a\) es la
+aceleración. Tenemos entonces que la fuerza que produce la aceleración
+tangencial es
 \[-m g \sin\theta = m l \theta''\]
 por tanto
 \[\theta'' = -\frac{g}{l} \sin\theta\]
@@ -171,12 +170,12 @@ lineal de segundo orden
 \[\theta'' = -\frac{g}{l}\theta.\]
 
 Esta es la ecuación del movimiento armónico simple. Su solución general, que,
-recordamos, es el conjunto de todas las soluciones es
+recordamos, es el conjunto de todas las soluciones, es
 \[\theta(t) = C_1 \sin \omega t + C_2 \cos \omega t\]
 donde \(\omega^2 = g/l\), demostraremos esto más adelante. Este conjunto de
 soluciones forma un espacio vectorial de dimensión 2. Demostraremos también que
 el conjunto de soluciones de una ecuación lineal de orden \(n\) es un espacio
-vectorial, o afín si existe un término independiente, de orden \(n\).
+vectorial, o afín si la ecuación no es homogénea, de dimensión \(n\).
 
 \subsection{Problema de valor inicial (PVI)}
 
