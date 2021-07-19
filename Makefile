@@ -10,8 +10,8 @@ all: pdf/$(name).pdf
 
 figures:
 	for dir in $(subdir); do \
-        make -C $$dir all; \
-    done
+		make -C $$dir all; \
+	done
 
 pdf/$(name).pdf: $(sources) $(style) | figures build pdf
 	latexmk -pdf -xelatex -output-directory=../build -cd src/main.tex
@@ -25,8 +25,8 @@ pdf:
 
 clean:
 	for dir in $(subdir); do \
-        make -C $$dir clean; \
-    done
+		make -C $$dir clean; \
+	done
 	$(RM) build/* pdf/*
 
 .PHONY: all clean

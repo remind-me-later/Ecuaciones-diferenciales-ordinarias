@@ -29,13 +29,17 @@
 % Se carga el último 
 \usepackage{hyperref}
 
+% Los apéndices se llaman apéndices
 \renewcommand\appendixpagename{Apéndices}
 \renewcommand{\appendixtocname}{Apéndices}
 
+% mainmatter no reinicia el contador de páginas
 \makeatletter
 \renewcommand\mainmatter{
     \@mainmattertrue\cleardoublepage\renewcommand\thepage{\arabic{page}}}
 \makeatother
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 
 \title{Elementos de ecuaciones diferenciales ordinarias}
 \author{Ricardo Maurizio Paul \and Pablo Castellanos García}
