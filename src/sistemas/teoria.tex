@@ -129,7 +129,7 @@ Definimos ahora la distancia respecto a la cual el espacio
 
 \begin{definition}[Distancia entre funciones]
 	Definimos en \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) la distancia
-	\[d(\vec{f}, \vec{g}) := \norm{\vec{f} - \vec{g}}_{\infty} 
+	\[d(\vec{f}, \vec{g}) \assign \norm{\vec{f} - \vec{g}}_{\infty} 
 		= \max_{t \in [\tilde{\alpha}, \tilde{\omega}]} 
 			\norm{\vec{f}(t) - \vec{g}(t)}_2,\]
 	donde \(\norm{\cdot}_2\) es la norma euclídea en \(\R^n\). 
@@ -143,7 +143,7 @@ Definimos ahora la distancia respecto a la cual el espacio
 \begin{proof}
 	Para comprobar que \(d\) es una distancia, basta ver que
 	\[\norm{\vec{f}}_\infty 
-		:= \max_{t \in [\tilde{\alpha}, \tilde{\omega}]} 
+		\assign \max_{t \in [\tilde{\alpha}, \tilde{\omega}]} 
 			\norm{\vec{f}(t)}_2\]
 	es una norma (basta usar que \(\norm{\cdot}_2\) es una norma y las
 	propiedades del máximo).
@@ -200,7 +200,7 @@ nos queda por ver que existe un \(m \in \N\) tal que \(T^m\) es contractiva.
 \begin{definition}[Norma operador]
 	Dada una matriz \(M \in \mathcal{M}_{n \times n}\), definimos su norma 
 	como operador:
-	\[\norm{M}_{op} := \max_{\norm{\vec{x}}_2 \leq 1} \norm{M \vec{x}}_2 
+	\[\norm{M}_{op} \assign \max_{\norm{\vec{x}}_2 \leq 1} \norm{M \vec{x}}_2 
 		= \sup_{\vec{x} \neq \vec{0}}
 			\frac{\norm{M \vec{x}}_2}{\norm{\vec{x}}_2}\]
 \end{definition}
@@ -214,7 +214,7 @@ nos queda por ver que existe un \(m \in \N\) tal que \(T^m\) es contractiva.
 \begin{definition}[Norma infinito]
 	Si \(A : X \subset \R \to \mathcal{M}_{n \times n}\), definimos su norma 
 	infinito como
-	\[\norm{A}_\infty := \max_{x \in X} \norm{A(x)}_{op}\]
+	\[\norm{A}_\infty \assign \max_{x \in X} \norm{A(x)}_{op}\]
 \end{definition}
 
 Con esto del corolario~\ref{prop:operator_int_ineq} y la 
@@ -353,7 +353,7 @@ iteraciones de Picard.
 	reiterando tenemos que
 	\[x_n = T(x_{n - 1}) = x_0 \sum_{k = 0}^n \frac{(at)^k}{k!}.\]
 	Cuando \(n\) tiende a infinito nos queda 
-	\(x_\infty := \lim_n x_n = x_0 e^{at}\).
+	\(x_\infty \assign \lim_n x_n = x_0 e^{at}\).
 \end{solution}
 
 \begin{remark}
@@ -417,7 +417,7 @@ más propiamente un subespacio vectorial de \(C^1((\alpha, \omega), \R^n)\).
 \end{definition}
 
 Con las definiciones anteriores tenemos que
-\(\Phi(t) := (\vec{\phi}_1, \vec{\phi}_2, \dots, \vec{\phi}_n)\) es una matriz 
+\(\Phi(t) \assign (\vec{\phi}_1, \vec{\phi}_2, \dots, \vec{\phi}_n)\) es una matriz 
 fundamental. Por la propia definición tenemos que si \(\Phi\) es una matriz 
 fundamental de un sistema de ecuaciones lineales homogéneas entonces la solución 
 general del sistema es \(\Phi(t)\vec{c}\) con \(\vec{c} \in \R^n\):

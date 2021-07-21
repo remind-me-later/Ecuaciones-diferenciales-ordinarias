@@ -104,9 +104,9 @@ matriz y obtener métodos para computarla.
 			\[\eqsys{\vec{x}' = A\vec{x} \\ \vec{x}(0) = \Phi(s) }\]
 		      Vamos a ver que tanto \(\Phi(t + s)\) como \(\Phi(t)\Phi(s)\) (como
 		      funciones en \(t\)) son soluciones de ese problema. Consideramos
-		      primero \(X(t) := \Phi(t + s)\), tenemos que \(X(0) = \Phi(s)\) y
+		      primero \(X(t) \assign \Phi(t + s)\), tenemos que \(X(0) = \Phi(s)\) y
 		      \[X'(t) = \Phi'(t + s) = A \Phi(t + s) = A X(t),\]
-		      similarmente para \(Y(t) := \Phi(t)\Phi(s)\), aplicando la primera
+		      similarmente para \(Y(t) \assign \Phi(t)\Phi(s)\), aplicando la primera
 		      igualdad \(Y(0) = \Phi(0)\Phi(s) = \Phi(s)\) e
 		      \[Y'(t) = \Phi'(t)\Phi(s) = A \Phi(t)\Phi(s) = A Y(t).\]
 
@@ -396,7 +396,7 @@ complejos en otra equivalente que involucre solamente números reales.
 		= \mat{a\vec{u} - b\vec{v} & b\vec{u} + a\vec{v}} 
 		= \mat{\vec{u} & \vec{v}} \mat{a & b \\ -b & a},\]
 	llamando \(B\) a la matriz de la derecha:
-	\[B := \mat{a & b \\ -b & a}\]
+	\[B \assign \mat{a & b \\ -b & a}\]
 	sin más que multiplicar por \(P^{-1}\) a la izquierda del primer y último
 	miembro tenemos que las matrices \(A\) y \(B\) son semejantes, 
 	\(P^{-1}AP = B\). 
@@ -416,7 +416,7 @@ complejos en otra equivalente que involucre solamente números reales.
 	
 	Hemos simplificado nuestro problema al de resolver el caso 
 	\(\vec{y}' = M\vec{y}\), donde
-	\[M := \mat{0 & 1 \\ -1 & 0},\]
+	\[M \assign \mat{0 & 1 \\ -1 & 0},\]
 	es decir, calcular \(e^{Mt}\).
 	Para ello, diagonalizamos \(M\); su polinomio característico es 
 	\(p(\lambda) = \lambda^2 + 1\), luego sus
@@ -425,7 +425,7 @@ complejos en otra equivalente que involucre solamente números reales.
 		\quad \text{y} \quad 
 		\ker(M + \iu I) = L\left[\mat{\iu \\ 1}\right],\]
 	con lo que una posible matriz de paso es 
-	\[P := \mat{1 & \iu \\ \iu & 1} \quad \text{con} \quad 
+	\[P \assign \mat{1 & \iu \\ \iu & 1} \quad \text{con} \quad 
 		P^{-1} = \frac{1}{2} \mat{1 & -\iu \\ -\iu & 1}.\]
 	Se tiene entonces:
 	\begin{align*}
@@ -490,7 +490,7 @@ Sea \(A\) una matriz con autovalores reales \(\lambda_1, \dots, \lambda_r\)
 y autovalores complejos \(a_1 \pm \iu b_1, \dots, a_s \pm \iu b_s\) con 
 \(b_j > 0\), donde en ambos casos se admiten repeticiones. 
 Definimos las matrices \(B_1, \dots, B_s\) y la matriz \(P\) como:
-\[B_j := \mat{a_j & b_j \\ -b_j & a_j} 
+\[B_j \assign \mat{a_j & b_j \\ -b_j & a_j} 
 	\quad \text{y} \quad
 	P = \mat{\vec{v}_1 & \cdots & \vec{v}_r 
 		& \Re \vec{w}_1 & \Im \vec{w}_1 & 
@@ -512,7 +512,7 @@ y \(a_j + \iu b_j\), respectivamente.
 		\mat{c_1 \\ \vdots \\ c_r \\ k_1 \\ k_2 \\ \vdots \\ k_{2s-1}\\ k_{2s}}
 		\in \R^n,\]
 	donde
-	\[e^{B_j t} := \mat{e^{a_j t} \cos b_j t & e^{a_j t} \sin b_j t \\
+	\[e^{B_j t} \assign \mat{e^{a_j t} \cos b_j t & e^{a_j t} \sin b_j t \\
 		-e^{a_j t} \sin b_j t & e^{a_j t} \cos b_j t}.\]
 \end{theorem}
 
@@ -521,7 +521,7 @@ y \(a_j + \iu b_j\), respectivamente.
 	pares obtendremos una matriz semejante a la original diagonal por bloques
 	\(D\); la matriz de cambio de paso que nos permite hacer esto es \(P\), 
 	sin más que multiplicar:
-	\[D := \mat{\lambda_1 & & & & & & & \\
+	\[D \assign \mat{\lambda_1 & & & & & & & \\
 		& \ddots & & & & & & \\
 		& & \lambda_r & & & & & \\
 		& & & a_1 & b_1 & & & & \\
