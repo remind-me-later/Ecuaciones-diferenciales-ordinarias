@@ -29,20 +29,20 @@ forma
 \[x' = Ax, \qquad A = \mat{a_{11} & a_{12} \\ a_{21} & a_{22}}.\]
 Estamos interesados en pintar las trayectorias u órbitas:
 
-\begin{definition}
+\begin{definition}[Trayectoria]
 	Dada una solución \((x_1(t), x_2(t))\) de un sistema \(x' = Ax\), su
 	\emph{trayectoria} u \emph{órbita} es el conjunto
 	\(\{(x_1(t), x_2(t)) : t \in \R\} \subset \R^2\).
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Diagrama de fases]
 	El conjunto de todas las trayectorias de \(x' = Ax\) se llama \emph{diagrama
 		de fases} del sistema.
 \end{definition}
 
 \begin{example}\label{ex:fases_1}
 	Dibujar el diagrama de fases del sistema \(x' = Ax\) siendo
-	\(A = \smat{0 & 1 \\ -1 & 0}\).
+	\(A = \mat{0 & 1 \\ -1 & 0}\).
 \end{example}
 
 \begin{solution}
@@ -61,13 +61,13 @@ Estamos interesados en pintar las trayectorias u órbitas:
 				rotación}} \mat{k_1 \\ k_2},\]
 
 	así que, intuitivamente, la trayectoria es una circunferencia que pasa por
-	\(\smat{k_1 \\ k_2}\). Analíticamente,
+	\((k_1, k_2)\). Analíticamente,
 	\begin{align*}
 		x_1^2 + x_2^2 & = (k_1^2\cos^2t + k_2^2\sin^2t + 2k_1k_2\cos t \sin t)
 		+ (k_1^2\sin^2t + k_2^2\cos^2t - 2k_1k_2\cos t \sin t)                                 \\
 		              & = k_1^2(\cos^2 t + \sin^2 t) + k_2^2(\cos^2t + \sin^2t) = k_1^2+k_2^2.
 	\end{align*}
-	Efectivamente, la trayectoria que pasa por \(\smat{k_1 \\ k_2}\) es la
+	Efectivamente, la trayectoria que pasa por \((k_1, k_2)\) es la
 	circunferencia centrada en el origen de radio \(\sqrt{k_1^2+k_2^2}\). Además,
 	conforme \(t\) aumenta, la trayectoria se recorre en sentido horario.
 \end{solution}
@@ -108,26 +108,26 @@ sistema \(x' = Ax\) no es más que una curva \(t \mapsto x(t)\) tal que su
 velocidad \(x'(t)\) coincide con el valor del campo en \(x(t)\), es decir, una
 \emph{curva integral} del campo.
 
-\begin{example} \label{ex:campo_vec}
-	Sea la matriz \(A = \smat{0 & 1 \\ -1 & 0}\). Esbozar el campo vectorial que
+\begin{example}
+	Sea la matriz \(A = \mat{0 & 1 \\ -1 & 0}\). Esbozar el campo vectorial que
 	define.
 \end{example}
-
-\begin{solution}
-	La matriz \(A\) actúa sobre un vector genérico \(\smat{x_1 \\ x_2}\) como
-	\(\smat{x_1 \\ x_2} \mapsto A\smat{x_1 \\ x_2} = \smat{x_2 \\ -x_1}\).
-	Observamos que \(\langle x, Ax \rangle = 0\), es decir, la velocidad es
-	ortogonal a la posición en todo punto, y además \(\|x\| = \|Ax\|\), es decir,
-	\(A\) no cambia la norma de los vectores. El campo vectorial que define esta
-	matriz es, entonces,
-\end{solution}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.6]{figuras/pdf/ej_campo_vectorial.pdf}
-	\caption{Campo vectorial generado por la matriz del
-		ejemplo~\ref{ex:campo_vec}}
+	\caption{Ejemplo de campo vectorial}
+	\label{fig:campo_vec}
 \end{figure}
+
+\begin{solution}
+	La matriz \(A\) actúa sobre un vector genérico \((x_1, x_2)\) como
+	\[\mat{x_1 \\ x_2} \mapsto A\mat{x_1 \\ x_2} = \mat{x_2 \\ -x_1}.\]
+	Observamos que \(\langle x, Ax \rangle = 0\), es decir, la velocidad es
+	ortogonal a la posición en todo punto, y además \(\|x\| = \|Ax\|\), es decir,
+	\(A\) no cambia la norma de los vectores. El campo vectorial que define esta
+	matriz es, entonces, el que se observa en la figura~\ref{fig:campo_vec}.
+\end{solution}
 
 \section{Representación gráfica de sistemas planos}
 
@@ -138,10 +138,14 @@ manejable. Las formas de Jordan posibles son
 
 \begin{multicols}{2}
 \begin{enumerate}[a)]
-	\item \(B = \smat{\lambda_1 & \\ & \lambda_2},\ \lambda_1 \neq \lambda_2\)
-	\item \(B = \smat{\lambda & \\ & \lambda}\)
-	\item \(B = \smat{\lambda & 1 \\ & \lambda}\)
-	\item \(B = \smat{a & b \\ -b & a},\ b>0\)
+	\item \(B = \mat{\lambda_1 & \\ & \lambda_2}, 
+		\quad \lambda_1 \neq \lambda_2\)
+
+	\item \(B = \mat{\lambda & \\ & \lambda}\)
+
+	\item \(B = \mat{\lambda & 1 \\ & \lambda}\)
+
+	\item \(B = \mat{a & b \\ -b & a}, \quad b > 0\)
 \end{enumerate}
 \end{multicols}
 
@@ -150,7 +154,7 @@ cambio de variable para obtener el diagrama final.
 
 \subsection{Diagonalizable con dos autovalores reales distintos}
 
-Consideramos el sistema \(y' = \smat{\lambda_1 & \\ & \lambda_2} y\), con
+Consideramos el sistema \(y' = \mat{\lambda_1 & \\ & \lambda_2} y\), con
 \(\lambda_1 \neq \lambda_2\). Como hemos visto, la solución general del sistema
 es
 \[\eqsys{
@@ -180,7 +184,7 @@ Empezamos por fijar valores sencillos, en los que algún valor inicial es 0
 	      \in \R\} = \{(0,y_2) : y_2 < 0\}\)
 \end{itemize}
 
-En general, la trayectoria que pasa por el punto \(\smat{k_1 \\ k_2} \in \R^2\),
+En general, la trayectoria que pasa por el punto \((k_1, k_2) \in \R^2\),
 no necesariamente en algún eje, es
 \(\{(k_1e^{\lambda_1 t}, k_2e^{\lambda_2 t}) : t \in \R\}\). Si el punto no está
 sobre ninguno de los ejes, se cumple \(k_1 \neq 0 \neq k_2\), con lo que se
@@ -254,7 +258,7 @@ las mismas para todos y porque éste es el más delicado.
 
 \subsection{Diagonalizable con un autovalor real}
 
-Consideramos el sistema \(y' = \smat{\lambda & \\ & \lambda} y\). La solución
+Consideramos el sistema \(y' = \mat{\lambda & \\ & \lambda} y\). La solución
 general es
 \[\eqsys{
 	y_1 = k_1e^{\lambda t} \\
@@ -292,7 +296,8 @@ apartado anterior).
 \end{itemize}
 
 \subsection{No diagonalizable con un autovalor real}
-Consideramos el sistema \(y' = \smat{\lambda & 1 \\ & \lambda}y\), cuya solución
+
+Consideramos el sistema \(y' = \mat{\lambda & 1 \\ & \lambda}y\), cuya solución
 general es
 \[
 	\begin{cases}
@@ -329,10 +334,10 @@ Si \(\lambda \neq 0\), distinguimos casos en función del valor inicial:
 		      \right).\]
 
 	      Derivando implícitamente se obtiene
-	      \(\frac{\dif y_1}{\dif y_2} = \frac{\lambda y_1 + y_2}{\lambda y_2}\); esto
-	      quiere decir que, a lo largo de la recta \(\{y_2 = -\lambda y_1\}\), esta
-	      derivada se anula y, por tanto, las trayectorias tienen en esa recta tangente
-	      vertical.
+	      \[\frac{\dif y_1}{\dif y_2} = \frac{\lambda y_1 + y_2}{\lambda y_2};\]
+		  esto quiere decir que, a lo largo de la recta 
+		  \(\{y_2 = -\lambda y_1\}\), esta derivada se anula y, por tanto, las 
+		  trayectorias tienen en esa recta tangente vertical.
 \end{itemize}
 
 Juntándolo todo, los diagramas de fase son
@@ -397,7 +402,7 @@ Como siempre, el comportamiento es distinto en función del signo de \(\lambda\)
 \end{itemize}
 
 \subsection{No diagonalizable con dos autovalores complejos conjugados}
-Consideramos el sistema \(y' = \smat{a & b \\ -b & a}y\), que tiene por solución
+Consideramos el sistema \(y' = \mat{a & b \\ -b & a}y\), que tiene por solución
 general
 
 \[
@@ -424,7 +429,7 @@ y, definiendo \(r(t) = r_0e^{at}\) y \(\theta(t) = \theta_0 - bt\), se tiene
 		y_2 = r(t) \sin \theta(t)
 	\end{cases}
 \]
-con lo que queda descrito el camino \(t \mapsto \smat{y_1(t) \\ y_2(t)}\) en
+con lo que queda descrito el camino \(t \mapsto (y_1(t), y_2(t))\) en
 coordenadas polares.
 
 \begin{itemize}
@@ -468,21 +473,22 @@ coordenadas polares.
 \end{figure}
 
 \subsection{Deshacer el cambio}
+
 Habíamos hecho el cambio de variable \(y = P^{-1}x\) para resolver el sistema
-\(x' = Ax = (PBP^{-1})x\). Ahora lo deshacemos: \(x = Py = \smat{v_1 & v_2}
-\smat{y_1 \\ y_2}\).
+\(x' = Ax = (PBP^{-1})x\). Ahora lo deshacemos: 
+\[x = Py = \mat{v_1 & v_2} \mat{y_1 \\ y_2}.\]
 
 Como ya sabemos de Álgebra Lineal, la transformaciones lineales
 \(\R^2 \to \R^2\) no singulares deforman, rotan o hacen reflexiones sobre el
 plano. Estas transformaciones quedan completamente determinadas por las imágenes de
-dos vectores linealmente independientes, que en nuestro caso son \(e_1 = \smat{1
-	\\ 0}\) y \(e_2 = \smat{0 \\ 1}\).
+dos vectores linealmente independientes, que en nuestro caso son 
+\(e_1 = (1, 0)\) y \(e_2 = (0, 1)\).
 
 \(P\) es la \emph{única} transformación lineal que lleva \(e_1 \mapsto v_1\) y
 \(e_2 \mapsto v_2\). Por tanto, para obtener el diagrama de fase de \(x' = Ax\),
 basta transformar el de \(y' = By\) de forma que sea compatible con las
 transformaciones
-\[e_1 \mapsto v_1 \qquad e_2 \mapsto e_2.\]
+\[e_1 \mapsto v_1 \quad \text{y} \quad e_2 \mapsto e_2.\]
 
 \section{Oscilaciones mecánicas}
 
@@ -602,6 +608,7 @@ Vamos a empezar resolviendo casos particulares sencillos, para ir complicando el
 problema poco a poco hasta llegar al caso general.
 
 \subsection{Movimiento oscilatorio armónico}
+
 Este es el caso (mínimamente interesante) más sencillo, en el que no hay
 amortiguación ni fuerzas externas, es decir, \(c = 0, b(t) = 0\).
 
@@ -609,10 +616,12 @@ Con estas simplificaciones, la ecuación queda reducida a \(x'' = -kx\), y los
 autovalores son \(\pm i\sqrt{k}\). El valor \(\omega_0 = \sqrt{k}\) recibe el
 nombre de \emph{frecuencia fundamental} del sistema.
 
-La matriz \(B\) asociada es, por tanto, \(B = \smat{0 & \omega_0 \\ -\omega_0 &
-	0}\), y su exponencial es \(e^{Bt} = \smat{\cos \omega_0 t & \sin \omega_0 t
-	\\ -\sin \omega_0 t & \cos \omega_0 t}\). Así, la solución general del sistema
-es
+La matriz \(B\) asociada y su exponencial son, por tanto, 
+\[B = \mat{0 & \omega_0 \\ -\omega_0 & 0} 
+	\quad \text{y} \quad 
+	e^{Bt} = \mat{\cos \omega_0 t & \sin \omega_0 t 
+	\\ -\sin \omega_0 t & \cos \omega_0 t}.\] 
+Así, la solución general del sistema es
 \[\mat{x_1 \\ x_2} = P \mat{\cos \omega_0 t & \sin \omega_0 t
 		\\ -\sin \omega_0 t & \cos \omega_0 t}\mat{c_1 \\ c_2} = \mat{p_{11} & p_{12} \\
 		p_{21} & p_{22}} \mat{c_1 \cos \omega_0 t + c_2 \sin \omega_0 t \\ -c_1 \sin

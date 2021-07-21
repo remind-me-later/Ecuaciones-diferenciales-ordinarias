@@ -1,8 +1,11 @@
 \ProvidesPackage{algebra}
 
+\newcommand{\eqsys}[1]{\begin{cases}#1\end{cases}}
+
 \newcommand{\mat}[1]{\begin{pmatrix}#1\end{pmatrix}}
 \newcommand{\smat}[1]{\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
-\newcommand{\eqsys}[1]{\begin{cases}#1\end{cases}}
+
+\newcommand{\transpose}{\mathsf{T}}
 
 \newcommand\restr[2]{{% we make the whole thing an ordinary symbol
   \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
@@ -13,3 +16,8 @@
 
 \newcommand{\inprod}[1]{\langle#1\rangle}
 \DeclareMathOperator{\ran}{ran}
+
+% temporal
+\let\oldvec=\vec
+\renewcommand{\vec}[1]{\overline{#1}}
+%\renewcommand{\vec}[1]{\mathbf{#1}}
