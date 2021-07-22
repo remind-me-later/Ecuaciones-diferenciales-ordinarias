@@ -1,5 +1,5 @@
 %\documentclass[a4paper, 10pt, openany]{book}
-\documentclass[draft, a4paper, 10pt, openany]{book}
+\documentclass[a4paper, 10pt, openany]{book}
 \usepackage[spanish]{babel}
 
 \usepackage{parskip}
@@ -83,16 +83,12 @@ Ducunt volentem fata, nolentem trahunt. \\
 \subfile{intro/teoria}
 
 \chapter{Ecuaciones lineales de primer orden}
-\label{CHAP:LINEAL}
-\subfile{lineal/teoria}
+\label{CHAP:ORDEN1}
+\subfile{orden1/teoria}
 
 \chapter{Sistemas de ecuaciones lineales de primer orden}
 \label{CHAP:SISTEMAS}
 \subfile{sistemas/teoria}
-
-\chapter{Ecuación escalar de orden superior}
-\label{CHAP:ESCALAR}
-\subfile{escalar/teoria}
 
 \chapter{Análisis cualitativo de sistemas planos}
 \label{CHAP:CUALITATIVO}
@@ -111,7 +107,7 @@ Ducunt volentem fata, nolentem trahunt. \\
 \chapter{Problemas resueltos}
 
 \section{Problemas del capítulo~\ref{CHAP:LINEAL}}
-\subfile{lineal/problemas}
+\subfile{orden1/problemas}
 
 \section{Problemas del capítulo~\ref{CHAP:SISTEMAS}}
 \subfile{sistemas/problemas}
@@ -124,11 +120,15 @@ Ducunt volentem fata, nolentem trahunt. \\
 
 \listoftables
 
-\begin{thebibliography}{1}
+\begin{thebibliography}{9}
 	\bibitem{introduction_real_analysis} 
-		Bartle, Robert G., and Donald R. Sherbert.
+		Bartle, Robert G. \& Sherbert, Donald R.
 		\textit{Introduction to Real Analysis}. 
 		New York: Wiley, 2000. 
+    \bibitem{ecuaciones_lineales}
+        Fernández Pérez, Carlos.
+        \textit{Ecuaciones diferenciales I: ecuaciones lineales}.
+        Pirámide, 1992.
 \end{thebibliography}
 
 \end{document}
