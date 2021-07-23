@@ -46,18 +46,15 @@ constante \(k\).
 Vamos a demostrar ahora que la solución obtenida es la solución general de la
 ecuación homogénea.
 
-\begin{theorem}
+\begin{theorem} \label{thm:sol_gen}
 	Todas las soluciones de una ecuación diferencial lineal homogénea
 	\(x' = a(t)x\) son de la forma
-	\begin{equation}
-		x(t) = k e^{\int^t a(s) \dif s}. \label{eq:sol_gen}
-	\end{equation}
+	\[x(t) = k e^{\int^t a(s) \dif s}.\]
 \end{theorem}
 
 \begin{proof}
-	Primero probamos que \(k e^{\int^t a(s) \dif s}\) es
-	solución de la ecuación homogénea, para ello basta derivar
-	en~\eqref{eq:sol_gen}:
+	Primero probamos que el miembro de la derecha es, en efecto,
+	solución de la ecuación homogénea, para ello basta derivar:
 	\[x'(t) = k a(t) e^{\int^t a(s) \dif s} = a(t) x(t).\]
 
 	Probamos ahora que no existen más soluciones, para ello, sea \(u(t)\) una
@@ -70,7 +67,6 @@ ecuación homogénea.
 		         & = a(t) u(t) e^{-\int^t a(s) \dif s}
 		- u(t) a(t) e^{-\int^t a(s) \dif s} = 0.
 	\end{align*}
-
 	De aquí se deduce que la función \(\phi\) es constante, por lo que
 	\(u(t) = k e^{\int^t a(s) \dif s}\).
 \end{proof}
@@ -87,20 +83,28 @@ ecuación homogénea.
 \subsection{Problema de valor inicial} \label{sec:pvi}
 
 Vemos cómo se plantea el problema de valor inicial en el caso de ecuaciones
-homogéneas. Tenemos una ecuación lineal homogénea de primer orden, esto es,
-\(x' = a(t)x\), y además queremos que \(x(t_0) = x_0\) para algún
-\(t_0 \in (\alpha, \omega)\) y \(x_0 \in \R\).
-Sabemos que la solución general de la ecuación es de la forma~\eqref{eq:sol_gen}
-y podemos usar la libertad que tenemos para elegir la primitiva para ponerla como
-\[x(t) = k e^{\int_{t_0}^t a(s) \dif s},\]
-ahora queremos que \(x(t_0) = x_0\), para ello notamos que
-\[x_0 = x(t_0) = k e^{\int_{t_0}^{t_0} a(s) \dif s} = ke^0 = k.\]
-Hemos probado así que el problema de valor inicial tiene solución única,
-dada por
-\begin{equation}
-	x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s} \label{eq:sol_pvi}
-\end{equation}
-y además la solución está bien definida en el intervalo \((\alpha, \omega)\).
+homogéneas.
+
+\begin{theorem}
+	Sea \(x' = a(t)x\) una ecuación lineal homogénea de primer orden y 
+	\(x(t_0) = x_0\) para algún \(t_0 \in (\alpha, \omega)\) y \(x_0 \in \R\).
+	La solución de este problema de valor inicial es única y viene dada por:
+	\[x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s}.\]
+\end{theorem}
+
+\begin{proof}
+	Sabemos que la solución general de la ecuación es la 
+	vista en el teorema~\ref{thm:sol_gen} y podemos usar la libertad que 
+	tenemos para elegir la primitiva para ponerla como
+	\[x(t) = k e^{\int_{t_0}^t a(s) \dif s},\]
+	ahora queremos que \(x(t_0) = x_0\), para ello notamos que
+	\[x_0 = x(t_0) = k e^{\int_{t_0}^{t_0} a(s) \dif s} = ke^0 = k.\]
+	Hemos probado así que el problema de valor inicial tiene solución única,
+	dada por
+	\[x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s}\]
+	y además la solución está bien definida en el intervalo 
+	\((\alpha, \omega)\).
+\end{proof}
 
 \subsection{Estructura del espacio de soluciones}
 
@@ -116,48 +120,63 @@ definimos el operador diferencial
 	L : C^1(\alpha, \omega) & \to C(\alpha, \omega)              \\
 	x                       & \mapsto \frac{d x}{\dif t} - a(t)x.
 \end{align*}
-
 Recordamos que decimos que una aplicación es lineal cuando cumple
 \[f(ax + by) = af(x) + bf(y), \quad a, b \in \mathbb{K},\] entonces la
 linealidad de \(L\) se deduce de la linealidad de la derivada y el producto.
  
-\begin{remark}
+\begin{theorem}
+	El conjunto de soluciones de una ecuación lineal homogénea de
+	primer orden es un subespacio de dimensión 1 del espacio vectorial 
+	\(C^1(\alpha, \omega)\).
+\end{theorem}
+
+\begin{proof}
     La linealidad de la ecuación diferencial equivale a la linealidad de \(L\)
     y, además, \(x\) es solución de \(x' = a(t)x\) si y solo si
     \(x \in \text{ker}(L)\). Sabemos del Álgebra Lineal que el núcleo de un
     homomorfismo vectorial es siempre un subespacio vectorial del espacio de
     dominio y, por tanto, el conjunto de soluciones de la ecuación homogénea
     tiene estructura de espacio vectorial.
-\end{remark}
+\end{proof}
 
-\section{El operador diferencial asociado}
+\section{Operador diferencial asociado}
 
-Dada una ecuación diferencial lineal homogénea de la forma
-\[x^{(n)}(t) = a_{n-1}(t)x^{(n - 1)}(t) + \dots + a_0(t)x(t),\]
+Introducimos ahora un operador que nos permitirá demostrar algunos resultados
+para ecuaciones lineales de primer orden no homogéneas de forma sencilla.
 
-podemos asociarle un operador diferencial
-\[L = \frac{d^n}{\dif t^n} - a_{n-1}(t)\frac{d^{n-1}}{\dif t^{n-1}}
-	- \dots - a_1(t)\frac{d}{\dif t} - a_0(t)\]
-donde el término \(k\)-ésimo \(a_k(t) d^k/\dif t^k\) actúa sobre una
-función \(u(t)\) como
-\[\left(a_k(t)\frac{d^k}{\dif t^k}\right)(u(t)) = a_k(t) \frac{d^ku}{\dif t^k}(t)
-	= a_k(t) u^{(k)}(t).\]
+\begin{definition}[Operador diferencial asociado]
+	Dada una ecuación diferencial lineal homogénea de la forma
+	\[x^{(n)}(t) = a_{n-1}(t)x^{(n - 1)}(t) + \dots + a_0(t)x(t),\]
+	definimos su \emph{operador diferencial asociado} 
+	\(L : C^n(\alpha, \omega) \to C(\alpha, \omega)\) como:
+	\[L \eqdef \frac{d^n}{\dif t^n} - a_{n-1}(t)\frac{d^{n-1}}{\dif t^{n-1}}
+		- \dots - a_1(t)\frac{d}{\dif t} - a_0(t).\]
+\end{definition}
 
-Como derivar es lineal,
-\[\frac{d}{\dif t} (\alpha u(t) + \beta v(t))
-	= \alpha \frac{d}{\dif t} u(t) + \beta \frac{d}{\dif t} v(t),\]
-y multiplicar por una función fija también es lineal,
-\[a(t)(\alpha u(t) + \beta v(t)) = \alpha a(t) u(t) + \beta a(t) u(t),\]
-el operador composición de las anteriores \(a_k(t) d^k/\dif t^k\) es
-lineal. Tenemos así que \(L\) es lineal como operador de tipo
-\(L : C^n(\alpha, \omega) \to C(\alpha, \omega)\), asumiendo que
-\(a_k(t) \in C(\alpha, \omega)\) para todo \(k=0, \dots, n-1\).
+\begin{proposition}
+	El operador \(L\) es lineal.
+\end{proposition}
+
+\begin{proof}
+	El término \(k\)-ésimo \(a_k(t) d^k/\dif t^k\) actúa sobre una
+	función \(u(t)\) como
+	\[\left(a_k(t)\frac{d^k}{\dif t^k}\right)(u(t)) = a_k(t) 
+		\frac{d^ku}{\dif t^k}(t) = a_k(t) u^{(k)}(t).\]
+	Como derivar es lineal,
+	\[\frac{d}{\dif t} (\alpha u(t) + \beta v(t))
+		= \alpha \frac{d}{\dif t} u(t) + \beta \frac{d}{\dif t} v(t),\]
+	y multiplicar por una función fija también es lineal,
+	\[a(t)(\alpha u(t) + \beta v(t)) = \alpha a(t) u(t) + \beta a(t) u(t),\]
+	el operador composición de las anteriores \(a_k(t) d^k/\dif t^k\) es
+	lineal. Tenemos así que \(L\) es lineal, asumiendo que
+	\(a_k(t) \in C(\alpha, \omega)\) para todo \(k=0, \dots, n-1\).
+\end{proof}
 
 \begin{remark}
 	Las soluciones de una ecuación diferencial homogénea corresponden a las
     funciones \(x\) tales que \(L(x(t)) = 0\), por lo que el conjunto de
-    soluciones es el núcleo del operador \(L\) así definido, es un espacio
-    vectorial de dimensión \(n\).
+    soluciones es el núcleo del operador \(L\) así definido, el cual es un 
+	espacio vectorial de dimensión \(n\).
 \end{remark}
 
 \begin{remark}
@@ -178,7 +197,7 @@ orden no homogénea
 \[x' = a(t)x + b(t).\]
 
 Consideramos para ello el operador diferencial asociado a su ecuación homogénea
-\(L = \frac{d}{\dif t} - a(t)\).
+\[L \eqdef \frac{d}{\dif t} - a(t).\]
 
 \begin{lemma}
 	Si \(x_p\) es solución de una ecuación diferencial lineal y \(x_0\) es
@@ -203,7 +222,7 @@ Consideramos para ello el operador diferencial asociado a su ecuación homogéne
 
 \begin{corollary}
 	La solución general de una ecuación diferencial lineal de primer orden es
-	\[x_p(t) + x_h(t)\]
+	\[x(t) = x_p(t) + x_h(t)\]
 	donde \(x_p(t)\) es una solución particular de la ecuación y \(x_h(t)\) es
 	la solución general de la ecuación homogénea asociada.
 \end{corollary}
@@ -213,29 +232,33 @@ mediante el método de variación de constantes.
 
 \subsection{Método de variación de constantes}
 
-Conocemos una forma explícita de calcular una solución de la ecuación homogénea
-asociada a una ecuación lineal~\autoref{sec:hom}. Conjeturamos que hay una
-solución particular de la ecuación lineal de la forma
-\begin{equation}\label{xp}
+En la sección~\ref{sec:hom} obtuvimos una forma explícita de calcular una 
+solución de la ecuación homogénea asociada a una ecuación lineal. 
+Utilizando esa fórmula conjeturamos que hay una solución particular de la 
+ecuación lineal de la forma
+\begin{equation} \label{eq:conjetura}
 	x_p(t) = k(t) e^{\int^t a(s) \dif s}
 \end{equation}
 e intentamos obtener \(k(t)\). Buscamos entonces que se cumpla la igualdad
 \[x'_p(t) = a(t)x_p(t) + b(t) = a(t)k(t) e^{\int^t a(s) \dif s} + b(t);\]
-por otro lado, podemos derivar en~\eqref{xp} obteniendo
+por otro lado, podemos derivar en~\eqref{eq:conjetura} obteniendo
 \[x'_p(t) = k'(t) e^{\int^t a(s) \dif s} + k(t)a(t) e^{\int^t a(s) \dif s}\]
 y simplemente igualando y despejando hallamos la derivada \(k'\):
 \[k'(t) = b(t)e^{-\int^t a(s) \dif s}.\]
-
 Así, sin más que integrar, tenemos que la solución general de la ecuación
 diferencial es
 \[x(t) = \parens{k + \int^t b(s) e^{-\int^s a(u) \dif u} \dif s}
 	e^{\int^t a(s) \dif s}.\]
 
-\begin{remark}
-	No es necesario aprender esta fórmula de memoria; en la práctica, se puede
-    utilizar el método de variación de constantes para obtener formas explícitas
-    para cada problema en particular.
-\end{remark}
+\begin{corollary}
+	La solución general de una ecuación lineal de primer orden es
+	\[\parens{k + \int^t b(s) e^{-\int^s a(u) \dif u} \dif s}
+		e^{\int^t a(s) \dif s}.\]
+\end{corollary}
+
+No es necesario aprender esta fórmula de memoria; en la práctica, se puede
+utilizar el método de variación de constantes para obtener formas explícitas
+para cada problema en particular.
 
 \subsection{Problema de valor inicial}
 

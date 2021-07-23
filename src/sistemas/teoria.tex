@@ -32,6 +32,10 @@ funciones de clase \(C^1\) sobre un intervalo de \(\R\).
 	\((\alpha, \omega) \subset \R\) para \(i,j = 1, \dots, n\).
 \end{definition}
 
+\begin{notation}
+	Denotaremos los vectores mediante una raya por encima: \(\vec{x} \in \R^n\).
+\end{notation}
+
 Podemos expresar un sistema de este tipo en forma matricial como
 \[\vec{x}' = A\vec{x} + \vec{b}\]
 donde \(\vec{x} : (\alpha, \omega) \subset \R \to \R^n\),
@@ -129,7 +133,7 @@ Definimos ahora la distancia respecto a la cual el espacio
 
 \begin{definition}[Distancia entre funciones]
 	Definimos en \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) la distancia
-	\[d(\vec{f}, \vec{g}) \assign \norm{\vec{f} - \vec{g}}_{\infty}
+	\[d(\vec{f}, \vec{g}) \eqdef \norm{\vec{f} - \vec{g}}_{\infty}
 		= \max_{t \in [\tilde{\alpha}, \tilde{\omega}]}
 			\norm{\vec{f}(t) - \vec{g}(t)}_2,\]
 	donde \(\norm{\cdot}_2\) es la norma euclídea en \(\R^n\).
@@ -143,7 +147,7 @@ Definimos ahora la distancia respecto a la cual el espacio
 \begin{proof}
 	Para comprobar que \(d\) es una distancia, basta ver que
 	\[\norm{\vec{f}}_\infty
-		\assign \max_{t \in [\tilde{\alpha}, \tilde{\omega}]}
+		\eqdef \max_{t \in [\tilde{\alpha}, \tilde{\omega}]}
 			\norm{\vec{f}(t)}_2\]
 	es una norma (basta usar que \(\norm{\cdot}_2\) es una norma y las
 	propiedades del máximo).
@@ -205,7 +209,7 @@ nos queda por ver que existe un \(m \in \N\) tal que \(T^m\) es contractiva.
 \begin{definition}[Norma como operador]
 	Dada una matriz \(M \in \mathcal{M}_{n \times n}\), definimos su \emph{norma
 	como operador} como
-	\[\norm{M}_{op} \assign \max_{\norm{\vec{x}}_2 \leq 1} \norm{M \vec{x}}_2
+	\[\norm{M}_{op} \eqdef \max_{\norm{\vec{x}}_2 \leq 1} \norm{M \vec{x}}_2
 		= \sup_{\vec{x} \neq \vec{0}}
 			\frac{\norm{M \vec{x}}_2}{\norm{\vec{x}}_2}.\]
 \end{definition}
@@ -219,7 +223,7 @@ nos queda por ver que existe un \(m \in \N\) tal que \(T^m\) es contractiva.
 \begin{definition}[Norma infinito]
 	Si \(A : X \subset \R \to \mathcal{M}_{n \times n}\), definimos su \emph{norma
 	infinito} como
-	\[\norm{A}_\infty \assign \sup_{x \in X} \norm{A(x)}_{op}.\]
+	\[\norm{A}_\infty \eqdef \sup_{x \in X} \norm{A(x)}_{op}.\]
 \end{definition}
 
 Así, del lema~\ref{prop:operator_int_ineq} y la nota~\ref{prop:norm_op_eq} se
@@ -358,13 +362,11 @@ Picard.
 	e iterando tenemos
 	\[x_n = T(x_{n - 1}) = x_0 \sum_{k = 0}^n \frac{(at)^k}{k!}.\]
 	Cuando \(n\) tiende a infinito nos queda
-	\(x_\infty \assign \lim_n x_n = x_0 e^{at}\).
+	\(x = \lim_n x_n = x_0 e^{at}\).
 \end{solution}
 
-\begin{remark}
-	Este procedimiento también vale, con las modificaciones obvias, para el caso
-	matricial, a diferencia de la separación de variables que ya vimos.
-\end{remark}
+Este procedimiento también vale, con las modificaciones obvias, para el caso
+matricial, a diferencia de la separación de variables que ya vimos.
 
 \section{Estructura del espacio de soluciones}
 
@@ -422,7 +424,7 @@ más propiamente un subespacio vectorial de \(C^1((\alpha, \omega), \R^n)\).
 \end{definition}
 
 Con las definiciones anteriores tenemos que
-\(\Phi(t) \assign (\vec{\phi}_1, \vec{\phi}_2, \dots, \vec{\phi}_n)\) es una matriz
+\(\Phi(t) \eqdef (\vec{\phi}_1, \vec{\phi}_2, \dots, \vec{\phi}_n)\) es una matriz
 fundamental. Por la propia definición tenemos que si \(\Phi\) es una matriz
 fundamental de un sistema de ecuaciones lineales homogéneas entonces la solución
 general del sistema es \(\Phi(t)\vec{c}\) con \(\vec{c} \in \R^n\):
@@ -549,7 +551,7 @@ sistema equivalente es
 
 \begin{definition}[Wronskiano]
 	Llamaremos \emph{Wronskiano} de \(\phi_1, \dots, \phi_n\) al determinante
-	\[W(\phi_1, \dots, \phi_n)(t) = \det\mat{
+	\[W(\phi_1, \dots, \phi_n)(t) \eqdef \det\mat{
 			\phi_1(t) & \dots & \phi_n(t) \\
 			\phi'_1(t) & \dots & \phi'_n(t) \\
 			\vdots & \ddots & \vdots \\
@@ -604,9 +606,9 @@ matriz y obtener métodos para computarla.
 			\[\eqsys{\vec{x}' = A\vec{x} \\ \vec{x}(0) = \Phi(s) }\]
 		      Vamos a ver que tanto \(\Phi(t + s)\) como \(\Phi(t)\Phi(s)\) (como
 		      funciones en \(t\)) son soluciones de ese problema. Consideramos
-		      primero \(X(t) \assign \Phi(t + s)\), tenemos que \(X(0) = \Phi(s)\) y
+		      primero \(X(t) \eqdef \Phi(t + s)\), tenemos que \(X(0) = \Phi(s)\) y
 		      \[X'(t) = \Phi'(t + s) = A \Phi(t + s) = A X(t),\]
-		      similarmente para \(Y(t) \assign \Phi(t)\Phi(s)\), aplicando la primera
+		      similarmente para \(Y(t) \eqdef \Phi(t)\Phi(s)\), aplicando la primera
 		      igualdad \(Y(0) = \Phi(0)\Phi(s) = \Phi(s)\) e
 		      \[Y'(t) = \Phi'(t)\Phi(s) = A \Phi(t)\Phi(s) = A Y(t).\]
 
@@ -630,7 +632,7 @@ siguiente definición:
 \begin{definition}[Exponencial de una matriz]
 	Dada una matriz \(B\) se define su \emph{exponencial} \(\exp(B)\), o con la
     notación habitual \(e^B\), como
-	\[e^B = \sum_{k = 0}^\infty \frac{B^k}{k!}.\]
+	\[e^B \eqdef \sum_{k = 0}^\infty \frac{B^k}{k!}.\]
 \end{definition}
 
 Presentamos ahora algunas propiedades típicas de la función exponencial que
@@ -896,7 +898,7 @@ complejos en otra equivalente que involucre solamente números reales.
 		= \mat{a\vec{u} - b\vec{v} & b\vec{u} + a\vec{v}} 
 		= \mat{\vec{u} & \vec{v}} \mat{a & b \\ -b & a},\]
 	llamando \(B\) a la matriz de la derecha:
-	\[B \assign \mat{a & b \\ -b & a}\]
+	\[B \eqdef \mat{a & b \\ -b & a}\]
 	sin más que multiplicar por \(P^{-1}\) a la izquierda del primer y último
 	miembro tenemos que las matrices \(A\) y \(B\) son semejantes, 
 	\(P^{-1}AP = B\). 
@@ -916,7 +918,7 @@ complejos en otra equivalente que involucre solamente números reales.
 	
 	Hemos simplificado nuestro problema al de resolver el caso 
 	\(\vec{y}' = M\vec{y}\), donde
-	\[M \assign \mat{0 & 1 \\ -1 & 0},\]
+	\[M \eqdef \mat{0 & 1 \\ -1 & 0},\]
 	es decir, calcular \(e^{Mt}\).
 	Para ello, diagonalizamos \(M\); su polinomio característico es 
 	\(p(\lambda) = \lambda^2 + 1\), luego sus
@@ -925,7 +927,7 @@ complejos en otra equivalente que involucre solamente números reales.
 		\quad \text{y} \quad 
 		\ker(M + \iu I) = L\left[\mat{\iu \\ 1}\right],\]
 	con lo que una posible matriz de paso es 
-	\[P \assign \mat{1 & \iu \\ \iu & 1} \quad \text{con} \quad 
+	\[P \eqdef \mat{1 & \iu \\ \iu & 1} \quad \text{con} \quad 
 		P^{-1} = \frac{1}{2} \mat{1 & -\iu \\ -\iu & 1}.\]
 	Se tiene entonces:
 	\begin{align*}
@@ -967,19 +969,19 @@ elemental.
 		- \iu(\vec{v}\cos bt + \vec{u}\sin bt)).
 	\end{align*}
 	Ahora bien, como:
-	\[\mat{\Re \vec{z}(t) \\ \Im \vec{z}(t)} 
+	\[\mat{\Re(\vec{z}(t)) \\ \Im(\vec{z}(t))} 
 		= \frac{1}{2} \mat{\vec{z}(t) + \conjugate{\vec{z}}(t) \\
 			(\vec{z}(t) - \conjugate{\vec{z}}(t))/\iu} 
 		= \frac{1}{2}\mat{1 & 1 \\ -\iu & \iu} 
 		\mat{\vec{z}(t) \\ \conjugate{\vec{z}}(t)} 
 		\quad \text{y} \quad 
 		\det\mat{1 & 1 \\ -\iu & \iu} \neq 0,\]
-	se cumple que \(\Re \vec{z}(t)\) e \(\Im \vec{z}(t)\) siguen siendo 
+	se cumple que \(\Re(\vec{z}(t))\) e \(\Im(\vec{z}(t))\) siguen siendo 
 	soluciones y linealmente independientes, que además generan el mismo 
 	espacio de soluciones. Tenemos entonces las soluciones reales:
 	\[\eqsys{
-		\vec{x}(t) = \Re\vec{z} = e^{at}(\vec{u}\cos bt - \vec{v}\sin bt) \\
-		\vec{y}(t) = \Im\vec{z} = e^{at}(\vec{v}\cos bt + \vec{u}\sin bt)}\]
+		\vec{x}(t) = \Re(\vec{z}) = e^{at}(\vec{u}\cos bt - \vec{v}\sin bt) \\
+		\vec{y}(t) = \Im(\vec{z}) = e^{at}(\vec{v}\cos bt + \vec{u}\sin bt)}\]
 \end{proof}
 
 Para resolver el caso diagonalizable general, es decir, matrices de dimensión
@@ -990,11 +992,11 @@ Sea \(A\) una matriz con autovalores reales \(\lambda_1, \dots, \lambda_r\)
 y autovalores complejos \(a_1 \pm \iu b_1, \dots, a_s \pm \iu b_s\) con 
 \(b_j > 0\), donde en ambos casos se admiten repeticiones. 
 Definimos las matrices \(B_1, \dots, B_s\) y la matriz \(P\) como:
-\[B_j \assign \mat{a_j & b_j \\ -b_j & a_j} 
+\[B_j \eqdef \mat{a_j & b_j \\ -b_j & a_j} 
 	\quad \text{y} \quad
 	P = \mat{\vec{v}_1 & \cdots & \vec{v}_r 
-		& \Re \vec{w}_1 & \Im \vec{w}_1 & 
-		\cdots & \Re \vec{w}_s & \Im \vec{w}_s},\]
+		& \Re(\vec{w}_1) & \Im(\vec{w}_1) & 
+		\cdots & \Re(\vec{w}_s) & \Im(\vec{w}_s)},\]
 siendo \(\vec{v}_j\) y \(\vec{w}_j\) autovectores asociados a \(\lambda_j\) 
 y \(a_j + \iu b_j\), respectivamente.
 
@@ -1012,8 +1014,10 @@ y \(a_j + \iu b_j\), respectivamente.
 		\mat{c_1 \\ \vdots \\ c_r \\ k_1 \\ k_2 \\ \vdots \\ k_{2s-1}\\ k_{2s}}
 		\in \R^n,\]
 	donde
-	\[e^{B_j t} \assign \mat{e^{a_j t} \cos b_j t & e^{a_j t} \sin b_j t \\
-		-e^{a_j t} \sin b_j t & e^{a_j t} \cos b_j t}.\]
+	\[e^{B_j t} = e^{a_j t} \mat{\cos b_j t & \sin b_j t \\
+		-\sin b_j t & \cos b_j t}, 
+		\quad 
+		j = 1, \dots, s.\]
 \end{theorem}
 
 \begin{proof}
@@ -1021,7 +1025,7 @@ y \(a_j + \iu b_j\), respectivamente.
 	pares obtendremos una matriz semejante a la original diagonal por bloques
 	\(D\); la matriz de cambio de paso que nos permite hacer esto es \(P\), 
 	sin más que multiplicar:
-	\[D \assign \mat{\lambda_1 & & & & & & & \\
+	\[D \eqdef \mat{\lambda_1 & & & & & & & \\
 		& \ddots & & & & & & \\
 		& & \lambda_r & & & & & \\
 		& & & a_1 & b_1 & & & & \\
@@ -1058,10 +1062,10 @@ Vemos ahora un ejemplo concreto de cómo aplicar este teorema.
 	con lo que podemos tomar
 	\[v_1 = \mat{10 \\ 3 \\ -19}, 
 		\quad 
-		v_2 = \Re \mat{0 \\ 1 \\ -\iu} 
+		v_2 = \Re\mat{0 \\ 1 \\ -\iu} 
 		= \mat{0 \\ 1 \\ 0}, 
 		\quad 
-		v_3 = \Im \mat{0 \\ 1 \\ -\iu} = \mat{0 \\ 0 \\ -1}.\]
+		v_3 = \Im\mat{0 \\ 1 \\ -\iu} = \mat{0 \\ 0 \\ -1}.\]
 	Así, obtenemos la matriz de paso \(P\) tal que
 	\[P = \mat{10 & 0 & 0 \\ 3 & 1 & 0 \\ -19 & 0 & -1}
 		\quad \text{y} \quad
@@ -1090,78 +1094,94 @@ cuando la matriz que define el sistema no es diagonalizable.
 	tal que \(P^{-1} A P = B\), donde \(B\) es una matriz diagonal por bloques,
 	es decir,
 	\[B = \mat{B_1 & & & \\ & B_2 & & \\ & & \ddots & \\ & & & B_s},\]
-	donde cada \emph{bloque de Jordan} \(B_j\ (j = 1, \dots, s)\) es una matriz de
-	la forma
-	\[B_j = \mat{\lambda & 1 & & \\ & \lambda & \ddots & \\ & & \ddots & 1 \\ & & &
-			\lambda},\]
+	donde cada \emph{bloque de Jordan} \(B_j\), \(j = 1, \dots, s\), 
+	es una matriz de la forma
+	\[B_j = \mat{\lambda & 1 & & \\ 
+		& \lambda & \ddots & \\ 
+		& & \ddots & 1 \\ 
+		& & & \lambda},\]
 	siendo \(\lambda\) autovalor de \(A\).
 \end{theorem}
 
-\begin{remark}
-	Cada autovalor de \(A\) apararece en \(B\) tantas veces como su
-	multiplicidad algebraica. El número de bloques asociados a un mismo
-	autovalor se corresponde con su multiplicidad geométrica.
-\end{remark}
+Cada autovalor de \(A\) apararece en \(B\) tantas veces como su multiplicidad 
+algebraica. El número de bloques asociados a un mismo autovalor se corresponde 
+con su multiplicidad geométrica.
 
 \begin{remark}
 	El caso diagonalizable corresponde al caso en que todos los bloques son \(1
 	\times 1\).
 \end{remark}
 
-Veamos cómo calcular la exponencial de un bloque de Jordan arbitrario:
+Como antes puesto que nuestra matriz \(A\) es semejante a una diagonal por
+bloques obtener su exponencial consistirá en obtener la exponencial de los
+bloques, veamos pues cómo calcular la exponencial de un bloque de Jordan 
+arbitrario.
 
-\[B_j = \mat{\lambda & 1 & & \\ & \lambda & \ddots & \\ & & \ddots & 1 \\ & &
-		& \lambda} =
-	\underbrace{\mat{\lambda & & & \\ & \lambda & & \\ & & \ddots & \\ & & & \lambda}}_D
-	+ \underbrace{\mat{0 & 1 & & \\ & 0 & \ddots & \\ & & \ddots & 1 \\ & & & 0}}_N\]
-
-Ya sabemos calcular \(e^{Dt}\), y hallar \(e^{Nt}\) tampoco es complicado. Sus
-potencias sucesivas son
-
-\[
-	N^0 = \mat{1 & 0 & 0 & \cdots & 0      \\
-		& 1 & 0 & \ddots & \vdots \\
-		&   & 1 & \ddots & 0      \\
-		&   &   & \ddots & 0      \\
-		&   &   &        & 1 }, \quad
-	N^1 = \mat{0 & 1 & 0 & \cdots & 0      \\
-		& 0 & 1 & \ddots & \vdots \\
-		&   & 0 & \ddots & 0      \\
-		&   &   & \ddots & 1      \\
-		&   &   &        & 0 }, \ \ \dots \ \ ,
-	N^{n_j-1} = \mat{0 & 0 & 0 & \cdots & 1      \\
-		& 0 & 0 & \ddots & \vdots \\
-		&   & 0 & \ddots & 0      \\
-		&   &   & \ddots & 0      \\
-		&   &   &        & 0 }
-\]
-
-y, en particular, \(N\) es nilpotente de orden \(n_j\), por lo que basta
-aplicar la definición para obtener
-
-\[e^{Nt} = \sum_{k=0}^\infty \frac{t^k}{k!}N^k = \sum_{k=0}^{n_j-1}
-	\frac{t^k}{k!}N^k =
-	\mat{1 & t & \frac{t^2}{2!} & \cdots & \frac{t^{n_j-1}}{(n_j-1)!} \\
-		& 1 & t              & \ddots & \vdots                    \\
-		&   & 1              & \ddots & \frac{t^2}{2!}            \\
-		&   &                & \ddots & t                         \\
-		&   &                &        & 1 }
-\]
-
-Finalmente, como \(D = \lambda I\) y \(N\) conmutan, se tiene
-
-\[e^{B_j t} = e^{Dt + Nt} = e^{Dt} e^{Nt} = (e^{\lambda t} I) e^{Nt} =
-	e^{\lambda t}e^{Nt} =
+\begin{proposition}
+	Sea \(B_\lambda\) un bloque de Jordan asociado a un autovalor \(\lambda\)
+	con autoespacio de dimensión \(m\).
+	Podemos expresar \(e^{B_\lambda t}\) como:
+	\[e^{B_\lambda t} = 
 	\mat{e^{\lambda t} & te^{\lambda t} & \frac{t^2}{2!}e^{\lambda t} & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}e^{\lambda t} \\
 	& e^{\lambda t} & te^{\lambda t}              & \ddots & \vdots                    \\
 	&   & e^{\lambda t}              & \ddots & \frac{t^2}{2!}e^{\lambda t}            \\
 	&   &                & \ddots & te^{\lambda t}                         \\
-	&   &                &        & e^{\lambda t} }.\]
+	&   &                &        & e^{\lambda t}}.\]
+\end{proposition}
+
+\begin{proof}
+	Descomponemos \(B_\lambda\) en dos matrices más manejables, 
+	\(B_\lambda = D + N\), las matrices \(D\) y \(N\) son:
+	\[B_\lambda = 
+		\mat{\lambda & 1 & & \\ & \lambda & \ddots & \\ & & \ddots & 1 \\ & &
+			& \lambda} =
+		\mat{\lambda & & & \\ & \lambda & & \\ & & \ddots & \\ & & & \lambda}
+		+ \mat{0 & 1 & & \\ & 0 & \ddots & \\ & & \ddots & 1 \\ & & & 0}.\]
+	Ya sabemos calcular \(e^{Dt}\), y hallar \(e^{Nt}\) tampoco es complicado. Sus
+	potencias sucesivas son
+	\[
+		N^0 = \mat{1 & 0 & 0 & \cdots & 0      \\
+			& 1 & 0 & \ddots & \vdots \\
+			&   & 1 & \ddots & 0      \\
+			&   &   & \ddots & 0      \\
+			&   &   &        & 1 }, \quad
+		N^1 = \mat{0 & 1 & 0 & \cdots & 0      \\
+			& 0 & 1 & \ddots & \vdots \\
+			&   & 0 & \ddots & 0      \\
+			&   &   & \ddots & 1      \\
+			&   &   &        & 0 }, \ \ \dots \ \ ,
+		N^{n_j-1} = \mat{0 & 0 & 0 & \cdots & 1      \\
+			& 0 & 0 & \ddots & \vdots \\
+			&   & 0 & \ddots & 0      \\
+			&   &   & \ddots & 0      \\
+			&   &   &        & 0 }
+	\]
+	en particular, \(N\) es nilpotente de orden \(n_j\), por lo que basta
+	aplicar la definición para obtener:
+	\[e^{Nt} = \sum_{k=0}^\infty \frac{t^k}{k!}N^k = \sum_{k=0}^{n_j-1}
+		\frac{t^k}{k!}N^k =
+		\mat{1 & t & \frac{t^2}{2!} & \cdots & \frac{t^{n_j-1}}{(n_j-1)!} \\
+			& 1 & t              & \ddots & \vdots                    \\
+			&   & 1              & \ddots & \frac{t^2}{2!}            \\
+			&   &                & \ddots & t                         \\
+			&   &                &        & 1 }.
+	\]
+	Finalmente, como \(D = \lambda I_{m \times m}\) y \(N\) conmutan, se tiene
+	\begin{align*}
+		e^{B_\lambda t} &= e^{Dt + Nt} = e^{Dt} e^{Nt} 
+			= (e^{\lambda t} I_{m \times m}) e^{Nt} = e^{\lambda t}e^{Nt} \\
+			&= \mat{e^{\lambda t} & te^{\lambda t} & \frac{t^2}{2!}e^{\lambda t} & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}e^{\lambda t} \\
+				& e^{\lambda t} & te^{\lambda t}              & \ddots & \vdots                    \\
+				&   & e^{\lambda t}              & \ddots & \frac{t^2}{2!}e^{\lambda t}            \\
+				&   &                & \ddots & te^{\lambda t}                         \\
+				&   &                &        & e^{\lambda t} }.
+	\end{align*}
+\end{proof}
 
 Esto es suficiente en el caso de que \(A\) sólo tenga autovalores reales. Si
-hay alguno complejo, hay que trabajar un poco más:
+hay alguno complejo, hay que trabajar un poco más.
 
-\begin{theorem}[forma canónica de Jordan real]
+\begin{theorem}[Forma canónica de Jordan real]
 	Sea \(A \in \mathcal{M}_{n \times n}(\R)\). Existe una matriz no singular
 	\(P\) tal que \(P^{-1}AP = B\), donde \(B\) es una matriz diagonal por
 	bloques. Dependiendo de sus autovalores estos bloques pueden tomar dos
@@ -1170,9 +1190,11 @@ hay alguno complejo, hay que trabajar un poco más:
 		\item[si \(\lambda\) es un autovalor real de \(A\):] 
 			\[B_\lambda = \mat{\lambda & 1 & & \\ & \lambda & \ddots & \\ & & \ddots & 1 \\ & & & \lambda}.\]
 
-		\item[si \(\lambda = a+ib \ (b>0)\) es un autovalor complejo de \(A\):]
+		\item[si \(\lambda = a + \iu b\), \(b > 0\),
+			es un autovalor complejo de \(A\):]
 			\[B_\lambda = 
-				\mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots & I_2 \\ & & & D}
+				\mat{D & I_{2 \times 2} & & \\ & D & \ddots & \\ & & \ddots &
+				I_{2 \times 2} \\ & & & D}
 				= \mat{a & b & 1 & 0 \\ -b & a & 0 & 1 
 					\\ && a & b & 1 & 0 \\ && -b & a & 0 & 1
 					\\ &&&&& \ddots & \ddots 
@@ -1180,48 +1202,46 @@ hay alguno complejo, hay que trabajar un poco más:
 	\end{enumerate}
 \end{theorem}
 
-A la vista de este teorema, sólo nos falta saber calcular la exponencial de
-matrices de la forma
+A la vista de este teorema, para poder resolver cualquier ecuación diferencial
+escalar de orden superior sólo nos falta saber calcular la exponencial de los
+bloques de Jordan reales asociados a autovalores complejos.
 
-\[\tilde{D} = \mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots & I_2 \\ & & & D} =
-	\mat{D & & & \\ & D & & \\ & & \ddots & \\ & & & D} +
-	\underbrace{\mat{0 & I_2 & & \\ & 0 & \ddots & \\ & & \ddots & I_2 \\ & & &
-			0}}_{N}.\]
+\begin{proposition}
+	Sea \(B_\lambda\) un bloque de Jordan real asociado a un autovalor complejo 
+	\(\lambda\). Se puede escribir:
+	\[e^{B_\lambda t} = 
+		\mat{e^{Dt} & te^{Dt} & \frac{t^2}{2!}e^{Dt} & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}e^{Dt} \\
+			& e^{Dt} & te^{Dt}                  & \ddots & \vdots                      \\
+			&   & e^{Dt}                   & \ddots & \frac{t^2}{2!}e^{Dt}             \\
+			&   &                     & \ddots & te^{Dt}                          \\
+			&   &                     &        & e^{Dt}},\]
+	donde
+	\[e^{Dt} = e^{a t} \mat{\cos bt & \sin bt \\ -\sin bt & \cos bt}.\]
+\end{proposition}
 
-Observamos que estas dos matrices conmutan:
-\[\mat{D & & & \\ & D & & \\ & & \ddots & \\ & & & D} N =
-	\mat{0 & D & & \\ & 0 & \ddots & \\ & & \ddots & D \\ & & & 0}
-	= N \mat{D & & & \\ & D & & \\ & & \ddots & \\ & & & D},\]
-
-luego la exponencial de su suma es
-\[\exp(\tilde{D}) t =
-	\exp \mat{Dt & & & \\ & Dt & & \\ & & \ddots & \\ & & & Dt} \cdot \exp(Nt)
-	= \mat{e^{at}R & & & \\ & e^{at}R & & \\ & & \ddots & \\ & & & e^{at}R}
-	\cdot \exp(Nt),\]
-
-puesto que 
-\[\exp\mat{Dt & & & \\ & Dt & & \\ & & \ddots & \\ & & & Dt} =
-	\mat{e^{Dt} & & & \\ & e^{Dt} & & \\ & & \ddots & \\ & & & e^{Dt}}
-	\quad \text{y} \quad
-	e^{Dt} = e^{at} \underbrace{\mat{\cos bt & \sin bt \\ -\sin bt & \cos
-		bt}}_{R}.\]
-
-Por otro lado, igual que antes es fácil ver que
-\[e^{Nt} = \sum_{k=0}^{n_j-1} \frac{t^k}{k!}N^k =
-	\mat{I_2 & tI_2 & \frac{t^2}{2!}I_2 & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}I_2 \\
-		& i_2  & tI_2              & \ddots & \vdots                        \\
-		&      & I_2               & \ddots & \frac{t^2}{2!}I_2             \\
-		&      &                   & \ddots & tI_2                          \\
-		&      &                   &        & I_2 }.\]
-
-Juntándolo todo, llegamos a
-\[\exp(\tilde{D}) t =
-	\mat{e^{\lambda t}R & te^{\lambda t}R & \frac{t^2}{2!}e^{\lambda t}R & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}e^{\lambda t}R \\
-	& e^{\lambda t}R & te^{\lambda t}R              & \ddots & \vdots                    \\
-	&   & e^{\lambda t}R              & \ddots & \frac{t^2}{2!}e^{\lambda t}R            \\
-	&   &                & \ddots & te^{\lambda t}R                         \\
-	&   &                &        & e^{\lambda t}R }
-\]
+\begin{proof}
+	Como antes, buscamos una descomposición manejable 
+	\(B_\lambda = \mathcal{D} + N\), las matrices que cumplen esto son:
+	\[B_\lambda = 
+		\mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots & I_2 \\ & & & D} 
+		= \mat{D & & & \\ & D & & \\ & & \ddots & \\ & & & D} +
+		\mat{0 & I_2 & & \\ & 0 & \ddots & \\ & & \ddots & I_2 \\ & & & 0}.\]
+	Observamos que estas dos matrices conmutan, esto es \(\mathcal{D}N =
+	N\mathcal{D}\), luego la exponencial de su suma es
+	\[e^{B_\lambda t} =
+		e^{\mathcal{D}t} e^{Nt}
+		= \mat{e^{Dt} & & & \\ & e^{Dt} & & \\ & & \ddots & \\ & & & e^{Dt}}
+		e^{Nt}.\]
+	Ya sabemos calcular la exponencial de \(e^{\mathcal{D}t}\), por lo visto en
+	la sección anterior. Por otro lado, igual que antes es fácil ver que
+	\[e^{Nt} = \sum_{k=0}^{n_j-1} \frac{t^k}{k!}N^k =
+		\mat{I_2 & tI_2 & \frac{t^2}{2!}I_2 & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}I_2 \\
+			& I_2  & tI_2              & \ddots & \vdots                        \\
+			&      & I_2               & \ddots & \frac{t^2}{2!}I_2             \\
+			&      &                   & \ddots & tI_2                          \\
+			&      &                   &        & I_2 }.\]
+	Juntándolo todo obtenemos el resultado.
+\end{proof}
 
 Ahora que ya sabemos resolver cualquier sistema con coeficientes constantes,
 centrémonos en cómo calcular la forma canónica de Jordan. La clave será
@@ -1322,10 +1342,10 @@ esperar:
 
 \[B_\Complex =
 	\mat{\ddots &      &      &      &      &         \\
-		& a+bi & 1    &      &      &         \\
-		& 0    & a+bi &      &      &         \\
-		&      &      & a-bi & 1    &         \\
-		&      &      & 0    & a-bi &         \\
+		& a + \iu b & 1    &      &      &         \\
+		& 0    & a + \iu b &      &      &         \\
+		&      &      & a - \iu b & 1    &         \\
+		&      &      & 0    & a - \iu b &         \\
 		&      &      &      &      & \ddots} \leadsto
 	B_\R =
 	\mat{\ddots &    &   &    &      &         \\
@@ -1341,7 +1361,7 @@ pero esto requiere modificar también la matriz de paso compleja:
 \[P_\Complex =
 	\mat{\cdots & v_i & v_{i+1} & \cdots} \leadsto
 	P_\R =
-	\mat{\cdots & \Re v_i & \Im v_i & \cdots}\]
+	\mat{\cdots & \Re(v_i) & \Im(v_i) & \cdots}\]
 
 Falta únicamente ver cómo calcular
 \(P_\Complex = \mat{v_1 & v_2 & \cdots & v_n}\). Para ello, es suficiente

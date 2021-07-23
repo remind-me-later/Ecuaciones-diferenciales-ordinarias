@@ -75,9 +75,7 @@ Supondremos que la ecuación diferencial está dada en forma normal.
 \begin{definition}[Forma normal]
     Una ecuación diferencial está escrita en \emph{forma normal} si es una
     expresión de la forma
-	\begin{equation} \label{eq:forma_normal}
-		x^{(n)} = f(t, x', x'', \dots, x^{(n - 1)})
-	\end{equation}
+	\[x^{(n)} = f(t, x', x'', \dots, x^{(n - 1)})\]
 \end{definition}
 
 Haciendo un pequeño abuso de notación, llamaremos \(\Omega \subset \R^{n + 1}\)
@@ -86,7 +84,7 @@ gracias al teorema de la función implícita.
 
 \begin{definition}[Orden]
     Llamaremos \emph{orden} de la ecuación diferencial al número \(n\) en la
-    ecuación dada en forma normal~\eqref{eq:forma_normal} o, lo que es lo mismo,
+    ecuación dada en forma normal o, lo que es lo mismo,
     el orden de la derivada de mayor orden presente en la ecuación.
 \end{definition}
 
@@ -177,12 +175,13 @@ dimensión 2; de hecho, demostraremos que, en general, el conjunto de soluciones
 de una ecuación lineal de orden \(n\) es un espacio vectorial, o afín si la
 ecuación no es homogénea, de dimensión \(n\).
 
-\subsection{Problema de valor inicial (PVI)}
+\section{Problema de valor inicial (PVI)}
 
 En los ejemplos anteriores hemos obtenido soluciones generales para los
 problemas propuestos, pero si conocemos el valor de \(x\) y sus derivadas en un
 tiempo determinado la solución de la ecuación diferencial está
-unívocamente determinada, como demostraremos.
+unívocamente determinada, como demostraremos. A este problema se lo conoce como
+problema de valor inicial.
 
 \begin{definition}[Problema de valor inicial]
 	Un \emph{problema de valor inicial} es una ecuación diferencial
@@ -199,8 +198,9 @@ unívocamente determinada, como demostraremos.
 
 \subsection{Datación por radiocarbono}
 
-Veremos como es posible datar un objeto conociendo solo la cantidad carbono 
-presente en el mismo.
+Veremos un ejemplo muy importante de modelado que da lugar a un problema de 
+valor inicial. Resolver este problema en este caso particular nos dará un método
+para datar un objeto conociendo solo la cantidad carbono presente en el mismo.
 
 Existen diversos isótopos del carbono, entre ellos el carbono-12, el cual es
 estable, y el carbono-14, el isótopo radiactivo más común. El carbono-14, al ser
