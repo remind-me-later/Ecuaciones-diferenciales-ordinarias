@@ -769,14 +769,15 @@ es una base de autovectores asociados, entonces
 Gracias a esta descomposición podremos demostrar el siguiente teorema.
 
 \begin{proposition}
-	Sea \(A \in \mathcal{M}_{n \times n}(\R)\) diagonalizable con autovalores 
-	reales. La solución general del sistema \(\vec{x}' = A\vec{x}\) es
-	\[\vec{x}(t) = \mat{k_1 e^{\lambda_1 t} \\ \vdots \\ k_n e^{\lambda_n t}},
+    Sea \(A \in \mathcal{M}_{n \times n}(\R)\) diagonalizable con autovalores
+    reales \(\lambda_1, \dots, \lambda_n\) y matriz de paso \(P\). La
+    solución general del sistema \(\vec{x}' = A\vec{x}\) es
+	\[\vec{x}(t) = P\mat{k_1 e^{\lambda_1 t} \\ \vdots \\ k_n e^{\lambda_n t}},
 	\quad \mat{k_1 \\ \vdots \\ k_n} \in \R^n.\]
 \end{proposition}
 
 \begin{proof}
-	Puesto que \(A\) es diagonalizable la ecuación \(\vec{x}' = A\vec{x}\) 
+	Puesto que \(A\) es diagonalizable, la ecuación \(\vec{x}' = A\vec{x}\) 
 	se puede escribir como
 	\(\vec{x}' = P D P^{-1} \vec{x}\). Con el cambio de variable 
 	\(\vec{y} = P^{-1}\vec{x}\), nos queda
@@ -785,27 +786,36 @@ Gracias a esta descomposición podremos demostrar el siguiente teorema.
 		P^{-1}\vec{x}' = DP^{-1}\vec{x} \iff \vec{y}' = D\vec{y},\]
 	donde es fundamental que \(P\) (y por tanto \(P^{-1}\)) sea una matriz constante
 	para poder afirmar que \(\vec{y}' = (P^{-1}\vec{x})' = P^{-1}\vec{x}'\). 
-	Con este cambio de variable podemos expresar la ecuación como
+	Con este cambio de variable, podemos expresar la ecuación como
 	\[\vec{y}' = \mat{\lambda_1 && \\ & \ddots & \\ && \lambda_n} \vec{y} \iff
 		\vec{y} = e^{Dt}\vec{k} 
-		= \mat{k_1 e^{\lambda_1 t} \\ \vdots \\ k_n e^{\lambda_n t}}.\]
+		= \mat{k_1 e^{\lambda_1 t} \\ \vdots \\ k_n e^{\lambda_n t}},\]
+    y deshaciendo el cambio de variable llegamos a
+    \[\vec{x} = P \vec{y} = P e^{Dt}\vec{k}= P \mat{k_1 e^{\lambda_1 t} \\ \vdots \\ k_n
+          e^{\lambda_n t}}.\]
 \end{proof}
 
-Tras estos preámbulos podemos obtener
-una expresión explícita del espacio de soluciones
+\begin{remark}
+    Lo que prueba esta proposición es que
+    \[e^{PDP^{-1}t} = P e^{Dt} P^{-1},\]
+
+    puesto que la solución general es
+    \(\vec{x} = P e^{Dt} \vec{k} = \left( P e^{Dt} P^{-1} \right) \vec{c}\),
+    para \(\vec{c} \in \R^n\), y la solución es única. De hecho, la misma
+    demostración prueba que esto sigue siendo cierto incluso cuando la matriz
+    \(D\) no es diagonal, aunque de momento no sepamos calcular su exponencial.
+\end{remark}
+
+Tras estos preámbulos, podemos obtener una expresión explícita del espacio de
+soluciones:
 \begin{align*}
 	\vec{x} &= P\vec{y} = \mat{\vec{v}_1 & \dots & \vec{v}_n} 
 		\mat{k_1 e^{\lambda_1 t} \\ \vdots \\ k_n e^{\lambda_n t}} =
-	k_1 e^{\lambda_1 t} \vec{v}_1 + \cdots + k_n e^{\lambda_n t}\vec{v}_n \\
-	  &= P \mat{e^{\lambda_1 t} & & \\ & \ddots & \\ & & e^{\lambda_n t}}
-      \mat{k_1 \\ \vdots \\ k_n} = P e^{D t} P^{-1} \mat{c_1 \\ \vdots \\ c_n} =
-      e^{A t} \mat{c_1 \\ \vdots \\ c_n}
+	k_1 e^{\lambda_1 t} \vec{v}_1 + \cdots + k_n e^{\lambda_n t}\vec{v}_n,
 \end{align*}
-
-\begin{remark}
-	El espacio de soluciones es el espacio vectorial generado por
-	\(\set{e^{\lambda_1 t} \vec{v}_1, \dots, e^{\lambda_n t} \vec{v}_n}\).
-\end{remark}
+lo que quiere decir que el espacio de soluciones es el espacio vectorial
+generado por los vectores
+\(\set{e^{\lambda_1 t} \vec{v}_1, \dots, e^{\lambda_n t} \vec{v}_n}\).
 
 \subsection{Matrices diagonalizables con autovalores complejos}
 
@@ -868,7 +878,7 @@ complejos en otra equivalente que involucre solamente números reales.
 \begin{proposition}
 	Sea \(A \in \mathcal{M}_{2 \times 2}(\R)\) diagonalizable con un autovalor 
 	complejo \(\lambda = a + \iu b\) y un autovector asociado 
-	\(\vec{w} = \vec{u} + \iu\vec{v}\) entonces la solución general del sistema
+	\(\vec{w} = \vec{u} + \iu\vec{v}\), entonces la solución general del sistema
 	\(\vec{x}' = A\vec{x}\) es
 	\[\vec{x}(t) = \mat{\vec{u} & \vec{v}} 
 		\mat{e^{at}\cos bt & e^{at}\sin bt \\ -e^{at} \sin bt & e^{at}
@@ -931,7 +941,7 @@ complejos en otra equivalente que involucre solamente números reales.
 		P^{-1} = \frac{1}{2} \mat{1 & -\iu \\ -\iu & 1}.\]
 	Se tiene entonces:
 	\begin{align*}
-		\exp \mat{0 & t \\ -t & 0} &= P^{-1} \exp\mat{\iu & 0 \\ 0 & -\iu} P =
+		\exp \mat{0 & t \\ -t & 0} &= P^{-1} \exp\mat{\iu t & 0 \\ 0 & -\iu t} P =
 		\frac{1}{2} \mat{1 & \iu \\ \iu & 1}
 		\mat{e^{\iu t} & 0 \\ 0 & e^{-\iu t}} \mat {1 & -\iu \\ -\iu & 1} \\
 		&= \frac{1}{2} 
@@ -1166,10 +1176,10 @@ arbitrario.
 			&   &                & \ddots & t                         \\
 			&   &                &        & 1 }.
 	\]
-	Finalmente, como \(D = \lambda I_{m \times m}\) y \(N\) conmutan, se tiene
+	Finalmente, como \(D = \lambda \cdot Id\) y \(N\) conmutan, se tiene
 	\begin{align*}
 		e^{B_\lambda t} &= e^{Dt + Nt} = e^{Dt} e^{Nt} 
-			= (e^{\lambda t} I_{m \times m}) e^{Nt} = e^{\lambda t}e^{Nt} \\
+			= (e^{\lambda t} Id) e^{Nt} = e^{\lambda t}e^{Nt} \\
 			&= \mat{e^{\lambda t} & te^{\lambda t} & \frac{t^2}{2!}e^{\lambda t} & \cdots & \frac{t^{n_j-1}}{(n_j-1)!}e^{\lambda t} \\
 				& e^{\lambda t} & te^{\lambda t}              & \ddots & \vdots                    \\
 				&   & e^{\lambda t}              & \ddots & \frac{t^2}{2!}e^{\lambda t}            \\
@@ -1193,8 +1203,8 @@ hay alguno complejo, hay que trabajar un poco más.
 		\item[si \(\lambda = a + \iu b\), \(b > 0\),
 			es un autovalor complejo de \(A\):]
 			\[B_\lambda = 
-				\mat{D & I_{2 \times 2} & & \\ & D & \ddots & \\ & & \ddots &
-				I_{2 \times 2} \\ & & & D}
+				\mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots &
+				I_2 \\ & & & D}
 				= \mat{a & b & 1 & 0 \\ -b & a & 0 & 1 
 					\\ && a & b & 1 & 0 \\ && -b & a & 0 & 1
 					\\ &&&&& \ddots & \ddots 
@@ -1366,7 +1376,7 @@ pero esto requiere modificar también la matriz de paso compleja:
 Falta únicamente ver cómo calcular
 \(P_\Complex = \mat{v_1 & v_2 & \cdots & v_n}\). Para ello, es suficiente
 estudiar cómo afecta \(B\) a los vectores de la base canónica, puesto que
-\(A\) y la base \(\{v_i : i = 1, \dots, n\}\) se obtienen con el cambio de
+\(A\) y la base \(\{v_1, \dots, v_n\}\) se obtienen con el cambio de
 base dado por \(P_\Complex\). Si el bloque \(j\)-ésimo de la matriz \(B\) (de
 tamaño \(n_j \times n_j\)) empieza en el índice \(l+1\), se tiene
 
