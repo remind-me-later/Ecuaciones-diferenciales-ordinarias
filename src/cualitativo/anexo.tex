@@ -1,0 +1,134 @@
+\documentclass[../ecuaciones_diferenciales.tex]{subfiles}
+
+\begin{document}
+\section{Diagonalizable con dos autovalores distintos}
+\(J = \mat{ \lambda_1 & \\ & \lambda_2 }\)
+\subsection{Nodos}
+Cuando \(\lambda_1\) y \(\lambda_2\) tienen el mismo signo.
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_positivos_a_gt_1.pdf}
+    \caption*{Nodo inestable \\ \(|\lambda_1| < |\lambda_2|\) \\ \(\lambda_1, \lambda_2 > 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_negativos_a_gt_1.pdf}
+    \caption*{Nodo estable \\ \(|\lambda_1| < |\lambda_2|\) \\ \(\lambda_1, \lambda_2 < 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_positivos_a_lt_1.pdf}
+    \caption*{Nodo inestable \\ \(|\lambda_2| < |\lambda_1|\) \\ \(\lambda_1, \lambda_2 > 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_negativos_a_lt_1.pdf}
+    \caption*{Nodo estable \\ \(|\lambda_2| < |\lambda_1|\) \\ \(\lambda_1, \lambda_2 < 0\)}
+  \end{subfigure}
+\end{figure}
+
+\subsection{Rectas}
+Cuando algún autovalor es nulo.
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_eq_0_positivo_v1.pdf}
+    \caption*{\(\lambda_1 > 0, \lambda_2 = 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_eq_0_negativo_v1.pdf}
+    \caption*{\(\lambda_1 < 0, \lambda_2 = 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_eq_0_positivo_v2.pdf}
+    \caption*{\(\lambda_1 = 0, \lambda_2 > 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_eq_0_negativo_v2.pdf}
+    \caption*{\(\lambda_1 = 0, \lambda_2 < 0\)}
+  \end{subfigure}
+\end{figure}
+
+\subsection{Puntos de silla}
+Cuando \(\lambda_1\) y \(\lambda_2\) tienen signo opuesto.
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_lt_0_gt_lt.pdf}
+    \caption*{Punto de silla \\ \(\lambda_1 > 0, \lambda_2 < 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_lt_0_lt_gt.pdf}
+    \caption*{Punto de silla \\ \(\lambda_1 < 0, \lambda_2 > 0\)}
+  \end{subfigure}
+\end{figure}
+
+\section{Diagonalizable con un autovalor}
+\(J = \mat{\lambda & \\ & \lambda}\)
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_un_autovalor_l_gt_0.pdf}
+    \caption*{Punto de estrella inestable \\ \(\lambda > 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_un_autovalor_l_lt_0.pdf}
+    \caption*{Punto de estrella estable \\ \(\lambda < 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_un_autovalor_l_eq_0.pdf}
+    \caption*{\(\lambda = 0\)}
+  \end{subfigure}
+\end{figure}
+
+\section{No diagonalizable con un autovalor real}
+\(J = \mat{\lambda & 1 \\ & \lambda}\)
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/no_diagonal_l_gt_0.pdf}
+    \caption*{Nodo impropio inestable \\ \(\lambda > 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/no_diagonal_l_lt_0.pdf}
+    \caption*{Nodo impropio estable \\ \(\lambda < 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/no_diagonal_l_eq_0.pdf}
+    \caption*{\(\lambda = 0\)}
+  \end{subfigure}
+\end{figure}
+
+\section{Autovalores complejos conjugados}
+\(J = \mat{a & b \\ -b & a}\)
+\begin{figure}[ht]
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/autovalores_complejos_a_gt_0.pdf}
+    \caption*{Foco inestable \\ \(a > 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/autovalores_complejos_a_lt_0.pdf}
+    \caption*{Foco estable \\ \(a < 0\)}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/autovalores_complejos_a_eq_0.pdf}
+    \caption*{Centro \\ \(a = 0\)}
+  \end{subfigure}
+\end{figure}

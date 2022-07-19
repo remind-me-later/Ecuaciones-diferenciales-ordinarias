@@ -229,7 +229,13 @@ función del valor de \(\alpha\):
 	\end{subfigure}
 	\caption{Posibles diagramas de fase de un sistema plano diagonalizable con 
 	dos autovalores distintos, dependiendo del parámetro \(\alpha\)}
+  \label{fig:dos_autovalores}
 \end{figure}
+
+Estrictamente hablando, estas son las posibles trayectorias del sistema, es
+decir, los \emph{conjuntos} \(\{(x_1(t),x_2(t)) : t \in \R\}\). No obstante, aún
+podemos ampliar más estos diagramas para incluir información sobre la dirección
+en que se recorren las trayectorias, que dependerá del signo de los autovalores.
 
 \begin{itemize}
 	\item Si \(\alpha < 0\), \(\lambda_1\) y \(\lambda_2\) tienen necesariamente
@@ -253,6 +259,67 @@ función del valor de \(\alpha\):
 	      sea, desde este punto.
 \end{itemize}
 
+Veamos entonces cómo quedaría la figura \ref{fig:dos_autovalores} incluyendo
+esta información. Por completitud, incluimos también los casos en los que
+\(\lambda_1 = 0, \lambda_2 \neq 0\):
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_positivos_a_gt_1.pdf}
+    \caption*{Nodo inestable (\(0 < \lambda_1 < \lambda_2\))}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_negativos_a_gt_1.pdf}
+    \caption*{Nodo estable (\(\lambda_2 < \lambda_1 < 0\))}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_positivos_a_lt_1.pdf}
+    \caption*{Nodo inestable (\(0 < \lambda_2 < \lambda_1\)))}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_negativos_a_lt_1.pdf}
+    \caption*{Nodo estable (\(\lambda_1 < \lambda_2 < 0\))}
+  \end{subfigure}
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_eq_0_positivo_v1.pdf}
+    \caption*{Rectas (\(\lambda_1 > 0, \lambda_2 = 0\))}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_eq_0_negativo_v1.pdf}
+    \caption*{Rectas (\(\lambda_1 < 0, \lambda_2 = 0\))}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_eq_0_positivo_v2.pdf}
+    \caption*{Rectas (\(\lambda_1 = 0, \lambda_2 > 0\))}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_eq_0_negativo_v2.pdf}
+    \caption*{Rectas (\(\lambda_1 = 0, \lambda_2 < 0\))}
+  \end{subfigure}
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_lt_0_gt_lt.pdf}
+    \caption*{Punto de silla (\(\lambda_1 > 0, \lambda_2 < 0\))}
+  \end{subfigure}%
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_lt_0_lt_gt.pdf}
+    \caption*{Punto de silla (\(\lambda_1 < 0, \lambda_2 > 0\))}
+  \end{subfigure}
+  \caption{Posibles diagramas de fase de un sistema plano diagonalizable con dos
+    autovalores distintos, dependiendo del parámetro \(\alpha\) y de los signos
+    de los autovalores}
+\end{figure}
+
 Los demás casos los veremos con menos detalle, porque las ideas generales son
 las mismas para todos y porque éste es el más delicado.
 
@@ -270,15 +337,20 @@ apartado anterior).
 
 \begin{figure}[ht]
 	\centering
-	\begin{subfigure}{0.5\textwidth}
+	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\includegraphics{figuras/pdf/diagonal_un_autovalor_l_neq_0.pdf}
-		\caption*{\(\lambda \neq 0\)}
+		\includegraphics{figuras/pdf/diagonal_un_autovalor_l_gt_0.pdf}
+		\caption*{Punto de estrella inestable (\(\lambda > 0\))}
 	\end{subfigure}%
-	\begin{subfigure}{0.5\textwidth}
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\includegraphics{figuras/pdf/diagonal_un_autovalor_l_lt_0.pdf}
+		\caption*{Punto de estrella estable (\(\lambda < 0\))}
+	\end{subfigure}%
+	\begin{subfigure}{0.33\textwidth}
 		\centering
 		\includegraphics{figuras/pdf/diagonal_un_autovalor_l_eq_0.pdf}
-		\caption*{\(\lambda = 0\)}
+		\caption*{Soluciones constantes (\(\lambda = 0\))}
 	\end{subfigure}
 	\caption{Posibles diagramas de fase de un sistema plano diagonalizable con 
 	un único autovalor, dependiendo del parámetro \(\lambda\)}
@@ -346,47 +418,18 @@ Juntándolo todo, los diagramas de fase son
 	\centering
 	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}[scale=1.5]
-			\draw[->] (-1.3,0) -- (1.3,0);
-			\draw[->] (0,-1.3) -- (0,1.3);
-			\draw[samples=100, domain = -10:-0.15] plot ({(1.5 + \x)*exp(\x)}, {exp(\x)});
-			\draw[samples=100, domain = -10:-0.15] plot ({(-1.5 - \x)*exp(\x)}, {-exp(\x)});
-			\draw[samples=100, domain = -10:-0.2] plot ({(1 + 1.5*\x)*exp(\x)}, {1.5*exp(\x)});
-			\draw[samples=100, domain = -10:-0.2] plot ({(-1 - 1.5*\x)*exp(\x)}, {-1.5*exp(\x)});
-			\draw[thin, dotted] (0.8, -0.8) -- (-0.8, 0.8);
-		\end{tikzpicture}
-		\caption*{\(\lambda > 0\)}
+        \includegraphics{figuras/pdf/no_diagonal_l_gt_0.pdf}
+		\caption*{Nodo impropio inestable (\(\lambda > 0\))}
 	\end{subfigure}%
 	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}[scale=1.5]
-			\draw[->] (-1.3,0) -- (1.3,0);
-			\draw[->] (0,-1.3) -- (0,1.3);
-			\draw[samples=100, domain = 0.15:10] plot ({(1.5 - \x)*exp(-\x)}, {-exp(-\x)});
-			\draw[samples=100, domain = 0.15:10] plot ({(-1.5 + \x)*exp(-\x)}, {exp(-\x)});
-			\draw[samples=100, domain = 0.2:10] plot ({(1 - 1.5*\x)*exp(-\x)}, {-1.5*exp(-\x)});
-			\draw[samples=100, domain = 0.2:10] plot ({(-1 + 1.5*\x)*exp(-\x)}, {1.5*exp(-\x)});
-			\draw[thin, dotted] (-0.8, -0.8) -- (0.8, 0.8);
-		\end{tikzpicture}
-		\caption*{\(\lambda < 0\)}
+        \includegraphics{figuras/pdf/no_diagonal_l_lt_0.pdf}
+		\caption*{Nodo impropio estable (\(\lambda < 0\))}
 	\end{subfigure}%
 	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}[scale=1.5]
-			\draw[->] (-1.3,0) -- (1.3,0);
-			\draw[->] (0,-1.3) -- (0,1.3);
-			\foreach \y in {1, 0.67, 0.33}
-				{
-					\draw (-1.2,\y) -- (1.2,\y);
-					\fill (0.55, \y) -- (0.45, \y-0.05) -- (0.45, \y+0.05) -- cycle;
-				}
-			\foreach \y in {-0.33, -0.67, -1}
-				{
-					\draw (-1.2,\y) -- (1.2,\y);
-					\fill (-0.55, \y) -- (-0.45, \y+0.05) -- (-0.45, \y-0.05) -- cycle;
-				}
-		\end{tikzpicture}
-		\caption*{\(\lambda = 0\)}
+        \includegraphics{figuras/pdf/no_diagonal_l_eq_0.pdf}
+		\caption*{Rectas (\(\lambda = 0\))}
 	\end{subfigure}
 	\caption{Posibles diagramas de fase de un sistema plano no diagonalizable con 
 	un único autovalor real, dependiendo del parámetro \(\lambda\)}
@@ -446,27 +489,20 @@ coordenadas polares.
 
 \begin{figure}[ht]
 	\centering
-	\begin{subfigure}{0.5\textwidth}
+	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}[scale=0.7]
-			\draw[->] (-3,0) -- (3,0);
-			\draw[->] (0,-3) -- (0,3);
-			\draw [samples=100, domain = -10:1] plot ({exp(\x)*cos(-\x r)},{exp(\x)*sin(-\x r)});
-			\draw [samples=100, domain = -10:1] plot ({exp(\x)*cos((2-\x) r)},{exp(\x)*sin((2-\x) r)});
-			\draw [samples=100, domain = -10:1] plot ({exp(\x)*cos((4-\x) r)},{exp(\x)*sin((4-\x) r)});
-		\end{tikzpicture}
-		\caption*{\(a \neq 0\)}
+        \includegraphics{figuras/pdf/autovalores_complejos_a_gt_0.pdf}
+		\caption*{Foco inestable (\(a > 0\))}
 	\end{subfigure}%
-	\begin{subfigure}{0.5\textwidth}
+	\begin{subfigure}{0.33\textwidth}
 		\centering
-		\begin{tikzpicture}[scale=0.7]
-			\draw[->] (-3,0) -- (3,0);
-			\draw[->] (0,-3) -- (0,3);
-			\draw (0,0) circle (0.8);
-			\draw (0,0) circle (1.6);
-			\draw (0,0) circle (2.4);
-		\end{tikzpicture}
-		\caption*{\(a = 0\)}
+        \includegraphics{figuras/pdf/autovalores_complejos_a_lt_0.pdf}
+		\caption*{Foco estable (\(a < 0\))}
+	\end{subfigure}%
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+        \includegraphics{figuras/pdf/autovalores_complejos_a_eq_0.pdf}
+		\caption*{Centro (\(a = 0\))}
 	\end{subfigure}
 	\caption{Posibles diagramas de fase de un sistema plano no diagonalizable con 
 	dos autovalores complejos conjugados, dependiendo del parámetro \(a\)}

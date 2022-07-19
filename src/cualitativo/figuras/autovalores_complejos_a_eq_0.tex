@@ -1,0 +1,15 @@
+\documentclass[crop,tikz]{standalone}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.84]
+  \draw[->] (-2.5,0) -- (2.5,0);
+  \draw[->] (0,-2.5) -- (0,2.5);
+  \draw (0,0) circle (0.67);
+  \draw (0,0) circle (1.33);
+  \draw (0,0) circle (2.00);
+
+  \fill[rotate=45] (0.67,-0.05) -- (0.72, 0.05) -- (0.62, 0.05) -- cycle;
+  \fill[rotate=45] (1.33,-0.05) -- (1.38, 0.05) -- (1.28, 0.05) -- cycle;
+  \fill[rotate=45] (2.00,-0.05) -- (2.05, 0.05) -- (1.95, 0.05) -- cycle;
+\end{tikzpicture}
+\end{document}
