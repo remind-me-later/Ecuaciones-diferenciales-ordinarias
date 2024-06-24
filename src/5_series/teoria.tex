@@ -11,7 +11,7 @@ algunos resultados de análisis real que nos serán útiles.
 \begin{definition}[Serie de potencias]
 	Una serie de funciones \(\sum f_n\) es una serie de potencias alrededor de
 	\(t_0\) si es una serie de la forma
-	\[\sum_{n = 0}^\infty a_n (t - t_0)^n, \quad a_n \in \R.\]
+	\[\sum_{n = 0}^\infty a_n {(t - t_0)}^n, \quad a_n \in \R.\]
 \end{definition}
 
 Puesto que haremos uso de series de potencias no tenemos otra opción 
@@ -20,7 +20,7 @@ que restringirnos a soluciones \emph{analíticas}.
 \begin{definition}[Función analítica]
 	Una función \(f\) es analítica en un intervalo abierto \(I\) si para cada
 	\(t_0 \in I\) se puede expresar como una serie de potencias:
-	\[f(t) = \sum_{n = 0}^\infty a_n (t - t_0)^n\]
+	\[f(t) = \sum_{n = 0}^\infty a_n {(t - t_0)}^n\]
 	convergente a \(f(t)\) para todo \(t\) en un entorno de \(t_0\).
 \end{definition}
 
@@ -29,12 +29,12 @@ que como veremos es un intervalo centrado en \(t_0\) o todo \(\R\), para ello
 recordamos algunos resultados sobre convergencia.
 
 \begin{definition}[Radio de convergencia]
-	Sea \(\sum a_n (t - t_0)^n\) una serie de potencias. Si la sucesión 
+	Sea \(\sum a_n {(t - t_0)}^n\) una serie de potencias. Si la sucesión 
 	\(\abs{a_n}^{1/n}\) es acotada definimos 
 	\(\rho := \lim\sup\abs{a_n}^{1/n}\), si esta sucesión no es acotada 
 	\(\rho = \infty\). 
 
-	Definimos el \emph{radio de convergencia} de \(\sum a_n (t - t_0)^n\) como
+	Definimos el \emph{radio de convergencia} de \(\sum a_n {(t - t_0)}^n\) como
 	\[R := 
 		\begin{cases}
 			0 & \text{si} \quad \rho = \infty \\
@@ -47,7 +47,7 @@ recordamos algunos resultados sobre convergencia.
 Con esto podemos definir el término \textquote{intervalo de convergencia}.
 
 \begin{definition}[Intervalo de convergencia]
-	Sea \(\sum a_n (t - t_0)^n\) una serie de potencias y \(R\) su radio de
+	Sea \(\sum a_n {(t - t_0)}^n\) una serie de potencias y \(R\) su radio de
 	convergencia. El intervalo de convergencia de la serie es \((-R, R)\).
 \end{definition}
 
@@ -56,7 +56,8 @@ convergencia}.
 
 \begin{theorem}[Cauchy-Hadamard]
 	Si \(R\) es el radio de convergencia de la serie de potencias 
-	\(\sum a_n (t - t_0)^n\), entonces la serie es absolutamente convergente si 
+	\[\sum a_n {(t - t_0)}^n,\] 
+	entonces la serie es absolutamente convergente si 
 	\(\abs{t} < R\) y diverge si \(\abs{t} > R\).
 \end{theorem}
 
@@ -71,7 +72,7 @@ Cauchy-Hadamard puede ser tediosa en algunos casos, por lo que mostramos una
 forma alternativa de computar el radio.
 
 \begin{lemma}
-	Sea \(\sum a_n (t - t_0)^n\) una serie de potencias, su radio de
+	Sea \(\sum a_n {(t - t_0)}^n\) una serie de potencias, su radio de
 	convergencia viene dado por
 	\[\lim\abs{\frac{a_n}{a_{n + 1}}},\]
 	si este límite existe o es infinito.
@@ -102,9 +103,9 @@ término y derivable término a término.
 	Una serie de potencias puede ser integrada término a término en cualquier
 	intervalo cerrado y acotado contenido en su intervalo de convergencia. O lo
 	que es lo mismo:
-	\[\int_a^b f = \int_a^b \sum_{n = 0}^\infty a_n (t - t_0)^n
-		= \sum_{n = 0}^\infty \int_a^b a_n (t - t_0)^n
-		= c + \sum_{n = 0}^\infty a_n \frac{(t - t_0)^{n + 1}}{n + 1}.\]
+	\[\int_a^b f = \int_a^b \sum_{n = 0}^\infty a_n {(t - t_0)}^n
+		= \sum_{n = 0}^\infty \int_a^b a_n {(t - t_0)}^n
+		= c + \sum_{n = 0}^\infty a_n \frac{{(t - t_0)}^{n + 1}}{n + 1}.\]
 \end{theorem}
 
 En el caso de la derivación presentamos un teorema más fuerte que el de la
@@ -113,13 +114,13 @@ derivación de series de funciones uniformemente convergentes.
 \begin{theorem}[Diferenciación]
 	Una serie de potencias puede ser diferenciada término a término en su
 	intervalo de convergencia. Es más, si
-	\[f(x) = \sum_{n = 0}^\infty a_n (t - t_0)^n, \quad \text{entonces} \quad
-		f'(x) = \sum_{n = 1}^\infty a_n n (t - t_0)^{n - 1},\]
+	\[f(x) = \sum_{n = 0}^\infty a_n {(t - t_0)}^n, \quad \text{entonces} \quad
+		f'(x) = \sum_{n = 1}^\infty a_n n {(t - t_0)}^{n - 1},\]
 	para \(\abs{x} < R\) y ambas series tienen el mismo radio de convergencia.
 \end{theorem}
 
 Remitimos al lector que quiera demostraciones detalladas de estos
-teoremas a \cite[capítulo~9.4]{introduction_real_analysis}.
+teoremas a~\cite[Capítulo~9.4]{introduction_real_analysis}.
 
 \section{Aplicación a la resolución de ecuaciones diferenciales}
 
@@ -140,28 +141,28 @@ ello damos primero un ejemplo que muestra inmediatamente su utilidad.
 	de la forma
 	\begin{equation}
 		\label{eq:solpot}
-		x(t) = \sum_{n=0}^\infty a_nt^n, \quad |t| < \rho
+		x(t) = \sum_{n=0}^\infty a_n t^n, \quad |t| < \rho
 	\end{equation}
 
 	Nuestro objetivo se reduce, entonces, a dar \textquote{ecuaciones} que 
-	caractericen la sucesión \((a_n)_n\), de forma que, al resolverlas, 
+	caractericen la sucesión \({(a_n)}_n\), de forma que, al resolverlas, 
 	obtengamos la función \(x(t)\).
 
 	Derivando en~\eqref{eq:solpot}, llegamos a las series de potencias
 	\begin{align*}
-		x'(t)  & = \sum_{n=1}^\infty na_nt^{n-1}
+		x'(t)  & = \sum_{n=1}^\infty n a_n t^{n-1}
 		= \sum_{n=0}^\infty (n+1)a_{n+1}t^n,          \\
-		x''(t) & = \sum_{n=2}^\infty n(n-1)a_nt^{n-2}
-		= \sum_{n=0}^\infty (n+2)(n+1)a_{n+2}t^n,
+		x''(t) & = \sum_{n=2}^\infty n(n-1) a_n t^{n-2}
+		= \sum_{n=0}^\infty (n+2)(n+1)a_{n+2} t^n,
 	\end{align*}
 	donde ambas series de potencias tienen radio de convergencia \(\geq \rho\).
 
 	Teniendo esto en cuenta y volviendo a~\eqref{eq:eqpot}, tenemos
 	\[x''-2tx'-2x=0 \leftrightsquigarrow \sum_{n=0}^\infty (n+2)(n+1)a_{n+2}t^n -
-		2t \sum_{n=0}^\infty (n+1)a_{n+1}t^n - 2 \sum_{n=0}^\infty a_nt^n = 0\]
+		2t \sum_{n=0}^\infty (n+1)a_{n+1}t^n - 2 \sum_{n=0}^\infty a_n t^n = 0\]
 	o, equivalentemente,
 	\[\sum_{n=0}^\infty (n+2)(n+1)a_{n+2}t^n - \sum_{n=0}^\infty
-		2(n+1)a_{n+1}t^{n+1} - \sum_{n=0}^\infty 2a_nt^n = 0.\]
+		2(n+1)a_{n+1}t^{n+1} - \sum_{n=0}^\infty 2 a_n t^n = 0.\]
 	Escribimos esto como una única serie de potencias:
 	\[\underbrace{2a_2-2a_0}_{n=0} +
 		\sum_{n=1}^\infty[(n+1)(n+2)a_{n+2}-2na_n-2a_n]t^n = 0\]
@@ -175,8 +176,8 @@ ello damos primero un ejemplo que muestra inmediatamente su utilidad.
 		a_{n+2} = \frac{2}{n+2} a_n, \qquad n \geq 0
 	\end{equation}
 
-	En resumen,~\eqref{eq:solpot} es solución de ~\eqref{eq:eqpot} si y sólo si
-	\((a_n)_n\) verifica estas condiciones. Una solución queda unívocamente
+	En resumen,~\eqref{eq:solpot} es solución de~\eqref{eq:eqpot} si y sólo si
+	\({(a_n)}_n\) verifica estas condiciones. Una solución queda unívocamente
 	determinada al fijar \(x(0)\) y \(x'(0)\), que en este caso corresponden,
 	respectivamente, a \(a_0\) y \(a_1\). Como ya sabemos, una base del espacio de
 	soluciones de~\eqref{eq:eqpot} se obtiene al resolver~\eqref{eq:seqpot} para los
@@ -207,7 +208,7 @@ ello damos primero un ejemplo que muestra inmediatamente su utilidad.
 				      (2i+1)},\]
 		      e igual que antes es inmediato probarlo por inducción.
 
-		      En este caso, \(\sum_{n=0}^\infty a_nt^n\) no es una función
+		      En este caso, \(\sum_{n=0}^\infty a_n t^n\) no es una función
 		      elemental, aunque es analítica con radio de
 		      convergencia \(\rho = +\infty\).
 	\end{itemize}
@@ -217,8 +218,8 @@ Para terminar con el capítulo, recogemos las ideas generales en un teorema:
 \begin{theorem}
 	Supongamos que \(Q(t)\), \(R(t)\) y \(P(t)\) se pueden escribir como series
 	de potencias alrededor de \(t_0\) con radio de convergencia \(\rho\):
-	\[Q(t) = \sum_{n=0}^\infty q_n(t-t_0)^n, \quad R(t) = \sum_{n=0}^\infty
-		r_n(t-t_0)^n, \quad P(t) = \sum_{n=0}^\infty p_n(t-t_0)^n,
+	\[Q(t) = \sum_{n=0}^\infty q_n {(t-t_0)}^n, \quad R(t) = \sum_{n=0}^\infty
+		r_n {(t-t_0)}^n, \quad P(t) = \sum_{n=0}^\infty p_n {(t-t_0)}^n,
 		\qquad |t-t_0| < \rho\]
 	Entonces, \emph{todas} las soluciones de la ecuación
 	\begin{equation} \label{eq:thmpot}
@@ -226,22 +227,22 @@ Para terminar con el capítulo, recogemos las ideas generales en un teorema:
 	\end{equation}
 	se pueden escribir también como series de potencias alrededor de
 	\(t_0\) con radio de convergencia \(\rho\), es decir,
-	\[x(t) = \sum_{n=0}^\infty a_n(t-t_0)^n, \qquad |t-t_0| < \rho.\]
+	\[x(t) = \sum_{n=0}^\infty a_n {(t-t_0)}^n, \qquad |t-t_0| < \rho.\]
 	Además, en este caso, para obtener los coeficientes \(a_n\) se puede razonar
-	como en el ejemplo: se asume \(x(t) = \sum_{n=0}^\infty a_n(t-t_0)^n\), se
+	como en el ejemplo: se asume \(x(t) = \sum_{n=0}^\infty a_n {(t-t_0)}^n\), se
 	escribe~\eqref{eq:thmpot} como serie de potencias y se igualan sus
 	coeficientes a 0. Esto da unas ecuaciones que caracterizan la sucesión
-	\((a_n)_n\).
+	\({(a_n)}_n\).
 \end{theorem}
 
 \begin{remark}
 	Para expresar el producto de dos series de potencias como serie de potencias
 	se usa el \emph{producto de Cauchy} o \emph{convolución}:
-	\[\left( \sum_{n=0}^\infty A_n (t-t_0)^n \right) \cdot
-		\left( \sum_{n=0}^\infty B_n (t-t_0)^n \right) =
-		\sum_{n=0}^\infty C_n (t-t_0)^n,\]
+	\[\left( \sum_{n=0}^\infty A_n {(t-t_0)}^n \right) \cdot
+		\left( \sum_{n=0}^\infty B_n {(t-t_0)}^n \right) =
+		\sum_{n=0}^\infty C_n {(t-t_0)}^n,\]
 	siendo
-	\[C_n = \sum_{k=0}^n A_kB_{n-k}.\]
+	\[C_n = \sum_{k=0}^n A_k B_{n-k}.\]
 \end{remark}
 
 \end{document}

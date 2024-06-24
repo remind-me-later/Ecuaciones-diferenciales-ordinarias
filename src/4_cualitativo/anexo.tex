@@ -1,10 +1,7 @@
 \documentclass[../ecuaciones_diferenciales.tex]{subfiles}
 
 \begin{document}
-\section{Diagonalizable con dos autovalores distintos}
-\(J = \mat{ \lambda_1 & \\ & \lambda_2 }\)
-\subsection{Nodos}
-Cuando \(\lambda_1\) y \(\lambda_2\) tienen el mismo signo.
+
 \begin{figure}[ht]
   \centering
   \begin{subfigure}{0.25\textwidth}
@@ -27,10 +24,9 @@ Cuando \(\lambda_1\) y \(\lambda_2\) tienen el mismo signo.
     \includegraphics{figuras/pdf/diagonal_dos_autovalores_negativos_a_lt_1.pdf}
     \caption*{Nodo estable \\ \(|\lambda_2| < |\lambda_1|\) \\ \(\lambda_1, \lambda_2 < 0\)}
   \end{subfigure}
+  \caption{Nodos, se dan cuando \(\lambda_1\) y \(\lambda_2\) tienen el mismo signo.}
 \end{figure}
 
-\subsection{Rectas}
-Cuando algún autovalor es nulo.
 \begin{figure}[ht]
   \centering
   \begin{subfigure}{0.25\textwidth}
@@ -53,10 +49,9 @@ Cuando algún autovalor es nulo.
     \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_eq_0_negativo_v2.pdf}
     \caption*{\(\lambda_1 = 0, \lambda_2 < 0\)}
   \end{subfigure}
+  \caption{Rectas, se dan cuando algún autovalor es nulo.}
 \end{figure}
 
-\subsection{Puntos de silla}
-Cuando \(\lambda_1\) y \(\lambda_2\) tienen signo opuesto.
 \begin{figure}[ht]
   \centering
   \begin{subfigure}{0.25\textwidth}
@@ -69,10 +64,9 @@ Cuando \(\lambda_1\) y \(\lambda_2\) tienen signo opuesto.
     \includegraphics{figuras/pdf/diagonal_dos_autovalores_a_lt_0_lt_gt.pdf}
     \caption*{Punto de silla \\ \(\lambda_1 < 0, \lambda_2 > 0\)}
   \end{subfigure}
+  \caption{Puntos de silla, se dan cuando \(\lambda_1\) y \(\lambda_2\) tienen signo opuesto.}
 \end{figure}
 
-\section{Diagonalizable con un autovalor}
-\(J = \mat{\lambda & \\ & \lambda}\)
 \begin{figure}[ht]
   \centering
   \begin{subfigure}{0.33\textwidth}
@@ -90,10 +84,9 @@ Cuando \(\lambda_1\) y \(\lambda_2\) tienen signo opuesto.
     \includegraphics{figuras/pdf/diagonal_un_autovalor_l_eq_0.pdf}
     \caption*{\(\lambda = 0\)}
   \end{subfigure}
+  \caption{Puntos de estrella, se dan cuando \(J\) es diagonalizable con un único autovalor real.}
 \end{figure}
 
-\section{No diagonalizable con un autovalor real}
-\(J = \mat{\lambda & 1 \\ & \lambda}\)
 \begin{figure}[ht]
   \centering
   \begin{subfigure}{0.33\textwidth}
@@ -111,10 +104,9 @@ Cuando \(\lambda_1\) y \(\lambda_2\) tienen signo opuesto.
     \includegraphics{figuras/pdf/no_diagonal_l_eq_0.pdf}
     \caption*{\(\lambda = 0\)}
   \end{subfigure}
+  \caption{Nodos impropios, se dan cuando \(J\) es no diagonalizable con un único autovalor real.}
 \end{figure}
 
-\section{Autovalores complejos conjugados}
-\(J = \mat{a & b \\ -b & a}\)
 \begin{figure}[ht]
   \begin{subfigure}{0.33\textwidth}
     \centering
@@ -131,4 +123,6 @@ Cuando \(\lambda_1\) y \(\lambda_2\) tienen signo opuesto.
     \includegraphics{figuras/pdf/autovalores_complejos_a_eq_0.pdf}
     \caption*{Centro \\ \(a = 0\)}
   \end{subfigure}
+  \caption{Focos, se dan cuando \(J\) es no diagonalizable con autovalores complejos conjugados \(\lambda = a \pm ib\).}
 \end{figure}
+\end{document}

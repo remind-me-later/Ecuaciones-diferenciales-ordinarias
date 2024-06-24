@@ -6,27 +6,28 @@ style:=$(shell find sty -name '*.sty')
 makefiles:=$(shell find . -mindepth 1 -maxdepth 4 -type f -name Makefile)
 subdir:=$(filter-out ./,$(dir $(makefiles)))
 
-all: pdf/$(name).pdf
+OUTDIR=build
+
+all: $(OUTDIR)/$(name).pdf
 
 figures:
 	for dir in $(subdir); do \
 		make -C $$dir all; \
 	done
 
-pdf/$(name).pdf: $(sources) $(style) | figures build pdf
-	latexmk -pdf -xelatex -output-directory=../build -cd src/main.tex
-	mv build/main.pdf $@
+$(OUTDIR)/$(name).pdf: $(sources) $(style) | figures $(OUTDIR)
+	latexmk -xelatex -output-directory=../$(OUTDIR) -cd -silent
 
-build:
-	mkdir -p build
-
-pdf:
-	mkdir -p pdf
+$(OUTDIR):
+	mkdir -p $(OUTDIR)
 
 clean:
 	for dir in $(subdir); do \
 		make -C $$dir clean; \
 	done
-	$(RM) build/* pdf/*
+	$(RM) -r $(OUTDIR)
 
-.PHONY: all clean
+cle:
+	$(RM) -r $(OUTDIR)
+
+.PHONY: all clean cle

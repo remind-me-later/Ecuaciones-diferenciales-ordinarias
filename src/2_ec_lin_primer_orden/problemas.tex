@@ -7,7 +7,7 @@ Encontrar la solución general de las siguientes ecuaciones diferenciales,
 indicando su intervalo de definición.
 
 \begin{multicols}{2}
-	\begin{enumerate}[a)]
+	\begin{enumerate}[(a)]
 		\item \(\displaystyle x' + x \cos t = 0\)
 		\item \(\displaystyle x' + x\sqrt{t} \sin t = 0\)
 		\item \(\displaystyle x' + \frac{2t}{1 + t^2}x = \frac{1}{1 + t^2}\)
@@ -17,7 +17,7 @@ indicando su intervalo de definición.
 \end{problem}
 
 \begin{solution}
-	\begin{enumerate}[a), wide, labelwidth=0pt, labelindent=0pt]
+	\begin{enumerate}[(a), wide, labelwidth=0pt, labelindent=0pt]
 		\item Se trata de una ecuación homogénea, puesto que
 		      \(\cos t \in C(\R)\), el intervalo de definición de la ecuación es
 		      \(\R\). Separando variables:
@@ -37,25 +37,25 @@ indicando su intervalo de definición.
 		\item Tanto \(a(t)\) como \(b(t)\) son continuas en \(\R\). Utilizamos
 		      el método de variación de constantes, resolvemos primero la ecuación
 		      homogénea asociada:
-		      \[x_n(t) = k e^{\int_0^t \frac{-2s}{1 + s^2} \dif s},\]
+		      \[x_h(t) = k e^{\int_0^t \frac{-2s}{1 + s^2} \dif s},\]
 		      notamos que la derivada de \(-\log(1 + s^2)\) coincide con el
 		      interior de nuestra integral, por tanto:
-		      \[x_n(t) = k e^{-\log(1 + t^2)} = \frac{k}{1 + t^2}.\]
+		      \[x_h(t) = k e^{-\log(1 + t^2)} = \frac{k}{1 + t^2}.\]
 
 		      Ahora, sea \(x_p = \frac{k(t)}{1 + t^2}\) solución de la ecuación
 		      diferencial, entonces
-		      \[x_p'(t) = k'(t)\frac{1}{1 + t^2} + k(t)\frac{-2t}{(1 + t^2)^2}\]
+		      \[x_p'(t) = k'(t)\frac{1}{1 + t^2} + k(t)\frac{-2t}{{(1 + t^2)}^2}\]
 		      sustituyendo en la ecuación obtenemos que
 		      \[x_p'(t) = \frac{-2t}{1 + t^2} x_p(t) + \frac{1}{1 + t^2}
-			      = k(t)\frac{-2t}{(1 + t^2)^2}  + \frac{1}{1 + t^2}.\]
+			      = k(t)\frac{-2t}{{(1 + t^2)}^2}  + \frac{1}{1 + t^2}.\]
 
 		      Igualando hallamos que \(k'(t) = 1\) y, por ende, \(k(t) = t\).
 		      La solución general es
-		      \[x(t) = x_n(t) + x_p(t) = \frac{k + t}{1 + t^2}.\]
+		      \[x(t) = x_h(t) + x_p(t) = \frac{k + t}{1 + t^2}.\]
 
 		\item Tanto \(a = 1\) como \(b\) son continuas en todo \(\R\) por lo que
 		      este es nuestro intervalo de definición. Resolvemos la ecuación
-		      homogénea asociada, obteniendo \(x_n(t) = k e^{-t}\). Sea
+		      homogénea asociada, obteniendo \(x_h(t) = k e^{-t}\). Sea
 		      \(x_p(t) = k(t) e^{-t}\) solución de la ecuación, entonces:
 		      \[\begin{cases}
 				      x_p'(t) = k'(t) e^{-t} - k(t) e^{-t} \\
@@ -69,7 +69,7 @@ indicando su intervalo de definición.
 			      = \frac{t e^{2t}}{2} - \int \frac{e^{2t}}{2} \dif t
 			      = \frac{t e^{2t}}{2} - \frac{e^{2t}}{4}.\]
 		      La solución general de la ecuación es pues
-		      \[x(t) = x_n(t) + x_p(t) = (k + k(t))e^{-t}
+		      \[x(t) = x_h(t) + x_p(t) = (k + k(t))e^{-t}
 			      = k e^{-t} + \frac{t e^{t}}{2} - \frac{e^{t}}{4}.\]
 	\end{enumerate}
 \end{solution}
@@ -78,7 +78,7 @@ indicando su intervalo de definición.
 Hallar las soluciones de los siguientes problemas de valor inicial,
 indicando su intervalo de definición.
 \begin{multicols}{2}
-	\begin{enumerate}[a)]
+	\begin{enumerate}[(a)]
 		\item \(\displaystyle
 		      \begin{cases}
 			      x' + 5x = t^2 \\
@@ -87,7 +87,7 @@ indicando su intervalo de definición.
 
 		\item \(\displaystyle
 		      \begin{cases}
-			      x' = (\tan t)x + \cos t \\
+			      x' = \tan(t)x + \cos(t) \\
 			      x(0) = 1
 		      \end{cases}\)
 
@@ -107,8 +107,8 @@ indicando su intervalo de definición.
 \end{problem}
 
 \begin{solution}
-	\begin{enumerate}[a), wide, labelwidth=0pt, labelindent=0pt]
-		\item Resolvemos la ecuación homogénea asociada, \(x_n(t) = k e^{-5t}\),
+	\begin{enumerate}[(a), wide, labelwidth=0pt, labelindent=0pt]
+		\item Resolvemos la ecuación homogénea asociada, \(x_h(t) = k e^{-5t}\),
 		      y, mediante variación de constantes, obtenemos, integrando por
 		      partes dos veces,
 		      \[k(t) = \parens{\frac{t^2}{5} - \frac{2t}{25}
@@ -123,7 +123,33 @@ indicando su intervalo de definición.
 		      \[x(t) =  \frac{373}{125} e^{-5t} + \frac{t^2}{5} - \frac{2t}{25}
 			      + \frac{2}{125}.\]
 
-		\item TODO.
+		\item Como en el apartado anterior, resolvemos la ecuación homogénea 
+			  asociada, \(x' = \tan(t)x\), obtenemos:
+			  \[
+			  	\frac{x'}{x} = \tan(t) \iff \log x = \int_0^t \tan(s) \dif s
+				\iff \log(x) = -\log\abs{\cos(t)} + c.
+			  \]
+			  Por variación de constantes \(x_p = k(t) \sec(t)\). 
+			  Derivando obtenemos: \(x'_p = k(t) \tan(t) \sec(t) + k'(t) \sec(t) \) y 
+			  por definición: \(x'_p = \tan(t) x_p + \cos(t)\). Igualando ambas expresiones
+			  \[
+				k'(t) = \frac{\cos(t)}{\sec(t)} = {\cos(t)}^2.
+			  \]
+			  Integramos
+			  \[
+			  	k(t) = \frac{t + \sin(t)\cos(t)}{2} + c,
+			  \]
+			  nos queda así:
+			  \[
+			  	x_p = \left( \frac{t + \sin(t)\cos(t)}{2} + c \right) \sec(t)
+				 	= \frac{t \sec(t)}{2} + \frac{\sin(t)}{2} + c\sec(t)
+			  \]
+			  y evaluando en \(0\) tenemos \(c = 1\):
+			  \[
+			  	x_p = \frac{(t + 2)\sec(t) + \sin(t)}{2}.
+			  \]
+			  Comprobar.
+
 
 		\item Resolvemos la ecuación homogénea asociada separando variables,
 		      \(x = k e^{-t^2}\), por variación de constantes,
@@ -153,25 +179,25 @@ indicando su intervalo de definición.
 
 \begin{problem}
 El nivel de carbón vegetal encontrado en las grutas de Lascaux, en Francia,
-dio una medida de 0,91 desintegraciones por minuto y gramo (la madera viva
-da 6,68 desintegraciones). Estimad la edad probable de las pinturas que se
+dio una medida de \(0.91\) desintegraciones por minuto y gramo (la madera viva
+da \(6.68\) desintegraciones). Estimad la edad probable de las pinturas que se
 hallan en dichas cuevas.
 \end{problem}
 
 \begin{solution}
 	Elegimos \(t = 0\) el momento en el que se corta el árbol, y denotamos por
 	\(x(t)\) la cantidad de carbono-14 a tiempo \(t\), por lo que
-	\(x'(0) = -6,68 q\), donde \(q\) es la cantidad de carbono-14 en 1 gramo de
+	\(x'(0) = -6.68 q\), donde \(q\) es la cantidad de carbono-14 en 1 gramo de
 	madera.  Utilizando la fórmula vista en clase,
 	\[x(t) = x(0) e^{-\lambda t},\]
 	donde \(\lambda = \frac{\log 2}{5730}\), deducimos que
 	\[x'(t) = -\lambda x(0) e^{-\lambda t}.\]
 
-	Según los datos del enunciado, \(-6,68 q = x'(0) = -\lambda x(0)\). Si
+	Según los datos del enunciado, \(-6.68 q = x'(0) = -\lambda x(0)\). Si
 	llamamos \(t_\alpha\) al momento en el que estamos, tenemos
-	\(-0,91 q = x'(t_\alpha) = - \lambda x(0) e^{-\lambda t_\alpha}\), y
+	\(-0.91 q = x'(t_\alpha) = - \lambda x(0) e^{-\lambda t_\alpha}\), y
 	dividiendo queda
-	\[\frac{0,91}{6,68} = \frac{x'(t_\alpha)}{x'(0)} = e^{-\lambda t_\alpha},\]
+	\[\frac{0.91}{6.68} = \frac{x'(t_\alpha)}{x'(0)} = e^{-\lambda t_\alpha},\]
 	de donde se deduce que \(t_\alpha = 16479\), es decir, las pinturas tienen una
 	antigüedad de 16479 años.
 \end{solution}

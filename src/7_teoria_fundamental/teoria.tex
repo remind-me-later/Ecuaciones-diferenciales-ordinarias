@@ -1,0 +1,384 @@
+\documentclass[../ecuaciones_diferenciales.tex]{subfiles}
+
+\begin{document}
+
+Pasamos ahora a desarrollar la teoría fundamental de ecuaciones diferenciales,
+comenzando por los resultados de existencia y unicidad de soluciones y los intervalos en
+los que están definidas.
+
+\begin{definition}[Ecuación general no lineal]
+    Llamamos ecuación general no lineal a una ecuación de la forma 
+    \[x' = f(t, x)\]
+    donde \(f\) es continua en un abierto \(D \subset \mathbb{R}^2\).
+\end{definition}
+
+Veremos que demostrar la existencia y unicidad de soluciones no es tan sencillo como en el caso lineal, ya
+que no podremos hacerlo de manera constructiva, ni podremos en general dar fórmulas explícitas en términos
+de funciones elementales. Por ejemplo la ecuación:
+\[x' = t + x^2\]
+no tiene solución elemental. Veremos luego que se trata de un caso particular de \emph{ecuación de Ricatti}.
+
+\begin{definition}[Ecuación de Ricatti]
+    Una ecuación de Ricatti es una ecuación de la forma
+    \[x' = p(t)x^2 + q(t)x + r(t)\]
+    donde \(p, q, r\) son funciones continuas en un abierto \(D \subset \mathbb{R}\).
+\end{definition}
+
+Liouville demostró que en general estas ecuaciones no se pueden resolver en términos de funciones elementales.
+Aún así son importantes ya que se puede dmeostrar que toda ecuación diferencial lineal homogénea de orden se 
+puede reducir a una ecuación de Ricatti.
+
+Con esto queda claro que las ecuaciones diferenciales no lineales resolubles en términos de funciones elementales
+conforman un subconjunto muy pequeño de todas las ecuaciones diferenciales no lineales. Tendremos pues que 
+abordar la cuestión de existencia y unicidad mediante medios indirectos. Como en la parte anterior lo haremos
+prestando atención al problema de valor inicial.
+
+\section{Existencia y unicidad de soluciones}
+
+Sea \(f(t, x)\) definida en un abierto \(D \subset \mathbb{R}^2\). Diremos que \(x(t)\) es \emph{solución} de la
+ecuación \(x' = f(t, x)\) en el intervalo abierto \(I\) si \(x\) tiene derivada continua en \(I\) y se verifican:
+
+\begin{multicols}{2}
+    \begin{enumerate}[(i)]
+        \item \(\forall t \in I, \, (t, x(t)) \in D\)
+        \item \(\forall t \in I, \, x'(t) = f(t, x(t))\)
+    \end{enumerate}    
+\end{multicols}
+
+Observamos que la definición de la solución \(x(t)\) depende del intervalo \(I\) que a su vez
+depende del abierto \(D\) en el que se plantea la ecuación.
+
+Abordamos la cuestión de existencia de soluciones centrando la atención en el problema de valor inicial 
+asociado a la ecuación \(x' = f(t, x)\):
+\[
+    \begin{cases}
+        x' = f(t, x) \\
+        x(t_0) = x_0; \, (t_0, x_0) \in D
+    \end{cases}
+\]
+
+Comenzamos tranformando este problema en uno más manejable analiticamente: sea \(x(t)\) solución 
+del PVI en un intervalo \(I\) que contiene a \(t_0\), entonces, por definición, \(\forall t \in I, \, x'(t) = f(x, x(t))\).
+Integrando esta expresión entre \(t_0\) y \(t\) obtenemos:
+\begin{equation}
+    \label{eq:ex_unicidad:teoria:1}
+    x(t) = x_0 + \int_{t_0}^t f(s, x(s)) \, ds
+\end{equation}
+
+Por el teorema fundamental del cálculo obtenemos el recíproco: si \(x(t)\) es una función continua en \(I\) que verifica~\ref{eq:ex_unicidad:teoria:1}
+basta derivar para obtener que \(x'(t) = f(t, x(t))\). Además evaluando~\ref{eq:ex_unicidad:teoria:1} en \(t_0\) comprobamos
+que cumple la condición inicial con lo que es solución del PVI.\@ Hemos encontrado así una \emph{ecuación integral equivalente} al PVI, la 
+importancia de esta forma es que se presta mejor a ser aprozimada mediante métodos iterativos. 
+
+Podemos utilizar el método de las \emph{iteraciones de Picard}, que ya vimos en~\ref{cor:picard_iter_lin}, para aproximar la solución del PVI.\@
+
+\begin{definition}[Iteraciones de Picard, versión integral]
+Sea \(f(t, x)\) una función continua en un abierto \(D \subset \mathbb{R}^2\), definimos la sucesión de funciones
+\begin{equation} \label{eq:ex_unicidad:teoria:2}
+    \begin{cases}
+        x_0(t) = x_0 \\
+        x_{n+1}(t) = x_0 + \int_{t_0}^t f(s, x_n(s)) \, ds
+    \end{cases}
+\end{equation}
+a las que llamaremos iteraciones de Picard.
+\end{definition}
+
+Obtenemos así una sucesión de funciones \(\{x_n(t)\}\) que podremos demostrar que converge a una función
+\(x(t)\) en un intervalo \(I\) para la que además será legítimo el paso al 
+límite \(n \to \infty\) en~\ref{eq:ex_unicidad:teoria:2}. 
+
+La fórmula integral también nos permitirá usar una acotación que será fundamental en todo lo que sigue.
+
+\begin{lemma}[Lema de Gronwall]\label{lemma:ex_unicidad:teoria:gronwall}
+    Sea \(u : [a, b] \to \R\) continua y no negativa tal que
+    \begin{equation}
+        u(t) \leq C + \abs{\int_{t_0}^t K u(s) \, ds}
+    \end{equation}
+    con \(t, t_0 \in [a, b]\) y \(C \geq 0\), \(K \geq 0\) constantes.
+    Entonces 
+    \begin{equation}\label{eq:ex_unicidad:teoria:7}
+        u(t) \leq C e^{K \abs{t - t_0}}
+    \end{equation}
+    para todo \(t \in [a, b]\).
+\end{lemma}
+
+\begin{proof}
+    La hacemos para \(t > t_0\). Definimos 
+    \[
+        U(t) = C + \int_{t_0}^t K u(s) \, ds
+    \]
+
+    Se tiene \(u(t) \leq U(t)\) y \(U'(t) = K u(t) \leq K U(t)\), es decir, 
+    \(U'(t) - K U(t) \leq 0\). Multiplicando esta desigualdad por \(e^{-Kt}\) obtenemos
+    \[
+        e^{-Kt} (U'(t) - K U(t)) = \frac{d}{dt} (e^{-Kt} U(t)) \leq 0, \, t \in [t_0, b]
+    \]
+    con esto
+    \[
+        e^{-Kt} U(t) \leq e^{-Kt_0} U(t_0) = C e^{-Kt_0}
+    \]
+    y por tanto \(U(t) \leq C e^{K(t - t_0)}\) lo que nos da~\ref{eq:ex_unicidad:teoria:7}, ya que \(u(t) \leq U(t)\).
+\end{proof}
+
+\subsection{Existencia y unicidad local con derivada continua}
+
+Comenzamos demostrando una versión débil del teorema cuando \(\partial f / \partial x\) es continua.
+La clave consistirá en usar la siguiente acotación.
+
+\begin{lemma}~\label{lemma:ex_unicidad:teoria:acotacion}
+    Sea \(f(t, x)\) continua en un abierto \(D \subset \mathbb{R}^2\). Supongamos además que \(f\) tiene derivada parcial respecto a \(x\) en todo punto de \(D\)
+    y que \(\partial f / \partial x\) es también continua en \(D\). Existe una constante \(K\) tal que para todo rectángulo \(R\) contenido en \(D\)
+    \begin{equation}
+        \abs{f(t, x_1) - f(t, x_2)} \leq K \abs{x_1 - x_2} 
+    \end{equation}
+    para todo par de puntos \((t, x_1)\) y \((t, x_2)\) contenidos en \(R\) con la misma abscisa. Además
+    \[
+        K = \max_{(t, x) \in R} \abs{\frac{\partial f}{\partial x}(t, x)}
+    \]
+\end{lemma}
+
+\begin{proof}
+    Sean \(a > 0\) y \(b > 0\) tal que el rectángulo
+    \[
+        R = \{(t, x) : \abs{t - t_0} \leq a, \abs{x - x_0} \leq b\}
+    \]
+    está contenido en \(D\). Como \(R\) es cerrado y acotado y \(f\) y \(\partial f / \partial x\)
+    son, por hipótesis, continuas en \(D\) podemos definir
+    \[
+        K = \max_{(t, x) \in R} \abs{\frac{\partial f}{\partial x}(t, x)}
+    \]
+    Ahora, por el teorema del valor medio si \((t, x_1)\) y \((t, x_2)\) son dos
+    puntos de \(R\) con la misma abscisa
+    \[
+        \abs{f(t, x_1) - f(t, x_2)} = \abs{\frac{\partial f}{\partial x}(t, \xi)} \abs{x_1 - x_2}
+    \]
+    con \(\xi\) entre \(x_1\) y \(x_2\). De esto se concluye directamente el resultado.
+\end{proof}
+
+Estamos ahora en condiciones de enunciar 
+y demostrar el teorema de existencia y unicidad de soluciones.
+
+\begin{theorem}[Existencia y unicidad local]\label{theorem:ex_unicidad:teoria:teorema}
+    Sea \(f(t, x)\) continua en un abierto \(D \subset \mathbb{R}^2\) y dentro de ese abierto
+    consideramos el intervalo \((t_0, x_0) \in D\). Supongamos además que \(f\) tiene derivada parcial respecto a \(x\) en todo punto de \(D\)
+    y que \(\partial f / \partial x\) es también continua en \(D\). Entonces existe un \(h > 0\) real
+    tal que
+    \begin{equation}\label{eq:ex_unicidad:teoria:pvi}
+        \begin{cases}
+            x' = f(t, x) \\
+            x(t_0) = x_0
+        \end{cases}
+    \end{equation}
+    tiene una y solo una solución en \(I = [t_0 - h, t_0 + h]\).
+\end{theorem}
+
+\begin{proof}
+    Como \(R = \{(t, x) : \abs{t - t_0} \leq a, \abs{x - x_0} \leq b\}\) es cerrado y acotado 
+    y \(f\) continua en \(D\) podemos definir
+    \[
+        M = \max_{(t, x) \in R} \abs{f(t, x)}
+    \]
+    Elegimos entonces \(h = \min\{a, b / M\}\) (veremos ahora por qué) y reducimos \(R\)
+    al rectángulo \(R_0 = \{(t, x) : \abs{t - t_0} \leq h, \abs{x - x_0} \leq b\}\).
+
+    Utilizaremos las iteraciones de Picard para obtener una solución del PVI pasando al límite, para ello primero
+    comprobamos que todo término de la sucesión \(\{x_n(t)\}\) de iteraciones de Picard es continua y contenida en \(R_0\).
+
+    Sea \(u(t)\) continua en \(I\)
+    tal que \(u(t_0) = x_0\) y \((t, u(t)) \in R_0\) para todo \(t \in I\). La función
+    \[
+        v(t) = x_0 + \int_{t_0}^t f(s, u(s)) \, ds
+    \]
+    tiene las mismas propiedades.
+
+    En efecto, \((t, u(t)) \in R_0 \subset R\) para \(\abs{t - t_0} \leq h\), por lo que
+    \[
+        \abs{v(t) - x_0} \leq \abs{\int_{t_0}^t f(s, u(s)) \, ds} \leq M \abs{t - t_0} \leq Mh \leq b
+    \]
+    por la elección de \(h\).
+
+    Obetenemos así, por inducción, que las iteraciones de Picard \(\{x_n(t)\}\) están bien definidas
+    y tienen gráfica contenida en \(R_0\) cuando \(\abs{t - t_0} \leq h\) (por esto reducimos \(R\) a \(R_0\)).
+
+    Observamos ahora que el término \(x_n(t)\) con \(n > 1\) es la suma parcial n-ésima de la serie
+    \begin{equation} \label{eq:ex_unicidad:teoria:3}
+        x_0(t) + \sum_{k \geq 1} (x_k(t) - x_{k - 1}(t))
+    \end{equation}
+    con lo que la convergencia de las iteraciones de Picard equivale a la convergencia de la serie~\ref{eq:ex_unicidad:teoria:3}.
+    Vamos a probar ahora dos resultados sobre la serie~\ref{eq:ex_unicidad:teoria:3} que corresponden a la existencia y unicidad respectivamente
+    de la solución de~\ref{eq:ex_unicidad:teoria:pvi}.
+    \begin{enumerate}[(a)]
+        \item La serie~\ref{eq:ex_unicidad:teoria:3} converge absolutamente en \(I\) a \(x(t)\).
+
+        Para \(t \in I\) tenemos
+        \begin{equation}\label{eq:ex_unicidad:teoria:5}
+            \abs{x_1(t) - x_0} = \abs{\int_{t_0}^t f(s, x_0) \, ds} \leq M \abs{t - t_0}
+        \end{equation}
+        utilizando~\ref{lemma:ex_unicidad:teoria:acotacion} y~\ref{eq:ex_unicidad:teoria:5} obtenemos
+        \begin{align*}
+            \abs{x_2(t) - x_1(t)} 
+                &= \abs{\int_{t_0}^t f(s, x_1(s)) - f(s, x_0) \, ds} 
+                \leq K \abs{\int_{t_0}^t \abs{x_1(s) - x_0} \, ds} \\
+                &\leq KM \abs{\int_{t_0}^t \abs{s - t_0} \, ds}
+                = MK \frac{\abs{t - t_0}^2}{2!}
+        \end{align*}
+        y procediendo por inducción
+        \begin{align*}
+            \abs{x_k(t) - x_{k - 1}(t)} \leq M K^{k-1} \frac{\abs{t - t_0}^k}{k!} \leq \frac{M}{K} \frac{{(Kh)}^k}{k!}
+        \end{align*}
+        O lo que es lo mismo
+        \[
+            \max_{t \in I} \abs{x_k(t) - x_{k - 1}(t)} \leq \frac{M}{K} \frac{{(Kh)}^k}{k!}
+        \]
+        y como la serie
+        \[
+            \sum_{k \geq 1} \frac{M}{K} \frac{{(Kh)}^k}{k!}
+        \]
+        converge (con suma \(M/K (e^{Kh} - 1)\)) aplicando el criterio M de Weirstrass tenemos que la serie~\ref{eq:ex_unicidad:teoria:3}
+        converge uniformemente en \(I\) a una función \(x(t)\) continua. Está función verifica la
+        condición inicial, ya que la verifica cada \(x_n(t)\) y además \((t, x(t)) \in R_0\) para cada \(t \in I\).
+        Lo comprobamos, dado \(\epsilon > 0\) existe \(N\) tal que
+        \[
+            \abs{x(t) - x_0} \leq \abs{x(t) - x_N(t)} + \abs{x_N(t) - x_0} < \epsilon + b
+        \]
+        y puesto que \(\epsilon\) es arbitrario \(\abs{x(t) - x_0} \leq b\) para \(\abs{t - t_0} \leq h\).
+        Esto permite probar 
+        \begin{equation} \label{eq:ex_unicidad:teoria:6}
+            \lim_{k \to \infty} \int_{t_0}^t f(s, x_k(s)) \, ds = \int_{t_0}^t f(s, x(s)) \, ds
+        \end{equation}
+        En efecto, la convergencia \(x_k(t) \to x(t)\) es uniforme en \(I\) por lo que dado \(\epsilon > 0\) 
+        existe \(N\) suficientemente grande tal que
+        \[
+            \forall s \in I, \, \abs{x_N(s) - x(s)} \leq \epsilon 
+        \]
+        Entonces, para N suficientemente grande
+        \[
+            \abs{\int_{t_0}^t f(s, x_N(s)) \, ds - \int_{t_0}^t f(s, x(s)) \, ds} 
+                \leq K \abs{\int_{t_0}^t \abs{x_N(s) - x(s)} \, ds}
+                \leq K \epsilon \abs{t - t_0}
+                \leq K \epsilon h
+        \]
+        con lo que se da~\ref{eq:ex_unicidad:teoria:6}, lo que implica
+        \[
+            x(t) = \lim_{k \to \infty} x_{k}(t) = \lim_{k \to \infty} \left(x_0 + \int_{t_0}^t f(s, x_{k-1}(s)) \, ds\right)
+            = x_0 + \int_{t_0}^t f(s, x(s)) \, ds
+        \]
+        y por tanto \(x(t)\) es solución del PVI~\ref{eq:ex_unicidad:teoria:pvi}.
+
+        \item La funcion \(x(t)\) es solución única del PVI en \(I\).
+        
+        Vemos que si \(y(t)\) es solución del PVI~\ref{eq:ex_unicidad:teoria:pvi} en \(I\) entonces
+        necesariamente \(\abs{y(t) - x_0} \leq b\), osea, su gráfica yace en \(R_0\). Para demostrarlo procedemos
+        por reducción al absurdo, existe un \(t'\) con \(t_0 < t' < t_0 + h\) tal que \(\abs{y(t') - x_0} > b \geq Mh\).
+
+        Ahora, puesto que \(\abs{y(t) - x_0}\) es continua existe un primer \(t_1\) con \(t_0 < t_1 < t'\) tal que
+        \begin{equation}\label{eq:ex_unicidad:teoria:4}
+            \abs{y(t_1) - x_0} = b
+        \end{equation}
+        Como \(y(t)\) es solución del PVI tenemos
+        \[
+            \abs{y(t_1) - x_0} = \abs{\int_{t_0}^{t_1} f(s, x(s)) \, ds} \leq M \abs{t_1 - t_0} < Mh \leq b
+        \]
+        que contradice~\ref{eq:ex_unicidad:teoria:4} por la desigualdad estricta.
+
+        Ahora que sabemos que la gráfica de cualquier solución yace en \(R_0\) conssideramos dos soluciones
+        \(x\) e \(y\) en \(I\), tenemos
+        \[
+            \abs{x(t) - y(t)} = \abs{int_{t_0}^t f(s, x(s)) - f(s, y(s)) \, ds} \leq K \abs{\int_{t_0}^t \abs{x(s) - y(s)} \, ds} 
+        \]
+        donde aplicando el lema de Gronwall~\ref{lemma:ex_unicidad:teoria:gronwall} obtenemos
+        que \(\abs{x(t) - y(t)} = 0\).
+
+    \end{enumerate}
+\end{proof}
+
+Notamos que las cotas elegidas en el teorema dependen del rectángulo \(R\) elegido al principio, como este
+es un resultado local no nos preocupamos de obtener el intervalo más amplio posible, veremos cual es este intervalo
+más adelante.
+
+\subsection{Teorema de existencia y unicidad local para funciones Lipschitz}
+
+Notamos que en la demostración anterior la continuidad de \(\partial f / \partial x\) era necesaria solo para
+usar la acotacion~\ref{lemma:ex_unicidad:teoria:acotacion}. En este apartado veremos que podemos relajar esta hipótesis
+a funciones que cumplan una condición más débil, la condición de Lipschitz.
+
+\begin{definition}[Condición de Lipschitz global]
+    Diremos que la funcion \(f(t, x)\) cumple la condición de Lipschitz global (o es globalmente lipschitziana) en un 
+    conjunto \(A \subset \mathbb{R}^2\) si existe una constante \(K\) tal que
+    \[
+        \abs{f(t, x_1) - f(t, x_2)} \leq K \abs{x_1 - x_2} , \quad \forall x_1, x_2 \in A
+    \]
+    Llamaremos a la constante \(K\) \emph{constante de Lipschitz} de \(f\) en \(A\).
+\end{definition}
+
+Es claro que si \(K\) es una constante de Lipschitz para \(f\) también lo es cualquier número mayor que \(K\),
+y si \(f\) es Lipschitz respecto a \(x\) es continua respecto a \(x\) fijado \(t\).
+
+Vemos que cumplir la condición de Lipschitz global es un requisito muy fuerte, en la demostración de~\ref{theorem:ex_unicidad:teoria:teorema}
+usamos solo la acotación en un rectángulo. Introducimos entonces la siguiente definición.
+
+\begin{definition}[Condición de Lipschitz local]
+    Diremos que la funcion \(f(t, x)\) cumple la condición de Lipschitz local (o es localmente lipschitziana) en un 
+    conjunto \(D \subset \mathbb{R}^2\) si es Lipschitz en todo rectángulo
+    \[
+        R = \{(t, x) : \abs{t - t_0} \leq a, \abs{x - x_0} \leq b\} \subset D
+    \]
+\end{definition}
+
+Es inmediato comprobar que esta es una condición más débil que la continuidad de \(\partial f / \partial x\),
+ya que la continuidad de la derivada implica que la funcion es localmente Lipschitziana, quizás con constante 
+de Lipschitz distinta en cada rectángulo, pero el recíproco no es cierto. (TODO:\@ contraejemplo)
+
+Con las hipótesis de \(f\) continua y localmente Lipschitz la demostración de~\ref{theorem:ex_unicidad:teoria:teorema}
+nos da el resultado cambiando la acotacion. Es posible demostrar (aunque no lo haremos) que con solo suponer
+\(f\) continua existe al menos una solucion del PVI~\ref{eq:ex_unicidad:teoria:pvi}, pero
+necesitamos hipótesis asicionales sobre \(f\) para garantizar la \emph{unicidad}. Enunciamos el teorema por su interés teórico.
+
+\begin{theorem}[Teorema de Peano de existencia local]
+    Sea \(f(t, x)\) continua en un abierto \(D \subset \mathbb{R}^2\) y sea \((t_0, x_0) \in D\).
+    Existe un \(h > 0\) tal que el PVI~\ref{eq:ex_unicidad:teoria:pvi} 
+    \[
+        \begin{cases}
+            x' = f(t, x) \\
+            x(t_0) = x_0
+        \end{cases}
+    \]
+    tiene al menos una solución en \(I = [t_0 - h, t_0 + h]\).
+\end{theorem}
+
+\section{Intervalos máximos de existencia}
+
+En la sección anterior vimos que el teorema de existencia y unicidad local localmente, esto es asegura la existencia
+de un \(h > 0\), arbitrariamente pequeño, tal que el PVI~\ref{eq:ex_unicidad:teoria:pvi} tiene solución 
+única en \(I = [t_0 - h, t_0 + h]\). Veremos que esta solución local se puede prolongar hasta obtener una 
+\emph{solución maximal} que está definida en un intervalo lo más amplio posible.
+
+\begin{definition}[Prolongación de una solución]
+    Sea \(u(t)\) una solución de la ecuación diferencial \(x' = f(t, x)\) definida en un intervalo \(I\).
+    Diremos que \(v(t)\) es una \emph{prolongación} de \(u(t)\) si \(v\) es solución de la ecuación diferencial
+    en un intervalo \(J\) que contiene a \(I\) y \(v(t) = u(t)\) para todo \(t \in I\).
+\end{definition}
+
+Consideramos la solución \(x(t)\) definida \(I = [t_0 - h, t_0 + h]\) garantizada por el teorema~\ref{theorem:ex_unicidad:teoria:teorema},
+si ponemos ahora \(t_1 = t_0 + h\), \(x_1 = x(t_0 + h)\) el PVI
+\[
+    \begin{cases}
+        x' = f(t, x) \\
+        x(t_1) = x_1
+    \end{cases}
+\]
+tiene por el teorema~\ref{theorem:ex_unicidad:teoria:teorema} 
+una solución única \(x_1(t)\) definida en un intervalo \(I_1 = [t_1 - h_1, t_1 + h_1]\), para cierto \(h_1 > 0\).
+Por el resultado de unicidad ha de ser \(x(t) = x_1(t)\) para \(t \in [a, t_0 + h]\) donde \(a = \max\{t_0 - h, t_1 - h_1\}\).
+Así la función \(v(t)\) definida como
+\[
+    v(t) =
+    \begin{cases}
+        x(t), \quad t \in [t_0 - h, t_0 + h] \\
+        x_1(t), \quad t \in [t_0 - h, t_0 + h + h_1]
+    \end{cases}
+\]
+es una prolongación (a la derecha) de \(x(t)\) (análogamente se obtendría una prolongación a la izquierda).
+Repitiendo este proceso obtendríamos una solución en intervalos cada vez más grandes ¿hasta cuando podemos continuar?
+
+\end{document}

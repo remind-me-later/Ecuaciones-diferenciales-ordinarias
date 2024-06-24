@@ -19,15 +19,14 @@ funciones de clase \(C^1\) sobre un intervalo de \(\R\).
 			x'_n &= f_n(t, x_1, x_2, \dots, x_n)}\]
 \end{definition}
 
-\begin{definition}
-	\label{def:siseq1ord}
+\begin{definition}\label{def:siseq1ord}
 	Un \emph{sistema de ecuaciones diferenciales lineales de primer orden} es de la
 	forma
 	\[\eqsys{
-			x'_1 &= a_{11}(t)x_1 + a_{12}(t)x_2 + \dots + a_{1n}(t)x_n + b_1(t) \\
-			x'_2 &= a_{21}(t)x_1 + a_{22}(t)x_2 + \dots + a_{2n}(t)x_n + b_2(t) \\
+			x'_1 &= a_{11}(t)x_1 + a_{12}(t)x_2 + \cdots + a_{1n}(t)x_n + b_1(t) \\
+			x'_2 &= a_{21}(t)x_1 + a_{22}(t)x_2 + \cdots + a_{2n}(t)x_n + b_2(t) \\
 			&\vdots \\
-			x'_n &= a_{n1}(t)x_1 + a_{n2}(t)x_2 + \dots + a_{nn}(t)x_n + b_n(t)}\]
+			x'_n &= a_{n1}(t)x_1 + a_{n2}(t)x_2 + \cdots + a_{nn}(t)x_n + b_n(t)}\]
 	donde \(a_{ij}\), \(b_i\) son funciones continuas en un intervalo
 	\((\alpha, \omega) \subset \R\) para \(i,j = 1, \dots, n\).
 \end{definition}
@@ -45,7 +44,7 @@ donde \(\vec{x} : (\alpha, \omega) \subset \R \to \R^n\),
 	A = A(t) = \mat{a_{ij}(t)}^n_{i,j = 1},\quad
 	\vec{b} = \vec{b}(t) = \mat{b_1(t) \\ b_2(t) \\ \vdots \\ b_n(t)} \]
 y las derivadas e integrales se aplican \textquote{coordenada a coordenada},
-i. e.
+i.e.
 \[\vec{x}' = \mat{x'_1(t) \\ x'_2(t) \\ \vdots \\ x'_n(t)}
 	= \mat{x'_1 \\ x'_2 \\ \vdots \\ x'_n}, \quad
 	A' = \mat{a'_{ij}(t)}^n_{i,j = 1}, \quad
@@ -116,13 +115,13 @@ a lo visto en esa materia.
 
 \begin{theorem}[Punto fijo de Banach]
 	Sean \((X, d)\) un espacio métrico completo y \(T : X \to X\) una aplicación
-	contractiva (es decir, Lipschitz con constante \(\alpha \in [0, 1)\)),
+	contractiva (es decir, Lipschitz con constante \(\alpha \in \closedopen{0}{1}\)),
 	entonces \(T\) tiene un único punto fijo.
 \end{theorem}
 
 Este teorema tiene una consecuencia que nos será muy útil.
 
-\begin{corollary} \label{cor:banach_fixed_point}
+\begin{corollary}\label{cor:banach_fixed_point}
 	Sean \((X, d)\) un espacio métrico completo y \(T : X \to X\) tal que
 	\(T^m = T \circ \overset{m}{\cdots} \circ T\) es contractiva para algún
 	\(m \in \N\), entonces \(T\) tiene un único punto fijo.
@@ -152,14 +151,14 @@ Definimos ahora la distancia respecto a la cual el espacio
 	es una norma (basta usar que \(\norm{\cdot}_2\) es una norma y las
 	propiedades del máximo).
 
-	Para ver que es completo, consideramos \((\vec{f}_n)_n\) una sucesión de
+	Para ver que es completo, consideramos \({(\vec{f}_n)}_n\) una sucesión de
 	Cauchy arbitraria en \(C([\tilde{\alpha}, \tilde{\omega}], \R^n)\),
 	lo que quiere decir que para cualquier \(\epsilon > 0\) existe un
 	natural \(N_0\) tal que si \(n, m \geq N_0\) entonces
 	\[\norm{\vec{f}_n - \vec{f}_m}_\infty
 		= d(\vec{f}_n, \vec{f}_m) < \epsilon.\]
 	Fijamos ahora \(t_0 \in [\tilde{\alpha}, \tilde{\omega}]\) y consideramos la
-	sucesión \((\vec{f}_n(t_0))_n \subset \R^n\), que es de Cauchy porque
+	sucesión \({(\vec{f}_n(t_0))}_n \subset \R^n\), que es de Cauchy porque
 	\[\norm{\vec{f}_n(t_0) - \vec{f}_m(t_0)}_2
 		\leq \norm{\vec{f}_n - \vec{f}_m}_\infty.\]
 	Usamos la completitud de \(\R^n\) para obtener un límite
@@ -193,7 +192,7 @@ Definimos ahora la distancia respecto a la cual el espacio
 Para demostrar el teorema de existencia y unicidad de la solución, únicamente
 nos queda por ver que existe un \(m \in \N\) tal que \(T^m\) es contractiva.
 
-\begin{lemma} \label{prop:operator_int_ineq}
+\begin{lemma}\label{prop:operator_int_ineq}
 	Sean \(\vec{f}, \vec{g} \in C([\tilde{\alpha}, \tilde{\omega}], \R^n)\) y
 	\(t \in [\tilde{\alpha}, \tilde{\omega}]\). Se cumple
 	\[\norm{T(\vec{f})(t) - T(\vec{g})(t)}_2
@@ -214,7 +213,7 @@ nos queda por ver que existe un \(m \in \N\) tal que \(T^m\) es contractiva.
 			\frac{\norm{M \vec{x}}_2}{\norm{\vec{x}}_2}.\]
 \end{definition}
 
-\begin{remark} \label{prop:norm_op_eq}
+\begin{remark}\label{prop:norm_op_eq}
 	Para toda matriz \(M \in \mathcal{M}_{n \times n}\) y todo
 	\(\vec{x} \in \R^n\), se cumple
 	\[\norm{M \vec{x}}_2 \leq \norm{M}_{op} \norm{\vec{x}}_2.\]
@@ -248,7 +247,7 @@ es decir, \(T\) es Lipschitz de constante
 constante fuera menor que 1; en caso contrario, aún nos queda un poco de
 trabajo.
 
-\begin{lemma} \label{lem:desinfty}
+\begin{lemma}\label{lem:desinfty}
 	Para todo \(m \in \N\) se da la desigualdad
 	\[\norm{T^m(\vec{f})(t) - T^m(\vec{g})(t)}_2
 		\leq \frac{\norm{A}^m_\infty}{m!} \abs{t - t_0}^m
@@ -293,10 +292,10 @@ trabajo.
 	no hace falta la linealidad.
 \end{remark}
 
-\begin{corollary} \label{cor:T_norm_infty_ineq}
+\begin{corollary}\label{cor:T_norm_infty_ineq}
 	Se da la desigualdad
 	\[\norm{T^m(\vec{f}) - T^m(\vec{g})}_\infty
-		\leq \frac{\norm{A}^m_\infty}{m!} (\tilde{\omega} - \tilde{\alpha})^m
+		\leq \frac{\norm{A}^m_\infty}{m!} {(\tilde{\omega} - \tilde{\alpha})}^m
 		\norm{\vec{f} - \vec{g}}_\infty.\]
 \end{corollary}
 
@@ -339,7 +338,7 @@ para aproximar la solución del PVI escogiendo un punto inicial simple
 solución del PVI, este método se conoce como método de las iteraciones de
 Picard.
 
-\begin{corollary}[Iteraciones de Picard]
+\begin{corollary}[Iteraciones de Picard]\label{cor:picard_iter_lin}
 	La solución al anterior problema de valor inicial es el límite de la
 	sucesión
 	\[\eqsys{
@@ -360,7 +359,7 @@ Picard.
     definición recursiva obtenemos
 	\[x_1 = T(x_0) = x_0 + \int_0^t a x_0 \dif s = x_0 + x_0 a t,\]
 	e iterando tenemos
-	\[x_n = T(x_{n - 1}) = x_0 \sum_{k = 0}^n \frac{(at)^k}{k!}.\]
+	\[x_n = T(x_{n - 1}) = x_0 \sum_{k = 0}^n \frac{{(at)}^k}{k!}.\]
 	Cuando \(n\) tiende a infinito nos queda
 	\(x = \lim_n x_n = x_0 e^{at}\).
 \end{solution}
@@ -436,7 +435,7 @@ general del sistema es \(\Phi(t)\vec{c}\) con \(\vec{c} \in \R^n\):
 	Sea \(\Phi(t)\) una matriz cuyas columnas son solución del sistema
 	\(\vec{x}' = A(t)\vec{x}\). Las siguientes afirmaciones son equivalentes:
 	\begin{multicols}{2}
-	\begin{enumerate}[i)]
+	\begin{enumerate}[(i)]
 		\item \(\Phi(t)\) es matriz fundamental.
 
 		\item \(\det(\Phi(t)) \neq 0 \ \forall t \in (\alpha, \omega)\).
@@ -504,8 +503,7 @@ con lo que queda demostrado el siguiente teorema:
 
 \section{Ecuación escalar de orden superior}
 
-\begin{definition}
-	\label{def:ecordsup}
+\begin{definition}\label{def:ecordsup}
 	Una ecuación diferencial lineal de orden superior es una ecuación de la
 	forma
 	\[x^{(n)} = a_n(t) x^{(n - 1)} + \cdots + a_1(t)x + a_0(t).\]
@@ -544,18 +542,18 @@ Si \(\vec{\phi}_1, \dots, \vec{\phi}_n\) son soluciones linealmente
 independientes de~\ref{def:ecordsup}, la matriz fundamental asociada al 
 sistema equivalente es
 \[\Phi(t) = \mat{
-		\phi_1 & \dots & \phi_n \\
-		\phi'_1 & \dots & \phi'_n \\
+		\phi_1 & \cdots & \phi_n \\
+		\phi'_1 & \cdots & \phi'_n \\
 		\vdots & \ddots & \vdots \\
-		\phi^{(n - 1)}_1 & \dots & \phi^{(n - 1)}_n}.\]
+		\phi^{(n - 1)}_1 & \cdots & \phi^{(n - 1)}_n}.\]
 
 \begin{definition}[Wronskiano]
 	Llamaremos \emph{Wronskiano} de \(\phi_1, \dots, \phi_n\) al determinante
 	\[W(\phi_1, \dots, \phi_n)(t) \eqdef \det\mat{
-			\phi_1(t) & \dots & \phi_n(t) \\
-			\phi'_1(t) & \dots & \phi'_n(t) \\
+			\phi_1(t) & \cdots & \phi_n(t) \\
+			\phi'_1(t) & \cdots & \phi'_n(t) \\
 			\vdots & \ddots & \vdots \\
-			\phi^{(n - 1)}_1(t) & \dots & \phi^{(n - 1)}_n(t) \\
+			\phi^{(n - 1)}_1(t) & \cdots & \phi^{(n - 1)}_n(t) \\
 		}, \quad t \in (\alpha, \omega).\]
 \end{definition}
 
@@ -575,8 +573,7 @@ En el caso matricial veremos que una matriz fundamental es
 \(\Phi(t) = e^{At}\), aunque primero tendremos que definir la exponencial de una
 matriz y obtener métodos para computarla.
 
-\begin{lemma}
-	\label{lem:expphi}
+\begin{lemma}\label{lem:expphi}
 	Sea \(\Phi(t)\) la matriz fundamental asociada a las soluciones de
 	\[\eqsys{
 		\vec{x}' = A\vec{x} \\
@@ -588,7 +585,7 @@ matriz y obtener métodos para computarla.
 
 	Se dan las siguientes igualdades:
 	\begin{multicols}{3}
-		\begin{enumerate}[i)]
+		\begin{enumerate}[(i)]
 			\item \(\displaystyle \Phi(0) = \mathit{Id}\)
 
 			\item \(\displaystyle \Phi(t + s) = \Phi(t) \Phi(s)\)
@@ -599,7 +596,7 @@ matriz y obtener métodos para computarla.
 \end{lemma}
 
 \begin{proof}
-	\begin{enumerate}[i), wide, labelwidth=0pt, labelindent=0pt]
+	\begin{enumerate}[(i), wide, labelwidth=0pt, labelindent=0pt]
 		\item La primera igualdad se sigue directamente de la definición.
 
 		\item Fijamos \(s\) y consideramos el problema de valor inicial
@@ -626,7 +623,7 @@ Para la matriz fundamental \(\Phi\) así definida,
 
 Notamos que la matriz que acabamos de definir \(\Phi\) tiene muchas de las
 propiedades de la función exponencial, de hecho más adelante demostraremos que
-\(\Phi(t) = \sum_{k=0}^\infty (tA)^k/k!\), por ahora nos contentamos con la
+\(\Phi(t) = \sum_{k=0}^\infty {(tA)}^k/{k!}\), por ahora nos contentamos con la
 siguiente definición:
 
 \begin{definition}[Exponencial de una matriz]
@@ -642,7 +639,7 @@ definición de forma análoga a las propiedades de la exponencial real.
 \begin{proposition}
 	Se cumplen las siguientes igualdades.
 	\begin{multicols}{2}
-		\begin{enumerate}[i)]
+		\begin{enumerate}[(i)]
 			\item \(\displaystyle e^0 = \mathit{Id}\)
 
 			\item \(\displaystyle e^{(t + s)A} = e^{tA} e^{sA}\)
@@ -663,7 +660,7 @@ definición de forma análoga a las propiedades de la exponencial real.
 	La matriz \(\Phi(t)\) definida en~\ref{lem:expphi} es igual a \(e^{At}\),
 	dicho de otro modo:
 	\[\Phi(t) = \sum_{k = 0}^\infty \frac{t^k A^k}{k!} =
-		\sum_{k = 0}^\infty \frac{(tA)^k}{k!}.\]
+		\sum_{k = 0}^\infty \frac{{(tA)}^k}{k!}.\]
 \end{theorem}
 
 \begin{proof}
@@ -705,7 +702,7 @@ caso diagonalizable se sigue casi directamente.
 
 \begin{proposition}
 	Sea \(A\) una matriz diagonal, podemos expresar \(e^{At}\) como:
-	\[e^{At} = \exp\mat{\lambda_1t & & \\ & \ddots & \\ & & \lambda_nt}
+	\[e^{At} = \exp\mat{\lambda_1 t & & \\ & \ddots & \\ & & \lambda_n t}
 		= \mat{e^{\lambda_1 t} & & \\ & \ddots & \\ & & e^{\lambda_n t}}.\]
 \end{proposition}
 
@@ -740,7 +737,7 @@ Para convencernos lo comprobamos también directamente.
 
 \begin{proof}
 	Tenemos que
-	\[e^{At} = \exp\smat{\lambda_1t & & \\ & \ddots & \\ & & \lambda_nt}
+	\[e^{At} = \exp\smat{\lambda_1 t & & \\ & \ddots & \\ & & \lambda_n t}
 		= \sum_{k = 0}^\infty
 		\frac{1}{k!}\smat{\lambda_1 & & \\ & \ddots & \\ & & \lambda_n}^k t^k
 		= \sum_{k = 0}^\infty
@@ -750,10 +747,10 @@ Para convencernos lo comprobamos también directamente.
 	\[\sum_{k = 0}^\infty \frac{1}{k!} 
 			\smat{\lambda_1 t & & \\ & \ddots & \\ & & \lambda_n t}^k
 		= \sum_{k = 0}^\infty \frac{1}{k!} 
-			\smat{(\lambda_1 t)^k & & \\ & \ddots & \\ & & (\lambda_n t)^k}
-		= \mat{\sum_{k = 0}^\infty \frac{(\lambda_1 t)^k}{k!} & & \\
+			\smat{{(\lambda_1 t)}^k & & \\ & \ddots & \\ & & {(\lambda_n t)}^k}
+		= \mat{\sum_{k = 0}^\infty \frac{{(\lambda_1 t)}^k}{k!} & & \\
 			& \ddots &
-			\\ & & \sum_{k = 0}^\infty \frac{(\lambda_n t)^k}{k!}}.\]
+			\\ & & \sum_{k = 0}^\infty \frac{{(\lambda_n t)}^k}{k!}}.\]
 \end{proof}
 
 \subsection{Matrices diagonalizables con autovalores reales}
@@ -764,7 +761,7 @@ Por álgebra lineal sabemos que si \(\{\vec{v}_1, \vec{v}_2, \dots, \vec{v}_n\}\
 es una base de autovectores asociados, entonces
 \[P^{-1} A P = D = \mat{\lambda_1 && \\ & \ddots & \\ && \lambda_n}
 	\quad \text{siendo} \quad
-	P = \mat{\vec{v}_1 & \vec{v}_2 & \dots & \vec{v}_n}.\]
+	P = \mat{\vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n}.\]
 
 Gracias a esta descomposición podremos demostrar el siguiente teorema.
 
@@ -808,14 +805,12 @@ Gracias a esta descomposición podremos demostrar el siguiente teorema.
 
 Tras estos preámbulos, podemos obtener una expresión explícita del espacio de
 soluciones:
-\begin{align*}
-	\vec{x} &= P\vec{y} = \mat{\vec{v}_1 & \dots & \vec{v}_n} 
+\[
+	\vec{x} = P\vec{y} = \mat{\vec{v}_1 & \cdots & \vec{v}_n} 
 		\mat{k_1 e^{\lambda_1 t} \\ \vdots \\ k_n e^{\lambda_n t}} =
 	k_1 e^{\lambda_1 t} \vec{v}_1 + \cdots + k_n e^{\lambda_n t}\vec{v}_n,
-\end{align*}
-lo que quiere decir que el espacio de soluciones es el espacio vectorial
-generado por los vectores
-\(\set{e^{\lambda_1 t} \vec{v}_1, \dots, e^{\lambda_n t} \vec{v}_n}\).
+\]
+lo que quiere decir que \(\set{e^{\lambda_1 t} \vec{v}_1, \dots, e^{\lambda_n t} \vec{v}_n}\) es una base del espacio de soluciones.
 
 \subsection{Matrices diagonalizables con autovalores complejos}
 
@@ -845,8 +840,8 @@ semejante a la original cuya exponencial sea fácilmente computable.
 	a_i\lambda_0^i = 0\), entonces
 
 	\[0 = \conjugate{0} = \conjugate{\parens{\sum_{i=1}^n a_i\lambda_0^i}} 
-		= \sum_{i=1}^n \conjugate{a_i}(\conjugate{\lambda_0})^i 
-		= \sum_{i=1}^n a_i(\conjugate{\lambda_0})^i 
+		= \sum_{i=1}^n \conjugate{a_i}{(\conjugate{\lambda_0})}^i 
+		= \sum_{i=1}^n a_i{(\conjugate{\lambda_0})}^i 
 		= p(\conjugate{\lambda_0}).\]
 \end{proof}
 
@@ -1197,18 +1192,14 @@ hay alguno complejo, hay que trabajar un poco más.
 	bloques. Dependiendo de sus autovalores estos bloques pueden tomar dos
 	formas:
 	\begin{enumerate}[align=left]
-		\item[si \(\lambda\) es un autovalor real de \(A\):] 
+		\item[\(\lambda \in \R\):] 
 			\[B_\lambda = \mat{\lambda & 1 & & \\ & \lambda & \ddots & \\ & & \ddots & 1 \\ & & & \lambda}.\]
 
-		\item[si \(\lambda = a + \iu b\), \(b > 0\),
-			es un autovalor complejo de \(A\):]
+		\item[\(\lambda = a + \iu b \in \Complex\), \(b > 0\):]
 			\[B_\lambda = 
 				\mat{D & I_2 & & \\ & D & \ddots & \\ & & \ddots &
 				I_2 \\ & & & D}
-				= \mat{a & b & 1 & 0 \\ -b & a & 0 & 1 
-					\\ && a & b & 1 & 0 \\ && -b & a & 0 & 1
-					\\ &&&&& \ddots & \ddots 
-					 \\ &&&&&& a & b & 1 & 0 \\ &&&&&& -b & a & 0 & 1}.\]
+				\quad \text{con} \quad D = \mat{a & b \\ -b & a}.\]
 	\end{enumerate}
 \end{theorem}
 
@@ -1279,7 +1270,7 @@ bloque de tamaño mayor que 1:
 		&   &   & \ddots & \ddots &   \\
 		&   &   &        & \ddots & 1 \\
 		&   &   &        &        & 0 \\} \qquad
-	(B_j - \lambda I)^2 =
+	{(B_j - \lambda I)}^2 =
 	\mat{0 & 0 & 1      &        &        &   \\
 		& 0 & 0      & 1      &        &   \\
 		&   & \ddots & \ddots & \ddots &   \\
@@ -1288,28 +1279,28 @@ bloque de tamaño mayor que 1:
 		&   &        &        &        & 0 \\},
 \]
 por lo que
-\(\dim \ker (B - \lambda I)^2 = \nu_1(\lambda) + 2 \sum_{i=2}^r
+\(\dim \ker {(B - \lambda I)}^2 = \nu_1(\lambda) + 2 \sum_{i=2}^r
 \nu_i(\lambda)\). Análogamente, para las terceras potencias se tiene
-\(\dim \ker (B - \lambda I)^3 = \nu_1(\lambda) + 2\nu_2(\lambda) + 3
+\(\dim \ker {(B - \lambda I)}^3 = \nu_1(\lambda) + 2\nu_2(\lambda) + 3
 \sum_{i=3}^r \nu_i(\lambda)\) y, en general, para \(k = 1, \dots, r\):
 \begin{align*}
-	\dim \ker (B - \lambda I)^k & = \sum_{i=1}^{k-1} i \nu_i(\lambda) + k
+	\dim \ker {(B - \lambda I)}^k & = \sum_{i=1}^{k-1} i \nu_i(\lambda) + k
 	\sum_{i=k}^r \nu_i(\lambda)                                                         \\
 	                            & = \nu_1(\lambda) + \cdots + (k-1)\nu_{k-1}(\lambda) +
 	k[\nu_k(\lambda) + \cdots + \nu_r(\lambda)]
 \end{align*}
 
 \begin{remark}
-	\(P(B - \lambda I)^kP^{-1} = (A - \lambda I)^k\) y, como el rango es
-	invariante por semejanza, \(\dim \ker (A - \lambda I)^k = \dim \ker (B -
-	\lambda I)^k\).
+	Se da la igualdad: \(P{(B - \lambda I)}^k P^{-1} = {(A - \lambda I)}^k\) y, como el rango es
+	invariante por semejanza, \(\dim \ker {(A - \lambda I)}^k = \dim \ker{(B -
+	\lambda I)}^k\).
 \end{remark}
 
 \begin{remark}
 	Los números \(\nu_i(\lambda)\) caracterizan \(B\), salvo permutación de bloques.
 \end{remark}
 
-Denotamos \(\delta_i(\lambda) = \dim \ker (A - \lambda I)^i\). De esta forma,
+Denotamos \(\delta_i(\lambda) = \dim \ker {(A - \lambda I)}^i\). De esta forma,
 \(r\) es el menor número natural tal que \(\delta_r(\lambda) =
 \delta_{r+1}(\lambda)\) y se verifica
 

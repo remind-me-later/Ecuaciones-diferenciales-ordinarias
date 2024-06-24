@@ -9,28 +9,28 @@ elemental\footnote{\url{https://es.wikipedia.org/wiki/Función_elemental}}) que
 proporciona todo el conjunto de soluciones.
 
 \begin{definition}
-    Las ecuaciones diferenciales lineales \emph{de primer orden} son aquellas de
-    la forma
+	Las ecuaciones diferenciales lineales \emph{de primer orden} son aquellas de
+	la forma
 	\[x' = a(t)x + b(t)\]
-	donde \(a\) y \(b\) son continuas en \((\alpha, \omega) \subset \R\).
+	donde \(a\) y \(b\) son continuas en \(\openopen{\alpha}{\omega} \subset \R\).
 \end{definition}
 
 Antes de resolver estas ecuaciones, centraremos nuestra atención en un problema
 más simple, la obtención de soluciones de una ecuación lineal homogénea de
 primer orden asociada a la ecuación original.
 
-\section{Ecuación lineal homogénea de primer orden} \label{sec:hom}
+\section{Ecuación lineal homogénea de primer orden}\label{sec:hom}
 
 \begin{definition}
-    Una ecuación diferencial lineal \emph{homogénea de primer orden} es una
-    ecuación de la forma
+	Una ecuación diferencial lineal \emph{homogénea de primer orden} es una
+	ecuación de la forma
 	\[x' = a(t)x.\]
-	con \(a\) continua en \((\alpha, \omega) \subset \R\).
+	con \(a\) continua en \(\openopen{\alpha}{\omega} \subset \R\).
 \end{definition}
 
 Buscamos ahora las soluciones de la ecuación homogénea. Supongamos que la
 solución no se anula en ningún punto, entonces por el teorema de Bolzano
-\(x > 0\) o \(x < 0\) en \((\alpha, \omega)\). En este caso recurrimos a un
+\(x > 0\) o \(x < 0\) en \(\openopen{\alpha}{\omega}\). En este caso recurrimos a un
 método que llamaremos \emph{separación de variables}, por el teorema fundamental
 del cálculo podemos escribir
 \[\frac{x'(t)}{x(t)} = a(t) \iff \log\abs{x(t)}
@@ -38,7 +38,7 @@ del cálculo podemos escribir
 	\quad \beta \in (\alpha, \omega).\]
 Para aligerar la notación escribiremos \(\int^t a(s) \dif s\) para referirnos
 a cualquier primitiva de \(a\). De lo anterior se deduce
-\[x(t) = k e^{\int^t a(s) \dif s} \quad k \in \R,\]
+\[x(t) = k \expf{\int^t a(s) \dif s} \quad k \in \R,\]
 
 donde el valor absoluto se puede eliminar incluyendo el signo dentro de la
 constante \(k\).
@@ -46,29 +46,31 @@ constante \(k\).
 Vamos a demostrar ahora que la solución obtenida es la solución general de la
 ecuación homogénea.
 
-\begin{theorem} \label{thm:sol_gen}
+\begin{theorem}\label{thm:sol_gen}
 	Todas las soluciones de una ecuación diferencial lineal homogénea
 	\(x' = a(t)x\) son de la forma
-	\[x(t) = k e^{\int^t a(s) \dif s}.\]
+	\begin{equation}\label{eq:sol_eq_lin_hom_1_ord}
+		x(t) = k \expf{\int^t a(s) \dif s}.
+	\end{equation}
 \end{theorem}
 
 \begin{proof}
 	Primero probamos que el miembro de la derecha es, en efecto,
 	solución de la ecuación homogénea, para ello basta derivar:
-	\[x'(t) = k a(t) e^{\int^t a(s) \dif s} = a(t) x(t).\]
+	\[x'(t) = k a(t) \expf{\int^t a(s) \dif s} = a(t) x(t).\]
 
 	Probamos ahora que no existen más soluciones, para ello, sea \(u(t)\) una
-	solución arbitraria de la ecuación, consideramos la función
-	\[\phi(t) = u(t) e^{-\int^t a(s) \dif s}\]
-	y calculamos su derivada obteniendo
+	solución arbitraria de la ecuación y consideramos la función
+	\[\phi(t) = u(t) \expf{-\int^t a(s) \dif s}.\]
+	Calculamos su derivada obteniendo
 	\begin{align*}
-		\phi'(t) & = u'(t) e^{-\int^t a(s) \dif s}
-		- u(t) a(t) e^{-\int^t a(s) \dif s}            \\
-		         & = a(t) u(t) e^{-\int^t a(s) \dif s}
-		- u(t) a(t) e^{-\int^t a(s) \dif s} = 0.
+		\phi'(t) & = u'(t) \expf{-\int^t a(s) \dif s}
+		- u(t) a(t) \expf{-\int^t a(s) \dif s}            \\
+		         & = a(t) u(t) \expf{-\int^t a(s) \dif s}
+		- u(t) a(t) \expf{-\int^t a(s) \dif s} = 0.
 	\end{align*}
 	De aquí se deduce que la función \(\phi\) es constante, por lo que
-	\(u(t) = k e^{\int^t a(s) \dif s}\).
+	\(u(t) = k \expf{\int^t a(s) \dif s}\).
 \end{proof}
 
 \begin{example}
@@ -77,66 +79,67 @@ ecuación homogénea.
 
 \begin{solution}
 	Utilizando la técnica de separación de variables vista anteriormente
-	\[\frac{y'}{y} = -2t \iff \log\abs{y} = -t^2 + c \iff y = k e^{-t^2}\]
+	\[\frac{y'}{y} = -2t \iff \log\abs{y} = -t^2 + c \iff y = k \expf{-t^2}\]
 \end{solution}
 
-\subsection{Problema de valor inicial} \label{sec:pvi}
+\subsection{Problema de valor inicial}\label{sec:pvi}
 
 Vemos cómo se plantea el problema de valor inicial en el caso de ecuaciones
 homogéneas.
 
 \begin{theorem}
-	Sea \(x' = a(t)x\) una ecuación lineal homogénea de primer orden y 
-	\(x(t_0) = x_0\) para algún \(t_0 \in (\alpha, \omega)\) y \(x_0 \in \R\).
-	La solución de este problema de valor inicial es única y viene dada por:
-	\[x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s}.\]
+	El problema de valor inicial
+	\[
+		\eqsys{
+			x' = a(t) x & a \in C\openopen{\alpha}{\omega}  \\
+			x(t_0) = x_0, & t_0 \in \openopen{\alpha}{\omega}, \quad x_0 \in \R
+		}
+	\]
+	Tiene solución única dada por:
+	\[x(t) = x_0 \expf{\int_{t_0}^t a(s) \dif s}.\]
 \end{theorem}
 
 \begin{proof}
-	Sabemos que la solución general de la ecuación es la 
-	vista en el teorema~\ref{thm:sol_gen} y podemos usar la libertad que 
-	tenemos para elegir la primitiva para ponerla como
-	\[x(t) = k e^{\int_{t_0}^t a(s) \dif s},\]
-	ahora queremos que \(x(t_0) = x_0\), para ello notamos que
-	\[x_0 = x(t_0) = k e^{\int_{t_0}^{t_0} a(s) \dif s} = ke^0 = k.\]
-	Hemos probado así que el problema de valor inicial tiene solución única,
-	dada por
-	\[x(t) = x_0 e^{\int_{t_0}^t a(s) \dif s}\]
-	y además la solución está bien definida en el intervalo 
-	\((\alpha, \omega)\).
+	La solución general de la ecuación es~\eqref{eq:sol_eq_lin_hom_1_ord} y podemos usar la libertad que
+	tenemos para elegir la primitiva para escribirla como
+	\[x(t) = k \expf{\int_{t_0}^t a(s) \dif s},\]
+	ahora, sabemos que \(x(t_0) = x_0\), y sin más que evaluar:
+	\[x_0 = x(t_0) = k \expf{\int_{t_0}^{t_0} a(s) \dif s} = k\expf0 = k.\]
+	Hemos probado así el resultado y además la solución está bien definida en
+	\(\openopen{\alpha}{\omega}\). (¿Por qué?)
 \end{proof}
 
 \subsection{Estructura del espacio de soluciones}
 
 Observamos que el conjunto de soluciones de una ecuación lineal homogénea de
 primer orden es un espacio vectorial de dimensión 1, o más precisamente un
-subespacio vectorial de dimensión 1 de \(C^1(\alpha, \omega)\), es decir, el
+subespacio vectorial de dimensión 1 de \(C^1\openopen{\alpha}{\omega}\), es decir, el
 espacio vectorial de funciones de clase \(C^1\) en el intervalo
-\((\alpha, \omega) \subset \R\).
+\(\openopen{\alpha}{\omega} \subset \R\).
 
 Vamos a ver cómo esto se deduce de la linealidad de la ecuación. Para ello
 definimos el operador diferencial
 \begin{align*}
-	L : C^1(\alpha, \omega) & \to C(\alpha, \omega)              \\
+	L : C^1\openopen{\alpha}{\omega} & \to C\openopen{\alpha}{\omega} \\
 	x                       & \mapsto \frac{d x}{\dif t} - a(t)x.
 \end{align*}
 Recordamos que decimos que una aplicación es lineal cuando cumple
 \[f(ax + by) = af(x) + bf(y), \quad a, b \in \mathbb{K},\] entonces la
 linealidad de \(L\) se deduce de la linealidad de la derivada y el producto.
- 
+
 \begin{theorem}
 	El conjunto de soluciones de una ecuación lineal homogénea de
-	primer orden es un subespacio de dimensión 1 del espacio vectorial 
-	\(C^1(\alpha, \omega)\).
+	primer orden es un subespacio de dimensión 1 del espacio vectorial
+	\(C^1\openopen{\alpha}{\omega}\).
 \end{theorem}
 
 \begin{proof}
-    La linealidad de la ecuación diferencial equivale a la linealidad de \(L\)
-    y, además, \(x\) es solución de \(x' = a(t)x\) si y solo si
-    \(x \in \text{ker}(L)\). Sabemos del Álgebra Lineal que el núcleo de un
-    homomorfismo vectorial es siempre un subespacio vectorial del espacio de
-    dominio y, por tanto, el conjunto de soluciones de la ecuación homogénea
-    tiene estructura de espacio vectorial.
+	La linealidad de la ecuación diferencial equivale a la linealidad de \(L\)
+	y, además, \(x\) es solución de \(x' = a(t)x\) si y solo si
+	\(x \in \lker{L}\). Sabemos del Álgebra Lineal que el núcleo de un
+	homomorfismo vectorial es siempre un subespacio vectorial del espacio de
+	dominio y, por tanto, el conjunto de soluciones de la ecuación homogénea
+	tiene estructura de espacio vectorial.
 \end{proof}
 
 \section{Operador diferencial asociado}
@@ -146,11 +149,14 @@ para ecuaciones lineales de primer orden no homogéneas de forma sencilla.
 
 \begin{definition}[Operador diferencial asociado]
 	Dada una ecuación diferencial lineal homogénea de la forma
-	\[x^{(n)}(t) = a_{n-1}(t)x^{(n - 1)}(t) + \dots + a_0(t)x(t),\]
-	definimos su \emph{operador diferencial asociado} 
-	\(L : C^n(\alpha, \omega) \to C(\alpha, \omega)\) como:
-	\[L \eqdef \frac{d^n}{\dif t^n} - a_{n-1}(t)\frac{d^{n-1}}{\dif t^{n-1}}
-		- \dots - a_1(t)\frac{d}{\dif t} - a_0(t).\]
+	\[x^{(n)}(t) = a_{n-1}(t)x^{(n - 1)}(t) + \cdots + a_0(t)x(t),\]
+	definimos su \emph{operador diferencial asociado}
+	\(L\) como:
+	\begin{align*}
+		L : C^n(\alpha, \omega) &\to C(\alpha, \omega) \\
+		x &\mapsto \frac{d^n x}{\dif t^n} - a_{n-1}(t)\frac{d^{n-1} x}{\dif t^{n-1}}
+		- \cdots - a_1(t)\frac{d x}{\dif t} - a_0(t).
+	\end{align*}
 \end{definition}
 
 \begin{proposition}
@@ -160,8 +166,8 @@ para ecuaciones lineales de primer orden no homogéneas de forma sencilla.
 \begin{proof}
 	El término \(k\)-ésimo \(a_k(t) d^k/\dif t^k\) actúa sobre una
 	función \(u(t)\) como
-	\[\left(a_k(t)\frac{d^k}{\dif t^k}\right)(u(t)) = a_k(t) 
-		\frac{d^ku}{\dif t^k}(t) = a_k(t) u^{(k)}(t).\]
+	\[\left(a_k(t)\frac{d^k}{\dif t^k}\right)(u(t)) = a_k(t)
+		\frac{d^k u(t)}{\dif t^k} = a_k(t) u^{(k)}(t).\]
 	Como derivar es lineal,
 	\[\frac{d}{\dif t} (\alpha u(t) + \beta v(t))
 		= \alpha \frac{d}{\dif t} u(t) + \beta \frac{d}{\dif t} v(t),\]
@@ -169,23 +175,19 @@ para ecuaciones lineales de primer orden no homogéneas de forma sencilla.
 	\[a(t)(\alpha u(t) + \beta v(t)) = \alpha a(t) u(t) + \beta a(t) u(t),\]
 	el operador composición de las anteriores \(a_k(t) d^k/\dif t^k\) es
 	lineal. Tenemos así que \(L\) es lineal, asumiendo que
-	\(a_k(t) \in C(\alpha, \omega)\) para todo \(k=0, \dots, n-1\).
+	\(a_k(t) \in C\openopen{\alpha}{\omega}\) para todo \(k \in \set{0, \dots, n-1}\).
 \end{proof}
 
-\begin{remark}
-	Las soluciones de una ecuación diferencial homogénea corresponden a las
-    funciones \(x\) tales que \(L(x(t)) = 0\), por lo que el conjunto de
-    soluciones es el núcleo del operador \(L\) así definido, el cual es un 
-	espacio vectorial de dimensión \(n\).
-\end{remark}
+Las soluciones de una ecuación diferencial homogénea corresponden a las
+funciones \(x\) tales que \(L(x(t)) = 0\), por lo que el conjunto de
+soluciones es el núcleo del operador \(L\) así definido, el cual es un
+espacio vectorial de dimensión \(n\).
 
-\begin{remark}
-	En general, \(x(t)\) es solución de una ecuación diferencial (no
-    necesariamente homogénea) si y solo si \(L(x(t)) = b(t)\), donde hemos
-    definido \(L\) mediante la ecuación homogénea asociada, por lo que el
-    espacio de soluciones de una ecuación general lineal es un espacio afín de
-    dimensión \(n\).
-\end{remark}
+En general, \(x(t)\) es solución de una ecuación diferencial (no
+necesariamente homogénea) si y solo si \(L(x(t)) = b(t)\), donde hemos
+definido \(L\) mediante la ecuación homogénea asociada, por lo que el
+espacio de soluciones de una ecuación general lineal es un espacio afín de
+dimensión \(n\).
 
 \section{Ecuación diferencial lineal de primer orden}
 
@@ -197,12 +199,13 @@ orden no homogénea
 \[x' = a(t)x + b(t).\]
 
 Consideramos para ello el operador diferencial asociado a su ecuación homogénea
-\[L \eqdef \frac{d}{\dif t} - a(t).\]
+\[L(x) \eqdef \frac{dx}{\dif t} - a(t).\]
 
 \begin{lemma}
-	Si \(x_p\) es solución de una ecuación diferencial lineal y \(x_0\) es
-	solución de la ecuación homogénea asociada, entonces \[x_0 + x_p\] también es
-	solución.
+	Sean \(x_p\) una solución de una ecuación diferencial lineal y \(x_0\) una
+	solución de la ecuación homogénea asociada, entonces \(x\) también es
+	solución:
+	\[x \eqdef x_0 + x_p\] 
 \end{lemma}
 
 \begin{proof}
@@ -232,44 +235,46 @@ mediante el método de variación de constantes.
 
 \subsection{Método de variación de constantes}
 
-En la sección~\ref{sec:hom} obtuvimos una forma explícita de calcular una 
-solución de la ecuación homogénea asociada a una ecuación lineal. 
-Utilizando esa fórmula conjeturamos que hay una solución particular de la 
+En la sección~\ref{sec:hom} obtuvimos una forma explícita de calcular una
+solución de la ecuación homogénea asociada a una ecuación lineal. Nos proponemos ahora obtener una fórmula
+general para una ecuación lineal de primer orden.
+
+\begin{theorem}
+	La solución general de una ecuación lineal de primer orden es
+	\begin{equation}\label{eq:sol_lin_1_ord}
+		x(t) = \parens{k + \int^t b(s) \expf{-\int^s a(u) \dif u} \dif s} \expf{\int^t a(s) \dif s}.
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+Utilizando la fórmula~\eqref{eq:sol_eq_lin_hom_1_ord} conjeturamos que hay una solución particular de la
 ecuación lineal de la forma
-\begin{equation} \label{eq:conjetura}
-	x_p(t) = k(t) e^{\int^t a(s) \dif s}
+\begin{equation}\label{eq:conjetura}
+	x_p(t) = k(t) \expf{\int^t a(s) \dif s}
 \end{equation}
 e intentamos obtener \(k(t)\). Buscamos entonces que se cumpla la igualdad
-\[x'_p(t) = a(t)x_p(t) + b(t) = a(t)k(t) e^{\int^t a(s) \dif s} + b(t);\]
+\[x'_p(t) = a(t)x_p(t) + b(t) = a(t)k(t) \expf{\int^t a(s) \dif s} + b(t);\]
 por otro lado, podemos derivar en~\eqref{eq:conjetura} obteniendo
-\[x'_p(t) = k'(t) e^{\int^t a(s) \dif s} + k(t)a(t) e^{\int^t a(s) \dif s}\]
-y simplemente igualando y despejando hallamos la derivada \(k'\):
-\[k'(t) = b(t)e^{-\int^t a(s) \dif s}.\]
-Así, sin más que integrar, tenemos que la solución general de la ecuación
-diferencial es
-\[x(t) = \parens{k + \int^t b(s) e^{-\int^s a(u) \dif u} \dif s}
-	e^{\int^t a(s) \dif s}.\]
-
-\begin{corollary}
-	La solución general de una ecuación lineal de primer orden es
-	\[\parens{k + \int^t b(s) e^{-\int^s a(u) \dif u} \dif s}
-		e^{\int^t a(s) \dif s}.\]
-\end{corollary}
+\[x'_p(t) = k'(t) \expf{\int^t a(s) \dif s} + k(t)a(t) \expf{\int^t a(s) \dif s}\]
+igualando ambas expresiones y despejando hallamos la derivada \(k'\):
+\[k'(t) = b(t)\expf{-\int^t a(s) \dif s}.\]
+Sin más que integrar obtenemos el resultado.
+\end{proof}
 
 No es necesario aprender esta fórmula de memoria; en la práctica, se puede
 utilizar el método de variación de constantes para obtener formas explícitas
-para cada problema en particular.
+para cada problema particular.
 
 \subsection{Problema de valor inicial}
 
 Como de costumbre, consideramos la ecuación diferencial lineal junto a una
-condición \(x(t_0) = x_0\), con \(t_0 \in (\alpha, \omega)\) y \(x_0 \in \R\).
-Consideramos la solución general pero fijando los límites inferiores de las
+condición \(x(t_0) = x_0\), con \(t_0 \in \openopen{\alpha}{\omega}\) y \(x_0 \in \R\).
+Consideramos la solución general~\eqref{eq:sol_lin_1_ord} pero fijando los límites inferiores de las
 integrales a \(t_0\),
-\[x(t) = \parens{k + \int_{t_0}^t b(s) e^{-\int_{t_0}^s a(u) \dif u} \dif s}
-	e^{\int_{t_0}^t a(s) \dif s}\]
+\[x(t) = \parens{k + \int_{t_0}^t b(s) \expf{-\int_{t_0}^s a(u) \dif u} \dif s}
+	\expf{\int_{t_0}^t a(s) \dif s}\]
 
-Sin más que sustituir \(t = t_0\) obtenemos que \(k = x_0\), por lo que
+Sin más que evaluar en \(t = t_0\) obtenemos que \(k = x_0\), por lo que
 nuestra ecuación tiene solución única.
 
 \begin{theorem}
@@ -279,13 +284,13 @@ nuestra ecuación tiene solución única.
 			x(t_0) = x_0, 	  & t_0 \in (\alpha, \omega), \quad x_0 \in \R}\]
 	tiene solución única dada por
 	\[x(t) =
-		\parens{x_0 + \int_{t_0}^t b(s) e^{-\int_{t_0}^s a(u) \dif u} \dif s}
-		e^{\int_{t_0}^t a(s) \dif s}.\]
+		\parens{x_0 + \int_{t_0}^t b(s) \expf{-\int_{t_0}^s a(u) \dif u} \dif s}
+		\expf{\int_{t_0}^t a(s) \dif s}.\]
 \end{theorem}
 
 Las gráficas de las soluciones \textquote{rellenan} la franja
-\((\alpha, \omega) \times \R\) sin cortarse. La rellenan porque para cualquier
-punto \((t_0, x_0) \in (\alpha, \omega) \times \R\) hay una solución que pasa
+\(\openopen{\alpha}{\omega} \times \R\) sin cortarse. La rellenan porque para cualquier
+punto \((t_0, x_0) \in \openopen{\alpha}{\omega} \times \R\) hay una solución que pasa
 por él (existencia de la solución), y no se cortan entre sí porque sólo hay una
 solución que pase por cada punto (unicidad de la solución), como consecuencia
 del teorema anterior.
@@ -299,12 +304,12 @@ del teorema anterior.
 
 \begin{solution}
 	Observamos que, como estamos dividiendo por \(t\), el origen no puede estar
-    en el intervalo de definición \((\alpha, \omega)\) y, como no hay ninguna
-    otra restricción, el intervalo de definición \emph{maximal} debe ser
-    \((-\infty, 0)\) o \((0,+\infty)\); puesto que \(\pi\) sí ha de pertenecer,
-    escogemos \((0, +\infty)\). La ecuación homogénea asociada es
-    \(x' + x/t = 0\), separando variables y calculando primitivas a ambos lados
-    obtenemos
+	en el intervalo de definición \((\alpha, \omega)\) y, como no hay ninguna
+	otra restricción, el intervalo de definición \emph{maximal} debe ser
+	\((-\infty, 0)\) o \((0,+\infty)\); puesto que \(\pi\) sí ha de pertenecer,
+	escogemos \((0, +\infty)\). La ecuación homogénea asociada es
+	\(x' + x/t = 0\), separando variables y calculando primitivas a ambos lados
+	obtenemos
 	\[\frac{x'}{x} = -\frac{1}{t} \iff \log\abs{x}
 		= -\log\abs{t} + c \iff x = \frac{k}{t}.\]
 	Utilizamos la técnica de variación de constantes, considerando
@@ -328,6 +333,8 @@ del teorema anterior.
 	\[x(t) = \frac{1}{t}(\pi + 1 + t \sin t + \cos t).\]
 \end{solution}
 
+\subsection{Factores integrantes}
+
 \section{Propagación de enfermedades}
 
 El pionero en la modelización de la propagación de enfermedades mediante
@@ -344,7 +351,7 @@ enfermas y sanas. Denotaremos \(x(t)\) al número de persona enfermas a tiempo
 sanas. Asumiremos que solo existen personas sanas o enfermas, el SIR también
 incluye personas inmunizadas y muertos, que hacen variar el total de personas en
 nuestro modelo. Haremos un par de hipótesis para simplificar el modelo:
-\begin{enumerate}[i)]
+\begin{enumerate}[(i)]
 	\item \(x'\) depende del número de interacciones entre personas sanas y
 	      enfermas.
 
@@ -378,8 +385,8 @@ La primitiva que buscamos es pues
 
 Sustituyendo y tomando primitivas a ambos lados de la ecuación original obtenemos
 \[\frac{1}{n} \log\frac{x}{n - x} = kt + c
-	\implies x = \frac{n e^{nc} e^{nkt}}{1 + e^{nc} e^{nkt}}
-	\implies x = \frac{n}{1 + c' e^{-nkt}},\]
+	\implies x = \frac{n \expf{nc} \expf{nkt}}{1 + \expf{nc} \expf{nkt}}
+	\implies x = \frac{n}{1 + c' \expf{-nkt}},\]
 donde \(c'\) es una constante positiva. Observamos que en este caso el
 conjunto de soluciones no es un espacio vectorial. Según este modelo la
 pandemia infecta a toda la población, \(\lim_{t \to \infty} x(t) = n\). En la
@@ -389,7 +396,7 @@ probabilidad de contagio en función del tiempo.
 
 \subsection{Modelo SIS}
 
-Tal como hemos planteado la ecuación esta modela solo enfermedades sin cura, por
+Tal como hemos planteado la ecuación anterior modela solo enfermedades sin cura, por
 ejemplo el SIDA, ya que no contemplamos que un paciente pueda pasar de enfermo a
 sano. Se puede incluir en el modelo una tasa de recuperación, quedaría entonces:
 \[x' = k x(n - x) - \beta x,\]
@@ -434,8 +441,7 @@ lineal
 \end{alignat*}
 la cual podemos resolver con las técnicas ya aprendidas.
 
-\begin{example}
-	\label{ex:cambio_var}
+\begin{example}\label{ex:cambio_var}
 	Resuélvase el problema de valor inicial:
 	\[\begin{cases}
 			x' = \frac{x}{t} + x^3 \\
@@ -482,7 +488,7 @@ la cual podemos resolver con las técnicas ya aprendidas.
 	\(x' = \frac{x}{t} + x^3\) es \((0, \infty)\) en el caso lineal esperaríamos
 	que el dominio de la solución sea el mismo, pero computando obtenemos que el
 	dominio de \(x\) es \((0, \sqrt[3]{5/2})\), por lo que vemos que en ocasiones
-	las ecuaciones no lineales poseen singularidades, \textquote{explotan}, 
+	las ecuaciones no lineales poseen singularidades, \textquote{explotan},
 	en tiempo finito.
 \end{remark}
 

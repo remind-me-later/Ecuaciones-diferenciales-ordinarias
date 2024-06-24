@@ -1,4 +1,4 @@
-\ProvidesPackage{calculo}
+\ProvidesPackage{../sty/calculo}
 
 \newcommand{\emp}{\,\cdot\,}
 \newcommand{\abs}[1]{\left|{#1}\right|}
@@ -14,3 +14,23 @@
 \newcommand{\conjugate}[1]{{#1}^\ast}
 \renewcommand{\Re}{\mathrm{Re}}
 \renewcommand{\Im}{\mathrm{Im}}
+
+\newcommand{\openclosed}[2]{\left({#1}, {#2}\right]}
+\newcommand{\closedopen}[2]{\left[{#1}, {#2}\right)}
+\newcommand{\closedclosed}[2]{\left[{#1}, {#2}\right]}
+\newcommand{\openopen}[2]{\left({#1}, {#2}\right)}
+
+% Márgenes de integración
+
+\newcommand{\intmargins}[3]{{\left[{#1}\right]}_{#2}^{#3}}
+\newcommand{\placeholder}{\,\cdot\,}
+
+\newcommand{\laplacetrans}[1]{\laplace\left\{{#1}\right\}}
+\newcommand{\invlaplacetrans}[1]{\laplace^{-1}\left\{{#1}\right\}}
+
+\newcommand{\heavyside}{\mathcal{U}}
+
+% Compact exponential
+\newcommand{\expc}[1]{\exp\left({#1}\right)}
+% Full exponential
+\newcommand{\expf}[1]{\exp\left({#1}\right)}

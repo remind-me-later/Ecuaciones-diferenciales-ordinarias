@@ -28,7 +28,7 @@ fluidos (ecuaciones de Navier-Stokes) o la propagación del calor en una región
 (ecuación del calor), son ecuaciones en derivadas parciales, muchos fenómenos
 pueden ser modelados con ecuaciones diferenciales ordinarias. Históricamente,
 las ecuaciones diferenciales surgieron de la mano de la física y así ha seguido
-hasta principios del siglo XX; incluso a día de hoy, encuentran aplicaciones de
+hasta principios del siglo XX;\@ incluso a día de hoy, encuentran aplicaciones de
 forma muy natural en el campo de la física porque la mayoría de las leyes en
 esta disciplina están formuladas matemáticamente. No obstante, también tienen
 usos muy importantes en campos como la ecología, la economía e incluso la
@@ -41,7 +41,7 @@ definiciones.
 
 Puesto que solo trataremos funciones en una variable a lo largo del texto
 utilizaremos la notación para las derivadas más usada para este tipo de
-funciones, la notación de Lagrange, esto es \(f'(x)\) y \(f''(x)\) denotan la 
+funciones, la notación de Lagrange, esto es \(f'(x)\) y \(f''(x)\) denotan la
 primera y segunda derivada de \(f\) respectivamente. Esta notación se vuelve
 molesta cuando queremos denotar derivadas de orden grande, normalmente mayor de
 dos, para estos casos introducimos la siguiente notación.
@@ -57,12 +57,12 @@ dos, para estos casos introducimos la siguiente notación.
 \end{definition}
 
 \begin{definition}
-    Se dice que \(x(t)\) es \emph{solución} de una ecuación diferencial en el
-    intervalo
+	Se dice que \(x(t)\) es \emph{solución} de una ecuación diferencial en el
+	intervalo
 	\(I \subset \R\) si \(x : I \to \R\) y
 	\[F(t, x(t), x'(t), x''(t), \dots, x^{(n)}(t)) = 0, \quad \forall t \in I.\]
 	Se cumple además que:
-	\begin{enumerate}[i)]
+	\begin{enumerate}[(i)]
 		\item La función \(x\) tiene todas las derivadas hasta orden \(n\) y son
 		      continuas.
 		\item El punto \((t, x(t), x'(t), \dots, x^{(n)}(t)) \in \Omega\) para
@@ -73,8 +73,8 @@ dos, para estos casos introducimos la siguiente notación.
 Supondremos que la ecuación diferencial está dada en forma normal.
 
 \begin{definition}[Forma normal]
-    Una ecuación diferencial está escrita en \emph{forma normal} si es una
-    expresión de la forma
+	Una ecuación diferencial está escrita en \emph{forma normal} si es una
+	expresión de la forma
 	\[x^{(n)} = f(t, x', x'', \dots, x^{(n - 1)})\]
 \end{definition}
 
@@ -83,9 +83,9 @@ al dominio de \(f\), esto se puede hacer localmente sin pérdida de generalidad
 gracias al teorema de la función implícita.
 
 \begin{definition}[Orden]
-    Llamaremos \emph{orden} de la ecuación diferencial al número \(n\) en la
-    ecuación dada en forma normal o, lo que es lo mismo,
-    el orden de la derivada de mayor orden presente en la ecuación.
+	Llamaremos \emph{orden} de la ecuación diferencial al número \(n\) en la
+	ecuación dada en forma normal o, lo que es lo mismo,
+	el orden de la derivada de mayor orden presente en la ecuación.
 \end{definition}
 
 \begin{definition}[Ecuación diferencial lineal]
@@ -116,7 +116,7 @@ crecimiento (o decrecimiento) \emph{media}, esto es, la tasa de cambio relativa
 a la cantidad de masa presente:
 
 \[\frac{\Delta x}{x \Delta t} = \frac{x(t + \Delta t) - x(t)}{x(t) \Delta t}
-  \approx -\lambda, \quad \lambda > 0,\]
+	\approx -\lambda, \quad \lambda > 0,\]
 donde la última igualdad se deduce de lo dicho anteriormente.
 Tomando el límite cuando \(\Delta t \to 0\), nos queda \(x'(t)/x(t) = -\lambda\)
 para todo \(t\). Esto nos da una ecuación diferencial lineal de primer orden
@@ -134,7 +134,7 @@ de la ecuación, y nos da todo el conjunto de soluciones variando \(k\). En
 particular, el conjunto de soluciones es un subespacio vectorial de dimensión
 uno del espacio vectorial \(C^1(\R)\), que tiene dimensión infinita.
 
-\subsection{Movimiento armónico simple} 
+\subsection{Movimiento armónico simple}
 
 Vemos ahora un ejemplo de modelado más complicado, el movimiento del péndulo.
 Queremos hallar el ángulo del péndulo en un momento determinado, para ello
@@ -145,8 +145,7 @@ longitud de la cuerda.
 \begin{figure}[ht]
 	\centering
 	\includegraphics{figuras/pdf/pendulo.pdf}
-	\caption{Fuerzas que actúan sobre un péndulo}
-	\label{fig:pendulo}
+	\caption{Fuerzas que actúan sobre un péndulo}\label{fig:pendulo}
 \end{figure}
 
 Recordamos que, por la segunda ley de Newton, \(F = ma\), donde \(a\) es la
@@ -158,9 +157,9 @@ por tanto
 puesto que \(\theta\) aparece dentro del seno, esta ecuación es no lineal y de
 orden 2, ya que aparece la derivada segunda de \(\theta\). En este caso
 \(f(t, \theta, \theta') = -\frac{g}{l} \sin\theta\) y \(\Omega = \R \times
-(-\pi, \pi) \times \R\). 
+(-\pi, \pi) \times \R\).
 
-Si \(\theta\) es suficientemente próximo a \(0\) podemos aproximar 
+Si \(\theta\) es suficientemente próximo a \(0\) podemos aproximar
 \(\sin\theta\) a \(\theta\) con lo que tenemos la ecuación
 lineal de segundo orden
 \[\theta'' = -\frac{g}{l}\theta.\]
@@ -186,19 +185,19 @@ problema de valor inicial.
 \begin{definition}[Problema de valor inicial]
 	Un \emph{problema de valor inicial} es una ecuación diferencial
 	\[x^{(n)} = f(t, x, x', \dots, x^{(n - 1)}),\]
-    junto al valor que toman la función incógnita y sus derivadas en un tiempo
-    determinado \(t_0\)
+	junto al valor que toman la función incógnita y sus derivadas en un tiempo
+	determinado \(t_0\)
 	\[x(t_0) = x_0,\ x'(t_0) = x_1,\ \dots\ ,\ x^{(n - 1)}(t_0) = x_{n - 1}.\]
 \end{definition}
 
 \begin{definition}[Condición inicial]
-    Llamaremos \emph{condición inicial} al valor de \(x\) y sus derivadas en un
-    tiempo determinado \(t_0\) en un problema de valor inicial.
+	Llamaremos \emph{condición inicial} al valor de \(x\) y sus derivadas en un
+	tiempo determinado \(t_0\) en un problema de valor inicial.
 \end{definition}
 
 \subsection{Datación por radiocarbono}
 
-Veremos un ejemplo muy importante de modelado que da lugar a un problema de 
+Veremos un ejemplo muy importante de modelado que da lugar a un problema de
 valor inicial. Resolver este problema en este caso particular nos dará un método
 para datar un objeto conociendo solo la cantidad de carbono presente en el mismo.
 
@@ -215,7 +214,7 @@ a un ritmo que depende de su \emph{tasa de desintegración}
 \(\lambda \sim \log 2 / 5730\).
 
 Con esto, analizando la proporción entre carbono-12 y 14 en
-material orgánico (madera, hueso, etc.) y comparándolo con una muestra viva es 
+material orgánico (madera, hueso, etc.) y comparándolo con una muestra viva es
 posible determinar la edad del resto. La creación de este método de
 datación valió al químico estadounidense Willard Libby el premio Nobel de
 química en
@@ -233,7 +232,7 @@ técnica.
 	edad que debemos datar. Por lo visto arriba sabemos que \(x' = -\lambda x\).
 	A tiempo \(0\), cuando el organismo muere, el valor de \(x\) es
 	\(x(0) = 10^{-6}\). Se trata de un problema de valor inicial, que tendremos
-	que resolver para poder encontrar \(x(3000)\). 
+	que resolver para poder encontrar \(x(3000)\).
 
 	Empezamos resolviendo la ecuación diferencial
 	\[x(t) = k e^{-\lambda t} = k e^{-\frac{\log 2}{5730} t},\]
@@ -241,8 +240,8 @@ técnica.
 	sustituir,
 	\[x(t) = 10^{-6} e^{-\frac{\log 2}{5730} t}.\]
 
-	Podemos obtener ahora el resultado pedido 
-	\(x(3000) = 6,95 \cdot 10^{-7}\) gramos.
+	Podemos obtener ahora el resultado pedido
+	\(x(3000) = 6.95 \cdot 10^{-7}\) gramos.
 \end{solution}
 
 Normalmente no sabemos la cantidad total de carbono presente en un organismo
@@ -251,8 +250,8 @@ ejemplo más cercano a la realidad.
 
 \begin{example}
 	En una excavación en Nippur, Babilonia, en 1950 el carbón vegetal de la viga
-	de un techo dio \(4,09\) desintegraciones por minuto y gramo, mientras que
-	la madera viva da \(6,68\) desintegraciones, también por minuto y gramo.
+	de un techo dio \(4.09\) desintegraciones por minuto y gramo, mientras que
+	la madera viva da \(6.68\) desintegraciones, también por minuto y gramo.
 	Nos preguntamos en qué año se construyó en edificio.
 \end{example}
 
@@ -266,7 +265,7 @@ ejemplo más cercano a la realidad.
 	donde el cociente \(\frac{R(t)}{R(0)} = e^{-\lambda t}\) no depende de la
 	cantidad de carbono-14 presente en el organismo vivo \(x_0\). Sustituyendo
 	los datos y despejando
-	\[\frac{4,09}{6,68} = \frac{R(t)}{R(0)} = e^{-\frac{\log 2}{5730} t}
+	\[\frac{4.09}{6.68} = \frac{R(t)}{R(0)} = e^{-\frac{\log 2}{5730} t}
 		\implies t \approx 4055,\]
 	medido en años. Así, concluimos que el edificio se construyó en el \(2105\)
 	a.C.

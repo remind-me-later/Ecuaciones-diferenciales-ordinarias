@@ -1,18 +1,19 @@
 \documentclass[../ecuaciones_diferenciales.tex]{subfiles}
 
 \begin{document}
+
 Hasta ahora nos hemos preocupado de \emph{resolver} los sistemas de ecuaciones
 diferenciales lineales. Ahora queremos entender el comportamiento
 \emph{cualitativo} de sus soluciones.
 
 Haciendo una analogía con el análisis real, un planteamiento cuantitativo es
 tener una fórmula explícita para una función y uno cualitativo es dar la forma
-global de su gráfica (crecimiento, convexidad, asíntotas...)
+global de su gráfica (crecimiento, convexidad, asíntotas \ldots)
 
 Si sabemos resolver explícitamente los sistemas, ¿por qué interesa hacer un
 análisis cualitativo?
 
-\begin{enumerate}[1)]
+\begin{enumerate}[(1)]
 	\item En muchos casos, nos da información relevante del modelo estudiado. Por
 	      ejemplo, es importante saber si una enfermedad desaparece o se hace endémica,
 	      si una población oscila, se estabiliza o desaparece, si un tumor crece sin
@@ -116,8 +117,7 @@ velocidad \(x'(t)\) coincide con el valor del campo en \(x(t)\), es decir, una
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.6]{figuras/pdf/ej_campo_vectorial.pdf}
-	\caption{Ejemplo de campo vectorial}
-	\label{fig:campo_vec}
+	\caption{Ejemplo de campo vectorial}\label{fig:campo_vec}
 \end{figure}
 
 \begin{solution}
@@ -137,7 +137,7 @@ Nos centramos ahora en esbozar el diagrama de fases de un sistema plano general
 manejable. Las formas de Jordan posibles son
 
 \begin{multicols}{2}
-\begin{enumerate}[a)]
+\begin{enumerate}[(a)]
 	\item \(B = \mat{\lambda_1 & \\ & \lambda_2}, 
 		\quad \lambda_1 \neq \lambda_2\)
 
@@ -161,7 +161,7 @@ es
 	y_1 = k_1e^{\lambda_1 t} \\
 	y_2 = k_2e^{\lambda_2 t}}\]
 
-Vamos a fijar distintos valores de \(k_1,k_2\) (i.e. distintos valores
+Vamos a fijar distintos valores de \(k_1,k_2\) (i.e.\ distintos valores
 iniciales) para ver cómo evoluciona el sistema a partir de ellos.
 
 Empezamos por fijar valores sencillos, en los que algún valor inicial es 0
@@ -194,14 +194,14 @@ segunda a \(\lambda_1\), se tiene
 	\begin{cases}
 		y_1^{\lambda_2} = k_1^{\lambda_2}e^{\lambda_1\lambda_2 t} \\
 		y_2^{\lambda_1} = k_2^{\lambda_1}e^{\lambda_1\lambda_2 t}
-	\end{cases} \implies \left(\frac{y_1}{k_1}\right)^{\lambda_2} = e^{\lambda_1
-			\lambda_2 t} = \left(\frac{y_2}{k_2}\right)^{\lambda_1}.
+	\end{cases} \implies {\left(\frac{y_1}{k_1}\right)}^{\lambda_2} = e^{\lambda_1
+			\lambda_2 t} = {\left(\frac{y_2}{k_2}\right)}^{\lambda_1}.
 \end{equation}
 
 Como \(\lambda_1 \neq \lambda_2\), alguno de los dos tiene que ser distinto de
 0; podemos suponer, sin pérdida de generalidad, que es \(\lambda_1\). Despejando
-en \eqref{eq:impl}, llegamos a
-\[y_2 = k_2 \left(\frac{y_1}{k_1}\right)^{\lambda_2 / \lambda_1}\]
+en~\eqref{eq:impl}, llegamos a
+\[y_2 = k_2 {\left(\frac{y_1}{k_1}\right)}^{\lambda_2 / \lambda_1}\]
 es decir, una relación de la forma \(y_2 = c y_1^\alpha\). Distinguimos casos en
 función del valor de \(\alpha\):
 
@@ -228,13 +228,12 @@ función del valor de \(\alpha\):
 		\caption*{\(\alpha < 0\)}
 	\end{subfigure}
 	\caption{Posibles diagramas de fase de un sistema plano diagonalizable con 
-	dos autovalores distintos, dependiendo del parámetro \(\alpha\)}
-  \label{fig:dos_autovalores}
+	dos autovalores distintos, dependiendo del parámetro \(\alpha\)}%
+	\label{fig:dos_autovalores}
 \end{figure}
 
-Estrictamente hablando, estas son las posibles trayectorias del sistema, es
-decir, los \emph{conjuntos} \(\{(x_1(t),x_2(t)) : t \in \R\}\). No obstante, aún
-podemos ampliar más estos diagramas para incluir información sobre la dirección
+Estrictamente hablando, los \emph{conjuntos} \(\{(x_1(t),x_2(t)) : t \in \R\}\) son las posibles trayectorias del sistema.
+No obstante, aún podemos ampliar más estos diagramas para incluir información sobre la dirección
 en que se recorren las trayectorias, que dependerá del signo de los autovalores.
 
 \begin{itemize}
@@ -259,7 +258,7 @@ en que se recorren las trayectorias, que dependerá del signo de los autovalores
 	      sea, desde este punto.
 \end{itemize}
 
-Veamos entonces cómo quedaría la figura \ref{fig:dos_autovalores} incluyendo
+Veamos entonces cómo quedaría la figura~\ref{fig:dos_autovalores} incluyendo
 esta información. Por completitud, incluimos también los casos en los que
 \(\lambda_1 = 0, \lambda_2 \neq 0\):
 
@@ -278,7 +277,7 @@ esta información. Por completitud, incluimos también los casos en los que
   \begin{subfigure}{0.25\textwidth}
     \centering
     \includegraphics{figuras/pdf/diagonal_dos_autovalores_positivos_a_lt_1.pdf}
-    \caption*{Nodo inestable (\(0 < \lambda_2 < \lambda_1\)))}
+    \caption*{Nodo inestable (\(0 < \lambda_2 < \lambda_1\))}
   \end{subfigure}%
   \begin{subfigure}{0.25\textwidth}
     \centering
@@ -569,7 +568,7 @@ la masa.
 		\draw[->] (-4.5,1) -- node[left,midway] {\(x > 0\)}(-4.5,0);
 		\draw[dotted] (2,1) -- (4,1) node[right] {\(x = 0\)};
 	\end{tikzpicture}
-	\caption{Masa colgada de un muelle}
+	\caption{Masa colgada de un muelle}%
 	\label{fig:muelle}
 \end{figure}
 
@@ -605,7 +604,7 @@ fuerza de la gravedad en la fuerza externa, de forma que queda
 
 \begin{remark}
 	Esta es la ecuación diferencial lineal de orden 2 más general tal que su
-	homogénea asociada tiene coeficientes constantes (e.d. la ecuación diferencial
+	homogénea asociada tiene coeficientes constantes (e.d.\ la ecuación diferencial
 	lineal de orden 2 más general que sabemos resolver).
 \end{remark}
 
@@ -742,8 +741,8 @@ que distinguimos casos en función del valor de \(c^2-4k\):
 	      oscilar; sin embargo, rápidamente se estabiliza.
 	\item \(c^2 - 4k < 0\) (caso \emph{subamortiguado}): se tienen dos autovalores
 	      complejos:
-	      \[\lambda_1 = -\frac{c}{2}+i\sqrt{k-\left(\frac{c}{2}\right)^2} = a + bi, \quad
-		      \lambda_2 = -\frac{c}{2}-i\sqrt{k-\left(\frac{c}{2}\right)^2} = a - bi\]
+	      \[\lambda_1 = -\frac{c}{2}+i\sqrt{k-{\left(\frac{c}{2}\right)}^2} = a + bi, \quad
+		      \lambda_2 = -\frac{c}{2}-i\sqrt{k-{\left(\frac{c}{2}\right)}^2} = a - bi\]
 
 	      La solución general del sistema asociado es
 	      \[\mat{x_1 \\ x_2} = P \mat{e^{at} \cos bt & e^{at} \sin bt \\ -e^{at} \sin
@@ -846,12 +845,12 @@ Vamos a estudiar dos casos de interés especial:
 	      Es razonable conjeturar una solución particular de la forma \(x_p(t) =
 	      \alpha \cos (\omega t - \beta)\). De hecho, se obtiene que \(x_p\) así
 	      definida es solución para los valores de los parámetros
-	      \[\alpha = \frac{F_0}{\sqrt{(\omega_0^2-\omega^2)^2+c^2\omega^2}} \quad
+	      \[\alpha = \frac{F_0}{\sqrt{{(\omega_0^2-\omega^2)}^2+c^2 \omega^2}} \quad
 		      \text{y} \quad \beta \in \R \text{ tal que }
 		      \begin{cases}
 			      \cos \beta =
-			      \frac{\omega_0^2-\omega^2}{\sqrt{(\omega_0^2-\omega^2)^2+c^2\omega^2}} \\
-			      \sin \beta = \frac{c\omega}{\sqrt{(\omega_0^2-\omega^2)^2+c^2\omega^2}}
+			      \frac{\omega_0^2-\omega^2}{\sqrt{{(\omega_0^2-\omega^2)}^2+c^2\omega^2}} \\
+			      \sin \beta = \frac{c\omega}{\sqrt{{(\omega_0^2-\omega^2)}^2+c^2\omega^2}}
 		      \end{cases}
 	      \]
 
@@ -865,7 +864,7 @@ Vamos a estudiar dos casos de interés especial:
 
 	      Si \(\omega \approx \omega_0\), entonces \(\omega_0^2-\omega^2 \approx 0\),
 	      con lo que \(\alpha \approx \frac{F_0}{c\omega}\). En particular, si
-	      \(c \approx 0\) (i.e. hay muy poca amortiguación), entonces \(\alpha\) (la
+	      \(c \approx 0\) (i.e.\ hay muy poca amortiguación), entonces \(\alpha\) (la
 	      amplitud de las \emph{oscilaciones}) puede ser enorme aunque \(F_0\) (la
 	      amplitud de la \emph{fuerza externa}) sea pequeña.
 

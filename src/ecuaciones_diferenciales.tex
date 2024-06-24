@@ -1,0 +1,144 @@
+\documentclass[a4paper, 10pt, openany]{book}
+
+
+% \documentclass[draft, a4paper, 10pt, openany]{book}
+\usepackage[a4paper]{geometry}
+
+\usepackage[spanish, es-lcroman]{babel}
+
+\usepackage{parskip}
+\usepackage{multicol}
+
+\usepackage{subfiles} 
+\usepackage{tocbibind}
+\usepackage[toc]{appendix}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows, babel}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{csquotes}
+
+\usepackage{booktabs}
+
+% \usepackage[Conny]{fncychap}
+
+\usepackage{../sty/teoremas}
+\usepackage{../sty/general}
+\usepackage{../sty/conjuntos}
+\usepackage{../sty/calculo}
+\usepackage{../sty/algebra}
+
+% \usepackage{xr}
+
+% Se carga el último 
+\usepackage{bookmark}
+
+% Los apéndices se llaman apéndices
+\renewcommand\appendixpagename{Apéndices}
+\renewcommand{\appendixtocname}{Apéndices}
+
+% mainmatter no reinicia el contador de páginas
+\makeatletter
+\renewcommand\mainmatter{
+    \@mainmattertrue\cleardoublepage\renewcommand\thepage{\arabic{page}}}
+\makeatother
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\title{Ecuaciones diferenciales ordinarias}
+\author{Ricardo Maurizio Paul \and Pablo Castellanos García}
+\date{2020--2024}
+
+\begin{document}
+
+\frontmatter{}
+
+\maketitle
+
+\clearpage
+%\cleardoublepage % openright
+\vspace*{\fill}
+\thispagestyle{empty} % Sin número de página
+\begin{quotation}
+	\raggedleft{}
+	\em % énfasis
+	Duc, o parens celsique dominator poli, \\
+	Quocumque placuit; nulla parendi mora est. \\
+	Adsum inpiger. Fac nolle, comitabor gemens \\
+	Maiusque patiar, facere quod licuit bono. \\
+	Ducunt volentem fata, nolentem trahunt. \\
+	\bigskip
+	--- Seneca
+\end{quotation}
+\vspace*{\fill}
+
+\tableofcontents
+
+\chapter{Prefacio}
+\subfile{0_prefacio}
+
+\mainmatter{}
+
+% Es necesario que las etiquetas de los capítulos estén en mayúsculas para que
+% puedan ser referenciadas en el header de los apéndices :/
+
+\part{Ecuaciones lineales}
+
+\chapter{Introducción}\label{CHAP:INTRO}
+\subfile{1_intro/teoria}
+
+\chapter{Ecuaciones lineales de primer orden}\label{CHAP:EC_LINEAL_PRIMER_ORDEN}
+\subfile{2_ec_lin_primer_orden/teoria}
+\newpage
+\section{Ejercicios propuestos}
+\subfile{2_ec_lin_primer_orden/problemas}
+
+\chapter{Sistemas de ecuaciones lineales de primer orden}\label{CHAP:SISTEMAS}
+\subfile{3_sistemas_lin/teoria}
+\newpage
+\section{Ejercicios propuestos}
+\subfile{3_sistemas_lin/problemas}
+
+\chapter{Análisis cualitativo de sistemas planos}\label{CHAP:CUALITATIVO}
+\subfile{4_cualitativo/teoria}
+
+\chapter{Series de potencias}\label{CHAP:SERIES}
+\subfile{5_series/teoria}
+
+\chapter{Transformada de Laplace}\label{CHAP:LAPLACE}
+\subfile{6_laplace/teoria}
+
+\part{Ecuaciones no lineales}
+
+\chapter{Teoría fundamental}\label{CHAP:TEORIA_FUNDAMENTAL}
+\subfile{7_teoria_fundamental/teoria}
+
+% \part{Apéndices}
+% \appendix
+
+% \chapter{Problemas resueltos}
+
+% \section{Problemas del capítulo~\ref{CHAP:EC_LINEAL_PRIMER_ORDEN}}
+% \subfile{2_ec_lin_primer_orden/problemas}
+
+% \section{Problemas del capítulo~\ref{CHAP:SISTEMAS}}
+% \subfile{3_sistemas_lin/problemas}
+
+% \chapter{Resumen de diagramas de fase}
+% \subfile{4_cualitativo/anexo}
+
+\backmatter{}
+
+\listoffigures
+
+% \listoftables
+
+\bibliographystyle{apalike}
+\bibliography{bibliografia}
+\nocite{*}
+
+\end{document}
